@@ -1326,6 +1326,11 @@ class SEED_CSP3_PLUGIN extends SEED_CSP3 {
             }
             
             // render template tags
+			
+			include_once(SEED_CSP3_PLUGIN_PATH.'/themes/default/index.php' );
+
+			exit();
+			
             if (empty($template) || isset($disable_code_template)) {
                 $template = $this->get_default_template();
             }

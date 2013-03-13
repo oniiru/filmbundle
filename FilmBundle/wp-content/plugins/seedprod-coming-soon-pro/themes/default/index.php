@@ -2,9 +2,7 @@
 <?php
 
 get_header(); ?>
-
 	<div id="main">
-	
 		<?php
 			$layout = $data['homepage_blocks']['enabled'];
 		if ($layout):
@@ -455,4 +453,138 @@ get_header(); ?>
 	
 	</div><!-- end #main -->
 
-<?php get_footer(); ?>
+<?php function seed_cs3_footer(){
+	global $seed_csp3,$seed_csp3_post_result;
+	$is_post = false;
+	if(!empty($seed_csp3_post_result['post']) && $seed_csp3_post_result['post'] == 'true' && $seed_csp3_post_result['status'] == '200'){
+		$is_post = true;
+	}
+	$o = $seed_csp3->get_settings();
+	extract($o);
+	if($emaillist == 'gravityforms'){
+		$enable_wp_head_footer = '1';
+	}
+	$output = '';
+	if(!empty($enable_wp_head_footer)){
+		$output .= "<!-- wp_footer() -->\n";
+		ob_start();
+		wp_footer();
+		$dump = ob_get_contents();
+		ob_end_clean();
+		$output .= $dump;
+	}
+
+	$output .= "<!-- Belatedpng -->\n";
+	$output .= "<!--[if lt IE 7 ]>\n";
+	$output .= '<script src="'.SEED_CSP3_PLUGIN_URL.'themes/default/js/dd_belatedpng.js"></script>'."\n";
+	$output .= "<script>DD_belatedPNG.fix('img, .png_bg');</script>\n";
+	$output .= "<![endif]-->\n";
+
+	$rf_url = "";
+	$rf_stats = "";
+	if(isset($enable_reflink) && !empty($seed_csp3_post_result['referrer_id'])){
+		$rf_url = "<br><br>".__('Your Referral URL is:','seedprod').'<br>'.home_url().'?ref='.$seed_csp3_post_result['referrer_id'].'';
+		$rf_stats = '<br><br>'.__('Your Referral Stats','seedprod').'<br>Clicks: '.$seed_csp3_post_result['clicks'].'<br>Subscribers: '.$seed_csp3_post_result['subscribers'];
+	}
+
+	$output .= "<!-- Email Form Strings -->\n";
+	$output .= "<script>
+	var seed_csp3_err_msg={
+		'msgdefault':'".esc_attr($txt_2)."',
+		'msg600':'".esc_attr($txt_3).$rf_url.$rf_stats."',
+		'msg500':'".esc_attr($txt_6)."',
+		'msg400':'".esc_attr($txt_4)."',
+		'msg200':'".esc_attr($txt_5)."'
+	};
+	</script>";
+
+	if(!empty($seed_csp3_post_result['post'])){
+		$output .= "<script>after_form('".json_encode($seed_csp3_post_result)."');</script>\n";
+	}
+
+
+	$output .= "<script>\n";
+	if(is_array($container_effect['effects']) && in_array('5',$container_effect['effects'])){
+	$output .= 'jQuery(document).ready(function($){$("#csp3-content").fadeIn("slow").css("display","inline-block");';
+	}else{
+	$output .= 'jQuery(document).ready(function($){$("#csp3-content").show().css("display","inline-block");';	
+	}
+	if(!empty($enable_fitvidjs)){
+		$output .= '$("#csp3-description").fitVids();';
+	}
+
+	$fronend = parse_url($_SERVER['HTTP_HOST']);
+	$backend = parse_url(admin_url());
+	//if(empty($enable_ajax) || $backend['host'] != $fronend['host']){
+		$output .= '$("#csp3-form").off();';
+	//}
+	$output .= "});</script>\n";
+
+	if(empty($bg_slideshow)){
+		if(!empty($bg_cover)){
+			$output .= '<!--[if lt IE 9]>
+			<script>
+			jQuery(document).ready(function($){';
+
+		
+			$output .= '$.supersized({';
+			$output .= "slides:[ {image : '$bg_image'} ]";
+			$output .= '});';
+		
+
+			$output .= '});
+			</script>
+			<![endif]-->';
+		}
+	}
+
+	if(!empty($bg_slideshow)){
+
+		$output .= '<!-- Slideshow -->
+		<script>
+		jQuery(document).ready(function($){';
+
+		$output .= '$.supersized({';
+
+		$output .= 'slide_interval:3000,';
+		$output .= 'transition:1,';
+		$output .= 'transition_speed:700,';
+		$output .= 'fit_landscape:0,';
+
+
+		if(!empty($bg_slideshow_randomize)){
+			$output .= 'random:1,';
+		}
+
+		$output .= "slides:[\n";
+		if(!empty($bg_slideshow_images)){
+			$imgs = trim($bg_slideshow_images);
+			$imgs = explode("\n", $imgs);
+			$imgs = array_filter($imgs, 'trim');
+			foreach($imgs as $k=>$v){
+				if($k !== 0){
+				$output .= ",";
+				}
+				$output .= " {image : '".trim($v)."'}"."\n";
+			}
+		}
+
+		$output .= "]";
+		$output .= '});});';
+		$output .= '</script>';
+
+	}
+
+
+	if(!empty($footer_scripts)){
+		$output .= "<!-- Footer Scripts -->\n";
+		$output .= $footer_scripts;
+	}
+	if(!empty($conversion_scripts) && $is_post){
+		$output .= "<!-- Conversion Scripts -->\n";
+		$output .= $conversion_scripts;
+	}
+
+	return $output;
+
+} ?>
