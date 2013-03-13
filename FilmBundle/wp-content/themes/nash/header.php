@@ -112,7 +112,7 @@
 			<div class="row">
 			
 				<?php if ($data['text_introduction']) { ?>
-				<h1 id="uber-statement">Hello</h1>
+				<h1 id="uber-statement"><?php echo $data['text_introduction']; ?></h1>
 		
 				<?php } ?>
 				
