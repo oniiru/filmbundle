@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 /FilmBundle/.htaccess
 /FilmBundle/wp-config.php
+=======
+FilmBundle/.htaccess
+FilmBundle/wp-config.php
+>>>>>>> argh
