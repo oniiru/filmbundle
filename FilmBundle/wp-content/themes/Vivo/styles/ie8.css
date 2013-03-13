@@ -1,0 +1,13 @@
+#commentform  {
+	width: 80%;
+}
+
+.quote { width: 40%; }
+
+/* Always display nav in sliders */
+.flex-direction-nav a.flex-prev {left:0px;}
+.flex-direction-nav a.flex-next {right:0px;}
+
+img { 
+  	width: auto; /* for ie 8 */
+  }

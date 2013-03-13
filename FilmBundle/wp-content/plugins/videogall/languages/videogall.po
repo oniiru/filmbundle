@@ -1,0 +1,327 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: VideoGall\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-30 10:30-0600\n"
+"PO-Revision-Date: 2012-07-30 10:31-0600\n"
+"Last-Translator: \n"
+"Language-Team: Nischal Maniar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;_n;_x;gettext;gettext_noop\n"
+
+#: videogall-widget.php:5
+msgid "Display video gallery on sidebar"
+msgstr ""
+
+#: videogall-widget.php:6
+msgid "Videogall"
+msgstr ""
+
+#: videogall-widget.php:55
+msgid "Title (optional):"
+msgstr ""
+
+#: videogall-widget.php:59
+msgid "Category:"
+msgstr ""
+
+#: videogall-widget.php:68
+msgid "Number of videos:"
+msgstr ""
+
+#: videogall.php:141
+msgid "Pages: "
+msgstr ""
+
+#: admin/videogall-options.php:54
+msgid "Your Videos"
+msgstr ""
+
+#: admin/videogall-options.php:55
+msgid "Add New Video"
+msgstr ""
+
+#: admin/videogall-options.php:56
+msgid "Video Categories"
+msgstr ""
+
+#: admin/videogall-options.php:57
+msgid "Additional Settings"
+msgstr ""
+
+#: admin/videogall-options.php:58
+msgid "Instructions"
+msgstr ""
+
+#: admin/videogall-options.php:68
+#: admin/videogall-options.php:77
+msgid "Small"
+msgstr ""
+
+#: admin/videogall-options.php:69
+#: admin/videogall-options.php:78
+msgid "Medium"
+msgstr ""
+
+#: admin/videogall-options.php:70
+#: admin/videogall-options.php:79
+msgid "Large"
+msgstr ""
+
+#: admin/videogall-options.php:113
+msgid "Category already exists"
+msgstr ""
+
+#: admin/videogall-options.php:119
+msgid "Category created succesfully"
+msgstr ""
+
+#: admin/videogall-options.php:121
+#: admin/videogall-options.php:148
+msgid "Invalid category name provided"
+msgstr ""
+
+#: admin/videogall-options.php:146
+msgid "Category has been renamed"
+msgstr ""
+
+#: admin/videogall-options.php:161
+msgid "Video deleted succesfully"
+msgstr ""
+
+#: admin/videogall-options.php:177
+#: admin/videogall-options.php:214
+msgid "Video with name "
+msgstr ""
+
+#: admin/videogall-options.php:192
+msgid "Video updated succesfully"
+msgstr ""
+
+#: admin/videogall-options.php:194
+#: admin/videogall-options.php:226
+msgid "Name, URL are required fields"
+msgstr ""
+
+#: admin/videogall-options.php:207
+msgid "Invalid image URL for thumbnail"
+msgstr ""
+
+#: admin/videogall-options.php:224
+msgid "Video added succesfully"
+msgstr ""
+
+#: admin/videogall-options.php:238
+msgid "Default settings restored"
+msgstr ""
+
+#: admin/videogall-options.php:245
+msgid "Videogall Options"
+msgstr ""
+
+#: admin/videogall-options.php:249
+msgid "Feel free to donate via "
+msgstr ""
+
+#: admin/videogall-options.php:280
+msgid "Edit"
+msgstr ""
+
+#: admin/videogall-options.php:281
+msgid "Delete"
+msgstr ""
+
+#: admin/videogall-options.php:286
+msgid "Name: * "
+msgstr ""
+
+#: admin/videogall-options.php:290
+msgid "URL: * "
+msgstr ""
+
+#: admin/videogall-options.php:294
+msgid "Category: "
+msgstr ""
+
+#: admin/videogall-options.php:306
+msgid "Thumbnail: "
+msgstr ""
+
+#: admin/videogall-options.php:309
+msgid "Upload"
+msgstr ""
+
+#: admin/videogall-options.php:313
+msgid "Caption: "
+msgstr ""
+
+#: admin/videogall-options.php:317
+msgid "Description: "
+msgstr ""
+
+#: admin/videogall-options.php:323
+msgid "Submit"
+msgstr ""
+
+#: admin/videogall-options.php:324
+msgid "Cancel"
+msgstr ""
+
+#: admin/videogall-options.php:335
+msgid "Name"
+msgstr ""
+
+#: admin/videogall-options.php:339
+msgid "URL"
+msgstr ""
+
+#: admin/videogall-options.php:343
+msgid "Category"
+msgstr ""
+
+#: admin/videogall-options.php:354
+msgid "Thumbnail"
+msgstr ""
+
+#: admin/videogall-options.php:357
+msgid "Upload Thumbnail"
+msgstr ""
+
+#: admin/videogall-options.php:361
+msgid "Caption"
+msgstr ""
+
+#: admin/videogall-options.php:365
+msgid "Description"
+msgstr ""
+
+#: admin/videogall-options.php:371
+msgid "Add Video"
+msgstr ""
+
+#: admin/videogall-options.php:372
+msgid "* are required fields"
+msgstr ""
+
+#: admin/videogall-options.php:378
+msgid "Add new category"
+msgstr ""
+
+#: admin/videogall-options.php:381
+msgid "Add Category"
+msgstr ""
+
+#: admin/videogall-options.php:383
+msgid "Rename categories"
+msgstr ""
+
+#: admin/videogall-options.php:393
+msgid "Update Category"
+msgstr ""
+
+#: admin/videogall-options.php:398
+msgid "Video Size"
+msgstr ""
+
+#: admin/videogall-options.php:406
+msgid "Thumbnail Size"
+msgstr ""
+
+#: admin/videogall-options.php:414
+msgid "Enable Border"
+msgstr ""
+
+#: admin/videogall-options.php:418
+msgid "Border Color"
+msgstr ""
+
+#: admin/videogall-options.php:422
+msgid "Enable Pagination"
+msgstr ""
+
+#: admin/videogall-options.php:415
+msgid "Enable ShadowBox for images"
+msgstr ""
+
+#: admin/videogall-options.php:426
+msgid "Number of videos per page"
+msgstr ""
+
+#: admin/videogall-options.php:432
+msgid "VideoGall Installation"
+msgstr ""
+
+#: admin/videogall-options.php:435
+msgid "Unzip the VideoGall plugin in the plugins folder in wp-content directory i.e \"wp-content/plugins\""
+msgstr ""
+
+#: admin/videogall-options.php:438
+msgid "Go to your wordpress admin's plugins section and activate the VideoGall plugin"
+msgstr ""
+
+#: admin/videogall-options.php:441
+msgid "Go to settings --&gt; VideoGall Settings to set your options and add videos. Check out the instructions below on how to fetch the video URL from your desired website"
+msgstr ""
+
+#: admin/videogall-options.php:444
+msgid "In a page or a post use the button in the editor to add the vidoeogall shortcode e.g. [myvideogall:all] will display all the videos. To display videos from a certain category, replace \"all\" with your desired category name"
+msgstr ""
+
+#: admin/videogall-options.php:448
+msgid "Add Videos"
+msgstr ""
+
+#: admin/videogall-options.php:451
+msgid "Go to VideoGall Settings page and you can add videos from the \"Add Video\" section"
+msgstr ""
+
+#: admin/videogall-options.php:454
+msgid "If you want VideoGall to automatically fetch the video thumbnail, then leave the thumbnail field empty while adding the video. If you want to use your own thumbnail image, you can upload or select existing image from your media library using the \"Upload\" button."
+msgstr ""
+
+#: admin/videogall-options.php:457
+msgid "Always use the URL from the browser address bar from the video website of your choice (e.g. YouTube, Vimeo, etc)."
+msgstr ""
+
+#: admin/videogall-options.php:460
+msgid "If you want to add a video from a site which is not supported by VideoGall then use the direct URL of that video."
+msgstr ""
+
+#: admin/videogall-options.php:464
+msgid "Supported Sites"
+msgstr ""
+
+#: admin/videogall-options.php:467
+msgid "YouTube"
+msgstr ""
+
+#: admin/videogall-options.php:470
+msgid "Metacafe"
+msgstr ""
+
+#: admin/videogall-options.php:473
+msgid "Dailymotion"
+msgstr ""
+
+#: admin/videogall-options.php:476
+msgid "Vimeo"
+msgstr ""
+
+#: admin/videogall-options.php:479
+msgid "WordPress"
+msgstr ""
+
+#: admin/videogall-options.php:493
+msgid "Reset Settings"
+msgstr ""
+
+#: admin/videogall-options.php:497
+msgid "Plugin designed and developed by "
+msgstr ""
+
+#: admin/videogall-options.php:497
+msgid "Nischal Maniar"
+msgstr ""
+

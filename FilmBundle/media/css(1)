@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Josefin Slab';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Josefin Slab Bold'), local('JosefinSlab-Bold'), url(http://themes.googleusercontent.com/static/fonts/josefinslab/v3/NbE6ykYuM2IyEwxQxOIi2Hl4twXkwp3_u9ZoePkT564.woff) format('woff');
+}
+@font-face {
+  font-family: 'Josefin Slab';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Josefin Slab SemiBold'), local('JosefinSlab-SemiBold'), url(http://themes.googleusercontent.com/static/fonts/josefinslab/v3/NbE6ykYuM2IyEwxQxOIi2NOd4RnLmtUrdSQkDmC5b8k.woff) format('woff');
+}
+@font-face {
+  font-family: 'Josefin Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Josefin Slab'), local('JosefinSlab'), url(http://themes.googleusercontent.com/static/fonts/josefinslab/v3/46aYWdgz-1oFX11flmyEfXhCUOGz7vYGh680lGh-uXM.woff) format('woff');
+}
+@font-face {
+  font-family: 'Josefin Slab';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Josefin Slab Light'), local('JosefinSlab-Light'), url(http://themes.googleusercontent.com/static/fonts/josefinslab/v3/NbE6ykYuM2IyEwxQxOIi2GFp2sMiApZm5Dx7NpSTOZk.woff) format('woff');
+}

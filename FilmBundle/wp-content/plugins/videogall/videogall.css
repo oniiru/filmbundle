@@ -1,0 +1,14 @@
+/* VideoGall Default Stylesheet */
+.clearfix: after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+* html .clearfix { zoom: 1; } /* IE6 */
+: first-child+html .clearfix { zoom: 1; } /* IE7 */
+.videogall-item { margin-right: 20px; margin-bottom: 20px; min-height: 120px; display: -moz-inline-stack; display: inline-block; vertical-align: top; zoom: 1; *display: inline; _height: 120px; }
+.videogall-caption { text-align: center; margin: 0 !important; margin-top: 10px !important; }
+.videogall-description { text-align: center; margin: 0 !important; margin-top: 10px !important; }
+.videogall-nav-item { line-height: 100%; margin-right: 5px; }
+.current-video-page { font-weight: 700; }
+.video-page-title { font-weight: 700; margin-right: 5px; }
+.videogall-page { display: none; overflow: hidden; }
+#videogall-page-1 { display: block; }
+.videogall-widget-item { max-width: 98.5% !important; }
+.videogall-widget-item img { max-width: 98.5% !important; height: auto; }
