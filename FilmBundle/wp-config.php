@@ -12,8 +12,7 @@
  * to "wp-config.php" and fill in the values.
  *
  * @package WordPress
- */
- see if i did this right
+ */rawr
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'FilmBundle');
