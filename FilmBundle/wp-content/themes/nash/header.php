@@ -125,11 +125,11 @@
 				<script>
 				jQuery(document).ready(function(){
 					setTimeout(function(){
-				jQuery('.fadeplease').fadeTo(1000, 1);
-				jQuery('.fadeplease').fadeTo(1000, 0.7);
-				jQuery('.fadeplease').fadeTo(1000, 1);
-				jQuery('.fadeplease').fadeTo(1000, 0.7);
-				},2000);
+				jQuery('.fadeplease').fadeTo(2000, 1);
+				jQuery('.fadeplease').fadeTo(2000, 0.5);
+				jQuery('.fadeplease').fadeTo(2000, 1);
+				jQuery('.fadeplease').fadeTo(2000, 0.5);
+				},3000);
 				jQuery('.fadeplease2').mouseover(
 					function () {
 						jQuery(this).fadeTo ("fast", 1);
