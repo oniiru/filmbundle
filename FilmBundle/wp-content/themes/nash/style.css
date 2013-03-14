@@ -3726,6 +3726,7 @@ a.return-home-btn:hover {
 	
 	.header-background-image {
 		height: 800px;
+		top:0px;
 	}
 	
 	.logos h2 {
@@ -3774,8 +3775,7 @@ a.return-home-btn:hover {
 	#csp3-email, #csp3-fname, #csp3-lname { width:300px !important;
 	}
 	.csp3-form-wrapper {width:inherit !important;text-align: center !important}
-	.socialstuff {margin-top:70px;}
-	
+	.socialstuff {margin-top:70px;}	
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -3806,7 +3806,6 @@ a.return-home-btn:hover {
 	}
 	#csp3-email, #csp3-fname, #csp3-lname { width:260px !important;
 	}
-	
 }
 
 /* Mobile Portrait Size Only (devices and browsers) */
