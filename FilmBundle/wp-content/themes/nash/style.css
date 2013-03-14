@@ -3578,6 +3578,69 @@ a.return-home-btn:hover {
 	-webkit-background-size: cover!important;
 }
 
+.socialnavthingy {
+	display:inline-block;
+}
+
+/*landing page*/
+	
+.csp3-form-wrapper {
+	width: 650px !important;
+	margin: auto !important;
+	display: block !important;
+	height:50px !important;
+}
+#csp3-email, #csp3-fname, #csp3-lname {
+	height:inherit !important;
+	border-radius:0px !important;
+	display:inline !important;
+	width:500px !important;
+	margin-bottom:0px !important;
+}
+	
+.input-append {
+	height:50px !important;
+}
+	
+#csp3-subscribe-btn {
+	height: 50px !important;
+	top: 1px !important;
+	width: 140px !important;
+	margin-left: 5px !important;
+}
+	
+#csp3-afterform, #csp3-sharebuttons {
+	background:rgba(228, 124, 20, 0.7) !important;
+	color:white !important;
+	margin-bottom:none !important;
+}
+	
+#csp3-afterform h1 {
+	border-bottom:none !important;
+}
+
+.socialstuff {
+	margin-top:50px;
+	text-align:center;
+		
+}
+	
+.socialstuff h3 {
+	color:white;
+	margin-bottom:25px;
+	opacity:.7;
+}
+	
+.socialstuff img {
+	margin:0px 80px 0px;
+	opacity:.7;
+}
+	
+.socialstuff img:hover {
+	opacity:1;
+}
+
+	
 /* 6 - Media Queries
 ================================================== */
 
@@ -3615,6 +3678,10 @@ a.return-home-btn:hover {
 		font-size: 40px;
 		line-height: 1.2;
 	}
+	.socialnavthingy {
+		display:block;
+	}
+	
 
 }
 
@@ -3697,6 +3764,18 @@ a.return-home-btn:hover {
 		text-align: center;
 	}
 
+	img.fadeplease2 { 
+		height:75px;
+	}
+	.twitterbird {
+		margin-top:30px !important;
+	}
+	
+	#csp3-email, #csp3-fname, #csp3-lname { width:300px !important;
+	}
+	.csp3-form-wrapper {width:inherit !important;text-align: center !important}
+	.socialstuff {margin-top:70px;}
+	
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -3732,23 +3811,5 @@ a.return-home-btn:hover {
 @media only screen and (max-width: 320px) {}
 	
 	
-	.socialstuff {
-		margin-top:50px;
-		text-align:center;
-		
-	}
 	
-	.socialstuff h3 {
-		color:white;
-		margin-bottom:25px;
-		opacity:.7;
-	}
 	
-	.socialstuff img {
-		margin:0px 80px 0px;
-		opacity:.7;
-	}
-	
-	.socialstuff img:hover {
-		opacity:1;
-	}

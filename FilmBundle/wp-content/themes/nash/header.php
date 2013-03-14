@@ -100,10 +100,12 @@
 		?>
 		
 		<?php } ?>
+		<div class="socialnavthingy">
 		<div class="fb-like" style="top:-9px;margin-right:10px;" data-href="http://filmbundle.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 		<div style="position:relative;top:-4px;display:inline-block"><a href="https://twitter.com/FilmBundle" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @FilmBundle</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	</div></nav><!-- end #header-navigation -->
+	</div></div>
+</nav><!-- end #header-navigation -->
 
 		<?php if (is_front_page()) { ?>
 		
@@ -119,7 +121,7 @@
 				<div class="socialstuff">
 					<h3 class="fadeplease">Follow us: </h3>
 				<a href="http://facebook.com/filmbundle"><img class="fadeplease fadeplease2" src="<?php echo get_stylesheet_directory_uri(); ?>/img/Facebook.png"></a>
-				<a href="http://twitter.com/filmbundle"><img class="fadeplease fadeplease2" src="<?php echo get_stylesheet_directory_uri(); ?>/img/twitter.png"></a>
+				<a href="http://twitter.com/filmbundle"><img class="fadeplease fadeplease2 twitterbird" src="<?php echo get_stylesheet_directory_uri(); ?>/img/twitter.png"></a>
 				</div>
 				
 				<script>
