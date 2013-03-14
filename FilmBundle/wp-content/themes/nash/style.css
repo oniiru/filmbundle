@@ -3804,6 +3804,8 @@ a.return-home-btn:hover {
 		margin-right: 0!important;
 		margin-bottom: 5px;
 	}
+	#csp3-email, #csp3-fname, #csp3-lname { width:260px !important;
+	}
 	
 }
 
