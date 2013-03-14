@@ -3806,6 +3806,9 @@ a.return-home-btn:hover {
 	}
 	#csp3-email, #csp3-fname, #csp3-lname { width:260px !important;
 	}
+	.socialnavthingy {
+		display:none !important;
+	}
 }
 
 /* Mobile Portrait Size Only (devices and browsers) */
