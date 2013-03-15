@@ -114,8 +114,9 @@
 			<div class="row">
 			
 				<?php if ($data['text_introduction']) { ?>
-				<h1 id="uber-statement"><?php echo $data['text_introduction']; ?></h1>
-		
+					<div id="uber-statement">
+				<h1><?php echo $data['text_introduction']; ?></h1>
+			</div>
 				<?php } ?>
 				
 				<div class="socialstuff">

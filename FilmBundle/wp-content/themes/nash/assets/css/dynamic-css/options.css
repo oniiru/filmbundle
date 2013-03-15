@@ -159,7 +159,7 @@ a.sign-up-btn,
 .twtr-atreply,
 #latest-news article a,
 #latest-news article h2 a:hover {
-	color: #e47c14;
+	color: #24968c;
 }
 
 .expand,
@@ -186,11 +186,11 @@ ul.tabs li a:hover,
 .social-icons.footer li a,
 .pager a:hover,
 #uber-statement {
-	background-color: #e47c14!important;
+	background-color: #24968c!important;
 }
 
 blockquote {
-	border-left: 3px solid #e47c14!important;
+	border-left: 3px solid #24968c!important;
 }
 
 a.launch-project-btn,

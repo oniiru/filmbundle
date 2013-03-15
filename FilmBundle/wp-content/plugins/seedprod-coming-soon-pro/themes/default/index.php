@@ -114,12 +114,13 @@ echo seed_cs3_head();
 			<div class="row">
 			
 				<?php if ($data['text_introduction']) { ?>
-				<h1 id="uber-statement"><?php echo $data['text_introduction']; ?></h1>
+					<div id="uber-statement">
+				<h1><?php echo $data['text_introduction']; ?></h1>
 				<?php 		
 				echo seed_cs3_form();
 				?>
 				<?php } ?>
-				
+			</div>
 				<div class="socialstuff">
 					<h3 class="fadeplease">Follow us: </h3>
 				<a href="http://facebook.com/filmbundle"><img class="fadeplease fadeplease2" src="<?php echo get_stylesheet_directory_uri(); ?>/img/Facebook.png"></a>
@@ -398,7 +399,7 @@ echo seed_cs3_head();
 				
 					<div class="service one-third column">
 	
-						<?php echo do_shortcode(get_post_meta($post->ID, 'gt_service_icon', $single = true)) ?>
+						<?php echo do_shortcode(get_post_meta(get_the_ID(), 'gt_service_icon', $single = true)) ?>
 	
 						<h2><?php the_title(); ?></h2>
 						
