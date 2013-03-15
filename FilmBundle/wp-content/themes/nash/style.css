@@ -3812,6 +3812,29 @@ position: relative;}
 	.socialnavthingy {
 		display:none !important;
 	}
+	
+	
+	
+	.navloginstuff {
+		display: block;
+		width: 210px;
+		margin: auto;
+		border-top: medium double #ccc;
+		margin-top:5px !important;
+		padding-top:0px !important;
+		display:none;
+		height:160px;
+	}
+
+	.navloginstuff input[type=text],.navloginstuff input[type=password] {width:200px !important; display:block !important;font-size:14px !important;background:white !important;color:black !important;}
+	
+	.navloginstuff input[type=submit] {top:-20px;padding: 6px 10px !important;}
+	.navloginstuff ul {width: 468px;
+top: 45px;
+position: relative;
+left: 65px;
+}}
+	
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
