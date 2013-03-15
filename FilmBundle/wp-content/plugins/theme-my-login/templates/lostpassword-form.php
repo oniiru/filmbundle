@@ -22,5 +22,7 @@ do_action_ref_array( 'tml_lostpassword_form', array( &$template ) ); // TML hook
 			<input type="hidden" name="instance" value="<?php $template->the_instance(); ?>" />
 		</p>
 	</form>
+	<div class="lostpassaction">
 	<?php $template->the_action_links( array( 'lostpassword' => false ) ); ?>
+</div>
 </div>

@@ -30,4 +30,5 @@ do_action_ref_array( 'tml_resetpassword_form', array( $template ) ); // TML hook
 		</p>
 	</form>
 	<?php $template->the_action_links( array( 'lostpassword' => false ) ); ?>
+	
 </div>
