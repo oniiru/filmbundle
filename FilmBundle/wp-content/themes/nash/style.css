@@ -3647,7 +3647,31 @@ a.return-home-btn:hover {
 	opacity:1;
 }
 
-	
+.navloginstuff {
+	display: block;
+	width: 478px;
+	margin: auto;
+	border-top: medium double #ccc;
+	margin-top:5px !important;
+	padding-top:0px !important;
+	display:none;
+}
+.navloginstuff label {display:none !important;}
+
+.navloginstuff input[type=text],.navloginstuff input[type=password] {width:200px !important; display:inline !important;font-size:14px !important;background:white !important;color:black !important;}
+.navloginstuff p {display:inline !important;}
+.navloginstuff p.forgetmenot {display:none !important;}
+.navloginstuff input[type=submit] {top:2px;padding: 6px 10px !important;}
+.navloginstuff form {
+	height:46px !important; margin-bottom:0px !important;margin-top:0px !important;
+}
+.navloginstuff ul.tml-action-links li {float:left !important;padding:0px !important;}
+.navloginstuff ul.tml-action-links li a {font-size:12px !important;}
+.navloginstuff ul {width: 468px;bottom: 6px;
+position: relative;}
+
+#lostpasswordform1 input[type=text] {width:314px !important;}
+
 /* 6 - Media Queries
 ================================================== */
 
@@ -3785,6 +3809,9 @@ a.return-home-btn:hover {
 	}
 	.csp3-form-wrapper {width:inherit !important;text-align: center !important}
 	.socialstuff {margin-top:70px;}	
+	.socialnavthingy {
+		display:none !important;
+	}
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -3815,9 +3842,7 @@ a.return-home-btn:hover {
 	}
 	#csp3-email, #csp3-fname, #csp3-lname { width:260px !important;
 	}
-	.socialnavthingy {
-		display:none !important;
-	}
+
 }
 
 /* Mobile Portrait Size Only (devices and browsers) */

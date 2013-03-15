@@ -97,7 +97,7 @@ function scrollTo(target) {
     }, 'slow');
 }
 jQuery(document).ready(function () {
-    jQuery('nav ul').mobileMenu({
+    jQuery('nav ul#navigation').mobileMenu({
         defaultText: '<?php _e("Navigation", "nash");?>',
         className: 'mobile-menu',
         subMenuDash: '&ndash;'

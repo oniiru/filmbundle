@@ -106,7 +106,13 @@ echo seed_cs3_head();
 		<div class="fb-like" style="top:-9px;margin-right:10px;" data-href="http://filmbundle.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 		<div style="position:relative;top:-4px;display:inline-block"><a href="https://twitter.com/FilmBundle" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @FilmBundle</a>
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	</div> </div></nav><!-- end #header-navigation -->
+	</div> </div>
+	<div class="navloginstuff"><?php 
+if ( dynamic_sidebar('login_header_widget') ) : 
+else : 
+?>
+<?php endif; ?></div>
+</nav><!-- end #header-navigation -->
 
 		
 		<div class="container">
@@ -142,6 +148,28 @@ echo seed_cs3_head();
 						
 						jQuery(this).fadeTo ("fast", .7);
 					});
+			});
+				</script>
+				<script>
+				jQuery(document).ready(
+					function(){
+						jQuery('a[href$="#headerlogin"]').click(function(){
+							jQuery('.navloginstuff').slideToggle('slow');
+							
+						});
+			
+			jQuery(function() {
+			    if ( document.location.href.indexOf('?action=login') > -1 ) {
+			        jQuery('.navloginstuff').show();
+			    }
+			});
+			
+			jQuery(function() {
+			    if ( document.location.href.indexOf('?action=lost') > -1 ) {
+			        jQuery('.navloginstuff').show();
+			    }
+			});
+			
 			});
 				</script>
 				
@@ -700,14 +728,25 @@ function scrollTo(target) {
     }, 'slow');
 }
 jQuery(document).ready(function () {
-    jQuery('nav ul').mobileMenu({
+    jQuery('nav ul#navigation').mobileMenu({
         defaultText: '<?php _e("Navigation", "nash");?>',
         className: 'mobile-menu',
         subMenuDash: '&ndash;'
     });
 });
 </script>
-
+	<script>
+	jQuery(document).ready(
+		function(){
+			
+	jQuery('select').change(function(){
+if ( document.location.href.indexOf('#headerlogin') > -1 ) {	  	jQuery('.navloginstuff').slideToggle();
+	  }
+	});
+				
+});
+						
+	</script>
 <?php if ($data['text_twitter_username']) { ?>
 <script type="text/javascript">
 var twtr_user = "<?php echo $data['text_twitter_username']; ?>"; 
