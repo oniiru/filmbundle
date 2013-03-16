@@ -403,7 +403,7 @@ class Theme_My_Login {
 
 					// If cookies are disabled we can't log in even with a valid user+pass
 					if ( isset( $_POST['testcookie'] ) && empty( $_COOKIE[TEST_COOKIE] ) )
-						$errors->add( 'test_cookie', __( '<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href="http://www.google.com/cookies.html">enable cookies</a> to use WordPress.', 'theme-my-login' ) );
+						$errors->add( 'test_cookie', __( '<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href="http://www.google.com/cookies.html">enable cookies</a> to use FilmBundle.', 'theme-my-login' ) );
 
 					// Some parts of this script use the main login form to display a message
 					if		( isset( $_GET['loggedout'] ) && true == $_GET['loggedout'] )
@@ -419,7 +419,7 @@ class Theme_My_Login {
 					elseif	( $interim_login )
 						$errors->add( 'expired', __( 'Your session has expired. Please log-in again.', 'theme-my-login' ), 'message' );
 					elseif ( strpos( $redirect_to, 'about.php?updated' ) )
-						$errors->add('updated', __( '<strong>You have successfully updated WordPress!</strong> Please log back in to experience the awesomeness.' ), 'message' );
+						$errors->add('updated', __( '<strong>You have successfully updated FilmBundle!</strong> Please log back in to experience the awesomeness.' ), 'message' );
 					elseif	( $reauth )
 						$errors->add( 'reauth', __( 'Please log in to continue.', 'theme-my-login' ), 'message' );
 
