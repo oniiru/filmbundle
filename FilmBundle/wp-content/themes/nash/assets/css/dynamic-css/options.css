@@ -1,7 +1,7 @@
 /*---------------------- Body --------------------------*/
 
 .header-background-image {
-	background: url(http://localhost/FilmBundle/wp-content/uploads/2013/03/tiny_081.jpg) top center no-repeat;
+	background: url(http://localhost/fb/FilmBundle/wp-content/uploads/2013/03/tiny_081.jpg) top center;
 }
 
 .bg1 {
@@ -13,7 +13,7 @@
 }
 
 .bg3 {
-	background: url(http://localhost/FilmBundle/wp-content/uploads/2013/03/lock-stock-copy.jpg) top center no-repeat;
+	background: url(http://localhost/fb/FilmBundle/wp-content/uploads/2013/03/lock-stock-copy.jpg) top center no-repeat;
 }
 
 .bg4 {

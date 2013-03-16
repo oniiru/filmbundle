@@ -4,7 +4,7 @@ If you would like to edit this file, copy it to your current theme's directory a
 Theme My Login will always look in your theme's directory first, before using this default template.
 */
 ?>
-<div class="login" id="theme-my-login<?php $template->the_instance(); ?>">
+<div class="login lostpass123" id="theme-my-login<?php $template->the_instance(); ?>">
 	<?php $template->the_action_template_message( 'lostpassword' ); ?>
 	<?php $template->the_errors(); ?>
 	<form name="lostpasswordform" id="lostpasswordform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'lostpassword' ); ?>" method="post">
@@ -22,7 +22,5 @@ do_action_ref_array( 'tml_lostpassword_form', array( &$template ) ); // TML hook
 			<input type="hidden" name="instance" value="<?php $template->the_instance(); ?>" />
 		</p>
 	</form>
-	<div class="lostpassaction">
 	<?php $template->the_action_links( array( 'lostpassword' => false ) ); ?>
-</div>
 </div>

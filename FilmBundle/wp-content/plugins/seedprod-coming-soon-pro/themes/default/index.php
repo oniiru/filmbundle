@@ -75,7 +75,7 @@ echo seed_cs3_head();
 			
 		<nav id="header-navigation" class="sixteen columns" role="navigation">
 		
-		<?php if (is_front_page()) { ?>
+		<?php if (!is_user_logged_in()) { ?>
 			
 			<?php
 			$header_menu_args = array(

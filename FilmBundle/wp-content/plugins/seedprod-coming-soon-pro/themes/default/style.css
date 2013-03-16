@@ -259,7 +259,7 @@ a img.aligncenter {
 	#supersized img{
 		max-width:none;
 	}
-	#supersized {  display:block; position:fixed; left:0; top:0; overflow:hidden; z-index:-999; height:100%; width:100%;margin:0; }
+	#supersized {  display:block; position:fixed; left:0; top:0; overflow:hidden; z-index:-999; height:100%; margin:0; }
 		#supersized img { width:auto; height:auto; position:relative; display:none; outline:none; border:none; }
 			#supersized.speed img { -ms-interpolation-mode:nearest-neighbor; image-rendering: -moz-crisp-edges; }	/*Speed*/
 			#supersized.quality img { -ms-interpolation-mode:bicubic; image-rendering: optimizeQuality; }			/*Quality*/

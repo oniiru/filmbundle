@@ -23,7 +23,14 @@ License URI: license.txt
 
 /* 1 - Reset & Basics (Inspired by E. Meyers)
 ================================================== */
+body {
+    width: 100%;
+       height: 100%;
+       margin: 0px;
+       padding: 0px;
+       overflow-x: hidden; 
 	
+}
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -31,6 +38,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline; 
+
+	
 }
 
 article, 
@@ -3655,6 +3664,7 @@ a.return-home-btn:hover {
 	margin-top:5px !important;
 	padding-top:0px !important;
 	overflow:hidden;
+	display:none;
 }
 .navloginstuff label {display:none !important;}
 
@@ -3667,10 +3677,11 @@ a.return-home-btn:hover {
 }
 .navloginstuff ul.tml-action-links li {float:left !important;padding:0px !important;}
 .navloginstuff ul.tml-action-links li a {font-size:12px !important;}
-.navloginstuff ul {width: 468px;bottom: 20px;
-position: relative;}
+.navloginstuff ul {width: 468px;bottom: 7px;
+position: absolute;}
 
 #lostpasswordform1 input[type=text] {width:314px !important;}
+#lostpasswordform1 {margin-bottom:-25px !important;}
 
 .login p.message, .login p.error {padding: 0px !important;
 border: none !important;
@@ -3680,6 +3691,15 @@ line-height: 0.1em !important;
 font-size:12px !important;}
 .login p.error strong{color:red !important;}
 
+#lostpasswordform1 p.submit {
+	bottom: 0px;
+	position: relative;
+}	
+.login {
+	position:relative;
+}
+
+.lostpass123 ul {position:static; margin-top:3px;}
 /* 6 - Media Queries
 ================================================== */
 
@@ -3821,8 +3841,6 @@ font-size:12px !important;}
 		display:none !important;
 	}
 	
-	
-	
 	.navloginstuff {
 		display: block;
 		width: 210px;
@@ -3834,25 +3852,42 @@ font-size:12px !important;}
 		overflow:hidden;
 	}
 
-	.navloginstuff input[type=text],.navloginstuff input[type=password] {width:200px !important; display:block 			!important;font-size:14px !important;background:white !important;color:black !important;}
+	.navloginstuff input[type=text],.navloginstuff input[type=password] {
+		width:200px !important; 
+		display:block !important;
+		font-size:14px !important;
+		background:white !important;
+		color:black !important;
+	}
 	
-	.navloginstuff input[type=submit] {top:-20px;padding: 6px 10px !important;}
-	.navloginstuff ul {width: 468px;
-			top: -65px;
-			position: relative;
-			left: 58px;
+	.navloginstuff input[type=submit] {
+		top:-20px;
+		padding: 6px 10px !important;
+	}
+	
+	.navloginstuff ul {
+		width: 113px;
+		bottom:50px;
+		position: absolute;
+		left: 65px;
+	
 		
 	}
-	.navloginstuff .lostpassaction ul {width: 468px;
-			top: -65px;
-			position: relative;
-			left: 148px;
+	.lostpass123 ul {
+		position:static;
+		float:left;
+	
 		
 	}
+	
 		#lostpasswordform1 input[type=text] {width:100% !important;}
 
+	
+	.navloginstuff form {
+		margin-top:10px !important;
 	}
-	.navloginstuff form {margin-top:10px !important;}
+
+
 	
 }
 
