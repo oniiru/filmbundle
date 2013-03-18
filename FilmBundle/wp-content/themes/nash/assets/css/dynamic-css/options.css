@@ -158,7 +158,7 @@ a.sign-up-btn,
 .twtr-hashtag,
 .twtr-atreply,
 #latest-news article a,
-#latest-news article h2 a:hover {
+#latest-news article h2 a:hover, a {
 	color: #24968c;
 }
 

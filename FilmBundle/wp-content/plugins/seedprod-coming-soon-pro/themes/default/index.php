@@ -747,6 +747,20 @@ if ( document.location.href.indexOf('#headerlogin') > -1 ) {	  	jQuery('.navlogi
 });
 						
 	</script>
+	<script>
+	jQuery(document).ready(
+		function(){
+			if (jQuery("#csp3-afterform").is('*')) {
+				
+				jQuery('.socialstuff').hide();
+				
+			};
+			if (jQuery('#csp3-alert').hasClass('alert-info')) {
+					jQuery('.socialstuff').hide();
+			}
+		});
+		</script>
+	
 <?php if ($data['text_twitter_username']) { ?>
 <script type="text/javascript">
 var twtr_user = "<?php echo $data['text_twitter_username']; ?>"; 

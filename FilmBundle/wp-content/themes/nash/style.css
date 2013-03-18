@@ -3626,8 +3626,7 @@ a.return-home-btn:hover {
 }
 	
 #csp3-afterform, #csp3-sharebuttons {
-	background:rgba(228, 124, 20, 0.7) !important;
-	color:white !important;
+	background:white !important;
 	margin-bottom:none !important;
 }
 	
@@ -3700,6 +3699,22 @@ font-size:12px !important;}
 }
 
 .lostpass123 ul {position:static; margin-top:3px;}
+
+.alert {
+	border-radius:0px !important;
+	text-align:center;
+	font-size:18px !important;
+}
+
+#csp3-sharebuttons, #csp3-afterform { margin-top:0px !important; margin-bottom:0px !important; }
+
+
+
+
+
+
+
+
 /* 6 - Media Queries
 ================================================== */
 
