@@ -1,0 +1,38 @@
+*** Proxy Changelog ***
+
+04 April 2013 - v1.0.4
+
+    * Update framework v1.0.2.1
+    * style.css - Portfolio hover content and navigation margin fix. Also fixes an issue where 'Go to Project' link didn't work on some devices.
+
+24 Mar 2013 - v1.0.3
+
+    * Fixed an issue where Firefox conflicts with accent color
+        - Updated File: includes/theme-customizer.php
+    * Fixed a conflict with 5th Portfolio Image and video
+        - Updatd File: includes/metaboxes/portfolio.php
+
+10 Mar 2013 - v1.0.2
+
+    * Fixed small issue with Gallery Modal navigation buttons alignment
+    * Improved Post Modal loading time
+
+    *** UPDATED FILES AND FOLDERS ***
+    * framework/* Updated Stagframework v.1.0.2
+    * style.css - Removed redundant CSS, few tweaks
+    * includes/theme-customizer.php - Separated comma seperated pseudo selectors to avoid confict with IE8
+    * includes/metaboxes/slider-metabox.php - Support for video slides
+    * includes/widgets/* - All widgets files are updated with option to set background color, text color and link color.
+    * includes/gateway.php - Video slides and conditionals
+    * functions.php - removed jQuery UI datepicker as a replacement of framework datepicker.
+      - Removed related files to jQuery UI datepicker
+      - Added new function for getting month, day and year.
+    * assets/js/jquery.custom.js - Main Slider video support script added, Portfolio Single slider script moved to includes/gateway.php
+
+10 Mar 2013 - v1.0.1
+
+    * Fixed few bugs
+
+19 Feb 2013 - v1.0.0
+
+    * Initial Release
