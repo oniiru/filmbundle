@@ -51,9 +51,12 @@ Theme My Login will always look in your theme's directory first, before using th
 	<div class="login loginbox animate" id="theme-my-login<?php $template->the_instance(); ?>">
 	
 		<form name="registerform" id="registerform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'register' ); ?>" method="post">
+			<!--
 			<p>
 				<input type="text" placeholder="Username" name="user_login" id="user_login<?php $template->the_instance(); ?>" class="input" value="<?php $template->the_posted_value( 'user_login' ); ?>" size="20" />
 			</p>
+			-->
+
 			<p>
 				
 			<input type="text" placeholder="First Name" name="first_name" id="first_name<?php $template->the_instance(); ?>" class="input" value="<?php $template->the_posted_value( 'first_name' ); ?>" size="20" tabindex="20" />

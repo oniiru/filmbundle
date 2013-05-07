@@ -305,7 +305,8 @@ function reset_password($user, $new_pass) {
 function register_new_user( $user_login, $user_email ) {
 	$errors = new WP_Error();
 
-	$sanitized_user_login = sanitize_user( $user_login );
+	//$sanitized_user_login = sanitize_user( $user_login );
+	$sanitized_user_login = sanitize_user( $user_email );
 	$user_email = apply_filters( 'user_registration_email', $user_email );
 
 	// Check the username
@@ -545,10 +546,12 @@ case 'register' :
 ?>
 
 <form name="registerform" id="registerform" action="<?php echo esc_url( site_url('wp-login.php?action=register', 'login_post') ); ?>" method="post">
+    
 	<p>
 		<label for="user_login"><?php _e('Username') ?><br />
 		<input type="text" name="user_login" id="user_login" class="input" value="<?php echo esc_attr(stripslashes($user_login)); ?>" size="20" /></label>
 	</p>
+	
 	<p>
 		<label for="user_email"><?php _e('E-mail') ?><br />
 		<input type="text" name="user_email" id="user_email" class="input" value="<?php echo esc_attr(stripslashes($user_email)); ?>" size="25" /></label>
