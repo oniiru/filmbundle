@@ -7,12 +7,12 @@ Theme My Login will always look in your theme's directory first, before using th
 <a class="hiddenanchor" id="toregister"></a>
    <a class="hiddenanchor" id="tologin"></a>
    <div id="wrapper">
-<div id="login" class="animate form">
+<div id="login" class="form animate">
 	<div class="logintopbar">
 		<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/smallerlogo.png" class="smallerlogo">
     <a href="#toregister" class="stag-button small light-blue square to_register">Join</a>
 </div>
-	<div class="login loginbox animate" id="theme-my-login<?php $template->the_instance(); ?>">
+	<div class="login loginbox animate	" id="theme-my-login<?php $template->the_instance(); ?>">
 	<form name="loginform" id="loginform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'login' ); ?>" method="post">
 		<p>
 			<input type="text" placeholder="Email" name="log" id="user_login<?php $template->the_instance(); ?>" class="input" value="<?php $template->the_posted_value( 'log' ); ?>" size="20" />

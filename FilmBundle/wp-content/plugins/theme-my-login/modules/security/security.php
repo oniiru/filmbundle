@@ -113,8 +113,7 @@ class Theme_My_Login_Security extends Theme_My_Login_Abstract {
 	public function template_redirect() {
 		if ( $this->get_option( 'private_site' ) ) {
 			if ( ! ( is_user_logged_in() || Theme_My_Login::is_tml_page() ) ) {
-				$redirect_to = apply_filters( 'tml_security_private_site_redirect', wp_login_url( $_SERVER['REQUEST_URI'], true ) );
-				wp_safe_redirect( $redirect_to );
+				wp_safe_redirect( site_url().'/register');
 				exit;
 			}
 		}
