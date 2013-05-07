@@ -1332,7 +1332,8 @@ function wp_insert_user( $userdata ) {
 	$nickname = apply_filters('pre_user_nickname', $nickname);
 
 	if ( empty($first_name) )
-		$first_name = '';
+		//$first_name = '';
+	    $first_name = $_POST['first_name']; // Dean
 	$first_name = apply_filters('pre_user_first_name', $first_name);
 
 	if ( empty($last_name) )
