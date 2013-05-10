@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-  <title><?php wp_title(''); ?></title>
+  <title>FilmBundle - Login </title>
 
   <meta name="viewport" content="width=device-width" />
   <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
