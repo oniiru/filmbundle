@@ -52,13 +52,16 @@
 
 </head>
 <body <?php body_class(); ?>>
-	<div class="woahbar" style="display:none">
-	      <p> Welcome to Jobdeals! Need some help from a local service pro? <a class="woahbar-link" href="/request-services/">Request a Service FREE</a></p>
+	
+	
+	<!-- <div class="woahbar" style="display:none">
+	      <p> Welcome to Jobdeals! Need some help from a local service pro? </p>
 	    <a class="close-notify" onclick="woahbar_hide();"><img class="woahbar-up-arrow" src="wp-content/themes/clutterless-free/img/woahbar-up-arrow.png"></a>
 	</div>
 	<div class="woahbar-stub" style="display:none">
 	    <a class="show-notify" onclick="woahbar_show();"><img class="woahbar-down-arrow" src="wp-content/themes/clutterless-free/img/woahbar-down-arrow.png"></a>
-	</div>
+	</div> -->
+	
   <?php get_sidebar(); ?>
 
   <div id="content">

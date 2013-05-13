@@ -45,6 +45,87 @@ hr {border: none; border-bottom: 1px dotted; margin: 20px 0; }
 del {text-decoration: line-through;}
 *:focus {outline: none;} /* Removes yellowing of forms */
 
+.translucent-modal {
+background: #333;
+background: rgba(51, 51, 51, 0.3);
+border: 1px solid rgba(0, 0, 0, 0.3);
+border-radius: 5px;
+box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.15),0 1px 0 rgba(255, 255, 255, 0.1);
+position: relative;
+width: 410px;
+margin: 34px 0 0;
+
+}
+.signup {
+margin: 0;
+padding-top: 5px;
+padding-bottom: 5px;
+width: 500px;
+margin:auto;
+text-align: center;
+}
+
+.mc_merge_var {
+	display:inline-block;
+	
+}
+
+.mc_signup_submit {
+	display:inline-block;
+}
+
+.carousel_pagination {
+	margin-top:30px;
+	margin-bottom:70px;
+}
+
+.twitterbutton {
+	background: black;
+	padding: 8px;
+	border-radius: 3px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.socialstuff {
+	text-align:center;
+	margin-bottom:20px;
+}
+#mc_signup_form .mc_input {
+height: 35px;
+width: 250px;
+border-radius: 3px;
+font-size: 18px;
+font-weight: 800;
+padding-left: 10px;
+margin-bottom:0px !important;
+}
+#mc_signup_submit {
+	border-radius:3px;
+    padding: 11px 9px 12px;
+    font-weight: bold;
+	
+}
+#mc_signup {
+	display:inline-block;
+}
+
+.fb-like {
+	display:inline-block;
+	background: black;
+	vertical-align: middle;
+	padding: 11px;
+	border-radius: 3px;
+}
+
+p.info {
+font-size: 18px;
+line-height: 26px;
+max-width: 700px;
+margin: 0 auto 50px;
+font-weight: 300;
+text-align: center;
+}
+
 /* ------------------------------------------------ */
 /* Fonts */
 /* ------------------------------------------------ */
@@ -125,7 +206,7 @@ a:hover {color: #333;}
 /* Sidebar */
 /* ------------------------------------------------ */
 
-#sidebar {z-index: 1000; text-shadow: none;  position:fixed;top:100px;left:0;width:20px;padding:0 0 0 3px;text-align:center;-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s;transition-duration:.3s;}
+#sidebar {z-index: 1000; text-shadow: none;  position:fixed;top:200px;left:0;width:20px;padding:0 0 0 3px;text-align:center;-webkit-transition-duration:.3s;-moz-transition-duration:.3s;-o-transition-duration:.3s;transition-duration:.3s;}
 #sidebar-name {left: 0; white-space: nowrap; text-transform: uppercase; font-size: 11px;  letter-spacing: 1px;
   -webkit-transform: rotate(90deg);-moz-transform: rotate(90deg);-ms-transform: rotate(90deg);-o-transform: rotate(90deg);filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);}
 #sidebar-name .sidebar-name-wrap { padding: 5px 10px 19px 10px; -webkit-border-radius: 5px 0 5px 0;-moz-border-radius: 5px 0 5px 0;border-radius: 5px 5px 0 0; }
@@ -163,11 +244,11 @@ a:hover {color: #333;}
 #content {}
 
 /* Loop */
-#content  .post {padding: 60px 0 25px 0; margin: 0 0 0px 0; width: 600px;}
+#content  .post {padding: 60px 0 25px 0; margin: 0 0 0px 0; }
 #content  .post-date {font-size: 10px; line-height: 10px; text-transform: uppercase; margin-bottom: 5px; font-weight: 300; letter-spacing: 0.5px;}
 #content  .post-date, #content  .post-date a {}
 #content  .post-title {margin-bottom: 35px;}
-#content  .post-title h2 {font-weight: 700; letter-spacing: -2px; font-size: 40px; line-height: 46px; text-tranform: uppercase;}
+#content  .post-title h2 {font-family: 'Open Sans' sans-serif;font-weight: 500; letter-spacing: -2px; font-size: 40px; line-height: 46px; text-tranform: uppercase;}
 #content  .post-content {font-size: 19px; line-height: 29px;  margin: 0;padding: 0;} 
 #content  .post-content p {font-size: 19px; line-height: 29px;  margin: 0 0 35px 0; padding: 0;}
 #content  .post-content h2 {font-size: 28px; line-height: 32px;  margin: 60px 0 30px 0; letter-spacing: -1px;}
@@ -238,7 +319,7 @@ text-decoration: none;   text-transform: uppercase; border-top: 1px solid #FFF; 
 	  box-shadow: 0px 0px 5px #888888;
 	  -moz-box-shadow:0px 0px 5px #888888;
 	  -webkit-box-shadow:0px 0px 5px #888888;
-	  border-bottom: 3px solid #fff;
+	  border-bottom: 2px solid #fff;
 	}
  
 	.woahbar-stub
@@ -307,7 +388,10 @@ text-decoration: none;   text-transform: uppercase; border-top: 1px solid #FFF; 
 	  padding: 2px 8px 1px 8px;
 	  text-decoration: none;
 	}
- 
+	.woahbar p {
+		margin-bottom:0px;
+		display:inline;
+	}
 	.close-notify
 	{
 	  float: right;

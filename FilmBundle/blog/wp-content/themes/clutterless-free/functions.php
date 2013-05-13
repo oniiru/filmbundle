@@ -194,10 +194,13 @@ add_action('wp_enqueue_scripts', 'clutterless_enqueue_scripts');
 function clutterless_enqueue_scripts(){
 	// Clutterless Stylesheet	
 	wp_enqueue_style( 'clutterless', get_stylesheet_uri(), array(), CLUTTERLESS_THEME_VERSION );
+	
 
 	// Clutterless Google Fonts
 	wp_enqueue_style('google-webfonts-nc', 'http://fonts.googleapis.com/css?family=News+Cycle:400');
 	wp_enqueue_style('google-webfonts-mw', 'http://fonts.googleapis.com/css?family=Merriweather:700');
+	wp_enqueue_style('google-webfonts-os', 'http://fonts.googleapis.com/css?family=Open+Sans');
+	
 	
 	// Clutterless Scripts
 	$url = get_stylesheet_directory_uri() . '/js/';
