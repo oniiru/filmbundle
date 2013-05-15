@@ -3,3 +3,6 @@ wp-config.php
 blog/wp-config.php
 blog/.htaccess
 
+# No local dev environment files.
+*.sublime-workspace
+*.sublime-project
