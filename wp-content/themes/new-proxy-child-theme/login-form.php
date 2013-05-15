@@ -11,8 +11,10 @@ Theme My Login will always look in your theme's directory first, before using th
 	<div class="logintopbar">
 		<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/smallerlogo.png" class="smallerlogo">
     <a href="#toregister" class="stag-button small light-blue square to_register">Join</a>
-</div>
+</div>		<?php $template->the_errors(); ?>
+
 	<div class="login loginbox animate	" id="theme-my-login<?php $template->the_instance(); ?>">
+		
 	<form name="loginform" id="loginform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'login' ); ?>" method="post">
 		<p>
 			<input type="text" placeholder="Email" name="log" id="user_login<?php $template->the_instance(); ?>" class="input" value="<?php $template->the_posted_value( 'log' ); ?>" size="20" />
@@ -23,7 +25,6 @@ Theme My Login will always look in your theme's directory first, before using th
 
 		<?php do_action( 'login_form' ); ?>
 		<?php $template->the_action_template_message( 'login' ); ?>
-		<?php $template->the_errors(); ?>
 	
 		<p class="submit">
 			<input type="submit" name="wp-submit" id="wp-submit<?php $template->the_instance(); ?>" value="<?php esc_attr_e( 'Log In' ); ?>" />

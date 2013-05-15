@@ -15,6 +15,7 @@ Theme My Login will always look in your theme's directory first, before using th
 	      	 <a href="#tologin" class="stag-button small light-blue square to_register"> Login</a>
 		
 	   	</div>
+		<?php $template->the_errors(); ?>
 	
 	   	<div class="login loginbox animate" id="theme-my-login<?php $template->the_instance(); ?>">
 	
@@ -34,7 +35,6 @@ Theme My Login will always look in your theme's directory first, before using th
 	   			</p>
 		
 	   			<?php do_action( 'register_form' ); ?>
-				<?php $template->the_errors(); ?>
 				
 	   			<p id="reg_passmail<?php $template->the_instance(); ?>"><?php echo apply_filters( 'tml_register_passmail_template_message', __( 'A password will be e-mailed to you.' ) ); ?></p>
 
