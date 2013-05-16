@@ -881,9 +881,6 @@ margin-top:7px !important;}
 .socialloginstuff {
 	margin: 0 auto;
 }
-input[type=text] {
-	width: 390px;
-}
 }
 
 /** yerk some ugly IE fixes 'cause I know someone will ask "why does it look ugly in IE?", no matter how many warnings I will put in the article */
