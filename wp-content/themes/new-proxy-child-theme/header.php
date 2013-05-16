@@ -3,7 +3,7 @@
 <head>
   <title><?php wp_title(''); ?></title>
 
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
