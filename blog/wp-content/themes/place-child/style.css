@@ -1,0 +1,54 @@
+/*
+Theme Name:     Place-child
+Description:    place-child
+Author:         admin
+Template:       Place
+
+(optional values you can add: Theme URI, Author URI, Version)
+*/
+
+@import url("../Place/style.css");
+
+
+.large_thumb .icon_bar {
+width: 60px;
+height: 60px;
+position: absolute;
+top: 50%;
+margin-top: -30px;
+left: 50%;
+margin-left: -30px;
+
+}
+
+.social_share {
+	vertical-align:top;
+	text-align:center;
+}
+
+.zocial {
+	vertical-align:top;
+}
+
+#header {
+	background: #1f2329;
+	padding:10px;
+}
+
+#main {
+	padding:50px 30px 0;
+}
+
+#top_menu {
+	margin-top: 5px;
+	
+}
+
+.social_share {
+	padding: 8px 0 2px 0px;
+	
+}
+
+.post_single_inner {
+padding: 15px 70px;
+}
