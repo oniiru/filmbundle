@@ -3,7 +3,7 @@
 <head>
   <title><?php wp_title(''); ?></title>
 
-  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
@@ -15,6 +15,7 @@
 
   <?php stag_head(); ?>
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/socialcss/zocial.css">
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.custom.82475.js'></script>
 
 </head>
 

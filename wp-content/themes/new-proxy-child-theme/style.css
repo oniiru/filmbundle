@@ -829,11 +829,9 @@ margin-top:7px !important;}
 	animation-name: fadeOutLeft;
 }
 
-
-
- #wrapper2 #register{	
+#wrapper2 #register{
 	z-index: 22;
-	
+ 
 }
 #wrapper2 #login{
 	z-index: 21;
@@ -861,6 +859,28 @@ margin-top:7px !important;}
 	animation-duration: 0.5s;
 	animation-timing-function: ease;
 	animation-fill-mode: both;
+}
+
+
+/**
+ * Make the register / login forms responsive
+ */
+@media screen and (max-width: 480px) {
+#login,
+#register {
+	width: auto;
+}
+.loginbox {
+	float: none;
+	margin: 10px;
+	border-bottom: 1px dashed #ddd;
+}
+.loginbox input[type=submit] {
+	width: 100%;
+}
+.socialloginstuff {
+	margin: 0 auto;
+}
 }
 
 /** yerk some ugly IE fixes 'cause I know someone will ask "why does it look ugly in IE?", no matter how many warnings I will put in the article */
