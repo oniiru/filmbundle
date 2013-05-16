@@ -15,6 +15,7 @@
 
   <?php stag_head(); ?>
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/socialcss/zocial.css">
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.custom.82475.js'></script>
 
 </head>
 
