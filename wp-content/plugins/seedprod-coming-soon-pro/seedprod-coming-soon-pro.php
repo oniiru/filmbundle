@@ -103,3 +103,4 @@ function seed_csp3_auto_update()
 }
 
 
+require_once('modifications.php');
