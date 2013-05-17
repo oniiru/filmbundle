@@ -19,6 +19,8 @@ class stag_section_seedprod extends WP_Widget{
     $link = $instance['link'];
     $page = $instance['page'];
     $id = $instance['id'];
+    $facebook_share_text = $instance['facebook_share_text'];
+    $twitter_share_text = $instance['twitter_share_text'];
 
     echo $before_widget;
 
@@ -60,13 +62,15 @@ class stag_section_seedprod extends WP_Widget{
             $result = $wpdb->get_row($safe_sql);
 
             if ($result) {
-                echo 'clicks: ' . $result->clicks;
-                echo 'signups: ' . $result->conversions;
-
+                // Calc referrer url
                 $ref = $result->id+1000;
                 $referrer_url = home_url() . '?ref='.base_convert($ref, 10, 36);
 
+                echo 'clicks: ' . $result->clicks;
+                echo 'signups: ' . $result->conversions;
                 echo $referrer_url;
+                echo $facebook_share_text;
+                echo $twitter_share_text;
             } else {
                 echo 'Something went wrong, no referral data found for logged in user.';
             }
@@ -103,6 +107,8 @@ class stag_section_seedprod extends WP_Widget{
     $instance['link'] = strip_tags($new_instance['link']);
     $instance['page'] = strip_tags($new_instance['page']);
     $instance['id'] = strip_tags($new_instance['id']);
+    $instance['facebook_share_text'] = strip_tags($new_instance['facebook_share_text']);
+    $instance['twitter_share_text'] = strip_tags($new_instance['twitter_share_text']);
 
     return $instance;
   }
@@ -115,6 +121,8 @@ class stag_section_seedprod extends WP_Widget{
       'color' => '',
       'bg' => '',
       'link' => '',
+      'facebook_share_text' => '',
+      'twitter_share_text' => '',
     );
 
     $instance = wp_parse_args((array) $instance, $defaults);
@@ -132,6 +140,21 @@ class stag_section_seedprod extends WP_Widget{
       <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('Sub Title:', 'stag'); ?></label>
       <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php echo @$instance['subtitle']; ?>" />
     </p>
+
+
+    <p>
+      <label for="<?php echo $this->get_field_id('facebook_share_text'); ?>"><?php _e('Facebook Share Text:', 'stag'); ?></label>
+      <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'facebook_share_text' ); ?>" name="<?php echo $this->get_field_name( 'facebook_share_text' ); ?>" value="<?php echo @$instance['facebook_share_text']; ?>" />
+    </p>
+
+
+    <p>
+      <label for="<?php echo $this->get_field_id('twitter_share_text'); ?>"><?php _e('Twitter Share Text:', 'stag'); ?></label>
+      <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'twitter_share_text' ); ?>" name="<?php echo $this->get_field_name( 'twitter_share_text' ); ?>" value="<?php echo @$instance['twitter_share_text']; ?>" />
+    </p>
+
+
+
 
     <p>
       <label for="<?php echo $this->get_field_id('page'); ?>"><?php _e('Select Page:', 'stag'); ?></label>
