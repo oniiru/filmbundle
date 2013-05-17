@@ -32,8 +32,8 @@ class stag_section_seedprod extends WP_Widget{
         <?php
 
         $the_page = get_page($page);
-		$postybike = $the_page->post_content;
-		
+    $postybike = $the_page->post_content;
+    
         if($subtitle != '') echo '<p class="sub-title">'.$subtitle.'</p>';
 
         if($title == ''){
@@ -42,16 +42,42 @@ class stag_section_seedprod extends WP_Widget{
             echo $before_title.$title.$after_title;
         }
         echo '<div class="entry-content">'.apply_filters('the_content', $postybike).'</div>';
-		include_once(SEED_CSP3_PLUGIN_PATH.'/themes/default/functions.php' );
-		echo seed_cs3_head(); ?>
-		<div class="centerthis">
-		<div class="translucent-modal">
-		<?php
-		echo seed_cs3_form(); ?>
-	</div>
+    include_once(SEED_CSP3_PLUGIN_PATH.'/themes/default/functions.php' );
+    echo seed_cs3_head(); ?>
+    <div class="centerthis">
+    <div class="translucent-modal">
+    <?php
+        if (is_user_logged_in()) {
+            // Get relevant info for current user
+            $user = wp_get_current_user();
+            $email = $user->user_email;
+
+            // Retrieve the user from the subscriber DB
+            global $wpdb;
+            $tablename = $wpdb->prefix . SEED_CSP3_TABLENAME;
+            $sql = "SELECT * FROM $tablename WHERE email = %s;";
+            $safe_sql = $wpdb->prepare($sql, $email);
+            $result = $wpdb->get_row($safe_sql);
+
+            if ($result) {
+                echo 'clicks: ' . $result->clicks;
+                echo 'signups: ' . $result->conversions;
+
+                $ref = $result->id+1000;
+                $referrer_url = home_url() . '?ref='.base_convert($ref, 10, 36);
+
+                echo $referrer_url;
+            } else {
+                echo 'Something went wrong, no referral data found for logged in user.';
+            }
+        } else {
+        }
+        echo seed_cs3_form();
+    ?>
+  </div>
 </div>
-		<?php
-		echo seed_cs3_footer();
+    <?php
+    echo seed_cs3_footer();
 
 
 
