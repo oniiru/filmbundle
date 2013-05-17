@@ -47,7 +47,6 @@ class stag_section_seedprod extends WP_Widget{
     include_once(SEED_CSP3_PLUGIN_PATH.'/themes/default/functions.php' );
     echo seed_cs3_head(); ?>
     <div class="centerthis">
-    <div class="translucent-modal">
     <?php
         if (is_user_logged_in()) {
             // Get relevant info for current user
@@ -65,20 +64,34 @@ class stag_section_seedprod extends WP_Widget{
                 // Calc referrer url
                 $ref = $result->id+1000;
                 $referrer_url = home_url() . '?ref='.base_convert($ref, 10, 36);
+                ?>
+                <div class="translucent-modal">
+                    <?php echo $referrer_url; ?>
+                </div>
+                <br/><br/>
 
-                echo 'clicks: ' . $result->clicks;
-                echo 'signups: ' . $result->conversions;
-                echo $referrer_url;
-                echo $facebook_share_text;
-                echo $twitter_share_text;
+                <a class="zocial facebook" href="http://www.facebook.com/sharer.php?m2w&amp;s=100&amp;p[title]=FilmBundle&amp;p[summary]=<?php echo urlencode($facebook_share_text); ?>&amp;p[url]=<?php echo urlencode($referrer_url); ?>" target="_blank">Share on Facebook</a>
+
+                <a class="zocial twitter" href="http://twitter.com/share?text=<?php echo urlencode($twitter_share_text); ?>&amp;url=<?php echo urlencode($referrer_url); ?>" target="_blank">Share on Twitter</a>
+                <br/><br/>
+
+                <div class="translucent-modal">
+                    Your stats so far...<br/>
+                    Clicks: <?php echo $result->clicks; ?><br/>
+                    Sign-ups: <?php echo $result->conversions; ?><br/>
+                </div>
+                <?php
             } else {
                 echo 'Something went wrong, no referral data found for logged in user.';
             }
         } else {
+            ?>
+            <div class="translucent-modal">
+                <?php echo seed_cs3_form(); ?>
+            </div>
+            <?php
         }
-        echo seed_cs3_form();
     ?>
-  </div>
 </div>
     <?php
     echo seed_cs3_footer();
