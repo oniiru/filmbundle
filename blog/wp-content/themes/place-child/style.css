@@ -36,8 +36,21 @@ margin-left: -30px;
 }
 
 #main {
-	padding:50px 30px 0;
+	padding:30px 30px 0;
 }
+.post_single_bottom_wrapper span.time {
+background: url(images/meta_time.png) left center no-repeat;
+color: #999;
+margin-right: 12px;
+line-height: 1;
+font-size: 12px;
+padding: 8px 0 5px 0;
+white-space: nowrap;
+float: right;
+margin-top: 4px;
+padding-left: 20px;
+}
+
 
 #top_menu {
 	margin-top: 5px;
@@ -45,10 +58,253 @@ margin-left: -30px;
 }
 
 .social_share {
-	padding: 8px 0 2px 0px;
+	padding: 8px 0 8px 0px;
 	
 }
 
 .post_single_inner {
-padding: 15px 70px;
+padding: 15px 40px;
+}
+
+.related_posts .rp_col h4 {
+margin-bottom: 20px;#F64E17
+padding: 0 3px;
+}
+
+.related_posts .rp_col .small_thumb {
+margin-bottom: 5px;
+}
+
+a { text-decoration:none; color:#2694c3; outline:none; }
+
+.large_thumb .icon_bar a.icon { 
+	position:absolute; top:0; width:60px; height:60px; 
+	background-color: #F64E17; background-position:50% 50%; 
+	background-repeat:no-repeat;-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px; -webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out; 
+	-o-transition: all 0.3s ease-in-out; 
+	-ms-transition: all 0.3s ease-in-out;  
+	z-index:12
+}
+
+.post_quotes { background:#2694c3 url(images/quote.png) 20px 10px no-repeat; color: #fff; position:relative; }
+
+.button.red, .form-submit #submit, input[type=submit], input[type=button] {	background-color: #2694c3;}
+
+.button.gray:hover, .post_tag a:hover, .tagcloud a:hover{
+	background-color: #2694c3;	color: #fff!important;text-shadow: 0px 1px 1px rgba(0,0,0,0.3);	opacity: 1;
+}
+
+div.accordion_head.active { color: #2694c3}
+#cancel-comment-reply-link{
+	background: #2694c3 url(images/cancel.png) 6px center no-repeat;
+	font-size:11px; font-family:Arial, Helvetica, sans-serif; color:#fff; padding:3px 6px; padding-left:20px;
+	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;
+}
+
+.button.green, a.comment-reply-link {background-color: #2694c3;}
+.widget_newsletter {
+	background: #2694c3 url(images/mail_border.png) repeat-x;
+	color: #fff;
+}
+.sf-menu > li.current-menu-ancestor > a, .sf-menu > li.current-menu-parent > a, .sf-menu > li.current-post-ancestor > a, .sf-menu > li.current-post-parent > a, .sf-menu > li.current-menu-item > a, .sf-menu > li.current_page_item > a, .sf-menu > li.current > a {
+	background: #2694c3 url(../images/button.png) bottom repeat-x;
+}
+
+.flex-control-paging li a.flex-active {
+background-color: #2694c3;
+}
+
+
+
+.mainsharing {
+	width: 60%;
+	padding: 5px 0px;
+	margin: auto;
+	margin-bottom: 30px;
+}
+
+.mainsharing2 {
+	width: 100%;
+	padding: 5px 0px;
+	margin: auto;
+	margin-bottom: 30px;
+}
+
+.signup {
+margin: 0;
+padding-top: 5px;
+padding-bottom: 5px;
+width: 500px;
+margin:auto;
+text-align: center;
+}
+
+.mc_merge_var {
+	display:inline-block;
+	
+}
+
+.mc_signup_submit {
+	display:inline-block;
+}
+
+.carousel_pagination {
+	margin-top:30px;
+	margin-bottom:70px;
+}
+
+.twitterbutton {
+	border-radius: 3px;
+	display: inline-block;
+	vertical-align: top;
+}
+.socialstuff, .socialstuff2 {
+	text-align:center;
+}
+
+.box_info {
+background-color: rgb(81, 153, 184);
+}
+
+#mc_signup_form .mc_input {
+height: 37px;
+width: 250px;
+border-radius: 3px;
+font-size: 14px;
+font-weight: 800;
+padding-left: 10px;
+margin-bottom:0px !important;
+}
+#mc_signup_submit {
+	border-radius:3px;
+margin: 1px 0px 0px !Important;
+    font-weight: bold;
+	
+}
+
+.mc_signup_submit {
+	vertical-align: top;
+	
+}
+
+.fbstuff {
+	display:inline-block;
+}
+#mc_signup {
+	display:inline-block;
+}
+
+.fb-like {
+	display:inline-block;
+	background: black;
+	vertical-align: middle;
+	padding: 11px;
+	border-radius: 3px;
+}
+.mc_form_inside {
+}
+
+.mc_merge_var {
+	height:37px;
+}
+#mc_signup_form {
+padding: 6px 30px	;
+border-width: 0px;
+border-style: none;
+border-color: transparent;
+color: #000;
+background-color: transparent
+}
+
+.socialstuff p, .socialstuff2 h3 {
+	margin-bottom:0px;
+	color:white;
+text-shadow:0px 1px 1px rgba(0,0,0,0.9);
+	font-size:2.9em;
+	font-family: 'Amatic SC' sans-serif;
+	line-height: 1.3em;
+	
+}
+.socialstuff2 h3 {
+	line-height:1em;
+	font-size:3.5em;
+	margin-top:10px;
+}
+.socialstuff2 p{
+	margin-bottom:0px;
+	color:white;
+text-shadow:0px 1px 1px rgba(0,0,0,0.9);
+	font-size:2em;
+	font-family: 'Amatic SC' sans-serif;
+	line-height: 1em;
+	margin-top:5px;
+	
+}
+.updated {
+	max-width: 300px !important;
+	margin: auto !important;
+}
+.fbstuff p, .chimpform p, .twitterbutton p {
+	font-size:1.8em;
+}
+.chimpform {
+	display:inline-block;
+	vertical-align:top;
+}
+
+.translucent-modal {
+background: #333;
+background: rgba(51, 51, 51, 0.3);
+border: 1px solid rgba(0, 0, 0, 0.3) !important; 
+border-radius: 5px;
+box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.15),0 1px 0 rgba(255, 255, 255, 0.1);
+position: relative;
+margin: 0px 0 0;
+padding:10px;
+display: inline-block;
+
+}
+
+
+.zocial, a.zocial {
+	margin-bottom:5px;
+}
+.fbthing.translucent-modal {
+	overflow: hidden;
+	width: 75px !important;
+	height: 21px;
+	padding: 13px;
+	padding-top: 14px;
+	
+}
+input[type=submit], input[type=button] {
+background-color: #F64E17;
+}
+@media only screen and (max-width: 1175px) {
+	.mainsharing {
+	width: 75%;
+	}
+}
+@media only screen and (max-width: 960px) {
+	.mainsharing {
+	width: 100%;
+	}
+}
+@media only screen and (max-width: 700px) {
+	.fbstuff, .chimpform, .twitterbutton {
+		display:block;
+	}
+	.socialstuff p { font-size:2.4em;
+	}
+	#mc_signup {
+		width:100%;
+	}
+	.mc_merge_var {
+		width: 63%;
+		
+	}
+	
 }

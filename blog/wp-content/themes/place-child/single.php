@@ -29,11 +29,12 @@
 				
 			<?php } // if(video_embed) ;?>	
 			<div class="social_share <?php echo $title_top_class ;?>">
-				<a class="zocial facebook" href="https://www.facebook.com/sharer/sharer.php?u=filmbundle.com" target="_blank">
+				<a class="zocial facebook" href="http://www.facebook.com/sharer.php?s=100&p[title]=<?php the_title(); ?>&p[summary]=<?php the_excerpt_rss(); ?>&p[url]=<?php the_permalink() ?>" target="_blank">
 				  Share on Facebook
 				</a>
-				<a href="https://twitter.com/share" class="zocial twitter" data-text="Hi there!" data-via="FilmBundle" data-size="large" 					data-related="filmbundle">Share on Twitter</a>
-				<a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img style="height:36px" src="http://www.reddit.com/static/spreddit14.gif" alt="submit to reddit" border="0" /> </a>
+				
+				  <a class="zocial twitter" href="https://twitter.com/share?url=<?php the_permalink() ?>&text=This is awesome - <?php the_title(); ?>" target="_blank">Share on Twitter</a>
+				
 				
 			</div>
 			
@@ -51,16 +52,36 @@
 			
 			<?php edit_post_link('Edit this entry','<p>','</p>'); ?>
 			</div>
+			<div style="text-align:center">
+				<a class="zocial facebook" href="http://www.facebook.com/sharer.php?s=100&p[title]=<?php the_title(); ?>&p[summary]=<?php the_excerpt_rss(); ?>&p[url]=<?php the_permalink() ?>" target="_blank">
+				  Share on Facebook
+				</a>
+				
+				  <a class="zocial twitter" href="https://twitter.com/share?url=<?php the_permalink() ?>&text=This is awesome - <?php the_title(); ?>" target="_blank">Share on Twitter</a>
+				
+  				<a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img style="height:36px" src="http://www.reddit.com/static/spreddit14.gif" alt="submit to reddit" border="0" /> </a>
+				
+			</div>
 			<div class="post_single_bottom_wrapper">	
 				<div class="post_tag"><?php the_tags( 'Tags: ', ' ', ''); ?></div>
-				<span class="time"><?php the_time(get_option('date_format')) ?></span>
 				<span class="like"><?php printLikes(get_the_ID()); ?></span>
+				<span class="time"><?php the_time(get_option('date_format')) ?></span>
+				
 			</div>
 			<div class="clear"></div>
 			</div>	
 		<?php endwhile; endif; ?>
 		</div><!-- post item -->
+		<div class="mainsharing2 white_box box_info">
+			<div class="socialstuff2">
+				<h3>Love it? Keep it coming!</h3>
+					<p>Sign up and we'll send you exclusive articles and interviews.</p>
 		
+		
+			<?php mailchimpSF_signup_form(); ?>
+	
+			</div>
+		</div>
 		<?php
 		if(get_post_meta($post->ID, 'pl_related', true)=='default' or get_post_meta($post->ID, 'pl_related', true)==''){
 			$related = $pl_data['enable_related_posts'];

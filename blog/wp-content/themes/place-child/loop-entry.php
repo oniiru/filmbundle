@@ -29,12 +29,7 @@
 	<div class="post_col">
 	<?php if(get_post_format()!='quote'){?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class('post_item white_box'); ?>>
-		<?php
-		if($video_embed!=''){
-		?>
-			<div class="fit post_video_wrapper"><?php echo $video_embed;?></div>
-		<?php 
-		} else {  ?>	
+			
 			
 			<?php 
 			$title_top_class = ' post_top_element';
@@ -56,7 +51,6 @@
 			
 			<?php get_template_part( 'content', 'audio'); ?>
 			
-		<?php } // if(video_embed) ;?>	
 			
 			<h3 class="post_item_title<?php echo $title_top_class;?>"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 			
@@ -164,7 +158,16 @@
 	</nav>
 </div>
 <!-- end infinite scroll -->
-
+<div class="mainsharing2 white_box box_info">
+	<div class="socialstuff2">
+		<h3>Don't let the cat videos win</h3>
+			<p>Sign up to get amazing stuff sent straight to you!</p>
+		
+		
+	<?php mailchimpSF_signup_form(); ?>
+	
+	</div>
+</div>
 <?php else : ?>
 	<?php get_search_form(); ?>
 <?php endif; ?>  
