@@ -8,115 +8,7 @@ class stag_section_blog extends WP_Widget{
     $this->WP_Widget('stag_section_blog', __('Homepage: Blog Section', 'stag'), $widget_ops, $control_ops);
   }
 
-  function widget($args, $instance){
-    extract($args);
 
-    // VARS FROM WIDGET SETTINGS
-    $title = apply_filters('widget_title', $instance['title'] );
-    $subtitle = $instance['subtitle'];
-    $color = $instance['color'];
-    $bg = $instance['bg'];
-    $link = $instance['link'];
-
-    echo $before_widget;
-
-    ?>
-
-    <!-- BEGIN #blog.section-block -->
-    <section id="blog" class="section-block" data-bg="<?php echo $bg; ?>" data-color="<?php echo $color; ?>" data-link="<?php echo $link; ?>">
-      <div class="inner-section">
-        <?php
-        if($subtitle != '') echo '<p class="sub-title">'.$subtitle.'</p>';
-        echo $before_title.$title.$after_title;
-        $s = get_option( 'sticky_posts' );
-        $d_c= '';
-        ?>
-        <div class="grids">
-
-        <div class="grid-6 featured-post">
-          <?php
-
-          if(count($s) != 0){
-            $d_c = 'sticky';
-            query_posts(array(
-              'p' => array_pop($s),
-              'posts_per_page' => 1,
-              'orderby' => 'date'
-            ));
-          }else{
-            query_posts(array(
-              'posts_per_page' => 1,
-              'orderby' => 'date'
-            ));
-          }
-
-          if(have_posts()){
-            while(have_posts()): the_post();
-            ?>
-            <div <?php post_class($d_c); ?>>
-              <p class="pubdate"><?php the_time('F d Y'); ?></p>
-              <h2><a data-through="gateway" data-postid="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
-              <div class="entry-content">
-                <?php if(has_post_thumbnail()): ?>
-                <a data-through="gateway" data-postid="<?php the_ID(); ?>" href="<?php the_permalink(); ?>">
-                  <?php the_post_thumbnail(); ?>
-                </a>
-                <?php endif; ?>
-                <?php the_excerpt(); ?>
-              </div>
-            </div>
-            <?php
-            endwhile;
-          }
-          wp_reset_query();
-          ?>
-        </div>
-        <div class="grid-6 all-posts">
-          <div id="blog-post-slider" class="flexslider">
-            <ul class="slides">
-              <?php
-              $start = 4;
-              $finish = 1;
-              query_posts(array(
-                'offset' => 1,
-                'posts_per_page' => 1000,
-              ));
-              if(have_posts()): while(have_posts()): the_post();
-              ?>
-
-              <?php if(is_multiple($start, 4)): ?>
-                <li>
-              <?php endif; ?>
-              <div class="row">
-                <p class="pubdate"><?php the_time('F d Y'); ?></p>
-                <h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" data-through="gateway" data-postid="<?php the_ID(); ?>"><?php the_title(); ?></a></h3>
-              </div>
-              <?php if(is_multiple($finish, 4)): ?>
-                </li>
-              <?php endif; ?>
-
-              <?php
-              $start++;
-              $finish++;
-              endwhile;
-              endif;
-              wp_reset_query();
-              ?>
-            </ul>
-          </div>
-        </div>
-
-
-        </div>
-        <!-- END .inner-section -->
-      </div>
-
-      <!-- END #blog.section-block -->
-    </section>
-
-    <?php
-    echo $after_widget;
-  }
 
   function update($new_instance, $old_instance){
     $instance = $old_instance;
@@ -159,6 +51,133 @@ class stag_section_blog extends WP_Widget{
 
     <?php
   }
-}
 
-?>
+
+
+    /**
+     * Output the widget to the frontend-
+     */
+    public function widget($args, $instance)
+    {
+        extract($args);
+        // VARS FROM WIDGET SETTINGS
+        $title = apply_filters('widget_title', $instance['title'] );
+        $subtitle = $instance['subtitle'];
+        $color = $instance['color'];
+        $bg = $instance['bg'];
+        $link = $instance['link'];
+        echo $before_widget;
+        ?>
+
+        <!-- BEGIN #blog.section-block -->
+        <section id="blog" class="section-block" data-bg="<?php echo $bg; ?>" data-color="<?php echo $color; ?>" data-link="<?php echo $link; ?>">
+            <div class="inner-section">
+                <?php
+                if($subtitle != '') echo '<p class="sub-title">'.$subtitle.'</p>';
+                echo $before_title.$title.$after_title;
+                $s = get_option( 'sticky_posts' );
+                $d_c= '';
+                ?>
+                <div class="grids">
+
+            <div class="grid-6 featured-post">
+              <?php
+
+              if(count($s) != 0){
+                $d_c = 'sticky';
+                query_posts(array(
+                  'p' => array_pop($s),
+                  'posts_per_page' => 1,
+                  'orderby' => 'date'
+                ));
+              }else{
+                query_posts(array(
+                  'posts_per_page' => 1,
+                  'orderby' => 'date'
+                ));
+              }
+
+              if(have_posts()){
+                while(have_posts()): the_post();
+                ?>
+                <div <?php post_class($d_c); ?>>
+                  <p class="pubdate"><?php the_time('F d Y'); ?></p>
+                  <h2><a data-through="gateway" data-postid="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+                  <div class="entry-content">
+                    <?php if(has_post_thumbnail()): ?>
+                    <a data-through="gateway" data-postid="<?php the_ID(); ?>" href="<?php the_permalink(); ?>">
+                      <?php the_post_thumbnail(); ?>
+                    </a>
+                    <?php endif; ?>
+                    <?php the_excerpt(); ?>
+                  </div>
+                </div>
+                <?php
+                endwhile;
+              }
+              wp_reset_query();
+              ?>
+            </div><!-- /featured-post -->
+
+            <div class="grid-6 all-posts">
+              <div id="blog-post-slider" class="flexslider">
+                <ul class="slides">
+                  <?php
+                  $start = 4;
+                  $finish = 1;
+                  query_posts(array(
+                    'offset' => 1,
+                    'posts_per_page' => 1000,
+                  ));
+                  if(have_posts()): while(have_posts()): the_post();
+                  ?>
+
+                  <?php if(is_multiple($start, 4)): ?>
+                    <li>
+                  <?php endif; ?>
+                  <div class="row">
+                    <p class="pubdate"><?php the_time('F d Y'); ?></p>
+                    <h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" data-through="gateway" data-postid="<?php the_ID(); ?>"><?php the_title(); ?></a></h3>
+                  </div>
+                  <?php if(is_multiple($finish, 4)): ?>
+                    </li>
+                  <?php endif; ?>
+
+                  <?php
+                  $start++;
+                  $finish++;
+                  endwhile;
+                  endif;
+                  wp_reset_query();
+                  ?>
+                </ul>
+              </div>
+            </div><!-- /all-posts -->
+
+                <!-- Implementing external posts -->
+                <div class="grid-6 all-posts">
+                    <?php
+
+                    $wpdb_ext = new wpdb('root', 'root', 'filmbundle_blog', 'localhost');
+
+                    // get 10 posts, assuming the other WordPress db table prefix is "wp_"
+                    $query = "SELECT post_title, guid, post_date FROM wp_posts
+                              WHERE post_status = 'publish'
+                              AND post_type = 'post'
+                              ORDER BY post_date DESC LIMIT 10";
+
+                    $posts = $wpdb_ext->get_results($query, OBJECT);
+                    foreach ($posts as $post) {
+                        echo '<p class="pubdate">'.date('F d Y', strtotime($post->post_date)).'</p>';
+                        echo "<h3><a href=\"{$post->guid}\">{$post->post_title}</a></h3>";
+                    }
+                    ?>
+                </div>
+
+                </div><!-- /grids -->
+            </div><!-- END .inner-section -->
+        </section><!-- END #blog.section-block -->
+        <?php
+        echo $after_widget;
+    }
+}
