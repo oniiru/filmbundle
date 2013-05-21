@@ -82,7 +82,11 @@ class stag_section_seedprod extends WP_Widget{
                 </div>
                 <?php
             } else {
-                echo 'Something went wrong, no referral data found for logged in user.';
+              ?>
+              <div class="translucent-modal">
+                  <?php echo seed_cs3_form(); ?>
+              </div>
+              <?php
             }
         } else {
             ?>
