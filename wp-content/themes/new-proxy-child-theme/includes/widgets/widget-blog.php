@@ -105,6 +105,9 @@ class stag_section_blog extends WP_Widget{
                 echo $before_title.$title.$after_title;
                 $s = get_option( 'sticky_posts' );
                 $d_c= '';
+
+                $wpdb_ext = new wpdb($instance['db_user'], $instance['db_password'], $instance['db_name'], $instance['db_host']);
+
                 ?>
                 <div class="grids">
 
@@ -147,60 +150,36 @@ class stag_section_blog extends WP_Widget{
               ?>
             </div><!-- /featured-post -->
 
-            <div class="grid-6 all-posts">
-              <div id="blog-post-slider" class="flexslider">
-                <ul class="slides">
-                  <?php
-                  $start = 4;
-                  $finish = 1;
-                  query_posts(array(
-                    'offset' => 1,
-                    'posts_per_page' => 1000,
-                  ));
-                  if(have_posts()): while(have_posts()): the_post();
-                  ?>
+                    <!-- Implementing external posts -->
+                    <div class="grid-6 all-posts">
+                        <div id="blog-post-slider" class="flexslider">
+                            <ul class="slides">
+                                <?php
+                                $query = "SELECT ID, post_title, post_date, post_name FROM wp_posts
+                                          WHERE post_status = 'publish'
+                                          AND post_type = 'post'
+                                          ORDER BY post_date DESC 
+                                          LIMIT 1, 999";
+                                $posts = $wpdb_ext->get_results($query, OBJECT);
+                                $start = 4;
+                                $finish = 1;
 
-                  <?php if(is_multiple($start, 4)): ?>
-                    <li>
-                  <?php endif; ?>
-                  <div class="row">
-                    <p class="pubdate"><?php the_time('F d Y'); ?></p>
-                    <h3><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" data-through="gateway" data-postid="<?php the_ID(); ?>"><?php the_title(); ?></a></h3>
-                  </div>
-                  <?php if(is_multiple($finish, 4)): ?>
-                    </li>
-                  <?php endif; ?>
-
-                  <?php
-                  $start++;
-                  $finish++;
-                  endwhile;
-                  endif;
-                  wp_reset_query();
-                  ?>
-                </ul>
-              </div>
-            </div><!-- /all-posts -->
-
-                <!-- Implementing external posts -->
-                <div class="grid-6 all-posts">
-                    <?php
-
-                    $wpdb_ext = new wpdb($instance['db_user'], $instance['db_password'], $instance['db_name'], $instance['db_host']);
-
-                    // get 10 posts, assuming the other WordPress db table prefix is "wp_"
-                    $query = "SELECT post_title, guid, post_date FROM wp_posts
-                              WHERE post_status = 'publish'
-                              AND post_type = 'post'
-                              ORDER BY post_date DESC LIMIT 10";
-
-                    $posts = $wpdb_ext->get_results($query, OBJECT);
-                    foreach ($posts as $post) {
-                        echo '<p class="pubdate">'.date('F d Y', strtotime($post->post_date)).'</p>';
-                        echo "<h3><a href=\"{$post->guid}\">{$post->post_title}</a></h3>";
-                    }
-                    ?>
-                </div>
+                                foreach ($posts as $post) {
+                                    if (is_multiple($start, 4)) {
+                                        echo '<li>';
+                                    }
+                                    echo '<p class="pubdate">'.date('F d Y', strtotime($post->post_date)).'</p>';
+                                    echo "<h3><a href='".home_url('blog/'.$post->post_name)."/' title=\"{$post->post_title}\" data-through=\"gateway\" data-postid=\"{$post->ID}\">{$post->post_title}</a></h3>";
+                                    if (is_multiple($finish, 4)) {
+                                        echo '</li>';
+                                    }
+                                    $start++;
+                                    $finish++;
+                                }
+                                ?>
+                        </ul>
+                      </div>
+                    </div><!-- /all-posts -->
 
                 </div><!-- /grids -->
             </div><!-- END .inner-section -->
