@@ -15,6 +15,7 @@
 	
 <?php wp_head(); ?>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+<link href='http://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>
 
 <script type="text/javascript">
     var stub_showing = false;
