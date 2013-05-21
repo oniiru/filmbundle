@@ -20,42 +20,70 @@ class stag_section_blog extends WP_Widget{
     $instance['bg'] = strip_tags($new_instance['bg']);
     $instance['link'] = strip_tags($new_instance['link']);
 
+    $instance['db_user'] = strip_tags($new_instance['db_user']);
+    $instance['db_password'] = strip_tags($new_instance['db_password']);
+    $instance['db_name'] = strip_tags($new_instance['db_name']);
+    $instance['db_host'] = strip_tags($new_instance['db_host']);
+
     return $instance;
   }
 
-  function form($instance){
-    $defaults = array(
-      'bg' => '#1F2329',
-      'color' => '',
-      'link' => '',
-      /* Deafult options goes here */
-    );
-
-    $instance = wp_parse_args((array) $instance, $defaults);
-
-    /* HERE GOES THE FORM */
-    ?>
-
-    <p>
-      <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'stag'); ?></label>
-      <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo @$instance['title']; ?>" />
-      <span class="description">Leave blank to use default page title.</span>
-    </p>
-
-    <p>
-      <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('Sub Title:', 'stag'); ?></label>
-      <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php echo @$instance['subtitle']; ?>" />
-    </p>
-
-    <?php include('helper-widget-colors.php'); ?>
-
-    <?php
-  }
-
-
 
     /**
-     * Output the widget to the frontend-
+     * Form to edit widget settings.
+     */
+    public function form($instance)
+    {
+        $defaults = array(
+          'bg' => '#1F2329',
+          'color' => '',
+          'link' => '',
+          /* Deafult options goes here */
+        );
+
+        $instance = wp_parse_args((array) $instance, $defaults);
+
+        /* HERE GOES THE FORM */
+        ?>
+
+        <p>
+          <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'stag'); ?></label>
+          <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo @$instance['title']; ?>" />
+          <span class="description">Leave blank to use default page title.</span>
+        </p>
+
+        <p>
+          <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('Sub Title:', 'stag'); ?></label>
+          <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php echo @$instance['subtitle']; ?>" />
+        </p>
+
+        <?php include('helper-widget-colors.php'); ?>
+
+        <!-- Setup database connection -->
+        <p>
+            <label for="<?php echo $this->get_field_id('db_user'); ?>">DB User:</label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('db_user'); ?>" name="<?php echo $this->get_field_name('db_user'); ?>" value="<?php echo @$instance['db_user']; ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('db_password'); ?>">DB Password:</label>
+            <input type="password" class="widefat" id="<?php echo $this->get_field_id('db_password'); ?>" name="<?php echo $this->get_field_name('db_password'); ?>" value="<?php echo @$instance['db_password']; ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('db_name'); ?>">DB Name:</label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('db_name'); ?>" name="<?php echo $this->get_field_name('db_name'); ?>" value="<?php echo @$instance['db_name']; ?>" />
+        </p>
+
+        <p>
+            <label for="<?php echo $this->get_field_id('db_host'); ?>">DB Host:</label>
+            <input type="text" class="widefat" id="<?php echo $this->get_field_id('db_host'); ?>" name="<?php echo $this->get_field_name('db_host'); ?>" value="<?php echo @$instance['db_host']; ?>" />
+        </p>
+        <?php
+    }
+
+    /**
+     * Output the widget to the frontend.
      */
     public function widget($args, $instance)
     {
@@ -158,7 +186,7 @@ class stag_section_blog extends WP_Widget{
                 <div class="grid-6 all-posts">
                     <?php
 
-                    $wpdb_ext = new wpdb('root', 'root', 'filmbundle_blog', 'localhost');
+                    $wpdb_ext = new wpdb($instance['db_user'], $instance['db_password'], $instance['db_name'], $instance['db_host']);
 
                     // get 10 posts, assuming the other WordPress db table prefix is "wp_"
                     $query = "SELECT post_title, guid, post_date FROM wp_posts
