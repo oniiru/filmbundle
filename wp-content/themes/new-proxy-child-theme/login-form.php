@@ -10,8 +10,9 @@ Theme My Login will always look in your theme's directory first, before using th
 <div id="login" class="form animate">
 	<div class="logintopbar">
 		<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/smallerlogo.png" class="smallerlogo">
-    <a id="to-register" href="#toregister" class="stag-button small light-blue square to_register">Join</a>
-</div>		<?php $template->the_errors(); ?>
+    <a id="to-register" href="#toregister" class="stag-button small light-blue square to_register">Join</a><p class="alreadymember"> Not a member?</p>
+</div>	
+	<?php $template->the_errors(); ?>
 
 	<div class="login loginbox animate	" id="theme-my-login<?php $template->the_instance(); ?>">
 		
@@ -33,6 +34,7 @@ Theme My Login will always look in your theme's directory first, before using th
 			<input type="hidden" name="action" value="login" />
 		</p>
 	</form>
+	<?php $template->the_action_links( array( 'login' => false, 'register' =>false ) ); ?>
 	
 	</div>
 	<div class="socialloginstuff">
@@ -45,7 +47,7 @@ Theme My Login will always look in your theme's directory first, before using th
 	<div class="logintopbar">
 		<div class="logintopbar">
 			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/smallerlogo.png" class="smallerlogo">
-   	 <a id="to-login" href="#tologin" class="stag-button small light-blue square to_register"> Login</a>
+   	 <a id="to-login" href="#tologin" class="stag-button small light-blue square to_register"> Login</a><p class="alreadymember"> Already a member?</p>
 		
 	</div>
 	

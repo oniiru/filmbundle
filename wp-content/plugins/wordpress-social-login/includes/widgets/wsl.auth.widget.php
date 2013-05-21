@@ -110,14 +110,14 @@ function wsl_render_login_form()
 			elseif( $wsl_settings_use_popup == 1 ){
 				?>
 				<a rel="nofollow" href="javascript:void(0);" title="Connect with <?php echo $provider_name ?>" class="wsl_connect_with_provider zocial <?php echo strtolower( $provider_id ) ?>" data-provider="<?php echo $provider_id ?>">
-					Log In with <?php echo $provider_id ?>
+					Connect with <?php echo $provider_id ?>
 				</a>
 				<?php
 			}
 			elseif( $wsl_settings_use_popup == 2 ){
 				?>
 				<a rel="nofollow" href="<?php echo esc_url( $authenticate_url ) ?>" title="Connect with <?php echo $provider_name ?>" class="wsl_connect_with_provider zocial <?php echo strtolower( $provider_id ) ?> " >
-					Log In with <?php echo $provider_id ?>
+					Connect with <?php echo $provider_id ?>
 				</a>
 				<?php 
 			}
