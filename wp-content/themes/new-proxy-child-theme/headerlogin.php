@@ -65,13 +65,13 @@ html, body {
           ?>
           <!-- END #logo -->
         </div>
-
-       
+<h1 class="logintitle">Choose your own price for bundles of amazing indies.</h1>       
 
         <!-- END .header-inner -->
       </div>
 
     <?php stag_header_end(); ?>
+	<link href='http://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>
 
     <!-- END .header -->
   </header>

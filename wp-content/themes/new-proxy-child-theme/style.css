@@ -25,12 +25,15 @@ Template:       proxy
 .logintopbar {
 	display:block;
 	border-radius:5px 5px 0 0 ;
-	height:48px;
+	height:54px;
 	border-bottom:1px dashed #ddd;
 }
 
+#to-register, #to-login {
+	margin-top:11px !important;
+}
 .login {
-	margin: 0px 6%;
+	margin: 0px 2%;
 }
 .translucent-modal {
 background: #333;
@@ -105,10 +108,35 @@ margin-top:0px !important;
 	
 }
 
+.wsl_connect_with_provider {margin-bottom:10px !important;}
 
-#wrapper input:not([type="checkbox"]) {
-	margin-top: 5px !important;
-padding: 9px 25px 8px 15px !important
+#wrapper input:not([type="checkbox"]),  #wrapper2 input:not([type="checkbox"]){
+	margin-top:0px !important;
+padding: 9px 7px 8px 7px !important;
+margin-bottom:10px !important
+}
+
+#wrapper input[type=submit], #wrapper2 input[type=submit] {
+	margin-bottom:0px !important;
+}
+
+ul.tml-action-links {
+	margin:0px;
+}
+
+ul.tml-action-links li {
+	list-style-type:none;
+	font-size: 12px;
+	margin-top: 3px;
+}
+
+#registerform p, #loginform p {
+	margin-bottom:0px !important;
+}
+
+#registerform, #loginform {
+	margin-top:5px;
+	width:250px;
 }
 
 /* CSS reset */
@@ -746,10 +774,18 @@ textarea:-moz-placeholder{
 } 
 
 
-
+.logintitle {
+	float:right;
+	margin-right:12%;
+	margin-top:5px;
+	color:white;
+	font-family: 'Amatic SC' sans-serif;
+	font-size:35px;
+	
+}
 .smallerlogo {
 float:left;
-margin-top: 3px;
+margin-top: 7px;
 margin-left: 10px;	
 }
 .to_register {
@@ -763,8 +799,8 @@ margin-top:7px !important;}
 #login{
 	position: absolute;
 	top: 0px;
-	width: 88%;	
-	padding: 0px 0% 60px 0%;
+	width: 80%;	
+	padding: 0px 0% 10px 0%;
 	margin: 0 0 35px 0;
 	background: rgb(247, 247, 247);
 	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7);
@@ -780,6 +816,13 @@ margin-top:7px !important;}
 }
 #wrapper #login{
 	z-index: 22;
+}
+p.alreadymember {
+	display:inline-block;
+	float:right;
+	margin-top: 18px !important;
+	font-size: 12px;
+	font-style: italic;
 }
 #toregister:target ~ #wrapper #register,
 #tologin:target ~ #wrapper #login{
@@ -861,7 +904,10 @@ margin-top:7px !important;}
 	animation-fill-mode: both;
 }
 
-
+.loginformtitle {
+	padding-left:10px;
+	margin-bottom:0px !important;
+}
 /**
  * Make the register / login forms responsive
  */
@@ -906,6 +952,8 @@ margin-top:7px !important;}
 	background: transparent;
 }
 
+
+
 .stag-one-half, .stag-one-third, .stag-two-third, .stag-three-fourth, .stag-one-fourth, .stag-one-fifth, .stag-two-fifth, .stag-three-fifth, .stag-four-fifth, .stag-one-sixth, .stag-five-sixth { margin-bottom:0px;}
 .aboutus .service-title { font-size: 18px; margin: 20px 0px; color: #474a4f; text-align:center;}
 
@@ -920,4 +968,10 @@ background-position: -278px 35px;
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) { 
 	.aboutus figure { background: url(assets/img/bg-service-box-dark@2x.png) no-repeat transparent center center; background-size: 136px 147px; }
   .aboutus figure .inner-bg { background-image: url(assets/img/sprite-service-box-dark@2x.png) !important; background-size: 966px 75px; }
+}
+
+@media only screen and (max-width: 992px)
+#logo {
+display: inline-block;
+float: left;
 }
