@@ -15,7 +15,7 @@ Theme My Login will always look in your theme's directory first, before using th
 	      	<a id="to-login" href="#tologin" class="stag-button small light-blue square to_register"> Login</a><p class="alreadymember"> Already a member?</p>
 		
 	   	</div>
-		<p class="loginformtitle">blah</p>
+		<p class="loginformtitle" style="margin-bottom:50px !important">blah</p>
 		<?php $template->the_errors(); ?>
 	
 	   	<div class="login loginbox animate" id="theme-my-login<?php $template->the_instance(); ?>">
@@ -48,9 +48,10 @@ Theme My Login will always look in your theme's directory first, before using th
 	   		</form>
 		
 	   	</div>
-	   	<div class="socialloginstuff">
-	
+	   	<div class="socialloginstuff">	
 	   		 <?php do_action( 'wordpress_social_login' ); ?> 
+			 <span>or</span>
+			 
 	   	 </div>
 		 
 	   	 </div>
@@ -60,6 +61,8 @@ Theme My Login will always look in your theme's directory first, before using th
 		<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/smallerlogo.png" class="smallerlogo">
     <a id="to-register" href="#toregister" class="stag-button small light-blue square to_register">Join</a><p class="alreadymember"> Not a member?</p>
 </div>
+
+<h2 class="loginsubtitle"> Log in to your Account </h2>
 	<div class="login loginbox animate" id="theme-my-login<?php $template->the_instance(); ?>">
 	<form name="loginform" id="loginform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'login' ); ?>" method="post">
 		<p>
@@ -84,6 +87,8 @@ Theme My Login will always look in your theme's directory first, before using th
 	</div>
 	<div class="socialloginstuff">
  <?php do_action( 'wordpress_social_login' ); ?> 
+ <span>or</span>
+ 
 </div>
  
 </div>
