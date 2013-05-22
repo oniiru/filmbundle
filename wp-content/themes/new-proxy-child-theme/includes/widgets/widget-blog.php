@@ -110,45 +110,28 @@ class stag_section_blog extends WP_Widget{
 
                 ?>
                 <div class="grids">
+                    <div class="grid-6 featured-post">
+                        <?php
+                        $query = "SELECT ID, post_title, post_date, post_name, post_content FROM wp_posts
+                                  WHERE post_status = 'publish'
+                                  AND post_type = 'post'
+                                  ORDER BY post_date DESC 
+                                  LIMIT 1";
+                        $post = $wpdb_ext->get_row($query, OBJECT);
 
-            <div class="grid-6 featured-post">
-              <?php
-
-              if(count($s) != 0){
-                $d_c = 'sticky';
-                query_posts(array(
-                  'p' => array_pop($s),
-                  'posts_per_page' => 1,
-                  'orderby' => 'date'
-                ));
-              }else{
-                query_posts(array(
-                  'posts_per_page' => 1,
-                  'orderby' => 'date'
-                ));
-              }
-
-              if(have_posts()){
-                while(have_posts()): the_post();
-                ?>
-                <div <?php post_class($d_c); ?>>
-                  <p class="pubdate"><?php the_time('F d Y'); ?></p>
-                  <h2><a data-through="gateway" data-postid="<?php the_ID(); ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
-                  <div class="entry-content">
-                    <?php if(has_post_thumbnail()): ?>
-                    <a data-through="gateway" data-postid="<?php the_ID(); ?>" href="<?php the_permalink(); ?>">
-                      <?php the_post_thumbnail(); ?>
-                    </a>
-                    <?php endif; ?>
-                    <?php the_excerpt(); ?>
-                  </div>
-                </div>
-                <?php
-                endwhile;
-              }
-              wp_reset_query();
-              ?>
-            </div><!-- /featured-post -->
+                        echo '<p class="pubdate">'.date('F d Y', strtotime($post->post_date)).'</p>';
+                        echo "<h2><a href='".home_url('blog/'.$post->post_name)."/' title=\"{$post->post_title}\">{$post->post_title}</a></h2>";
+                        ?>
+                        <div class="entry-content">
+                            <?php 
+                            echo $post->post_content;
+                            // if(has_post_thumbnail()):
+                            //    <a href="echo home_url('blog/'.$post->post_name); ">the_post_thumbnail();</a>
+                            // endif;
+                            echo wp_trim_words($post->post_content);
+                            ?>
+                        </div>
+                    </div><!-- /featured-post -->
 
                     <!-- Implementing external posts -->
                     <div class="grid-6 all-posts">
@@ -177,8 +160,8 @@ class stag_section_blog extends WP_Widget{
                                     $finish++;
                                 }
                                 ?>
-                        </ul>
-                      </div>
+                            </ul>
+                        </div>
                     </div><!-- /all-posts -->
 
                 </div><!-- /grids -->
