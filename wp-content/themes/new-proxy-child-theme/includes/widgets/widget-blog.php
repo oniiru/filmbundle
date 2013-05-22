@@ -169,7 +169,7 @@ class stag_section_blog extends WP_Widget{
                                         echo '<li>';
                                     }
                                     echo '<p class="pubdate">'.date('F d Y', strtotime($post->post_date)).'</p>';
-                                    echo "<h3><a href='".home_url('blog/'.$post->post_name)."/' title=\"{$post->post_title}\" data-through=\"gateway\" data-postid=\"{$post->ID}\">{$post->post_title}</a></h3>";
+                                    echo "<h3><a href='".home_url('blog/'.$post->post_name)."/' title=\"{$post->post_title}\">{$post->post_title}</a></h3>";
                                     if (is_multiple($finish, 4)) {
                                         echo '</li>';
                                     }
