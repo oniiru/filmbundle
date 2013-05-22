@@ -19,6 +19,8 @@ class stag_section_seedprod extends WP_Widget{
     $link = $instance['link'];
     $page = $instance['page'];
     $id = $instance['id'];
+    $facebook_share_text = $instance['facebook_share_text'];
+    $twitter_share_text = $instance['twitter_share_text'];
 
     echo $before_widget;
 
@@ -32,8 +34,8 @@ class stag_section_seedprod extends WP_Widget{
         <?php
 
         $the_page = get_page($page);
-		$postybike = $the_page->post_content;
-		
+    $postybike = $the_page->post_content;
+    
         if($subtitle != '') echo '<p class="sub-title">'.$subtitle.'</p>';
 
         if($title == ''){
@@ -42,16 +44,61 @@ class stag_section_seedprod extends WP_Widget{
             echo $before_title.$title.$after_title;
         }
         echo '<div class="entry-content">'.apply_filters('the_content', $postybike).'</div>';
-		include_once(SEED_CSP3_PLUGIN_PATH.'/themes/default/functions.php' );
-		echo seed_cs3_head(); ?>
-		<div class="centerthis">
-		<div class="translucent-modal">
-		<?php
-		echo seed_cs3_form(); ?>
-	</div>
+    include_once(SEED_CSP3_PLUGIN_PATH.'/themes/default/functions.php' );
+    echo seed_cs3_head(); ?>
+    <div class="centerthis">
+    <?php
+        if (is_user_logged_in()) {
+            // Get relevant info for current user
+            $user = wp_get_current_user();
+            $email = $user->user_email;
+
+            // Retrieve the user from the subscriber DB
+            global $wpdb;
+            $tablename = $wpdb->prefix . SEED_CSP3_TABLENAME;
+            $sql = "SELECT * FROM $tablename WHERE email = %s;";
+            $safe_sql = $wpdb->prepare($sql, $email);
+            $result = $wpdb->get_row($safe_sql);
+
+            if ($result) {
+                // Calc referrer url
+                $ref = $result->id+1000;
+                $referrer_url = home_url() . '?ref='.base_convert($ref, 10, 36);
+                ?>
+                <div class="translucent-modal">
+                    <?php echo $referrer_url; ?>
+                </div>
+                <br/><br/>
+
+                <a class="zocial facebook" href="http://www.facebook.com/sharer.php?m2w&amp;s=100&amp;p[title]=FilmBundle&amp;p[summary]=<?php echo urlencode($facebook_share_text); ?>&amp;p[url]=<?php echo urlencode($referrer_url); ?>" onclick="return !window.open(this.href, 'Facebook', 'width=500,height=300')" target="_blank">Share on Facebook</a>
+
+                <a class="zocial twitter" href="http://twitter.com/share?text=<?php echo urlencode($twitter_share_text); ?>&amp;url=<?php echo urlencode($referrer_url); ?>" onclick="return !window.open(this.href, 'Twitter', 'width=500,height=300')" target="_blank">Share on Twitter</a>
+                <br/><br/>
+
+                <div class="translucent-modal">
+                    Your stats so far...<br/>
+                    Clicks: <?php echo $result->clicks; ?><br/>
+                    Sign-ups: <?php echo $result->conversions; ?><br/>
+                </div>
+                <?php
+            } else {
+              ?>
+              <div class="translucent-modal">
+                  <?php echo seed_cs3_form(); ?>
+              </div>
+              <?php
+            }
+        } else {
+            ?>
+            <div class="translucent-modal">
+                <?php echo seed_cs3_form(); ?>
+            </div>
+            <?php
+        }
+    ?>
 </div>
-		<?php
-		echo seed_cs3_footer();
+    <?php
+    echo seed_cs3_footer();
 
 
 
@@ -77,6 +124,8 @@ class stag_section_seedprod extends WP_Widget{
     $instance['link'] = strip_tags($new_instance['link']);
     $instance['page'] = strip_tags($new_instance['page']);
     $instance['id'] = strip_tags($new_instance['id']);
+    $instance['facebook_share_text'] = strip_tags($new_instance['facebook_share_text']);
+    $instance['twitter_share_text'] = strip_tags($new_instance['twitter_share_text']);
 
     return $instance;
   }
@@ -89,6 +138,8 @@ class stag_section_seedprod extends WP_Widget{
       'color' => '',
       'bg' => '',
       'link' => '',
+      'facebook_share_text' => '',
+      'twitter_share_text' => '',
     );
 
     $instance = wp_parse_args((array) $instance, $defaults);
@@ -106,6 +157,21 @@ class stag_section_seedprod extends WP_Widget{
       <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('Sub Title:', 'stag'); ?></label>
       <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php echo @$instance['subtitle']; ?>" />
     </p>
+
+
+    <p>
+      <label for="<?php echo $this->get_field_id('facebook_share_text'); ?>"><?php _e('Facebook Share Text:', 'stag'); ?></label>
+      <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'facebook_share_text' ); ?>" name="<?php echo $this->get_field_name( 'facebook_share_text' ); ?>" value="<?php echo @$instance['facebook_share_text']; ?>" />
+    </p>
+
+
+    <p>
+      <label for="<?php echo $this->get_field_id('twitter_share_text'); ?>"><?php _e('Twitter Share Text:', 'stag'); ?></label>
+      <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'twitter_share_text' ); ?>" name="<?php echo $this->get_field_name( 'twitter_share_text' ); ?>" value="<?php echo @$instance['twitter_share_text']; ?>" />
+    </p>
+
+
+
 
     <p>
       <label for="<?php echo $this->get_field_id('page'); ?>"><?php _e('Select Page:', 'stag'); ?></label>
