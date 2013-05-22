@@ -40,6 +40,13 @@ function handleSocialWin()
         }
     }, 1000);
 }
+(function($) {
+    $(window).scroll(function () {
+        // Outputs current scroll position
+        console.log($(window).scrollTop());
+    });
+})(jQuery);
+
 </script>
             <div class="social_share <?php echo $title_top_class ;?>">
                 <a class="zocial facebook" href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php the_title(); ?>&amp;p[summary]=<?php the_excerpt_rss(); ?>&amp;p[url]=<?php the_permalink() ?>" onclick="return !window.open(this.href, 'Facebook', 'width=600,height=350')" target="_blank">Share on Facebook</a>
