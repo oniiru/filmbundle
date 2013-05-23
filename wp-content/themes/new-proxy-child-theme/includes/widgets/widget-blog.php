@@ -124,11 +124,10 @@ class stag_section_blog extends WP_Widget{
                         ?>
                         <div class="entry-content">
                             <?php 
-                            echo $post->post_content;
                             // if(has_post_thumbnail()):
                             //    <a href="echo home_url('blog/'.$post->post_name); ">the_post_thumbnail();</a>
                             // endif;
-                            echo wp_trim_words($post->post_content);
+                            echo wp_trim_words($post->post_content, 55, ' ...');
                             ?>
                         </div>
                     </div><!-- /featured-post -->
