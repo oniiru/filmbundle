@@ -203,17 +203,17 @@ class stag_section_blog extends WP_Widget{
                     <div class="grid-6 featured-post">
                         <?php
                         $post = $ext->featuredPost();
+                        $post_url = home_url('blog/'.$post->post_name.'/');
                         echo '<p class="pubdate">'.date('F d Y', strtotime($post->post_date)).'</p>';
-                        echo "<h2><a href='".home_url('blog/'.$post->post_name)."/' title=\"{$post->post_title}\">{$post->post_title}</a></h2>";
+                        echo "<h2><a href=\"{$post_url}\" title=\"{$post->post_title}\">{$post->post_title}</a></h2>";
                         ?>
                         <div class="entry-content">
                             <?php
                             $tn = $ext->thumbnail($post->ID);
-                            var_dump($tn);
-
                             if ($tn) {
+                                echo "<a href='{$post_url}'>";
                                 echo "<img src='{$tn['url']}' width='{$tn['width']}' height='{$tn['height']}' class='attachment-thumbnail wp-post-image' alt='{$tn['alt']}' />";
-                                // <a href="echo home_url('blog/'.$post->post_name); "><img src=""</a>
+                                echo "</a>";
                             }
                             echo wp_trim_words($post->post_content, 55, ' ...');
                             ?>
