@@ -830,7 +830,16 @@ textarea:-moz-placeholder{
 	font-style: italic;
 } 
 
+.entry-content {
+	font-size:18px;
+}
 
+#blog a.readmore {
+	color:#1c93c5;
+}
+#blog .all-posts {
+	margin-top:16px;
+}
 .logintitle {
 	float:right;
 	margin-right:12%;
