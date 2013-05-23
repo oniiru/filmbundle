@@ -135,6 +135,8 @@ class stag_section_blog extends WP_Widget{
 
                             // error checking.... needed....
                             $thumbnail = $wpdb_ext->get_row($query);
+                            var_dump($thumbnail->guid);
+                            var_dump(dirname($thumbnail->guid));
 
                             $query = "SELECT *
                                       FROM wp_postmeta
@@ -146,7 +148,7 @@ class stag_section_blog extends WP_Widget{
                             $thumbnail_meta = $thumbnail_meta->meta_value;
                             $thumbnail_meta = unserialize($thumbnail_meta);
 
-                            var_dump($thumbnail_meta);
+                            var_dump($thumbnail_meta['sizes']['thumbnail']['file']);
 
 
                             // if(has_post_thumbnail()):
