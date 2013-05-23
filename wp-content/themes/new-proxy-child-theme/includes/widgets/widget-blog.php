@@ -39,11 +39,14 @@ class FilmBundle_ExternalBlog
                   AND pm.meta_key = '_thumbnail_id' 
                   ORDER BY p.post_date DESC 
                   LIMIT 15";
-
-        // error checking.... needed....
         $thumbnail = $this->database->get_row($query);
-        var_dump($thumbnail->guid);
-        var_dump(dirname($thumbnail->guid));
+        // if (is_null($thumbnail)) {
+        //     return false;
+        // }
+        // var_dump($thumbnail);
+        // var_dump($thumbnail->guid);
+        // var_dump(dirname($thumbnail->guid));
+        $path = dirname($thumbnail->guid);
 
         $query = "SELECT *
                   FROM wp_postmeta
@@ -54,7 +57,10 @@ class FilmBundle_ExternalBlog
         $thumbnail_meta = $thumbnail_meta->meta_value;
         $thumbnail_meta = unserialize($thumbnail_meta);
 
-        var_dump($thumbnail_meta['sizes']['thumbnail']['file']);        
+        // var_dump($thumbnail_meta['sizes']['thumbnail']['file']);
+        $file = $thumbnail_meta['sizes']['thumbnail']['file'];
+
+        return "{$path}/{$file}";      
     }
 
     public function allPosts()
@@ -192,10 +198,13 @@ class stag_section_blog extends WP_Widget{
                         <div class="entry-content">
                             <?php
                             $thumbnail = $ext->thumbnail($post->ID);
+                            var_dump($thumbnail);
 
-                            // if(has_post_thumbnail()):
-                            //    <a href="echo home_url('blog/'.$post->post_name); ">the_post_thumbnail();</a>
-                            // endif;
+                            if ($thumbnail) {
+// <img width="160" height="160" src="http://www.artstorm.net/wp-content/uploads/2012/03/lscript-textastic-ipad-160x160.jpg" class="attachment-thumbnail wp-post-image" alt="LScript on the iPad in Textastic" />
+                                echo "<img src='{$thumbnail}' class='attachment-thumbnail wp-post-image' />";
+                                // <a href="echo home_url('blog/'.$post->post_name); "><img src=""</a>
+                            }
                             echo wp_trim_words($post->post_content, 55, ' ...');
                             ?>
                         </div>
