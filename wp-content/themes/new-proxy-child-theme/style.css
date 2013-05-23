@@ -9,6 +9,9 @@ Template:       proxy
 
 @import url("../proxy/style.css");
 
+
+input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea { background: #f8f8f8; width: 100%; padding: 15px 20px; font-size: 14px; border: 1px solid rgb(180, 180, 180); -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
+
 #header {
 	padding:10px 0;
 }
@@ -21,7 +24,18 @@ Template:       proxy
 #primary-nav {
 	margin-top:2px;
 }
-
+.login p.message {
+	padding: 5px;
+	line-height: 1.2em;
+	position: relative;
+	behavior: url(PIE.php);
+	font-size: 14px;
+	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	position: relative;
+	background: rgb(250, 103, 57);
+	color:white;
+	border:none;
+}
 .logintopbar {
 	display:block;
 	border-radius:5px 5px 0 0 ;
@@ -29,11 +43,35 @@ Template:       proxy
 	border-bottom:1px dashed #ddd;
 }
 
+.socialloginstuff span {
+text-align: center;
+text-transform: uppercase;
+font-weight: normal !important;
+-webkit-font-smoothing: antialiased;
+width: 14%;
+float: right;
+}
+
+.socialloginstuff span:before, .socialloginstuff span:after {
+content: "";
+width: 1px;
+height: 3.5em;
+margin: 1em auto;
+background: #636262;
+display: block;
+}
+
+#login .socialloginstuff span:before, #login .socialloginstuff span:after {
+	height:2.5em;
+}
+
+
+
 #to-register, #to-login {
 	margin-top:11px !important;
 }
 .login {
-	margin: 0px 2%;
+	margin: 0px 15px;
 }
 .translucent-modal {
 background: #333;
@@ -49,7 +87,13 @@ display: inline-block;
 }
 .socialloginstuff {
 	float:left;
+	width:55%;
 }
+
+#login .socialloginstuff {
+	width:50%;
+}
+
 #csp3-email, #csp3-fname, #csp3-lname {
 font-size: 18px;
 height: 39px !important;
@@ -128,6 +172,8 @@ ul.tml-action-links li {
 	list-style-type:none;
 	font-size: 12px;
 	margin-top: 3px;
+	display: inline-block;
+	margin-right: 20px;
 }
 
 #registerform p, #loginform p {
@@ -783,6 +829,17 @@ textarea:-moz-placeholder{
 	font-size:35px;
 	
 }
+
+.loginsubtitle {
+	color:black;
+	margin:10px 0px !important;
+	font-family: 'Amatic SC' sans-serif;
+	font-size:35px;
+	width:100%;
+	text-align:center;
+	
+	
+}
 .smallerlogo {
 float:left;
 margin-top: 7px;
@@ -799,7 +856,7 @@ margin-top:7px !important;}
 #login{
 	position: absolute;
 	top: 0px;
-	width: 80%;	
+	width: 100%;	
 	padding: 0px 0% 10px 0%;
 	margin: 0 0 35px 0;
 	background: rgb(247, 247, 247);
@@ -810,10 +867,22 @@ margin-top:7px !important;}
 	-moz-border-radius: 5px;
 		 border-radius: 5px;
 }
+
+#login {
+	width:90%;
+}
 #wrapper #register{	
 	z-index: 21;
 	opacity: 0;
 }
+
+#wp-social-login-connect-options {
+	display:inline-block;
+	padding:10px 20px !important;
+}
+
+
+
 #wrapper #login{
 	z-index: 22;
 }
