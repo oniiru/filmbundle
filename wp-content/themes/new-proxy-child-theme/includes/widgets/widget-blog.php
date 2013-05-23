@@ -133,12 +133,20 @@ class stag_section_blog extends WP_Widget{
                                       ORDER BY p.post_date DESC 
                                       LIMIT 15";
 
-                            $featured_image = $wpdb_ext->get_results(
-                                $query,
-                                'ARRAY_A'
-                            );
+                            // error checking.... needed....
+                            $thumbnail = $wpdb_ext->get_row($query);
 
-                            var_dump($featured_image);
+                            $query = "SELECT *
+                                      FROM wp_postmeta
+                                      WHERE post_id = $thumbnail->ID
+                                      AND meta_key = '_wp_attachment_metadata'";
+
+
+                            $thumbnail_meta = $wpdb_ext->get_row($query);
+                            $thumbnail_meta = $thumbnail_meta->meta_value;
+                            $thumbnail_meta = unserialize($thumbnail_meta);
+
+                            var_dump($thumbnail_meta);
 
 
                             // if(has_post_thumbnail()):
