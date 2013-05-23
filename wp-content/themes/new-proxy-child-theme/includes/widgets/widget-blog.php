@@ -58,8 +58,15 @@ class FilmBundle_ExternalBlog
         $thumbnail_meta = unserialize($thumbnail_meta);
         var_dump($thumbnail_meta);
 
-        // _wp_attachment_image_alt
-        $alt = 'aa';
+        // Get the alt attribute
+        $query = "SELECT *
+                  FROM wp_postmeta
+                  WHERE post_id = $thumbnail->ID
+                  AND meta_key = '_wp_attachment_image_alt'";
+        $alt = $this->database->get_row($query);
+        $alt = is_null($alt) ? '' : $alt->meta_value;
+
+
 
         // var_dump($thumbnail_meta['sizes']['thumbnail']['file']);
         $file = $thumbnail_meta['sizes']['thumbnail']['file'];
