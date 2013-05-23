@@ -43,7 +43,7 @@ class FilmBundle_ExternalBlog
         // if (is_null($thumbnail)) {
         //     return false;
         // }
-        // var_dump($thumbnail);
+        var_dump($thumbnail);
         // var_dump($thumbnail->guid);
         // var_dump(dirname($thumbnail->guid));
         $path = dirname($thumbnail->guid);
@@ -56,11 +56,20 @@ class FilmBundle_ExternalBlog
         $thumbnail_meta = $this->database->get_row($query);
         $thumbnail_meta = $thumbnail_meta->meta_value;
         $thumbnail_meta = unserialize($thumbnail_meta);
+        var_dump($thumbnail_meta);
+
+        // _wp_attachment_image_alt
 
         // var_dump($thumbnail_meta['sizes']['thumbnail']['file']);
         $file = $thumbnail_meta['sizes']['thumbnail']['file'];
 
-        return "{$path}/{$file}";      
+        $url =  "{$path}/{$file}";
+        $thumbnail = array(
+            'url'    => $url,
+            'width'  => $thumbnail_meta['sizes']['thumbnail']['width'],
+            'height' => $thumbnail_meta['sizes']['thumbnail']['height'],
+        );
+        return $thumbnail;
     }
 
     public function allPosts()
@@ -197,12 +206,12 @@ class stag_section_blog extends WP_Widget{
                         ?>
                         <div class="entry-content">
                             <?php
-                            $thumbnail = $ext->thumbnail($post->ID);
-                            var_dump($thumbnail);
+                            $tn = $ext->thumbnail($post->ID);
+                            var_dump($tn);
 
-                            if ($thumbnail) {
+                            if ($tn) {
 // <img width="160" height="160" src="http://www.artstorm.net/wp-content/uploads/2012/03/lscript-textastic-ipad-160x160.jpg" class="attachment-thumbnail wp-post-image" alt="LScript on the iPad in Textastic" />
-                                echo "<img src='{$thumbnail}' class='attachment-thumbnail wp-post-image' />";
+                                echo "<img src='{$tn['url']}' width='{$tn['width']}' height='{$tn['height']}' class='attachment-thumbnail wp-post-image' />";
                                 // <a href="echo home_url('blog/'.$post->post_name); "><img src=""</a>
                             }
                             echo wp_trim_words($post->post_content, 55, ' ...');
