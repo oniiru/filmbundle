@@ -221,7 +221,8 @@ class stag_section_blog extends WP_Widget{
                                 echo "<img src='{$tn['url']}' width='{$tn['width']}' height='{$tn['height']}' class='attachment-thumbnail wp-post-image' alt='{$tn['alt']}' />";
                                 echo "</a>";
                             }
-                            echo wp_trim_words($post->post_content, 55, ' ...');
+                            echo wp_trim_words($post->post_content, 35, '... ');
+							echo "<a class='readmore' href='{$post_url}'>Read More</a>";
                             ?>
                         </div>
                     </div><!-- /featured-post -->
