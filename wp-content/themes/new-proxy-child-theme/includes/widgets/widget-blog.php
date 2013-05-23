@@ -144,16 +144,17 @@ class stag_section_blog extends WP_Widget{
                                           ORDER BY post_date DESC 
                                           LIMIT 1, 999";
                                 $posts = $wpdb_ext->get_results($query, OBJECT);
-                                $start = 4;
+                                $start = 3;
                                 $finish = 1;
 
                                 foreach ($posts as $post) {
-                                    if (is_multiple($start, 4)) {
+                                    if (is_multiple($start, 3)) {
                                         echo '<li>';
                                     }
+									echo '<div class="row">';
                                     echo '<p class="pubdate">'.date('F d Y', strtotime($post->post_date)).'</p>';
-                                    echo "<h3><a href='".home_url('blog/'.$post->post_name)."/' title=\"{$post->post_title}\">{$post->post_title}</a></h3>";
-                                    if (is_multiple($finish, 4)) {
+                                    echo "<h3><a href='".home_url('blog/'.$post->post_name)."/' title=\"{$post->post_title}\">{$post->post_title}</a></h3></div>";
+                                    if (is_multiple($finish, 3)) {
                                         echo '</li>';
                                     }
                                     $start++;
