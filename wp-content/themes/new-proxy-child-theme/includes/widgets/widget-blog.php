@@ -32,6 +32,7 @@ class FilmBundle_ExternalBlog
 
     public function thumbnail($id)
     {
+        // Get the featured image
         $query = "SELECT p.*
                   FROM wp_postmeta AS pm
                   INNER JOIN wp_posts AS p ON pm.meta_value=p.ID 
@@ -40,23 +41,26 @@ class FilmBundle_ExternalBlog
                   ORDER BY p.post_date DESC 
                   LIMIT 15";
         $thumbnail = $this->database->get_row($query);
-        // if (is_null($thumbnail)) {
-        //     return false;
-        // }
-        var_dump($thumbnail);
-        // var_dump($thumbnail->guid);
-        // var_dump(dirname($thumbnail->guid));
+        if (is_null($thumbnail)) {
+            return false;
+        }
         $path = dirname($thumbnail->guid);
 
+        // Get the metadata for the featued image
         $query = "SELECT *
                   FROM wp_postmeta
                   WHERE post_id = $thumbnail->ID
                   AND meta_key = '_wp_attachment_metadata'";
 
-        $thumbnail_meta = $this->database->get_row($query);
-        $thumbnail_meta = $thumbnail_meta->meta_value;
-        $thumbnail_meta = unserialize($thumbnail_meta);
-        var_dump($thumbnail_meta);
+        $meta = $this->database->get_row($query);
+        $meta = unserialize($meta->meta_value);
+        if (!isset($meta['sizes']['thumbnail'])) {
+            return false;
+        } 
+
+        // Get the url to the thumbnail
+        $file = $meta['sizes']['thumbnail']['file'];
+        $url =  "{$path}/{$file}";
 
         // Get the alt attribute
         $query = "SELECT *
@@ -66,16 +70,11 @@ class FilmBundle_ExternalBlog
         $alt = $this->database->get_row($query);
         $alt = is_null($alt) ? '' : $alt->meta_value;
 
-
-
-        // var_dump($thumbnail_meta['sizes']['thumbnail']['file']);
-        $file = $thumbnail_meta['sizes']['thumbnail']['file'];
-
-        $url =  "{$path}/{$file}";
+        // Build array to return
         $thumbnail = array(
             'url'    => $url,
-            'width'  => $thumbnail_meta['sizes']['thumbnail']['width'],
-            'height' => $thumbnail_meta['sizes']['thumbnail']['height'],
+            'width'  => $meta['sizes']['thumbnail']['width'],
+            'height' => $meta['sizes']['thumbnail']['height'],
             'alt'    => $alt
         );
         return $thumbnail;
