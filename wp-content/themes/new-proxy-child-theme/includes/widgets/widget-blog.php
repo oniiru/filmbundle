@@ -124,6 +124,23 @@ class stag_section_blog extends WP_Widget{
                         ?>
                         <div class="entry-content">
                             <?php 
+
+                            $query = "SELECT p.*
+                                      FROM wp_postmeta AS pm
+                                      INNER JOIN wp_posts AS p ON pm.meta_value=p.ID 
+                                      WHERE pm.post_id = $post->ID
+                                      AND pm.meta_key = '_thumbnail_id' 
+                                      ORDER BY p.post_date DESC 
+                                      LIMIT 15";
+
+                            $featured_image = $wpdb_ext->get_results(
+                                $query,
+                                'ARRAY_A'
+                            );
+
+                            var_dump($featured_image);
+
+
                             // if(has_post_thumbnail()):
                             //    <a href="echo home_url('blog/'.$post->post_name); ">the_post_thumbnail();</a>
                             // endif;
