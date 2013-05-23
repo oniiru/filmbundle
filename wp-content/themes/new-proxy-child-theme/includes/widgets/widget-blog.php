@@ -59,6 +59,7 @@ class FilmBundle_ExternalBlog
         var_dump($thumbnail_meta);
 
         // _wp_attachment_image_alt
+        $alt = 'aa';
 
         // var_dump($thumbnail_meta['sizes']['thumbnail']['file']);
         $file = $thumbnail_meta['sizes']['thumbnail']['file'];
@@ -68,6 +69,7 @@ class FilmBundle_ExternalBlog
             'url'    => $url,
             'width'  => $thumbnail_meta['sizes']['thumbnail']['width'],
             'height' => $thumbnail_meta['sizes']['thumbnail']['height'],
+            'alt'    => $alt
         );
         return $thumbnail;
     }
@@ -210,8 +212,7 @@ class stag_section_blog extends WP_Widget{
                             var_dump($tn);
 
                             if ($tn) {
-// <img width="160" height="160" src="http://www.artstorm.net/wp-content/uploads/2012/03/lscript-textastic-ipad-160x160.jpg" class="attachment-thumbnail wp-post-image" alt="LScript on the iPad in Textastic" />
-                                echo "<img src='{$tn['url']}' width='{$tn['width']}' height='{$tn['height']}' class='attachment-thumbnail wp-post-image' />";
+                                echo "<img src='{$tn['url']}' width='{$tn['width']}' height='{$tn['height']}' class='attachment-thumbnail wp-post-image' alt='{$tn['alt']}' />";
                                 // <a href="echo home_url('blog/'.$post->post_name); "><img src=""</a>
                             }
                             echo wp_trim_words($post->post_content, 55, ' ...');
