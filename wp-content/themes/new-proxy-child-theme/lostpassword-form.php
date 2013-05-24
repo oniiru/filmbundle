@@ -10,7 +10,7 @@ Theme My Login will always look in your theme's directory first, before using th
 		<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/smallerlogo.png" class="smallerlogo">
    
 </div>	
-<div class="login loginbox" id="theme-my-login<?php $template->the_instance(); ?>">
+<div class="login loginbox lp" id="theme-my-login<?php $template->the_instance(); ?>">
 	<?php $template->the_action_template_message( 'lostpassword' ); ?>
 	<?php $template->the_errors(); ?>
 	<form name="lostpasswordform" id="lostpasswordform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'lostpassword' ); ?>" method="post">
