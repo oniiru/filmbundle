@@ -1,5 +1,96 @@
 <?php
-add_action('widgets_init', create_function('', 'return register_widget("stag_section_blog");'));
+class FilmBundle_ExternalBlog
+{
+    private static $instance = false;
+    private static $database = false;
+
+    public static function getInstance()
+    {
+        if (!self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    private function __construct() {}
+
+    public function database($user, $password, $name, $host)
+    {
+        $this->database = new wpdb($user, $password, $name, $host);
+    }
+
+    public function featuredPost()
+    {
+        $query = "SELECT ID, post_title, post_date, post_name, post_content FROM wp_posts
+                  WHERE post_status = 'publish'
+                  AND post_type = 'post'
+                  ORDER BY post_date DESC 
+                  LIMIT 1";
+        $post = $this->database->get_row($query, OBJECT);
+        return $post;
+    }
+
+    public function thumbnail($id)
+    {
+        // Get the featured image
+        $query = "SELECT p.*
+                  FROM wp_postmeta AS pm
+                  INNER JOIN wp_posts AS p ON pm.meta_value=p.ID 
+                  WHERE pm.post_id = $id
+                  AND pm.meta_key = '_thumbnail_id' 
+                  ORDER BY p.post_date DESC 
+                  LIMIT 15";
+        $thumbnail = $this->database->get_row($query);
+        if (is_null($thumbnail)) {
+            return false;
+        }
+        $path = dirname($thumbnail->guid);
+
+        // Get the metadata for the featued image
+        $query = "SELECT *
+                  FROM wp_postmeta
+                  WHERE post_id = $thumbnail->ID
+                  AND meta_key = '_wp_attachment_metadata'";
+
+        $meta = $this->database->get_row($query);
+        $meta = unserialize($meta->meta_value);
+        if (!isset($meta['sizes']['thumbnail'])) {
+            return false;
+        } 
+
+        // Get the url to the thumbnail
+        $file = $meta['sizes']['thumbnail']['file'];
+        $url =  "{$path}/{$file}";
+
+        // Get the alt attribute
+        $query = "SELECT *
+                  FROM wp_postmeta
+                  WHERE post_id = $thumbnail->ID
+                  AND meta_key = '_wp_attachment_image_alt'";
+        $alt = $this->database->get_row($query);
+        $alt = is_null($alt) ? '' : $alt->meta_value;
+
+        // Build array to return
+        $thumbnail = array(
+            'url'    => $url,
+            'width'  => $meta['sizes']['thumbnail']['width'],
+            'height' => $meta['sizes']['thumbnail']['height'],
+            'alt'    => $alt
+        );
+        return $thumbnail;
+    }
+
+    public function allPosts()
+    {
+        $query = "SELECT ID, post_title, post_date, post_name FROM wp_posts
+                  WHERE post_status = 'publish'
+                  AND post_type = 'post'
+                  ORDER BY post_date DESC 
+                  LIMIT 1, 999";
+        $posts = $this->database->get_results($query, OBJECT);
+        return $posts;
+    }
+}
 
 class stag_section_blog extends WP_Widget{
   function stag_section_blog(){
@@ -106,29 +197,32 @@ class stag_section_blog extends WP_Widget{
                 $s = get_option( 'sticky_posts' );
                 $d_c= '';
 
-                $wpdb_ext = new wpdb($instance['db_user'], $instance['db_password'], $instance['db_name'], $instance['db_host']);
-
+                $ext = FilmBundle_ExternalBlog::getInstance();
+                $ext->database(
+                    $instance['db_user'],
+                    $instance['db_password'],
+                    $instance['db_name'],
+                    $instance['db_host']
+                );
                 ?>
                 <div class="grids">
                     <div class="grid-6 featured-post">
                         <?php
-                        $query = "SELECT ID, post_title, post_date, post_name, post_content FROM wp_posts
-                                  WHERE post_status = 'publish'
-                                  AND post_type = 'post'
-                                  ORDER BY post_date DESC 
-                                  LIMIT 1";
-                        $post = $wpdb_ext->get_row($query, OBJECT);
-
+                        $post = $ext->featuredPost();
+                        $post_url = home_url('blog/'.$post->post_name.'/');
                         echo '<p class="pubdate">'.date('F d Y', strtotime($post->post_date)).'</p>';
-                        echo "<h2><a href='".home_url('blog/'.$post->post_name)."/' title=\"{$post->post_title}\">{$post->post_title}</a></h2>";
+                        echo "<h2><a href=\"{$post_url}\" title=\"{$post->post_title}\">{$post->post_title}</a></h2>";
                         ?>
                         <div class="entry-content">
-                            <?php 
-                            echo $post->post_content;
-                            // if(has_post_thumbnail()):
-                            //    <a href="echo home_url('blog/'.$post->post_name); ">the_post_thumbnail();</a>
-                            // endif;
-                            echo wp_trim_words($post->post_content);
+                            <?php
+                            $tn = $ext->thumbnail($post->ID);
+                            if ($tn) {
+                                echo "<a href='{$post_url}'>";
+                                echo "<img src='{$tn['url']}' width='{$tn['width']}' height='{$tn['height']}' class='attachment-thumbnail wp-post-image' alt='{$tn['alt']}' />";
+                                echo "</a>";
+                            }
+                            echo wp_trim_words($post->post_content, 35, '... ');
+							echo "<a class='readmore' href='{$post_url}'>Read More</a>";
                             ?>
                         </div>
                     </div><!-- /featured-post -->
@@ -138,12 +232,7 @@ class stag_section_blog extends WP_Widget{
                         <div id="blog-post-slider" class="flexslider">
                             <ul class="slides">
                                 <?php
-                                $query = "SELECT ID, post_title, post_date, post_name FROM wp_posts
-                                          WHERE post_status = 'publish'
-                                          AND post_type = 'post'
-                                          ORDER BY post_date DESC 
-                                          LIMIT 1, 999";
-                                $posts = $wpdb_ext->get_results($query, OBJECT);
+                                $posts = $ext->allPosts();
                                 $start = 3;
                                 $finish = 1;
 
@@ -172,3 +261,4 @@ class stag_section_blog extends WP_Widget{
         echo $after_widget;
     }
 }
+add_action('widgets_init', create_function('', 'return register_widget("stag_section_blog");'));
