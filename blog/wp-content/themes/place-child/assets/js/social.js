@@ -30,7 +30,11 @@ function handleSocialWin(url, title)
 	    	hideSocialModal();
         }
     );
-        
+
+    // -----
+    // Slide
+    // -----
+     
     $(window).scroll(function (){
 		var pos = $(window).scrollTop();
 		if (pos > 0) {
@@ -40,6 +44,18 @@ function handleSocialWin(url, title)
 			hideSocialSlide();
 		}
     });
+
+    $('#closeSocialSlide').click(
+        function() {
+	    	$('.socialSlideWrap').hide();
+        }
+    );
+
+    $('#disableSocialSlide').click(
+        function() {
+	    	disableSocialSlide();
+        }
+    );
 })(jQuery);
 
 function showSocialModal()
@@ -82,6 +98,10 @@ function disableSocialModal()
 
 function showSocialSlide()
 {
+	if (readCookie('socialSlide') == 'disabled') {
+		return;
+	}
+
 	$('.socialSlideWrap').stop(true, false);
     $('.socialSlideWrap').animate({ 
         	right: "0px",
@@ -99,6 +119,13 @@ function hideSocialSlide()
         'slow'
     );
 }
+
+function disableSocialSlide()
+{
+	createCookie('socialSlide', 'disabled', 30);
+	$('.socialSlideWrap').hide();
+}
+
 
 function createCookie(name,value,days) {
 	if (days) {
