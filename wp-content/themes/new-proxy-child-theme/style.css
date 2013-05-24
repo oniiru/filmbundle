@@ -24,7 +24,7 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 #primary-nav {
 	margin-top:2px;
 }
-.login p.message {
+#login p.message, #login p.error, .loginformtitle {
 	padding: 5px;
 	line-height: 1.2em;
 	position: relative;
@@ -32,10 +32,21 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 	font-size: 14px;
 	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
 	position: relative;
-	background: rgb(250, 103, 57);
 	color:white;
 	border:none;
+
 }
+#login p.message, #login p.error {
+	text-align:center;
+	background:black;
+}
+
+#login .lp p.message, .loginformtitle {
+	background: rgb(250, 103, 57);
+	text-align:left;
+	
+}
+
 .logintopbar {
 	display:block;
 	border-radius:5px 5px 0 0 ;
@@ -133,8 +144,8 @@ li {
 	margin: 0 0 10px;
 }
 .entry-content p {
-margin-bottom: 9px !important;
-margin-top:0px !important;
+margin-bottom: 9px;
+margin-top:0px;
 }
 
 .slides li {
@@ -803,7 +814,7 @@ a.hiddenanchor{
 #loginbody #wrapper, #loginbody #wrapper2{
 	width: 654px;
 	right: 0px;
-	min-height: 560px;
+	min-height: 500px;
 	margin: 0px 0 40px auto;
 	position: relative;
 }
@@ -819,7 +830,16 @@ textarea:-moz-placeholder{
 	font-style: italic;
 } 
 
+.entry-content {
+	font-size:18px;
+}
 
+#blog a.readmore {
+	color:#1c93c5;
+}
+#blog .all-posts {
+	margin-top:16px;
+}
 .logintitle {
 	float:right;
 	margin-right:12%;
@@ -893,6 +913,40 @@ p.alreadymember {
 	font-size: 12px;
 	font-style: italic;
 }
+
+.twoforms {
+	display:block;
+	overflow:hidden;
+}
+
+p.loginformtitle {
+	margin-top:15px;
+}
+
+.threepoints {
+	overflow:hidden;
+	padding-left:25px;
+	padding-top:20px;
+}
+
+.threepoints p {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	line-height: 1.3em;
+	color: rgb(48, 48, 48);
+	}
+
+
+.threepoints h3{
+	color: rgb(97, 97, 97);
+	margin-bottom:12px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:600;
+	text-transform:uppercase;
+	
+	
+}
+
 #toregister:target ~ #wrapper #register,
 #tologin:target ~ #wrapper #login{
 	z-index: 22;
@@ -973,10 +1027,7 @@ p.alreadymember {
 	animation-fill-mode: both;
 }
 
-.loginformtitle {
-	padding-left:10px;
-	margin-bottom:0px !important;
-}
+
 /**
  * Make the register / login forms responsive
  */

@@ -9,15 +9,14 @@ Theme My Login will always look in your theme's directory first, before using th
    
    <div id="wrapper2" >
 	   <div id="register" class="animate form ">
-	   	<div class="logintopbar">
 	   		<div class="logintopbar">
 	   			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/smallerlogo.png" class="smallerlogo">
 	      	<a id="to-login" href="#tologin" class="stag-button small light-blue square to_register"> Login</a><p class="alreadymember"> Already a member?</p>
 		
 	   	</div>
-		<p class="loginformtitle" style="margin-bottom:50px !important">blah</p>
+		<p class="loginformtitle">Limited-time, curated bundles of amazing films without set prices. Membership is free.</p>
 		<?php $template->the_errors(); ?>
-	
+		<div class="twoforms">
 	   	<div class="login loginbox animate" id="theme-my-login<?php $template->the_instance(); ?>">
 	
 	   		<form name="registerform" id="registerform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'register' ); ?>" method="post">
@@ -53,8 +52,25 @@ Theme My Login will always look in your theme's directory first, before using th
 			 <span>or</span>
 			 
 	   	 </div>
-		 
-	   	 </div>
+	 </div>
+		<div class="threepoints"> 
+			<div class="stag-one-third">
+				<h3>Curated Discovery</h3>
+				<p>Your favorite filmmakers and organization share films that matter to them.</p>
+			</div>
+			<div class="stag-one-third">
+				<h3>Pay What You Want</h3>
+				<p>You are in control. Pay what the films are worth to you. </p>
+			</div>
+			<div class="stag-one-third stag-column-last">
+				<h3>Support Charity</h3>
+				<p>Give some or all of your payment to charity.</p>
+				
+			</div>
+		
+		
+		</div>
+		
 	 </div>
 <div id="login" class="animate form">
 	<div class="logintopbar">
