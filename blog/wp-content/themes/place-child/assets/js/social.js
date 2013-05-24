@@ -49,7 +49,7 @@ function showSocialModal()
 function hideSocialModal()
 {
     $('.socialModalVerticalOffset').animate({ 
-        	top: "0",
+        	top: "0%",
         },
         'slow'
     );
