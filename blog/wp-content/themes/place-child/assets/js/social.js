@@ -82,8 +82,8 @@ function disableSocialModal()
 
 function showSocialSlide()
 {
-	$('.socialSlideVerticalOffset').stop(true, false);
-    $('.socialSlideVerticalOffset').animate({ 
+	$('.socialSlideWrap').stop(true, false);
+    $('.socialSlideWrap').animate({ 
         	right: "0px",
         },
         'slow'
@@ -92,9 +92,9 @@ function showSocialSlide()
 
 function hideSocialSlide()
 {
-	$('.socialSlideVerticalOffset').stop(true, false);
-    $('.socialSlideVerticalOffset').animate({
-        	right: "-500px",
+	$('.socialSlideWrap').stop(true, false);
+    $('.socialSlideWrap').animate({
+        	right: "-290px",
         },
         'slow'
     );

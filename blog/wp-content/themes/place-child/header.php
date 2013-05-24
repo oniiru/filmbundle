@@ -58,11 +58,11 @@
 	    </div>
 	</div>
 	<div class="socialSlideWrap">
-	    <div class="socialSlideVerticalOffset">
-	        <div class="socialSlideBox">
-	        	content goes here.
-	        </div>
-	    </div>
+        <div class="socialSlideBox">
+        	<div class="socialSlideClose"><a id="disableSocialSlide">Don't show again</a> | <a id="closeSocialSlide">Close</a></div>
+        	<span class="socialSlideText">Like us on Facebook?</span>
+			<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-send="false" data-width="200" data-show-faces="false"></div>
+        </div>
 	</div>
 
 	<?php endif; ?>

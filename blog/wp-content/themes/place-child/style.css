@@ -398,20 +398,39 @@ background-color: #F64E17;
  * CSS for the social slide
  */
 .socialSlideWrap {
-/*    display: none;*/
-    z-index: 39001;
-}
-.socialSlideVerticalOffset {
     position: fixed;
     bottom: 10%;
-    width: 500px;
-    right: -500px;
-    z-index: 39002;
+    width: 290px;
+    right: -290px;
+    z-index: 39000;
 }
 .socialSlideBox {
     position: relative;
-    background: white;
+    background: #eee;
     padding: 0;
-    height: 200px;
-    border: 1px solid black;
+    height: 170px;
 }
+.socialSlideClose {
+	background-color: #333;
+	padding: 6px;
+	text-align: right;
+}
+.socialSlideClose a {
+	cursor: pointer;
+	color: white;
+}
+.socialSlideText {
+	font-size: 24px;
+	text-align: center;
+	display: block;
+	padding: 10px 0;
+}
+.socialSlideBox .fb-like {
+	display: block;
+	background: none;
+	vertical-align: middle;
+	padding: 10px;
+	text-align: center;
+	margin: 0 auto;
+}
+
