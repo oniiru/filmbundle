@@ -328,7 +328,7 @@ background-color: #F64E17;
 }
 .socialModalVerticalOffset {
     position: fixed;
-    top: 30%;
+    top: 0;
     width: 100%;
     z-index: 40002;
 }

@@ -13,12 +13,9 @@ function handleSocialWin(url, title)
 
 (function($)
 {
-    //Hide modal box
     $('#closeModal').click(
         function() {
 	    	hideSocialModal();
-		    // // $('.socialModalWrap').fadeTo('slow', 0);
-      //   	$('.socialModalWrap').hide();
         }
     );
 
@@ -28,7 +25,7 @@ function handleSocialWin(url, title)
         }
     );
         
-    $(window).scroll(function () {
+    $(window).scroll(function (){
         // Outputs current scroll position
         console.log($(window).scrollTop());
     });
@@ -42,9 +39,22 @@ function showSocialModal()
 
     $('.socialModalOverlay').fadeIn('slow');
     $('.socialModalBox').fadeIn('slow');
+    $('.socialModalVerticalOffset').animate({ 
+        	top: "30%",
+        },
+        'slow'
+    );
 }
 
 function hideSocialModal()
 {
-	$('.socialModalWrap').hide();
+    $('.socialModalVerticalOffset').animate({ 
+        	top: "0",
+        },
+        'slow'
+    );
+    $('.socialModalOverlay').fadeOut('slow');
+    $('.socialModalBox').fadeOut('slow', function() {
+		$('.socialModalWrap').hide();
+    });
 }
