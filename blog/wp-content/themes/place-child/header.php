@@ -57,6 +57,14 @@
 	        </div>
 	    </div>
 	</div>
+	<div class="socialSlideWrap">
+	    <div class="socialSlideVerticalOffset">
+	        <div class="socialSlideBox">
+	        	content goes here.
+	        </div>
+	    </div>
+	</div>
+
 	<?php endif; ?>
 	<!-- End: The modal dialog for additional social features -->
 

@@ -394,3 +394,24 @@ background-color: #F64E17;
 	cursor: pointer;
 }
 
+/**
+ * CSS for the social slide
+ */
+.socialSlideWrap {
+/*    display: none;*/
+    z-index: 39001;
+}
+.socialSlideVerticalOffset {
+    position: fixed;
+    bottom: 10%;
+    width: 500px;
+    right: -500px;
+    z-index: 39002;
+}
+.socialSlideBox {
+    position: relative;
+    background: white;
+    padding: 0;
+    height: 200px;
+    border: 1px solid black;
+}
