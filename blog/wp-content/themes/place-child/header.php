@@ -50,7 +50,7 @@
 		        	<div class="socialModalContentInner">
 		        		<span class="socialModalThanks">Thanks for Sharing!</span>
 		        		<span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
-						<div class="fb-like" data-href="<?php echo get_permalink(); ?>" data-layout="button_count" data-show-faces="false"></div>
+						<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
 					</div>
 					<span class="socialModalDisable">Already like us? <a id="disableModal">Don't show this again</a></span>
 	        	</div>
