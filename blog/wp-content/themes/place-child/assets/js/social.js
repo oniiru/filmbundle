@@ -1,6 +1,6 @@
-function handleSocialWin()
+function handleSocialWin(url, title)
 {
-    var win = window.open('http://www.google.com', 'google','width=800,height=600,status=0,toolbar=0');
+    var win = window.open(url, title,'width=600,height=350,status=0,toolbar=0');
     var timer = setInterval(function() {
         if(win.closed) {
             clearInterval(timer);
