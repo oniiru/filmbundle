@@ -29,32 +29,6 @@
                 
             <?php } // if(video_embed) ;?>  
 
-<script language='javascript'>
-function handleSocialWin()
-{
-    var win = window.open('http://www.google.com', 'google','width=800,height=600,status=0,toolbar=0');
-    var timer = setInterval(function() {
-        if(win.closed) {
-            clearInterval(timer);
-            // alert('closed');
-            $('.socialModalWrap').show();
-
-        }
-    }, 1000);
-}
-(function($) {
-    //Hide modal box
-    $('#closeModal').click(
-        function() {$('.socialModalWrap').hide();}
-    );
-        
-    $(window).scroll(function () {
-        // Outputs current scroll position
-        console.log($(window).scrollTop());
-    });
-})(jQuery);
-
-</script>
             <div class="social_share <?php echo $title_top_class ;?>">
                 <a class="zocial facebook" href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php the_title(); ?>&amp;p[summary]=<?php the_excerpt_rss(); ?>&amp;p[url]=<?php the_permalink() ?>" onclick="return !window.open(this.href, 'Facebook', 'width=600,height=350')" target="_blank">Share on Facebook</a>
 
