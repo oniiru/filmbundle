@@ -99,3 +99,59 @@ function readCookie(name) {
 function eraseCookie(name) {
 	createCookie(name,"",-1);
 }
+
+function onPlayerReady(event) {
+  var embedCode = event.target.getVideoEmbedCode();
+  event.target.playVideo();
+  if (document.getElementById('embed-code')) {
+    document.getElementById('embed-code').innerHTML = embedCode;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Vimeo API
+// http://developer.vimeo.com/player/js-api
+// -----------------------------------------------------------------------------
+var f = $('iframe'),
+    url = f.attr('src').split('?')[0];
+
+// Listen for messages from the player
+if (window.addEventListener){
+    window.addEventListener('message', onMessageReceived, false);
+}
+else {
+    window.attachEvent('onmessage', onMessageReceived, false);
+}
+
+// Handle messages received from the player
+function onMessageReceived(e) {
+    var data = JSON.parse(e.data);
+    
+    switch (data.event) {
+        case 'ready':
+            onReady();
+            break;
+        case 'finish':
+            onFinish();
+            break;
+    }
+}
+
+// Helper function for sending a message to the player
+function post(action, value) {
+    var data = { method: action };
+    
+    if (value) {
+        data.value = value;
+    }
+    
+    f[0].contentWindow.postMessage(JSON.stringify(data), url);
+}
+
+function onReady() {
+    post('addEventListener', 'finish');
+}
+
+function onFinish() {
+	showSocialModal();
+}
