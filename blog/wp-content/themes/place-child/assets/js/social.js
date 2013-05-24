@@ -5,17 +5,20 @@ function handleSocialWin(url, title)
         if(win.closed) {
             clearInterval(timer);
             // alert('closed');
-            $('.socialModalWrap').show();
+			showSocialModal();
         }
     }, 1000);
     return win;
 }
 
-
-(function($) {
+(function($)
+{
     //Hide modal box
     $('#closeModal').click(
-        function() {$('.socialModalWrap').hide();}
+        function() {
+		    // $('.socialModalWrap').fadeTo('slow', 0);
+        	$('.socialModalWrap').hide();
+        }
     );
         
     $(window).scroll(function () {
@@ -23,3 +26,12 @@ function handleSocialWin(url, title)
         console.log($(window).scrollTop());
     });
 })(jQuery);
+
+function showSocialModal()
+{
+    $('.socialModalWrap').show();
+    $('.socialModalOverlay').hide();
+    $('.socialModalBox').hide();
+    $('.socialModalOverlay').fadeIn('slow');
+    $('.socialModalBox').fadeIn('slow');
+}
