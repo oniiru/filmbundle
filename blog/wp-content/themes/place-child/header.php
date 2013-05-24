@@ -29,6 +29,22 @@
 	mixpanel.init("ebcb577c9f9a1c1e95f19b57aab2071e");</script><!-- end Mixpanel -->
 </head>
 <body <?php body_class(''); ?>>
+	<!-- Start: The modal dialog for additional social features -->
+	<?php if (is_singular()): ?>
+	<div class="socialModalWrap">
+	    <div class="socialModalOverlay">
+	        &nbsp;
+	    </div>
+	    <div class="socialModalVerticalOffset">
+	        <div class="socialModalBox">
+	            Content goes here
+	            <a id="closeModal">Close</a>
+	        </div>
+	    </div>
+	</div>
+	<?php endif; ?>
+	<!-- End: The modal dialog for additional social features -->
+
 	<div id="header">
 		<div class="container clearfix">
 			<h1 id="logo"><?php if($pl_data['custom_logo']!='') {?><a href="<?php echo home_url();?>" title="<?php bloginfo('name');?>"><img src="<?php echo trim($pl_data['custom_logo']);?>" alt="<?php bloginfo('name');?>" /></a><?php }?></h1>
