@@ -16,8 +16,15 @@ function handleSocialWin(url, title)
     //Hide modal box
     $('#closeModal').click(
         function() {
-		    // $('.socialModalWrap').fadeTo('slow', 0);
-        	$('.socialModalWrap').hide();
+	    	hideSocialModal();
+		    // // $('.socialModalWrap').fadeTo('slow', 0);
+      //   	$('.socialModalWrap').hide();
+        }
+    );
+
+    $('.socialModalOverlay').click(
+        function() {
+	    	hideSocialModal();
         }
     );
         
@@ -32,6 +39,12 @@ function showSocialModal()
     $('.socialModalWrap').show();
     $('.socialModalOverlay').hide();
     $('.socialModalBox').hide();
+
     $('.socialModalOverlay').fadeIn('slow');
     $('.socialModalBox').fadeIn('slow');
+}
+
+function hideSocialModal()
+{
+	$('.socialModalWrap').hide();
 }
