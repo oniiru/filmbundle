@@ -9,6 +9,9 @@ Template:       proxy
 
 @import url("../proxy/style.css");
 
+
+input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea { background: #f8f8f8; width: 100%; padding: 15px 20px; font-size: 14px; border: 1px solid rgb(180, 180, 180); -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
+
 #header {
 	padding:10px 0;
 }
@@ -21,6 +24,28 @@ Template:       proxy
 #primary-nav {
 	margin-top:2px;
 }
+#login p.message, #login p.error, .loginformtitle {
+	padding: 5px;
+	line-height: 1.2em;
+	position: relative;
+	behavior: url(PIE.php);
+	font-size: 14px;
+	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	position: relative;
+	color:white;
+	border:none;
+
+}
+#login p.message, #login p.error {
+	text-align:center;
+	background:black;
+}
+
+#login .lp p.message, .loginformtitle {
+	background: rgb(250, 103, 57);
+	text-align:left;
+	
+}
 
 .logintopbar {
 	display:block;
@@ -29,11 +54,35 @@ Template:       proxy
 	border-bottom:1px dashed #ddd;
 }
 
+.socialloginstuff span {
+text-align: center;
+text-transform: uppercase;
+font-weight: normal !important;
+-webkit-font-smoothing: antialiased;
+width: 14%;
+float: right;
+}
+
+.socialloginstuff span:before, .socialloginstuff span:after {
+content: "";
+width: 1px;
+height: 3.5em;
+margin: 1em auto;
+background: #636262;
+display: block;
+}
+
+#login .socialloginstuff span:before, #login .socialloginstuff span:after {
+	height:2.5em;
+}
+
+
+
 #to-register, #to-login {
 	margin-top:11px !important;
 }
 .login {
-	margin: 0px 2%;
+	margin: 0px 15px;
 }
 .translucent-modal {
 background: #333;
@@ -49,7 +98,13 @@ display: inline-block;
 }
 .socialloginstuff {
 	float:left;
+	width:55%;
 }
+
+#login .socialloginstuff {
+	width:50%;
+}
+
 #csp3-email, #csp3-fname, #csp3-lname {
 font-size: 18px;
 height: 39px !important;
@@ -89,8 +144,8 @@ li {
 	margin: 0 0 10px;
 }
 .entry-content p {
-margin-bottom: 9px !important;
-margin-top:0px !important;
+margin-bottom: 9px;
+margin-top:0px;
 }
 
 .slides li {
@@ -128,6 +183,8 @@ ul.tml-action-links li {
 	list-style-type:none;
 	font-size: 12px;
 	margin-top: 3px;
+	display: inline-block;
+	margin-right: 20px;
 }
 
 #registerform p, #loginform p {
@@ -757,7 +814,7 @@ a.hiddenanchor{
 #loginbody #wrapper, #loginbody #wrapper2{
 	width: 654px;
 	right: 0px;
-	min-height: 560px;
+	min-height: 500px;
 	margin: 0px 0 40px auto;
 	position: relative;
 }
@@ -773,7 +830,16 @@ textarea:-moz-placeholder{
 	font-style: italic;
 } 
 
+.entry-content {
+	font-size:18px;
+}
 
+#blog a.readmore {
+	color:#1c93c5;
+}
+#blog .all-posts {
+	margin-top:16px;
+}
 .logintitle {
 	float:right;
 	margin-right:12%;
@@ -781,6 +847,17 @@ textarea:-moz-placeholder{
 	color:white;
 	font-family: 'Amatic SC' sans-serif;
 	font-size:35px;
+	
+}
+
+.loginsubtitle {
+	color:black;
+	margin:10px 0px !important;
+	font-family: 'Amatic SC' sans-serif;
+	font-size:35px;
+	width:100%;
+	text-align:center;
+	
 	
 }
 .smallerlogo {
@@ -799,7 +876,7 @@ margin-top:7px !important;}
 #login{
 	position: absolute;
 	top: 0px;
-	width: 80%;	
+	width: 100%;	
 	padding: 0px 0% 10px 0%;
 	margin: 0 0 35px 0;
 	background: rgb(247, 247, 247);
@@ -810,10 +887,22 @@ margin-top:7px !important;}
 	-moz-border-radius: 5px;
 		 border-radius: 5px;
 }
+
+#login {
+	width:90%;
+}
 #wrapper #register{	
 	z-index: 21;
 	opacity: 0;
 }
+
+#wp-social-login-connect-options {
+	display:inline-block;
+	padding:10px 20px !important;
+}
+
+
+
 #wrapper #login{
 	z-index: 22;
 }
@@ -824,6 +913,40 @@ p.alreadymember {
 	font-size: 12px;
 	font-style: italic;
 }
+
+.twoforms {
+	display:block;
+	overflow:hidden;
+}
+
+p.loginformtitle {
+	margin-top:15px;
+}
+
+.threepoints {
+	overflow:hidden;
+	padding-left:25px;
+	padding-top:20px;
+}
+
+.threepoints p {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	line-height: 1.3em;
+	color: rgb(48, 48, 48);
+	}
+
+
+.threepoints h3{
+	color: rgb(97, 97, 97);
+	margin-bottom:12px;
+	font-family: 'Open Sans', sans-serif;
+	font-weight:600;
+	text-transform:uppercase;
+	
+	
+}
+
 #toregister:target ~ #wrapper #register,
 #tologin:target ~ #wrapper #login{
 	z-index: 22;
@@ -904,10 +1027,7 @@ p.alreadymember {
 	animation-fill-mode: both;
 }
 
-.loginformtitle {
-	padding-left:10px;
-	margin-bottom:0px !important;
-}
+
 /**
  * Make the register / login forms responsive
  */
