@@ -33,14 +33,12 @@ function handleSocialWin(url, title)
         
     $(window).scroll(function (){
 		var pos = $(window).scrollTop();
-		if (pos > 9) {
+		if (pos > 0) {
 			showSocialSlide();
 		}
-		if (pos < 10) {
-			console.log('here');
+		if (pos < 1) {
 			hideSocialSlide();
 		}
-		console.log(pos);
     });
 })(jQuery);
 
