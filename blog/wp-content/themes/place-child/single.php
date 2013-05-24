@@ -35,6 +35,9 @@
                     $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode(get_the_title())."&amp;p[summary]=".urlencode(get_the_excerpt())."&amp;p[url]=".get_permalink();
                     $twitter_share = "https://twitter.com/share?url=".get_permalink()."&amp;text=".urlencode("This is awesome - ".get_the_title());
                 ?>
+                <a class="zocial facebook" onclick="showSocialModal();" target="_blank">Invoke Modal</a>
+
+
                 <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
 
                 <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
