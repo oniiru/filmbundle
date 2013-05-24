@@ -36,11 +36,18 @@ function handleSocialWin()
     var timer = setInterval(function() {
         if(win.closed) {
             clearInterval(timer);
-            alert('closed');
+            // alert('closed');
+            $('.socialModalWrap').show();
+
         }
     }, 1000);
 }
 (function($) {
+    //Hide modal box
+    $('#closeModal').click(
+        function() {$('.socialModalWrap').hide();}
+    );
+        
     $(window).scroll(function () {
         // Outputs current scroll position
         console.log($(window).scrollTop());
