@@ -8,6 +8,7 @@ function handleSocialWin(url, title)
             $('.socialModalWrap').show();
         }
     }, 1000);
+    return win;
 }
 
 

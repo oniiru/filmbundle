@@ -30,11 +30,14 @@
             <?php } // if(video_embed) ;?>  
 
             <div class="social_share <?php echo $title_top_class ;?>">
-                <a class="zocial facebook" href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php the_title(); ?>&amp;p[summary]=<?php the_excerpt_rss(); ?>&amp;p[url]=<?php the_permalink() ?>" onclick="return !window.open(this.href, 'Facebook', 'width=600,height=350')" target="_blank">Share on Facebook</a>
+                <?php
+                    // Setup share urls
+                    $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode(get_the_title())."&amp;p[summary]=".urlencode(get_the_excerpt())."&amp;p[url]=".get_permalink();
+                    $twitter_share = "https://twitter.com/share?url=".get_permalink()."&amp;text=".urlencode("This is awesome - ".get_the_title());
+                ?>
+                <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
 
-                <a class="zocial twitter" hreaf="https://twitter.com/share?url=<?php the_permalink() ?>&amp;text=This is awesome - <?php the_title(); ?>" onclick="handleSocialWin();" target="_blank">Share on Twitter</a>
-
-                <a class="zocial twitter" href="https://twitter.com/share?url=<?php the_permalink() ?>&amp;text=This is awesome - <?php the_title(); ?>" onclick="var new_window; return new_window = !window.open(this.href, 'Twitter', 'width=600,height=350'); new_window.onbeforeunload = function(){ alert('hej'); }" target="_blank">Share on Twitter</a>
+                <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
             </div>
             
             <div class="post_single_inner">
@@ -52,9 +55,9 @@
             <?php edit_post_link('Edit this entry','<p>','</p>'); ?>
             </div>
             <div style="text-align:center">
-                <a class="zocial facebook" href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php the_title(); ?>&amp;p[summary]=<?php the_excerpt_rss(); ?>&amp;p[url]=<?php the_permalink() ?>" onclick="return !window.open(this.href, 'Facebook', 'width=600,height=350')" target="_blank">Share on Facebook</a>
-                
-                <a class="zocial twitter" href="https://twitter.com/share?url=<?php the_permalink() ?>&amp;text=This is awesome - <?php the_title(); ?>" onclick="return !window.open(this.href, 'Twitter', 'width=600,height=350')" target="_blank">Share on Twitter</a>
+                <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
+
+                <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
                 
                 <a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img style="height:36px" src="http://www.reddit.com/static/spreddit14.gif" alt="submit to reddit" border="0" /> </a>
             </div>
