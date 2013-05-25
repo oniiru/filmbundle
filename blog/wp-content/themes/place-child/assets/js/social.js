@@ -1,5 +1,5 @@
 /* Change this value to decide how far to scroll before sliding out the box */
-var socialSlideVerticalThreshold = 0;
+var socialSlideVerticalThreshold = 750;
 
 function handleSocialWin(url, title)
 {
