@@ -1,3 +1,6 @@
+/* Change this value to decide how far to scroll before sliding out the box */
+var socialSlideVerticalThreshold = 0;
+
 function handleSocialWin(url, title)
 {
     var win = window.open(url, title,'width=600,height=350,status=0,toolbar=0');
@@ -38,10 +41,10 @@ function handleSocialWin(url, title)
     $(window).scroll(function (){
 		var pos = $(window).scrollTop();
         var win_width = $(window).width();
-		if (pos > 0 && win_width > 960) {
+		if (pos > socialSlideVerticalThreshold && win_width > 960) {
 			showSocialSlide();
 		}
-		if (pos < 1) {
+		if (pos < (socialSlideVerticalThreshold+1)) {
 			hideSocialSlide();
 		}
     });
