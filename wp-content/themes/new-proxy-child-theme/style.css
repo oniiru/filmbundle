@@ -812,7 +812,7 @@ a.hiddenanchor{
 /** The wrapper that will contain our two forms **/
 
 #loginbody #wrapper, #loginbody #wrapper2{
-	width: 654px;
+	width: 670px;
 	right: 0px;
 	min-height: 500px;
 	margin: 0px 0 40px auto;
@@ -934,6 +934,7 @@ p.loginformtitle {
 	font-weight: 300;
 	line-height: 1.3em;
 	color: rgb(48, 48, 48);
+	font-size:15px;
 	}
 
 
