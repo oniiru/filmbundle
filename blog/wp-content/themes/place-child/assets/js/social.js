@@ -37,7 +37,8 @@ function handleSocialWin(url, title)
      
     $(window).scroll(function (){
 		var pos = $(window).scrollTop();
-		if (pos > 0) {
+        var win_width = $(window).width();
+		if (pos > 0 && win_width > 960) {
 			showSocialSlide();
 		}
 		if (pos < 1) {
