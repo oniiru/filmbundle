@@ -7,7 +7,6 @@ function handleSocialWin(url, title)
     var timer = setInterval(function() {
         if(win.closed) {
             clearInterval(timer);
-            // alert('closed');
 			showSocialModal();
         }
     }, 1000);
