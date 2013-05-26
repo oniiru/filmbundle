@@ -39,13 +39,12 @@ class FilmBundleBlog_ThemeFunctions
             shortcode_atts(
                 array(
                     'id' => '',
-                    'api' => '',
                 ),
                 $atts
             )
         );
         $embed = "<iframe src=\"http://player.vimeo.com/video/{$id}?";
-        $embed .= ($api == true) ? "api=1&" : "";
+        $embed .= "api=1&";
         $embed .= "title=0&byline=0&portrait=0\" width=\"500\" height=\"281\"";
         $embed .= "frameborder=\"0\"";
         $embed .= "webkitAllowFullScreen mozallowfullscreen allowFullScreen>";
