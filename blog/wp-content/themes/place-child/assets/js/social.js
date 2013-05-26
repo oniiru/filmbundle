@@ -160,13 +160,14 @@ function eraseCookie(name) {
 // https://developers.google.com/youtube/iframe_api_reference
 // -----------------------------------------------------------------------------
 
-function onytplayerStateChange(newState) {
-   alert("Player's new state: " + newState);
+function onYTPlayerReady(event) {
+    // Handle race condition here?
 }
-function onYouTubePlayerReady(playerId) {
-  ytplayer = document.getElementById("post_video_wrapper");
-  // note: callback function defined EARLIER
-  ytplayer.addEventListener("onStateChange", onytplayerStateChange);
+
+function onYTPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.ENDED) {
+        showSocialModal();
+    }
 }
 
 // -----------------------------------------------------------------------------
