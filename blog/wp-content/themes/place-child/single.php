@@ -7,6 +7,7 @@
             $video_embed = get_post_meta($post->ID, 'pl_video_embed', true) ;
             if($video_embed!=''){
             $title_top_class = '';
+            // echo do_shortcode($video_embed);
             ?>
                 <div class="fit post_video_wrapper"><?php echo do_shortcode($video_embed); ?></div>
             <?php 

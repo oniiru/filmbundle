@@ -65,7 +65,7 @@ class FilmBundleBlog_ThemeFunctions
         );
 
         $embed = "
-            <div id=\"player\"></div>
+            <div id=\"player_{$id}\" class=\"fit post_video_wrapper\"></div>
             <script>
               // Load the IFrame Player API code asynchronously.
               var tag = document.createElement('script');
@@ -75,9 +75,9 @@ class FilmBundleBlog_ThemeFunctions
               firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
               // Create the iframe after the API code is downloaded.
-              var player;
+              var player_{$id};
               function onYouTubeIframeAPIReady() {
-                player = new YT.Player('player', {
+                player_{$id} = new YT.Player('player_{$id}', {
                   height: '315',
                   width: '500',
                   videoId: '{$id}',
@@ -107,7 +107,7 @@ class FilmBundleBlog_ThemeFunctions
         }
       }
       function stopVideo() {
-        player.stopVideo();
+        player_{$id}.stopVideo();
       }
 
             </script>
