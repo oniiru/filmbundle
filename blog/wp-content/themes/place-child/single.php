@@ -8,7 +8,7 @@
             if($video_embed!=''){
             $title_top_class = '';
             ?>
-                <div class="fit post_video_wrapper"><?php echo $video_embed;?></div>
+                <div class="fit post_video_wrapper"><?php echo do_shortcode($video_embed); ?></div>
             <?php 
             } else { 
                 $title_top_class = ' post_top_element';
