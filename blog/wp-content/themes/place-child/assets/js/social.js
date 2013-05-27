@@ -1,6 +1,10 @@
 /* Change this value to decide how far to scroll before sliding out the box */
 var socialSlideVerticalThreshold = 750;
 
+
+// -----------------------------------------------------------------------------
+// Setup init and default listeners
+// -----------------------------------------------------------------------------
 function handleSocialWin(url, title)
 {
     var win = window.open(url, title,'width=600,height=350,status=0,toolbar=0');
@@ -15,6 +19,7 @@ function handleSocialWin(url, title)
 
 (function($)
 {
+    // Modal
     $('#closeModal').click(
         function() {
 	    	hideSocialModal();
@@ -33,10 +38,7 @@ function handleSocialWin(url, title)
         }
     );
 
-    // -----
     // Slide
-    // -----
-     
     $(window).scroll(function (){
 		var pos = $(window).scrollTop();
         var win_width = $(window).width();
@@ -61,7 +63,10 @@ function handleSocialWin(url, title)
     );
 })(jQuery);
 
-function showSocialModal()
+// -----------------------------------------------------------------------------
+// Social Modal
+// -----------------------------------------------------------------------------
+function showSocialModal(invoked_by)
 {
 	if (readCookie('socialModal') == 'disabled') {
 		return;
@@ -70,6 +75,15 @@ function showSocialModal()
     $('.socialModalWrap').show();
     $('.socialModalOverlay').hide();
     $('.socialModalBox').hide();
+
+    if (invoked_by == 'video') {
+        $('#socialModalFromShare').hide();
+        $('#socialModalFromVideo').show();
+    } else {
+        $('#socialModalFromShare').show();
+        $('#socialModalFromVideo').hide();
+    }
+
 
     $('.socialModalOverlay').fadeIn('slow');
     $('.socialModalBox').fadeIn('slow');
@@ -93,6 +107,9 @@ function hideSocialModal()
     });
 }
 
+// -----------------------------------------------------------------------------
+// Social Slide in
+// -----------------------------------------------------------------------------
 function disableSocialModal()
 {
 	createCookie('socialModal', 'disabled', 30);
@@ -129,7 +146,9 @@ function disableSocialSlide()
 	$('.socialSlideWrap').hide();
 }
 
-
+// -----------------------------------------------------------------------------
+// Cookie functions
+// -----------------------------------------------------------------------------
 function createCookie(name,value,days) {
 	if (days) {
 		var date = new Date();
@@ -197,7 +216,7 @@ function onYTPlayerReady(event) {
 
 function onYTPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
-        showSocialModal();
+        showSocialModal('video');
     }
 }
 
@@ -252,5 +271,5 @@ function onReady() {
 }
 
 function onFinish() {
-	showSocialModal();
+	showSocialModal('video');
 }

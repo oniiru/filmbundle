@@ -48,9 +48,16 @@
 	        	<div class="socialModalClose"><a id="closeModal">Close</a></div>
 	        	<div class="socialModalContent">
 		        	<div class="socialModalContentInner">
-		        		<span class="socialModalThanks">Thanks for Sharing!</span>
-		        		<span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
-						<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
+		        		<div id="socialModalFromShare">
+			        		<span class="socialModalThanks">(from share) Thanks for Sharing!</span>
+			        		<span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
+							<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
+		        		</div>
+		        		<div id="socialModalFromVideo">
+			        		<span class="socialModalThanks">(from video)Thanks for Sharing!</span>
+			        		<span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
+							<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
+		        		</div>
 					</div>
 					<span class="socialModalDisable">Already like us? <a id="disableModal">Don't show this again</a></span>
 	        	</div>
