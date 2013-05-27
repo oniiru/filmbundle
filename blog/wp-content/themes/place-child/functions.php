@@ -66,6 +66,16 @@ class FilmBundleBlog_ThemeFunctions
         $embed = "
             <div id=\"player_{$id}\" class=\"fit post_video_wrapper\"></div>
             <script>
+                // Hides the player, until responsiveness is activated.
+                jQuery('#player_{$id}').hide();
+
+                // Setup a variable to keep track of initialization, to avoid
+                // infinite responsive loops
+                if (typeof yt_player_ready === 'undefined') {
+                    var yt_player_ready = [];
+                }
+                yt_player_ready['{$id}'] = false;
+
                 // Load the IFrame Player API code asynchronously.
                 var tag = document.createElement('script');
 
