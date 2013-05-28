@@ -29,6 +29,52 @@
 	mixpanel.init("ebcb577c9f9a1c1e95f19b57aab2071e");</script><!-- end Mixpanel -->
 </head>
 <body <?php body_class(''); ?>>
+	<!-- Start: The modal dialog for additional social features -->
+	<?php if (is_singular()): ?>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<div class="socialModalWrap">
+	    <div class="socialModalOverlay">
+	        &nbsp;
+	    </div>
+	    <div class="socialModalVerticalOffset">
+	        <div class="socialModalBox">
+	        	<div class="socialModalClose"><a id="closeModal">Close</a></div>
+	        	<div class="socialModalContent">
+		        	<div class="socialModalContentInner">
+		        		<div id="socialModalFromShare">
+			        		<span class="socialModalThanks">(from share) Thanks for Sharing!</span>
+			        		<span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
+							<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
+		        		</div>
+		        		<div id="socialModalFromVideo">
+			        		<span class="socialModalThanks">(from video)Thanks for Sharing!</span>
+			        		<span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
+							<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
+		        		</div>
+					</div>
+					<span class="socialModalDisable">Already like us? <a id="disableModal">Don't show this again</a></span>
+	        	</div>
+	        </div>
+	    </div>
+	</div>
+	<div class="socialSlideWrap">
+        <div class="socialSlideBox">
+        	<div class="socialSlideClose"><a id="disableSocialSlide">Don't show again</a> | <a id="closeSocialSlide">Close</a></div>
+        	<span class="socialSlideText">Like us on Facebook?</span>
+			<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-send="false" data-width="200" data-show-faces="false"></div>
+        </div>
+	</div>
+
+	<?php endif; ?>
+	<!-- End: The modal dialog for additional social features -->
+
 	<div id="header">
 		<div class="container clearfix">
 			<h1 id="logo"><?php if($pl_data['custom_logo']!='') {?><a href="<?php echo home_url();?>" title="<?php bloginfo('name');?>"><img src="<?php echo trim($pl_data['custom_logo']);?>" alt="<?php bloginfo('name');?>" /></a><?php }?></h1>
