@@ -77,9 +77,14 @@ class stag_section_seedprod extends WP_Widget{
                 </div>
                 <br/>
 
-                <a class="zocial facebook" href="http://www.facebook.com/sharer.php?m2w&amp;s=100&amp;p[title]=FilmBundle&amp;p[summary]=<?php echo urlencode($facebook_share_text); ?>&amp;p[url]=<?php echo urlencode($referrer_url); ?>" onclick="return !window.open(this.href, 'Facebook', 'width=500,height=300')" target="_blank">Share on Facebook</a>
+                <?php
+                    // Setup share urls
+                    $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=FilmBundle&amp;p[summary]=".urlencode($facebook_share_text)."&amp;p[url]=".urlencode($referrer_url);
+                    $twitter_share = "https://twitter.com/share?url=".urlencode($referrer_url)."&amp;text=".urlencode($twitter_share_text);
+                ?>
+                <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
 
-                <a class="zocial twitter" href="http://twitter.com/share?text=<?php echo urlencode($twitter_share_text); ?>&amp;url=<?php echo urlencode($referrer_url); ?>" onclick="return !window.open(this.href, 'Twitter', 'width=500,height=300')" target="_blank">Share on Twitter</a>
+                <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
                 <br/><br/>
 			</div>
 			<div class="statsright grid-6">

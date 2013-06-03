@@ -22,14 +22,35 @@
 
 <!-- BEGIN body -->
 <body <?php body_class(); ?>>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=414759715269292";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+  <!-- Start: The modal dialog for additional social features -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="socialModalWrap">
+      <div class="socialModalOverlay">
+          &nbsp;
+      </div>
+      <div class="socialModalVerticalOffset">
+          <div class="socialModalBox">
+            <div class="socialModalClose"><a id="closeModal">Close</a></div>
+            <div class="socialModalContent">
+              <div class="socialModalContentInner">
+                <span class="socialModalThanks">Thanks for Sharing!</span>
+                <span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
+            <div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
+          </div>
+          <span class="socialModalDisable">Already like us? <a id="disableModal">Don't show this again</a></span>
+            </div>
+          </div>
+      </div>
+  </div>
+  <!-- End: The modal dialog for additional social features -->
+ 
   <?php stag_body_start(); ?>
 
 
