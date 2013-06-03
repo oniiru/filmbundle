@@ -27,26 +27,26 @@ class stag_section_seedprod extends WP_Widget{
     ?>
 
     <!-- BEGIN #about.section-block -->
-    <section id="<?php echo stag_to_slug($id); ?>" class="section-block content-section" data-bg="<?php echo $bg; ?>" data-color="<?php echo $color; ?>" data-link="<?php echo $link; ?>">
+    <section id="<?php echo stag_to_slug($id); ?>" class="section-block content-section" style="background:url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/tinyblurred.jpg) no-repeat center center fixed;-webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;">
 
       <div class="inner-section">
 
         <?php
 
         $the_page = get_page($page);
-    $postybike = $the_page->post_content;
-    
-        if($subtitle != '') echo '<p class="sub-title">'.$subtitle.'</p>';
 
-        if($title == ''){
-          echo $before_title.$the_page->post_title.$after_title;
-        }else{
-            echo $before_title.$title.$after_title;
-        }
-        echo '<div class="entry-content">'.apply_filters('the_content', $postybike).'</div>';
+            echo '<h1 id="bigone">'.$title.'</h1>';
+			if($subtitle != '') echo '<p class="shared-sub-title">'.$subtitle.'</p>';
+		
+        // echo '<div class="entry-content">'.apply_filters('the_content', $the_page->post_content).'</div>';
     include_once(SEED_CSP3_PLUGIN_PATH.'/themes/default/functions.php' );
-    echo seed_cs3_head(); ?>
+   	 echo seed_cs3_head(); 
+   ?>
     <div class="centerthis">
+		<div class="topshelf grid-12"></div>
     <?php
         if (is_user_logged_in()) {
             // Get relevant info for current user
@@ -65,21 +65,36 @@ class stag_section_seedprod extends WP_Widget{
                 $ref = $result->id+1000;
                 $referrer_url = home_url() . '?ref='.base_convert($ref, 10, 36);
                 ?>
-                <div class="translucent-modal">
-                    <?php echo $referrer_url; ?>
+				<div class="bigstatsbox grid-9">
+					<div class="statstitle">
+						<p>Help us spread the word to get <a href="">unique prizes and access!</a>
+<span>(like 1-on-1 skype sessions with Sundance winners) </span>
+</p>
+					</div>
+					<div class="statsleft grid-6">
+                <div class="translucent-modal tranlink">
+                    <a href=""><?php echo $referrer_url; ?></a>
                 </div>
-                <br/><br/>
+                <br/>
 
                 <a class="zocial facebook" href="http://www.facebook.com/sharer.php?m2w&amp;s=100&amp;p[title]=FilmBundle&amp;p[summary]=<?php echo urlencode($facebook_share_text); ?>&amp;p[url]=<?php echo urlencode($referrer_url); ?>" onclick="return !window.open(this.href, 'Facebook', 'width=500,height=300')" target="_blank">Share on Facebook</a>
 
                 <a class="zocial twitter" href="http://twitter.com/share?text=<?php echo urlencode($twitter_share_text); ?>&amp;url=<?php echo urlencode($referrer_url); ?>" onclick="return !window.open(this.href, 'Twitter', 'width=500,height=300')" target="_blank">Share on Twitter</a>
                 <br/><br/>
-
-                <div class="translucent-modal">
+			</div>
+			<div class="statsright grid-6">
+                <div class="translucent-modal tranlink2">
                     Your stats so far...<br/>
-                    Clicks: <?php echo $result->clicks; ?><br/>
-                    Sign-ups: <?php echo $result->conversions; ?><br/>
+					<div class="thestats">
+						<div class="thestatsleft">
+                   <?php echo $result->clicks; ?><span>Clicks</span>
+			   </div>
+			   <div class="thestatsright">
+                  <?php echo $result->conversions; ?><span>Sign-ups</span>
+				</div>
+				</div>
                 </div>
+			</div>
                 <?php
             } else {
               ?>
@@ -105,7 +120,7 @@ class stag_section_seedprod extends WP_Widget{
         ?>
 
       </div>
-
+  </div>
       <!-- END #about.section-block -->
     </section>
 
@@ -118,7 +133,7 @@ class stag_section_seedprod extends WP_Widget{
 
     // STRIP TAGS TO REMOVE HTML
     $instance['title'] = strip_tags($new_instance['title']);
-    $instance['subtitle'] = strip_tags($new_instance['subtitle']);
+    $instance['subtitle'] = $new_instance['subtitle'];
     $instance['color'] = strip_tags($new_instance['color']);
     $instance['bg'] = strip_tags($new_instance['bg']);
     $instance['link'] = strip_tags($new_instance['link']);
@@ -155,7 +170,7 @@ class stag_section_seedprod extends WP_Widget{
 
     <p>
       <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('Sub Title:', 'stag'); ?></label>
-      <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php echo @$instance['subtitle']; ?>" />
+      <textarea class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php echo @$instance['subtitle']; ?>" /><?php echo @$instance['subtitle']; ?></textarea>
     </p>
 
 

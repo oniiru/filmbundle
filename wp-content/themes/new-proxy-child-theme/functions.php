@@ -118,7 +118,7 @@ function stag_enqueue_scripts(){
     wp_enqueue_style('flexslider', get_template_directory_uri().'/assets/css/flexslider.css');
 
     wp_enqueue_style('style', get_stylesheet_directory_uri().'/style.css');
-    wp_enqueue_style('fonts', get_template_directory_uri().'/assets/fonts/fonts.css');
+    wp_enqueue_style('fonts', get_stylesheet_directory_uri().'/assets/fonts/fonts.css');
     wp_enqueue_style('user-style', get_template_directory_uri().'/assets/css/user-styles.php');
 
     if( is_singular() ) wp_enqueue_script( 'comment-reply' ); // loads the javascript required for threaded comments
