@@ -30,11 +30,37 @@ class stag_section_suggest extends WP_Widget{
       <div class="inner-section">
 		  <h2>What would you like to see<span>?</span> </h2>
 		  <!-- <h3>Suggest a...</h3> -->
-		  <a href="#" class="btn btn-large btn-success"> Suggest a Curator! </a>
-		  <a href="#" class="btn btn-large btn-success"> Suggest a Film! </a>
+		  <a href="#myModal" data-toggle="modal" class="btn btn-large btn-success"> Suggest a Curator! </a>
+		  <a href="#myModal2" data-toggle="modal" class="btn btn-large btn-success"> Suggest a Film! </a>
 		  
 			
       </div>
+
+	  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-header">
+	      <h3 id="myModalLabel">Suggest a Curator</h3>
+	    </div>
+	    <div class="modal-body">
+			<p> Would you love to see a bundle curated by someone specific? Maybe the Oren Peli supernatural bundle, the Tarantino action bundle, the Sundance Indie Bundle or the Freddie Wong shoot 'em up bundle. Here is your chance to let know!</p>
+	     <?php echo do_shortcode( '[gravityform id="1" name="Suggest A Curator" title="false" description="false" ajax="true"]' ) ?> 
+	    </div>
+	    <div class="modal-footer">
+	    </div>
+	  </div>
+	  
+	  <div id="myModal2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModal2Label" aria-hidden="true">
+	    <div class="modal-header">
+	      <h3 id="myModal2Label">Suggest a Curator</h3>
+	    </div>
+	    <div class="modal-body">
+			<p> See an awesome film? Make an awesome film? We want to hear about it! Killer indies can be tough to uncover, so we need your help. Let us know what you love using the form below. :)</p>
+	     <?php echo do_shortcode( '[gravityform id="2" name="Suggest A Film" title="false" description="false" ajax="true"]' ) ?> 
+	    </div>
+	    <div class="modal-footer">
+	    </div>
+	  </div>
+
+
 
       <!-- END #suggest.section-block -->
     </section>

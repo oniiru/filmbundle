@@ -1175,14 +1175,10 @@ if(typeof wpOnload=='function')wpOnload()
 		$user_email = apply_filters( 'user_registration_email', $user_email );
 
 		// Check the username
-		if ( $sanitized_user_login == '' ) {
-			$errors->add( 'empty_username', __( '<strong>ERROR</strong>: Please enter a username.' ) );
-		} elseif ( ! validate_username( $user_login ) ) {
+	if ( ! validate_username( $user_login ) ) {
 			$errors->add( 'invalid_username', __( '<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username.' ) );
 			$sanitized_user_login = '';
-		} elseif ( username_exists( $sanitized_user_login ) ) {
-			$errors->add( 'username_exists', __( '<strong>ERROR</strong>: This username is already registered, please choose another one.' ) );
-		}
+		} 
 
 		// Check the e-mail address
 		if ( '' == $user_email ) {

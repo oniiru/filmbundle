@@ -67,25 +67,65 @@ class stag_section_seedprod extends WP_Widget{
                 ?>
 				<div class="bigstatsbox grid-9">
 					<div class="statstitle">
-						<p>Help us spread the word to get <a href="">unique prizes and access!</a>
+						<p>Help us spread the word to get <a href="#myModal3" data-toggle="modal">unique prizes and invites!</a>
 <span>(like 1-on-1 skype sessions with Sundance winners) </span>
 </p>
 					</div>
 					<div class="statsleft grid-6">
-                <div class="translucent-modal tranlink">
-                    <a href=""><?php echo $referrer_url; ?></a>
-                </div>
+		                <?php
+		                    // Setup share urls
+		                    $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=FilmBundle&amp;p[summary]=".urlencode($facebook_share_text)."&amp;p[url]=".urlencode($referrer_url);
+		                    $twitter_share = "https://twitter.com/share?url=".urlencode($referrer_url)."&amp;text=".urlencode($twitter_share_text);
+		                ?>
+		                <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
+
+		                <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
+                <div class="translucent-modal tranlink"  >
+                    <p title="Your unique url. Click the button to copy." data-placement="top" data-toggle="tooltip" class="littletooltip"><?php echo $referrer_url; ?></p><a data-clipboard-text="<?php echo $referrer_url; ?>" class="btn btn-small btn-inverse zclipbtn"> Copy</a>
+					
+				</div>
+				<script type="text/javascript">
+				    jQuery(function () {
+				        jQuery(".littletooltip").tooltip();
+						
+				    });
+					
+					
+				</script>
+				<script language="JavaScript">
+				      var clip = new ZeroClipboard( jQuery('a.zclipbtn'), {
+  							moviePath: "<?php echo get_stylesheet_directory_uri(); ?>/assets/js/ZeroClipboard.swf",
+					} );
+
+				      clip.on( 'load', function(client) {
+				        // alert( "movie is loaded" );
+				      } );
+
+				      clip.on( 'complete', function(client, args) {
+				        alert("Copied text to clipboard: " + args.text + " Time to send an email. :-)");
+				      } );
+
+				      clip.on( 'mouseover', function(client) {
+				        // alert("mouse over");
+				      } );
+
+				      clip.on( 'mouseout', function(client) {
+				        // alert("mouse out");
+				      } );
+
+				      clip.on( 'mousedown', function(client) {
+
+				        // alert("mouse down");
+				      } );
+
+				      clip.on( 'mouseup', function(client) {
+				        // alert("mouse up");
+				      } );
+
+				    </script>
                 <br/>
 
-                <?php
-                    // Setup share urls
-                    $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=FilmBundle&amp;p[summary]=".urlencode($facebook_share_text)."&amp;p[url]=".urlencode($referrer_url);
-                    $twitter_share = "https://twitter.com/share?url=".urlencode($referrer_url)."&amp;text=".urlencode($twitter_share_text);
-                ?>
-                <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
-
-                <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
-                <br/><br/>
+                
 			</div>
 			<div class="statsright grid-6">
                 <div class="translucent-modal tranlink2">
@@ -126,6 +166,26 @@ class stag_section_seedprod extends WP_Widget{
 
       </div>
   </div>
+  
+  <div id="myModal3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModal3Label" aria-hidden="true">
+    <div class="modal-header">
+      <h3 id="myModal3Label">Join the inner circle</h3>
+    </div>
+    <div class="modal-body">
+		<p> We built FilmBundle from the ground up with the goal of supporting independent film and arts driven charities. This isn't about us selling something, it's about building a community, and we need lots of help. The good news? <strong>A few shares on Facebook, Twitter, or email from awesome folks like you is all it takes.</strong>  </p>
+		
+		<p> If you get just 3 friends to sign up, we'll send you - </p> <ul><li>early access to our bundles</li><li>first news about curators<li> exclusive video content like behind the scenes footage, extras, and filmmaking courses.</li></ul> <p>Help us build the community even more, and you'll start getting invites to our events (both online and off), where you can - </p><ul><li>hang out with the filmmakers</li><li> watch exclusive screenings</li> <li>who knows what else!!? (We are always dreaming up new events, and you'll be on the ground floor.)</li></ul> <p></p>
+		<center>
+		<p style="text-align:center">Be awesome. Share away.</p>
+        <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
+
+        <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
+	</center>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+  
       <!-- END #about.section-block -->
     </section>
 

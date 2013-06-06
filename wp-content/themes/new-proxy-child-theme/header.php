@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/socialcss/zocial.css">
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.custom.82475.js'></script>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/zclip.js'></script>
 
 </head>
 
@@ -37,7 +38,7 @@
       </div>
       <div class="socialModalVerticalOffset">
           <div class="socialModalBox">
-            <div class="socialModalClose"><a id="closeModal">Close</a></div>
+            <div class="widget_title"><a id="closeModal">Close</a></div>
             <div class="socialModalContent">
               <div class="socialModalContentInner">
                 <span class="socialModalThanks">Thanks for Sharing!</span>

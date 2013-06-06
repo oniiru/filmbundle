@@ -15,7 +15,6 @@ Theme My Login will always look in your theme's directory first, before using th
 <h2 class="loginsubtitle"> Log in to your Account </h2>
 
 	<?php $template->the_errors(); ?>
-
 	<div class="login loginbox animate	" id="theme-my-login<?php $template->the_instance(); ?>">
 		
 	<form name="loginform" id="loginform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'login' ); ?>" method="post">
@@ -25,7 +24,6 @@ Theme My Login will always look in your theme's directory first, before using th
 		<p>
 			<input type="password" placeholder="Password" name="pwd" id="user_pass<?php $template->the_instance(); ?>" class="input" value="" size="20" />
 		</p>
-
 		<?php do_action( 'login_form' ); ?>
 		<?php $template->the_action_template_message( 'login' ); ?>
 	
@@ -54,9 +52,11 @@ Theme My Login will always look in your theme's directory first, before using th
    	 <a id="to-login" href="#tologin" class="stag-button small light-blue square to_register"> Login</a><p class="alreadymember"> Already a member?</p>
 		
 	</div>
+	<p class="registerheader">Create a free account for instant access.</p>
 	
 	<div class="login loginbox animate" id="theme-my-login<?php $template->the_instance(); ?>">
-	
+	<?php do_action( 'wordpress_social_login' ); ?> 
+	<p class="orrr"> - OR -</p>
 		<form name="registerform" id="registerform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'register' ); ?>" method="post">
 			<!--
 			<p>
@@ -64,10 +64,10 @@ Theme My Login will always look in your theme's directory first, before using th
 			</p>
 			-->
 
-			<p>
+			<!-- <p>
 				
 			<input type="text" placeholder="First Name" name="first_name" id="first_name<?php $template->the_instance(); ?>" class="input" value="<?php $template->the_posted_value( 'first_name' ); ?>" size="20" tabindex="20" />
-			</p>
+			</p> -->
 			<p>
 				<input placeholder="Email" type="text" name="user_email" id="user_email<?php $template->the_instance(); ?>" class="input" value="<?php $template->the_posted_value( 'user_email' ); ?>" size="20" />
 			</p>
@@ -84,11 +84,18 @@ Theme My Login will always look in your theme's directory first, before using th
 		</form>
 		
 	</div>
-	<div class="socialloginstuff">
+	<div class="threepoints"> 
 	
-		 <?php do_action( 'wordpress_social_login' ); ?> 
-		 <span>or</span>
+		<h3 class="notopmargin">Curated Discovery</h3>
+		<p>Your favorite filmmakers and organization share films that matter to them.</p>
+		
+		<h3>Pay What You Want</h3>
+		<p>You are in control. Pay what the films are worth to you. </p>
+		
+		<h3>Support Charity</h3>
+		<p>Give some or all of your payment to charity.</p>
 		 
+</div>		 
 	 </div>
 		 
 	 </div>
