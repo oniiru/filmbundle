@@ -75,7 +75,7 @@
         </div><!-- post item -->
         <div class="mainsharing2 white_box box_info">
             <div class="socialstuff2">
-                <h3>Love it? Keep it coming!</h3>
+                <h3>Love it<span>?</span> Keep it coming!</h3>
                     <p>Sign up and we'll send you exclusive articles and interviews.</p>
         
         
