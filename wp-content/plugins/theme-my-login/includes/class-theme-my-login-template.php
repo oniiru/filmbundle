@@ -400,7 +400,7 @@ class Theme_My_Login_Template extends Theme_My_Login_Abstract {
 				$message = __( 'Register For This Site' );
 				break;
 			case 'lostpassword':
-				$message = __( "Enter your email address, and we'll send you a link to create a new password via email." );
+				$message = __( 'Please enter your username or email address. You will receive a link to create a new password via email.' );
 				break;
 			case 'resetpass':
 				$message = __( 'Enter your new password below.' );
