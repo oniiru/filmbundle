@@ -6,8 +6,6 @@ class SeedProdCustomization
     public function __construct()
     {
         add_action('user_register', array(&$this, 'registrationSubscribe'));
-        add_action('wsl_hook_process_login_after_create_wp_user', array(&$this, 'registrationSubscribe'));
-		
 		
     }
 
