@@ -1132,8 +1132,8 @@ if(typeof wpOnload=='function')wpOnload()
 	 */
 	public static function register_new_user( $user_login, $user_email ) {
 		$errors = new WP_Error();
-
-		$sanitized_user_login = sanitize_user( $user_login );
+		$sanitized_user_login = sanitize_user( $user_email );
+		// $sanitized_user_login = sanitize_user( $user_login );
 		$user_email = apply_filters( 'user_registration_email', $user_email );
 
 		// Check the username
