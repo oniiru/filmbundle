@@ -42,7 +42,7 @@ class stag_section_suggest extends WP_Widget{
 	    </div>
 	    <div class="modal-body">
 			<p> Would you love to see a bundle curated by someone specific? Maybe the Oren Peli supernatural bundle, the Tarantino action bundle, the Sundance Indie Bundle or the Freddie Wong shoot 'em up bundle. Here is your chance to let know!</p>
-	     <?php echo do_shortcode( '[gravityform id="1" name="Suggest A Curator" title="false" description="false" ajax="true"]' ) ?> 
+	     <?php echo do_shortcode( '[gravityform id="5" name="Suggest A Curator" title="false" description="false" ajax="true"]' ) ?> 
 	    </div>
 	    <div class="modal-footer">
 	    </div>
@@ -54,7 +54,7 @@ class stag_section_suggest extends WP_Widget{
 	    </div>
 	    <div class="modal-body">
 			<p> See an awesome film? Make an awesome film? We want to hear about it! Killer indies can be tough to uncover, so we need your help. Let us know what you love using the form below. :)</p>
-	     <?php echo do_shortcode( '[gravityform id="2" name="Suggest A Film" title="false" description="false" ajax="true"]' ) ?> 
+	     <?php echo do_shortcode( '[gravityform id="6" name="Suggest A Film" title="false" description="false" ajax="true"]' ) ?> 
 	    </div>
 	    <div class="modal-footer">
 	    </div>

@@ -24,6 +24,8 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 #primary-nav {
 	margin-top:2px;
 }
+
+
 #login p.message, #login p.error, .loginformtitle, #register p.message, #register p.error {
 	padding: 5px;
 	line-height: 1.2em;
