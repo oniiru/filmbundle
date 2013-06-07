@@ -222,7 +222,7 @@ class stag_section_blog extends WP_Widget{
                                 echo "</a>";
                             }
                             echo wp_trim_words($post->post_content, 35, '... ');
-							echo "<a class='readmore' href='{$post_url}'>Read More</a>";
+							echo " - <a class='readmore' href='{$post_url}'>Read More...</a>";
                             ?>
                         </div>
                     </div><!-- /featured-post -->
