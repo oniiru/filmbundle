@@ -1,4 +1,37 @@
 <?php
+class FilmBundle_ThemeFunctions
+{
+    const VERSION = '1.0';
+    private static $instance = false;
+
+    public static function getInstance()
+    {
+        if (!self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    private function __construct()
+    {
+        add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
+    }
+
+    public function scripts()
+    {
+        wp_enqueue_script(
+            'filmbundle-social',
+            get_stylesheet_directory_uri().'/assets/js/social.js',
+            array('jquery'), 
+            self::VERSION,
+            true
+        );
+    }
+}
+$fb_theme = FilmBundle_ThemeFunctions::getInstance();
+
+
+
 /* Set Max Content Width */
 if ( ! isset( $content_width ) ) $content_width = 1170;
 
@@ -118,7 +151,7 @@ function stag_enqueue_scripts(){
     wp_enqueue_style('flexslider', get_template_directory_uri().'/assets/css/flexslider.css');
 
     wp_enqueue_style('style', get_stylesheet_directory_uri().'/style.css');
-    wp_enqueue_style('fonts', get_template_directory_uri().'/assets/fonts/fonts.css');
+    wp_enqueue_style('fonts', get_stylesheet_directory_uri().'/assets/fonts/fonts.css');
     wp_enqueue_style('user-style', get_template_directory_uri().'/assets/css/user-styles.php');
 
     if( is_singular() ) wp_enqueue_script( 'comment-reply' ); // loads the javascript required for threaded comments
@@ -358,6 +391,17 @@ require_once($tmpDir.'/includes/_init.php');
 require_once($tmpDir.'/includes/theme-customizer.php');
 
 
+
+add_filter("gform_confirmation_anchor", create_function("","return true;"));
+
+add_action( 'init', 'blockusers_init' );
+function blockusers_init() {
+    if ( is_admin() && ! current_user_can( 'administrator' ) &&
+       ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+        wp_redirect( home_url() );
+        exit;
+    }
+}
 
 
 

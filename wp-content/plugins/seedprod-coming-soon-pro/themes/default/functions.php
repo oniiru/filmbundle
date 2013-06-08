@@ -377,7 +377,7 @@ function seed_cs3_head(){
 		$include_url = $include_url . '/';
 	
 	}
-	$output .= '<script src="'.SEED_CSP3_PLUGIN_URL.'themes/default/bootstrap/js/bootstrap.js"></script>'."\n";
+	// $output .= '<script src="'.SEED_CSP3_PLUGIN_URL.'themes/default/bootstrap/js/bootstrap.js"></script>'."\n";
 
 	if(!empty($enable_fitvidjs)){		
 		$output .= "<!-- FitVid -->\n";

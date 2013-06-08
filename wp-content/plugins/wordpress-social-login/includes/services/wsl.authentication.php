@@ -779,8 +779,9 @@ function wsl_process_login_create_wp_user( $provider, $hybridauth_user_profile, 
 	# else, validate/generate the login and user email
 	else{
 		// generate a valid user login
-		$user_login = trim( str_replace( ' ', '_', strtolower( $hybridauth_user_profile->displayName ) ) );
 		$user_email = $hybridauth_user_profile->email;
+		$user_login = $user_email;
+		
 
 		if( empty( $user_login ) ){
 			$user_login = trim( $hybridauth_user_profile->lastName . " " . $hybridauth_user_profile->firstName );

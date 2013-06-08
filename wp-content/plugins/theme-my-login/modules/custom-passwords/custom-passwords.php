@@ -72,7 +72,7 @@ class Theme_My_Login_Custom_Passwords extends Theme_My_Login_Abstract {
 		<input autocomplete="off" name="pass2" id="pass2<?php $template->the_instance(); ?>" class="input" size="20" value="" type="password" /></p>
 		-->
 		<?php
-	}
+	}	
 
 	/**
 	 * Outputs password fields to multisite signup user form
@@ -139,7 +139,7 @@ class Theme_My_Login_Custom_Passwords extends Theme_My_Login_Abstract {
 			$errors = new WP_Error();
 
 		// Make sure passwords aren't empty
-		/*if ( empty( $_POST['pass1'] ) || empty( $_POST['pass2'] ) ) {
+	/*	if ( empty( $_POST['pass1'] ) || empty( $_POST['pass2'] ) ) {
 			$errors->add( 'empty_password', __( '<strong>ERROR</strong>: Please enter your password twice.' ) );
 
 		// Make sure there's no "\" in the password
@@ -147,11 +147,11 @@ class Theme_My_Login_Custom_Passwords extends Theme_My_Login_Abstract {
 			$errors->add( 'password_backslash', __( '<strong>ERROR</strong>: Passwords may not contain the character "\\".' ) );
 
 		// Make sure passwords match
-		} /*elseif ( $_POST['pass1'] != $_POST['pass2'] ) {
+		} /* elseif ( $_POST['pass1'] != $_POST['pass2'] ) {
 			$errors->add( 'password_mismatch', __( '<strong>ERROR</strong>: Please enter the same password in the two password fields.' ) );
 
 		// Make sure password is long enough
-		} */elseif ( strlen( $_POST['pass1'] ) < 6 ) {
+		} */ elseif ( strlen( $_POST['pass1'] ) < 6 ) {
 			$errors->add( 'password_length', __( '<strong>ERROR</strong>: Your password must be at least 6 characters in length.', 'theme-my-login' ) );
 
 		// All is good, assign password to a friendlier key

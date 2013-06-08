@@ -96,7 +96,8 @@ class Theme_My_Login_Security extends Theme_My_Login_Abstract {
 			$wp_query->set_404();
 			status_header( 404 );
 			nocache_headers();
-			$template = get_404_template();
+			if ( ! $template = get_404_template() )
+				$template = 'index.php';
 			include( $template );
 			exit;
 		}
@@ -113,7 +114,8 @@ class Theme_My_Login_Security extends Theme_My_Login_Abstract {
 	public function template_redirect() {
 		if ( $this->get_option( 'private_site' ) ) {
 			if ( ! ( is_user_logged_in() || Theme_My_Login::is_tml_page() ) ) {
-				wp_safe_redirect( site_url().'/register');
+				$redirect_to = apply_filters( 'tml_security_private_site_redirect', wp_login_url( $_SERVER['REQUEST_URI'], true ) );
+				wp_safe_redirect( site_url().'/register' );
 				exit;
 			}
 		}

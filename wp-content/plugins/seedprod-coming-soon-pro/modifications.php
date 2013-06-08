@@ -6,6 +6,7 @@ class SeedProdCustomization
     public function __construct()
     {
         add_action('user_register', array(&$this, 'registrationSubscribe'));
+		
     }
 
     /**
