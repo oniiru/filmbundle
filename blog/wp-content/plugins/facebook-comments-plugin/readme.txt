@@ -5,8 +5,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: comments, facebook, facebook comments, commenting, widgets, posts, post, pages, page, wordpress
 Requires at least: 2.7
-Tested up to: 3.5
-Stable tag: 2.0.5
+Tested up to: 3.5.1
+Stable tag: 2.0.6
 
 The Facebook Comments WordPress plugin makes it easier for you to setup, administer and customise Facebook comments from your WordPress site.
 

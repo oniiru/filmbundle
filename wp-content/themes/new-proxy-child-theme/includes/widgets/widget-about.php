@@ -35,11 +35,11 @@ class stag_section_about extends WP_Widget{
 
         if($subtitle != '') echo '<p class="sub-title">'.$subtitle.'</p>';
 
-        if($title == ''){
-          echo $before_title.$the_page->post_title.$after_title;
-        }else{
+       // if($title == ''){
+      //    echo $before_title.$the_page->post_title.$after_title;
+    //    }else{
           echo $before_title.$title.$after_title;
-        }
+       // }
 
         echo '<div class="entry-content">'.apply_filters('the_content', $the_page->post_content).'</div>';
 

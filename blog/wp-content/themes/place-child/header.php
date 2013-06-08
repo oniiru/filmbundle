@@ -45,17 +45,17 @@
 	    </div>
 	    <div class="socialModalVerticalOffset">
 	        <div class="socialModalBox">
-	        	<div class="socialModalClose"><a id="closeModal">Close</a></div>
+	        	<div class=" widget_title"><a id="closeModal">Close</a></div>
 	        	<div class="socialModalContent">
 		        	<div class="socialModalContentInner">
 		        		<div id="socialModalFromShare">
-			        		<span class="socialModalThanks">(from share) Thanks for Sharing!</span>
-			        		<span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
+			        		<span class="socialModalThanks">Thanks for Sharing!</span>
+			        		<span class="socialModalTell">Why don't you give us a like to get updates and exclusive content.</span>
 							<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
 		        		</div>
 		        		<div id="socialModalFromVideo">
-			        		<span class="socialModalThanks">(from video)Thanks for Sharing!</span>
-			        		<span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
+			        		<span class="socialModalThanks">Like the video?</span>
+			        		<span class="socialModalTell">Like us on FaceBook for more just like it!</span>
 							<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
 		        		</div>
 					</div>
@@ -66,7 +66,7 @@
 	</div>
 	<div class="socialSlideWrap">
         <div class="socialSlideBox">
-        	<div class="socialSlideClose"><a id="disableSocialSlide">Don't show again</a> | <a id="closeSocialSlide">Close</a></div>
+        	<div class="widget_title"><a id="disableSocialSlide">Don't show again</a> | <a id="closeSocialSlide">Close</a></div>
         	<span class="socialSlideText">Like us on Facebook?</span>
 			<div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-send="false" data-width="200" data-show-faces="false"></div>
         </div>

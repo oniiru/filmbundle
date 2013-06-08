@@ -14,14 +14,16 @@ class SeedProdCustomization
      */
     public function registrationSubscribe($user_id)
     {
-        global $seed_csp3;
-
-        $fname = isset($_POST['first_name']) ? $_POST['first_name'] : '';
-        $email = isset($_POST['user_email']) ? $_POST['user_email'] : null;
+        // Collect user data from the db
+        $userdata = get_userdata($user_id);
+        $fname = $user_info->user_firstname;
+        $lname = $user_info->user_lastname;
+        $email = $userdata->user_email;
 
         // Add to DB
+        global $seed_csp3;
         if ($email) {
-            $seed_csp3->add_subscriber($email, $fname, '');
+            $seed_csp3->add_subscriber($email, $fname, $lname);
         }
     }
 }

@@ -27,26 +27,26 @@ class stag_section_seedprod extends WP_Widget{
     ?>
 
     <!-- BEGIN #about.section-block -->
-    <section id="<?php echo stag_to_slug($id); ?>" class="section-block content-section" data-bg="<?php echo $bg; ?>" data-color="<?php echo $color; ?>" data-link="<?php echo $link; ?>">
+    <section id="<?php echo stag_to_slug($id); ?>" class="section-block content-section" style="background:url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/tinyblurred.jpg) no-repeat center center fixed;-webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;">
 
       <div class="inner-section">
 
         <?php
 
         $the_page = get_page($page);
-    $postybike = $the_page->post_content;
-    
-        if($subtitle != '') echo '<p class="sub-title">'.$subtitle.'</p>';
 
-        if($title == ''){
-          echo $before_title.$the_page->post_title.$after_title;
-        }else{
-            echo $before_title.$title.$after_title;
-        }
-        echo '<div class="entry-content">'.apply_filters('the_content', $postybike).'</div>';
+            echo '<h1 id="bigone">'.$title.'</h1>';
+			if($subtitle != '') echo '<p class="shared-sub-title">'.$subtitle.'</p>';
+		
+        // echo '<div class="entry-content">'.apply_filters('the_content', $the_page->post_content).'</div>';
     include_once(SEED_CSP3_PLUGIN_PATH.'/themes/default/functions.php' );
-    echo seed_cs3_head(); ?>
+   	 echo seed_cs3_head(); 
+   ?>
     <div class="centerthis">
+		<div class="topshelf grid-12"></div>
     <?php
         if (is_user_logged_in()) {
             // Get relevant info for current user
@@ -65,26 +65,81 @@ class stag_section_seedprod extends WP_Widget{
                 $ref = $result->id+1000;
                 $referrer_url = home_url() . '?ref='.base_convert($ref, 10, 36);
                 ?>
-                <div class="translucent-modal">
-                    <?php echo $referrer_url; ?>
-                </div>
-                <br/><br/>
+				<div class="bigstatsbox grid-9">
+					<div class="statstitle">
+						<p>Help us spread the word to get <a href="#myModal3" data-toggle="modal">unique prizes and invites!</a>
+<span>(like 1-on-1 skype sessions with Sundance winners) </span>
+</p>
+					</div>
+					<div class="statsleft grid-6">
+		                <?php
+		                    // Setup share urls
+		                    $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=FilmBundle&amp;p[summary]=".urlencode($facebook_share_text)."&amp;p[url]=".urlencode($referrer_url);
+		                    $twitter_share = "https://twitter.com/share?url=".urlencode($referrer_url)."&amp;text=".urlencode($twitter_share_text);
+		                ?>
+		                <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
 
-                <?php
-                    // Setup share urls
-                    $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=FilmBundle&amp;p[summary]=".urlencode($facebook_share_text)."&amp;p[url]=".urlencode($referrer_url);
-                    $twitter_share = "https://twitter.com/share?url=".urlencode($referrer_url)."&amp;text=".urlencode($twitter_share_text);
-                ?>
-                <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
+		                <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
+                <div class="translucent-modal tranlink"  >
+                    <p title="Your unique url. Click the button to copy." data-placement="top" data-toggle="tooltip" class="littletooltip"><?php echo $referrer_url; ?></p><a data-clipboard-text="<?php echo $referrer_url; ?>" class="btn btn-small btn-inverse zclipbtn"> Copy</a>
+					
+				</div>
+				<script type="text/javascript">
+				    jQuery(function () {
+				        jQuery(".littletooltip").tooltip();
+						
+				    });
+					
+					
+				</script>
+				<script language="JavaScript">
+				      var clip = new ZeroClipboard( jQuery('a.zclipbtn'), {
+  							moviePath: "<?php echo get_stylesheet_directory_uri(); ?>/assets/js/ZeroClipboard.swf",
+					} );
 
-                <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
-                <br/><br/>
+				      clip.on( 'load', function(client) {
+				        // alert( "movie is loaded" );
+				      } );
 
-                <div class="translucent-modal">
+				      clip.on( 'complete', function(client, args) {
+				        alert("Copied text to clipboard: " + args.text + " Time to send an email. :-)");
+				      } );
+
+				      clip.on( 'mouseover', function(client) {
+				        // alert("mouse over");
+				      } );
+
+				      clip.on( 'mouseout', function(client) {
+				        // alert("mouse out");
+				      } );
+
+				      clip.on( 'mousedown', function(client) {
+
+				        // alert("mouse down");
+				      } );
+
+				      clip.on( 'mouseup', function(client) {
+				        // alert("mouse up");
+				      } );
+
+				    </script>
+                <br/>
+
+                
+			</div>
+			<div class="statsright grid-6">
+                <div class="translucent-modal tranlink2">
                     Your stats so far...<br/>
-                    Clicks: <?php echo $result->clicks; ?><br/>
-                    Sign-ups: <?php echo $result->conversions; ?><br/>
+					<div class="thestats">
+						<div class="thestatsleft">
+                   <?php echo $result->clicks; ?><span>Clicks</span>
+			   </div>
+			   <div class="thestatsright">
+                  <?php echo $result->conversions; ?><span>Sign-ups</span>
+				</div>
+				</div>
                 </div>
+			</div>
                 <?php
             } else {
               ?>
@@ -110,7 +165,27 @@ class stag_section_seedprod extends WP_Widget{
         ?>
 
       </div>
+  </div>
+  
+  <div id="myModal3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModal3Label" aria-hidden="true">
+    <div class="modal-header">
+      <h3 id="myModal3Label">Join the inner circle</h3>
+    </div>
+    <div class="modal-body">
+		<p> We built FilmBundle from the ground up with the goal of supporting independent film and arts driven charities. This isn't about us selling something, it's about building a community, and we need lots of help. The good news? <strong>A few shares on Facebook, Twitter, or email from awesome folks like you is all it takes.</strong>  </p>
+		
+		<p> If you get just 3 friends to sign up, we'll send you - </p> <ul><li>early access to our bundles</li><li>first news about curators<li> exclusive video content like behind the scenes footage, extras, and filmmaking courses.</li></ul> <p>Help us build the community even more, and you'll start getting invites to our events (both online and off), where you can - </p><ul><li>hang out with the filmmakers</li><li> watch exclusive screenings</li> <li>who knows what else!!? (We are always dreaming up new events, and you'll be on the ground floor.)</li></ul> <p></p>
+		<center>
+		<p style="text-align:center">Be awesome. Share away.</p>
+        <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
 
+        <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
+	</center>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
+  
       <!-- END #about.section-block -->
     </section>
 
@@ -123,7 +198,7 @@ class stag_section_seedprod extends WP_Widget{
 
     // STRIP TAGS TO REMOVE HTML
     $instance['title'] = strip_tags($new_instance['title']);
-    $instance['subtitle'] = strip_tags($new_instance['subtitle']);
+    $instance['subtitle'] = $new_instance['subtitle'];
     $instance['color'] = strip_tags($new_instance['color']);
     $instance['bg'] = strip_tags($new_instance['bg']);
     $instance['link'] = strip_tags($new_instance['link']);
@@ -160,7 +235,7 @@ class stag_section_seedprod extends WP_Widget{
 
     <p>
       <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('Sub Title:', 'stag'); ?></label>
-      <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php echo @$instance['subtitle']; ?>" />
+      <textarea class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php echo @$instance['subtitle']; ?>" /><?php echo @$instance['subtitle']; ?></textarea>
     </p>
 
 

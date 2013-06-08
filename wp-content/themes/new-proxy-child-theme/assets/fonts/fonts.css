@@ -8,3 +8,26 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'proximanova';
+    src: url('proximanova-bold-webfont.eot');
+    src: url('proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('proximanova-bold-webfont.woff') format('woff'),
+         url('proximanova-bold-webfont.ttf') format('truetype'),
+         url('proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Amatic SC';
+    src: url('amaticsc-bold-webfont.eot');
+    src: url('amaticsc-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('amaticsc-bold-webfont.woff') format('woff'),
+         url('amaticsc-bold-webfont.ttf') format('truetype'),
+         url('amaticsc-bold-webfont.svg#amatic_scbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

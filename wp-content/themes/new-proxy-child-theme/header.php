@@ -16,6 +16,8 @@
   <?php stag_head(); ?>
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/socialcss/zocial.css">
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.custom.82475.js'></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/zclip.js'></script>
 
 </head>
 
@@ -36,7 +38,7 @@
       </div>
       <div class="socialModalVerticalOffset">
           <div class="socialModalBox">
-            <div class="socialModalClose"><a id="closeModal">Close</a></div>
+            <div class="widget_title"><a id="closeModal">Close</a></div>
             <div class="socialModalContent">
               <div class="socialModalContentInner">
                 <span class="socialModalThanks">Thanks for Sharing!</span>
@@ -49,7 +51,7 @@
       </div>
   </div>
   <!-- End: The modal dialog for additional social features -->
-
+ 
   <?php stag_body_start(); ?>
 
 
@@ -81,7 +83,12 @@
 
         <!-- BEGIN #primary-nav -->
         <nav id="navigation" role="navigation">
-
+  		  <div class="littlesocial">
+    		<div class="fb-like" style="margin-right:20px;" data-href="http://facebook.com/filmbundle" data-send="false" data-layout="button_count" data-width="10" data-show-faces="false"></div>
+    		<div style="position:relative;display:inline-block"><a href="https://twitter.com/FilmBundle" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @FilmBundle</a>
+    		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    	</div>
+  </div>
           <?php
             if(has_nav_menu('primary-menu')){
               wp_nav_menu(array(
@@ -91,11 +98,12 @@
                 'container_class' => 'primary-menu',
                 ));
             }
+		
           ?>
-
+		 
           <!-- END #primary-nav -->
         </nav>
-
+		
         <!-- END .header-inner -->
       </div>
 
