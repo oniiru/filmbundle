@@ -134,7 +134,7 @@ function stag_enqueue_scripts(){
   if(!is_admin()){
     global $is_IE;
     wp_enqueue_script('jquery');
-    wp_enqueue_script('script', get_template_directory_uri().'/assets/js/jquery.custom.js', array('jquery', 'superfish', 'supersubs', 'flexslider'), '', true);
+    wp_enqueue_script('script', get_stylesheet_directory_uri().'/assets/js/jquery.custom.js', array('jquery', 'superfish', 'supersubs', 'flexslider'), '', true);
 
     // Dropdown for Superfish
     wp_enqueue_script('superfish', get_template_directory_uri().'/assets/js/superfish.js', array('jquery'), '', true);
