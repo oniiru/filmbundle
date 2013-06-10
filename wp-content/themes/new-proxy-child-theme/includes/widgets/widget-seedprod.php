@@ -67,8 +67,9 @@ class stag_section_seedprod extends WP_Widget{
                 ?>
 				<div class="bigstatsbox grid-9">
 					<div class="statstitle">
-						<p>Help us spread the word to get <a href="#myModal3" data-toggle="modal">unique prizes and invites!</a>
-<span>(like 1-on-1 skype sessions with Sundance winners) </span>
+						<p>Help us spread the word to get 
+              <span id="seedprod_title_link"><a href="#myModal3" data-toggle="modal">unique prizes and invites!</a></span>
+              <span id="seedprod_title_desc">(like 1-on-1 skype sessions with Sundance winners)</span>
 </p>
 					</div>
 					<div class="statsleft grid-6">
@@ -129,7 +130,8 @@ class stag_section_seedprod extends WP_Widget{
 			</div>
 			<div class="statsright grid-6">
                 <div class="translucent-modal tranlink2">
-                    Your stats so far...<br/>
+                    <span id="seedprod_stats_text">Your stats so far...</span>
+                    <br/>
 					<div class="thestats">
 						<div class="thestatsleft">
                    <?php echo $result->clicks; ?><span>Clicks</span>

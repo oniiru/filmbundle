@@ -384,7 +384,7 @@ color: #1c93c5;
 	padding-top:10px;
 }
 
-.statstitle span {
+#seedprod_title_desc {
 	display:block;
 	font-size:.6em;
 	line-height:.7em;
@@ -1536,4 +1536,80 @@ text-align: right;
 	line-height: 1em;
 	margin-left: 20px;
 	vertical-align: bottom;
+}
+
+/**
+ * Make seedprod responsive
+ */
+/*
+bigstatsbox
+statsleftstat
+tranlink
+statsright
+topshelf
+
+on the smaller side, you can get rid of the link box, so that it only shows the two social media buttons and under that, the stats box. The shelf needs to stay underneith the box.
+
+Also the headline should get small as it goes because it gets cut off in weird places now.
+*/
+@media screen and (max-width: 1029px) {
+	.topshelf {
+		top: 305px;
+	}
+}
+@media screen and (max-width: 959px) {
+	.tranlink {
+		width: 300px;
+	}
+	.tranlink .btn {
+		display: none;
+	}
+}
+@media screen and (max-width: 880px) {
+	.tranlink {
+		display: none;
+	}
+	.tranlink2 {
+		margin-bottom: 20px;
+		padding: 6px 12px;
+	}
+	#seedprod_title_link {
+		display: block;
+		margin: 0 0 20px 0;
+		padding: 0;
+	}
+	.statstitle p {
+		line-height: 1;
+	}
+	.topshelf {
+		top: 320px;
+	}
+}
+@media screen and (max-width: 690px) {
+	.statsright {
+		display: block;
+		margin: 0 auto;
+	}
+	.tranlink2 {
+		padding: 6px 12px;
+	}
+	.topshelf {
+		top: 415px;
+	}
+}
+@media screen and (max-width: 598px) {
+	.topshelf {
+		top: 460px;
+	}
+}
+@media screen and (max-width: 500px) {
+	.statstitle p {
+		font-size: 75%;
+	}
+	#seedprod_stats_text {
+		font-size: 75%;
+	}
+	.topshelf {
+		top: 435px;
+	}
 }
