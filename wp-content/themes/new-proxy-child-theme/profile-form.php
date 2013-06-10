@@ -47,7 +47,7 @@ Theme My Login will always look in your theme's directory first, before using th
 		?>
 		<tr id="password">
 			<td><input type="password" placeholder="New Password" name="pass1" id="pass1" size="16" value="" autocomplete="off" /> <span class="description"><?php _e( 'If you would like to change the password type a new one. Otherwise leave this blank.' ); ?></span><br />
-				<input type="password" placeholder="One more time" "name="pass2" id="pass2" size="16" value="" autocomplete="off" /> <span class="description"><?php _e( 'Type your new password again.' ); ?></span><br />
+				<input type="password" placeholder="One more time" name="pass2" id="pass2" size="16" value="" autocomplete="off" /> <span class="description"><?php _e( 'Type your new password again.' ); ?></span><br />
 				
 			</td>
 		</tr>
