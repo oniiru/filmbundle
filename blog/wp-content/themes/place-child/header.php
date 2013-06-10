@@ -14,6 +14,17 @@
 	?></title>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<?php
+	// Add meta tag for Facebook's open graph if we have a featured image
+	// available
+	if (is_singular()) {
+		if (has_post_thumbnail()) {
+			$thumbId = get_post_thumbnail_id($post->ID);
+			$thumbObj = get_post($thumbId);
+			echo "<meta property='og:image' content='{$thumbObj->guid}' />\n";
+		}
+	}
+	?>
 	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	
 	<?php if($pl_data['custom_favicon']!='') {?>
