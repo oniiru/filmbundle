@@ -1541,17 +1541,6 @@ text-align: right;
 /**
  * Make seedprod responsive
  */
-/*
-bigstatsbox
-statsleftstat
-tranlink
-statsright
-topshelf
-
-on the smaller side, you can get rid of the link box, so that it only shows the two social media buttons and under that, the stats box. The shelf needs to stay underneith the box.
-
-Also the headline should get small as it goes because it gets cut off in weird places now.
-*/
 @media screen and (max-width: 1029px) {
 	.topshelf {
 		top: 305px;
