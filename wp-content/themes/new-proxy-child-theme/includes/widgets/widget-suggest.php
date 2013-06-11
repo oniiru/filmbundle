@@ -28,10 +28,12 @@ class stag_section_suggest extends WP_Widget{
     <section id="<?php echo stag_to_slug($id); ?>" class="section-block content-section" data-bg="<?php echo $bg; ?>" data-color="<?php echo $color; ?>" data-link="<?php echo $link; ?>">
 
       <div class="inner-section">
-		  <h2>What would you like to see<span>?</span> </h2>
-		  <!-- <h3>Suggest a...</h3> -->
+      <div id="suggest-section">
+      <h2>What would you like to see<span>?</span></h2>
+      <!-- <h3>Suggest a...</h3> -->
 		  <a href="#myModal" data-toggle="modal" class="btn btn-large btn-success"> Suggest a Curator! </a>
 		  <a href="#myModal2" data-toggle="modal" class="btn btn-large btn-success"> Suggest a Film! </a>
+      </div>
 		  
 			
       </div>

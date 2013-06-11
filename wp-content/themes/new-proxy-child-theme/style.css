@@ -1663,3 +1663,19 @@ text-align: right;
 		font-size:10px;
 	}
 }
+
+/**
+ * Makes the suggest section responsive
+ */
+@media screen and (max-width: 550px) {
+	#suggest-section h2 {
+		font-size: 40px;
+		line-height: 40px;
+		margin-bottom: 16px;
+	}
+	#suggest-section .btn {
+		font-size: 16px;
+		width: 220px;
+		margin: 0 auto 10px auto;
+	}
+}
