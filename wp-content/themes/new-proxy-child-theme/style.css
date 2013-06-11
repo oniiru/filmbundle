@@ -176,6 +176,9 @@ margin-left: 10px;
 	margin-left: 20px;
 }
 
+/**
+ * Adding responsiveness to the little social buttons in the header 
+ */
 @media screen and (max-width: 992px) {
 	.littlesocial {
 		float: none;
@@ -184,6 +187,18 @@ margin-left: 10px;
 		margin-right: 60px;
 	}
 }
+@media screen and (max-width: 420px) {
+	.littlesocial {
+		position: absolute;
+		top: 0;
+		right: 30px;
+		text-align: right;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+
 
 .about-us-right, .about-us-left {
 	display:inline-block;
