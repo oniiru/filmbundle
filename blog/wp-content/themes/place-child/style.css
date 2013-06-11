@@ -376,7 +376,7 @@ background-color: #F64E17;
     z-index: 40002;
 }
 .socialModalBox {
-    width: 500px;
+    max-width: 500px;
     position: relative;
     margin: 0 auto;
 
@@ -405,6 +405,7 @@ background-color: #F64E17;
 	border-radius: 3px;
 	font-family: "Roboto Condensed", "Times New Roman", Times, serif;
 	font-weight:300;
+	text-align:center;
 	
 }
 .socialModalThanks {
@@ -420,14 +421,13 @@ background-color: #F64E17;
 	font-size:16px;
 }
 .socialModalBox .fb-like {
-	display: block;
+	display: inline-block;
 	background: rgb(81, 153, 184);
 	vertical-align: middle;
 	padding: 26px 20px 20px;
 	border-radius: 3px;
 	text-align: center;
 	width: 150px;
-	margin: 0 auto;
 	border: 1px solid rgba(0, 0, 0, 0.3);
 	box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.15),0 1px 0 rgba(255, 255, 255, 0.1);
 	
