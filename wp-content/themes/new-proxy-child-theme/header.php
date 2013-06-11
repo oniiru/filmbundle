@@ -19,6 +19,14 @@
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/zclip.js'></script>
 
+<?php if (is_front_page()) { ?>
+<style type='text/css'>
+html, body {
+  height: auto;
+}
+</style>
+<?php } ?>
+
 </head>
 
 <!-- BEGIN body -->
