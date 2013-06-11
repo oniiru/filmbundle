@@ -46,7 +46,6 @@ class stag_section_seedprod extends WP_Widget{
    	 echo seed_cs3_head(); 
    ?>
     <div class="centerthis">
-		<div class="topshelf grid-12"></div>
     <?php
         if (is_user_logged_in()) {
             // Get relevant info for current user
@@ -81,10 +80,8 @@ class stag_section_seedprod extends WP_Widget{
 		                <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
 
 		                <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
-                <div class="translucent-modal tranlink"  >
-                    <p title="Your unique url. Click the button to copy." data-placement="top" data-toggle="tooltip" class="littletooltip"><?php echo $referrer_url; ?></p><a data-clipboard-text="<?php echo $referrer_url; ?>" class="btn btn-small btn-inverse zclipbtn"> Copy</a>
-					
-				</div>
+                <div class="translucent-modal tranlink">
+                    <p title="Your unique url. Click the button to copy." data-placement="top" data-toggle="tooltip" class="littletooltip"><?php echo $referrer_url; ?></p><a data-clipboard-text="<?php echo $referrer_url; ?>" class="btn btn-small btn-inverse zclipbtn"> Copy</a></div>
 				<script type="text/javascript">
 				    jQuery(function () {
 				        jQuery(".littletooltip").tooltip();
@@ -168,7 +165,10 @@ class stag_section_seedprod extends WP_Widget{
 
       </div>
   </div>
+
+  <div class="topshelf grid-12"></div>
   
+
   <div id="myModal3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModal3Label" aria-hidden="true">
     <div class="modal-header">
       <h3 id="myModal3Label">Join the inner circle</h3>

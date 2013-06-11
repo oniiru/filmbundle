@@ -272,15 +272,15 @@ h3#myModalLabel, h3#myModal2Label, h3#myModal3Label {
 }
 
 .topshelf {
-	background-image:url('assets/img/shelf.png');
-	background-repeat:no-repeat;
+	background-image: url('assets/img/shelf.png');
+	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	background-position:center bottom; 
-	position:relative;
-	height:75px;
-	margin:auto;
-	top:270px;
-	z-index:9;
+	background-position: center bottom; 
+	position: relative;
+	height: 75px;
+	margin: auto;
+	top: -10px;
+	z-index: 9;
 }
 
 li a:hover {
@@ -360,11 +360,11 @@ margin-top:0px;
 }
 
 .bigstatsbox {
-	border-radius:8px;
-	background:rgb(0, 78, 111);
+	border-radius: 8px;
+	background: rgb(0, 78, 111);
 	box-shadow: inset 1px 4px 5px rgba(0, 0, 0, .4);
-	margin:auto;
-	color:white;
+	margin: auto;
+	color: white;
 	z-index: 11;
 	position: relative;
 }
@@ -439,8 +439,9 @@ p.shared-sub-title {
 	text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 3px;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 700;
-	line-height:1.6em;
+	line-height: 1.6em;
 	font-size: 18px;
+	margin-bottom: 60px;
 	
 }
 .wsl_connect_with_provider {margin-bottom:10px !important;}
@@ -1552,26 +1553,20 @@ text-align: right;
  * Make seedprod responsive
  */
 @media screen and (max-width: 1029px) {
-	.topshelf {
-		top: 305px;
+	.statsleft {
+		width: 400px;
 	}
-}
-@media screen and (max-width: 959px) {
-	.tranlink {
-		width: 300px;
-	}
-	.tranlink .btn {
-		display: none;
-	}
-}
-@media screen and (max-width: 880px) {
-	.tranlink {
-		display: none;
+	.statsright {
+		width: 400px;
+		display: block;
+		margin: 0 auto;
 	}
 	.tranlink2 {
-		margin-bottom: 20px;
-		padding: 6px 12px;
+		margin-bottom: 16px;
+		width: 300px;
 	}
+}
+@media screen and (max-width: 900px) {
 	#seedprod_title_link {
 		display: block;
 		margin: 0 0 20px 0;
@@ -1580,35 +1575,61 @@ text-align: right;
 	.statstitle p {
 		line-height: 1;
 	}
-	.topshelf {
-		top: 320px;
-	}
 }
-@media screen and (max-width: 690px) {
-	.statsright {
-		display: block;
-		margin: 0 auto;
+@media screen and (max-width: 600px) {
+	.tranlink {
+		display: none;
+		margin: 0;
+		padding: 0;
+		height: 0;
 	}
-	.tranlink2 {
-		padding: 6px 12px;
+	.statsleft {
+		width: 200px;
+		height: 90px;
+		text-align: center;
+		margin: 0;
+		padding: 0;
 	}
-	.topshelf {
-		top: 415px;
+	a.zocial {
+		display: block !important;
+		margin: 0 auto 10px auto !important;
 	}
-}
-@media screen and (max-width: 598px) {
-	.topshelf {
-		top: 460px;
-	}
-}
-@media screen and (max-width: 500px) {
 	.statstitle p {
 		font-size: 75%;
+	}
+	.tranlink2 {
+		width: 200px;
 	}
 	#seedprod_stats_text {
 		font-size: 75%;
 	}
-	.topshelf {
-		top: 435px;
+	.statsright {
+		width: 300px;
+		padding: 0;
+	}
+}
+@media screen and (max-width: 440px) {
+	.statstitle p {
+		font-size: 50%;
+	}
+	a.zocial {
+		width: 150px !important;
+		font-size: 70% !important;
+	}
+	.statsright {
+		width: 200px;
+	}
+	.tranlink2 {
+		width: 150px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.thestatsleft, .thestatsright {
+		font-size:20px;
+		line-height:.7em;
+		display: block;
+	}
+	.thestatsleft span, .thestatsright span{
+		font-size:10px;
 	}
 }
