@@ -199,7 +199,6 @@ margin-left: 10px;
 }
 
 
-
 .about-us-right, .about-us-left {
 	display:inline-block;
 	vertical-align:top;
@@ -215,6 +214,22 @@ margin-left: 10px;
 	margin-bottom:20px;
 	margin-top:0px;
 }
+
+/**
+ * Adding responsiveness to the about us section
+ */
+@media screen and (max-width: 640px) {
+	.about-us-left {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+		text-align: center !important;
+	}
+	.about-us-right {
+		width: 100%;
+	}
+}
+
 
 #your-profile .form-table input {padding: 15px 20px 15px 10px;}
 #your-profile .form-table th {width: 200px; padding-left:0px;}
