@@ -166,7 +166,6 @@ class stag_section_seedprod extends WP_Widget{
       </div>
   </div>
 
-  <div class="topshelf grid-12"></div>
   
 
   <div id="myModal3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModal3Label" aria-hidden="true">
@@ -190,6 +189,7 @@ class stag_section_seedprod extends WP_Widget{
   
       <!-- END #about.section-block -->
     </section>
+  <div class="topshelf grid-12"></div>
 
     <?php
     echo $after_widget;

@@ -321,7 +321,7 @@ h3#myModalLabel, h3#myModal2Label, h3#myModal3Label {
 	position: relative;
 	height: 75px;
 	margin: auto;
-	top: -10px;
+	top: -16px;
 	z-index: 9;
 }
 
@@ -483,7 +483,7 @@ p.shared-sub-title {
 	font-weight: 700;
 	line-height: 1.6em;
 	font-size: 18px;
-	margin-bottom: 60px;
+	margin-bottom: 80px;
 	
 }
 .wsl_connect_with_provider {margin-bottom:10px !important;}
