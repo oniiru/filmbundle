@@ -183,9 +183,13 @@ margin-left: 10px;
 	.littlesocial {
 		float: none;
 		text-align: right;
-		margin-top: 30px;
+		margin-top: 16px;
 		margin-right: 60px;
 	}
+	#mobile-nav {
+		top:15px !important;
+	}
+	
 }
 @media screen and (max-width: 420px) {
 	.littlesocial {
@@ -195,6 +199,14 @@ margin-left: 10px;
 		text-align: right;
 		margin: 0;
 		padding: 0;
+	}
+	.fb_edge_widget_with_comment {
+		margin-right:3px !important;
+	}
+	
+	#mobile-nav {
+		top: 25px !important;
+		right: 31px;
 	}
 }
 
@@ -1100,7 +1112,7 @@ div#container {
  }
  
   #wrapper{
- 	min-height: 440px;
+ 	min-height: 475px;
  }
 
 #fallbackimage {
@@ -1468,7 +1480,7 @@ text-align: right;
     z-index: 40002;
 }
 .socialModalBox {
-    width: 500px;
+    max-width: 500px;
     position: relative;
     margin: 0 auto;
 
@@ -1495,6 +1507,7 @@ text-align: right;
 .socialModalContentInner {
 	padding: 20px;
 	border-radius: 3px;
+	text-align:center;
 }
 .socialModalThanks {
 	display: block;
@@ -1507,14 +1520,13 @@ text-align: right;
 	text-align: center;
 }
 .socialModalBox .fb-like {
-	display: block;
+	display: inline-block;
 	background: rgb(81, 153, 184);
 	vertical-align: middle;
 	padding: 26px 20px 20px;
 	border-radius: 3px;
 	text-align: center;
 	width: 150px;
-	margin: 0 auto;
 	border: 1px solid rgba(0, 0, 0, 0.3);
 	box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.15),0 1px 0 rgba(255, 255, 255, 0.1);
 	
