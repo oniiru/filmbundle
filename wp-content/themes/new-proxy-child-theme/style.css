@@ -1681,15 +1681,16 @@ text-align: right;
 		margin: 0 auto;
 		padding: 0;
 	}
-	#login {
+	#login,
+	#register {
 		width: 100%;
 	}
-	#login .socialloginstuff,
+	#register .loginbox,
 	#login .loginbox,
+	#login .socialloginstuff,
 	#login .socialloginstuff span {
 		display: block;
 		float: none;
-		width: auto;
 		width: 100%;
 	}
 	#login .socialloginstuff span {
@@ -1704,16 +1705,19 @@ text-align: right;
 		margin: 5px 10px 5px 10px;
 	}
 
-	#login #wp-social-login-connect-options {
+	#login #wp-social-login-connect-options,
+	#register #wp-social-login-connect-options {
 		margin: 0 auto !important;
 		display: block;
 		width: 240px;
 	}
 
-	#login #theme-my-login {
+	#login #theme-my-login,
+	#register #theme-my-login {
 		margin: 0;
 		padding: 0;
 	}
+	#register #registerform,
 	#login #loginform,
 	#login .tml-action-links {
 		width: 240px;
@@ -1726,18 +1730,46 @@ text-align: right;
 		margin-left: 20px;
 		margin-right: 20px;
 	}
+
+	/** Registration specifics */
+	#register .registerheader {
+		display: block;
+		margin-bottom: 16px !important;
+	}
+	#register .threepoints {
+		border-right: none;
+		border-top: 1px dashed #ddd;
+		padding-top: 14px;
+		margin: 20px auto;
+	}
 }
-@media screen and (max-width: 480px) {
-	#login .alreadymember {
+
+@media screen and (max-width: 500px) {
+	#login .alreadymember,
+	#register .alreadymember {
 		display: none;
 	}
-	#login .smallerlogo {
+	#login .smallerlogo,
+	#register .smallerlogo {
 		width: 156px;
 		height: 32px;
 		margin-top: 12px;
 	}
+	#register #to-login {
+		padding: 10px;
+	}
+	#register .registerheader {
+		line-height: 24px;
+	}
 	#login #loginform,
+	#register #registerform,
 	#login .tml-action-links {
+		width: 200px;
+	}
+
+	#register #wp-social-login-connect-options {
+		margin: 0 auto !important;
+		display: block;
 		width: 200px;
 	}
 }
