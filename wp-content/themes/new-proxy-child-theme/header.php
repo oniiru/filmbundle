@@ -15,9 +15,11 @@
 
   <?php stag_head(); ?>
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/socialcss/zocial.css">
-<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.custom.82475.js'></script>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.js'></script>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/zclip.js'></script>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.backstretch.min.js'></script>
+
 
 <?php if (is_front_page()) { ?>
 <style type='text/css'>
@@ -26,6 +28,16 @@ html, body {
 }
 </style>
 <?php } ?>
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+  if(Modernizr.backgroundsize) {
+  } else {
+    $("#shared").backstretch("/wp-content/themes/new-proxy-child-theme/assets/img/tinyblurred.jpg");
+    $("#suggest").backstretch("/wp-content/themes/new-proxy-child-theme/assets/img/ladylooking.jpg");
+  }
+});
+</script>
 
 </head>
 

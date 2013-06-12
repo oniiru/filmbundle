@@ -130,6 +130,13 @@ margin-left: 10px;
 	
 }
 
+#shared {
+	background: url('../new-proxy-child-theme/assets/img/tinyblurred.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 #suggest {
 	padding:20px 20px 40px 20px ;
 	text-align:center;

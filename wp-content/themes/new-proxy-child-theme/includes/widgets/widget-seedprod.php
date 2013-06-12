@@ -27,10 +27,7 @@ class stag_section_seedprod extends WP_Widget{
     ?>
 
     <!-- BEGIN #about.section-block -->
-    <section id="<?php echo stag_to_slug($id); ?>" class="section-block content-section" style="background:url(<?php echo get_stylesheet_directory_uri(); ?>/assets/img/tinyblurred.jpg) no-repeat center center fixed;-webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;">
+    <section id="<?php echo stag_to_slug($id); ?>" class="section-block content-section">
 
       <div class="inner-section">
 
