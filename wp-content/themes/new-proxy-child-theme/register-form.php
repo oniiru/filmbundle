@@ -70,35 +70,35 @@ Theme My Login will always look in your theme's directory first, before using th
     <a id="to-register" href="#toregister" class="stag-button small light-blue square to_register">Join</a><p class="alreadymember"> Not a member?</p>
 </div>
 
-<h2 class="loginsubtitle"> Log in to your Account </h2>
-	<div class="login loginbox animate" id="theme-my-login<?php $template->the_instance(); ?>">
-	<form name="loginform" id="loginform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'login' ); ?>" method="post">
-		<p>
-			<input type="text" placeholder="Email" name="log" id="user_login<?php $template->the_instance(); ?>" class="input" value="<?php $template->the_posted_value( 'log' ); ?>" size="20" />
-		</p>
-		<p>
-			<input type="password" placeholder="Password" name="pwd" id="user_pass<?php $template->the_instance(); ?>" class="input" value="" size="20" />
-		</p>
+	<h2 class="loginsubtitle">Log in to your Account</h2>
 
-		<?php do_action( 'login_form' ); ?>
-		<?php $template->the_action_template_message( 'login' ); ?>
-	
-		<p class="submit">
-			<input type="submit" name="wp-submit" id="wp-submit<?php $template->the_instance(); ?>" value="<?php esc_attr_e( 'Log In' ); ?>" />
-			<input type="hidden" name="redirect_to" value="<?php $template->the_redirect_url( 'login' ); ?>" />
-			<input type="hidden" name="instance" value="<?php $template->the_instance(); ?>" />
-			<input type="hidden" name="action" value="login" />
-		</p>
-	</form>
-	<?php $template->the_action_links( array( 'login' => false, 'register' =>false ) ); ?>
-	
-	</div>
 	<div class="socialloginstuff">
- <?php do_action( 'wordpress_social_login' ); ?> 
- <span>or</span>
- 
-</div>
- 
+		<?php do_action( 'wordpress_social_login' ); ?> 
+		<span>or</span>
+	</div>
+
+	<div class="login loginbox animate" id="theme-my-login<?php $template->the_instance(); ?>">
+		<form name="loginform" id="loginform<?php $template->the_instance(); ?>" action="<?php $template->the_action_url( 'login' ); ?>" method="post">
+			<p>
+				<input type="text" placeholder="Email" name="log" id="user_login<?php $template->the_instance(); ?>" class="input" value="<?php $template->the_posted_value( 'log' ); ?>" size="20" />
+			</p>
+			<p>
+				<input type="password" placeholder="Password" name="pwd" id="user_pass<?php $template->the_instance(); ?>" class="input" value="" size="20" />
+			</p>
+
+			<?php do_action( 'login_form' ); ?>
+			<?php $template->the_action_template_message( 'login' ); ?>
+		
+			<p class="submit">
+				<input type="submit" name="wp-submit" id="wp-submit<?php $template->the_instance(); ?>" value="<?php esc_attr_e( 'Log In' ); ?>" />
+				<input type="hidden" name="redirect_to" value="<?php $template->the_redirect_url( 'login' ); ?>" />
+				<input type="hidden" name="instance" value="<?php $template->the_instance(); ?>" />
+				<input type="hidden" name="action" value="login" />
+			</p>
+		</form>
+		<?php $template->the_action_links( array( 'login' => false, 'register' =>false ) ); ?>
+	</div>
+
 </div>
 
 

@@ -1370,27 +1370,6 @@ p.loginformtitle {
 }
 
 
-/**
- * Make the register / login forms responsive
- */
-@media screen and (max-width: 480px) {
-#login,
-#register {
-	width: auto;
-}
-.loginbox {
-	float: none;
-	margin: 10px;
-	border-bottom: 1px dashed #ddd;
-}
-.loginbox input[type=submit] {
-	width: 100%;
-}
-.socialloginstuff {
-	margin: 0 auto;
-}
-}
-
 /** yerk some ugly IE fixes 'cause I know someone will ask "why does it look ugly in IE?", no matter how many warnings I will put in the article */
 
 .lt8 #wrapper input{
@@ -1654,7 +1633,7 @@ text-align: right;
 	.statstitle p {
 		font-size: 50%;
 	}
-	a.zocial {
+	.statsleft a.zocial {
 		width: 150px !important;
 		font-size: 70% !important;
 	}
@@ -1689,5 +1668,69 @@ text-align: right;
 		font-size: 16px;
 		width: 220px;
 		margin: 0 auto 10px auto;
+	}
+}
+
+/**
+ * Make the register / login forms responsive
+ */
+@media screen and (max-width: 680px) {
+	#loginbody #wrapper,
+	#loginbody #wrapper2 {
+		width: 100%;
+		margin: 0 auto;
+		padding: 0;
+	}
+	#login {
+		width: 100%;
+	}
+	#login .socialloginstuff,
+	#login .loginbox,
+	#login .socialloginstuff span {
+		display: block;
+		float: none;
+		width: auto;
+		width: 100%;
+	}
+	#login .socialloginstuff span {
+		width: 240px;
+		margin: 0 auto 16px auto;
+	}
+	#login .socialloginstuff span:before, 
+	#login .socialloginstuff span:after {
+		display: inline-block;
+		width: 3.5em;
+		height: 1px;
+		margin: 5px 10px 5px 10px;
+	}
+
+	#login #wp-social-login-connect-options {
+		margin: 0 auto !important;
+		display: block;
+		width: 240px;
+	}
+
+	#login #theme-my-login {
+		margin: 0;
+		padding: 0;
+	}
+	#login #loginform,
+	#login .tml-action-links {
+		width: 240px;
+		margin: 0 auto;
+	}
+
+@media screen and (max-width: 480px) {
+	#login .alreadymember {
+		display: none;
+	}
+	#login .smallerlogo {
+		width: 156px;
+		height: 32px;
+		margin-top: 12px;
+	}
+	#login #loginform,
+	#login .tml-action-links {
+		width: 200px;
 	}
 }
