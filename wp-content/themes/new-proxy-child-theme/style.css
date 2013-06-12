@@ -1720,6 +1720,13 @@ text-align: right;
 		margin: 0 auto;
 	}
 
+	/** Lost password */
+	#login .lp .message,
+	#login #lostpasswordform {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+}
 @media screen and (max-width: 480px) {
 	#login .alreadymember {
 		display: none;
