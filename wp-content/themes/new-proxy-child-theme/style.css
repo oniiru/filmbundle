@@ -1604,12 +1604,30 @@ text-align: right;
 		line-height: 1;
 	}
 }
+
+@media screen and (max-width: 800px) {
+	h1.logintitle {
+		font-size:27px;
+		margin-right:5%;
+	}
+}
 @media screen and (max-width: 600px) {
 	.tranlink {
 		display: none;
 		margin: 0;
 		padding: 0;
 		height: 0;
+	}
+	h1.logintitle {
+		display:none;
+	}
+	
+	.header-inner {
+		text-align:center;
+	}
+	
+	#logo {
+		float:none;
 	}
 	.statsleft {
 		width: 200px;
@@ -1687,6 +1705,16 @@ text-align: right;
 		width: 100%;
 		margin: 0 auto;
 		padding: 0;
+	}
+	
+	#wrapper2, #wrapper {
+		min-height:825px !important;
+	}
+	
+	h1.logintitle {
+		margin-right:0px;
+		font-size:26px;
+		margin-top:10px;
 	}
 	#login,
 	#register {
@@ -1779,4 +1807,49 @@ text-align: right;
 		display: block;
 		width: 200px;
 	}
+}
+
+
+
+@media only screen and (max-width: 768px) {
+.footer .copyright {
+display: inline-block;
+text-align: right;
+padding: 0 !important;
+width: 47.917%;
+}
+
+}
+
+@media screen and (max-width: 700px) {
+#loginbody .grids [class*="grid-"] {
+	display: inline-block;
+	margin: 0 0 0 1.5%;
+	vertical-align: top;
+	width: 47.917%;
+}
+}
+
+@media only screen and (max-width: 480px) { 
+    .footer .copyright { text-align: right;
+padding: 0px;
+display: inline-block;
+width: inherit !important;
+margin-top: 0px !important;
+margin: 0px !important;
+float:right;
+}
+.rawr {
+	margin-bottom:0px !important;
+}
+#loginbody .grids [class*="grid-"] {
+	display: inline;
+margin:0px !important; }
+.footer .social-links {
+	margin-top:0px;
+}
+div#container {
+       
+       margin: 0px 0px -66px 0px;
+ }
 }
