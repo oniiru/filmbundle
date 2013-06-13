@@ -489,3 +489,7 @@ background-color: #F64E17;
 	
 }
 
+@media only screen and (max-width: 550px) {
+#toTop a {display:none;}
+
+}

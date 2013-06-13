@@ -25,7 +25,9 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 	margin-top:2px;
 }
 
-
+#closeModal {
+	cursor:pointer;
+}
 #login p.message, #login p.error, .loginformtitle, #register p.message, #register p.error {
 	padding: 5px;
 	line-height: 1.2em;
@@ -366,6 +368,11 @@ display: block;
 }
 #about p {
 }
+#about {
+	padding-top:50px !important;
+}
+
+#about .entry-content {margin-top:0px !important;}
 li {
 	margin: 0 0 10px;
 }
@@ -1459,11 +1466,20 @@ text-align: right;
     filter: alpha(opacity=50);
     z-index: 40001;
 }
+
+.closeit {
+	float: right;
+	margin-top: 5px;
+	padding: 14px;
+	background-color: white !important;
+	color: grey;
+	font-size: 30px;
+}
 .socialModalVerticalOffset {
     position: fixed;
     top: 0;
-    width: 100%;
     z-index: 40002;
+	margin:10px;
 }
 .socialModalBox {
     max-width: 500px;
@@ -1580,6 +1596,24 @@ text-align: right;
 /**
  * Make seedprod responsive
  */
+
+@media screen and (max-width: 1100px) {
+	h1#bigone {
+		font-size: 44px;
+	}
+	.about-us-left {
+		margin-top:40px;
+	}
+	#blog .entry-content {
+		margin-top:20px;
+	}
+}
+
+@media screen and (min-width : 1030px) and (max-width: 1050px) {
+	.zocial, a.zocial {
+		font: bold 12px/1 "Lucida Grande", Tahoma, sans-serif !important;
+	}
+}
 @media screen and (max-width: 1029px) {
 	.statsleft {
 		width: 400px;
@@ -1593,6 +1627,7 @@ text-align: right;
 		margin-bottom: 16px;
 		width: 300px;
 	}
+	
 }
 @media screen and (max-width: 900px) {
 	#seedprod_title_link {
@@ -1603,13 +1638,56 @@ text-align: right;
 	.statstitle p {
 		line-height: 1;
 	}
+	h1#bigone {
+		font-size: 40px;
+	}
+	p.shared-sub-title {
+		font-size:16px;
+	}
+	
+	#suggest a {
+		font-size:24px;
+	}
+	
 }
+@media screen and (max-width: 850px) {
+	.about-us-right p img {display:none !important;}
 
+
+}
 @media screen and (max-width: 800px) {
 	h1.logintitle {
 		font-size:27px;
 		margin-right:5%;
 	}
+	
+	#backToTop {display:none;}
+	h1#bigone span{
+		display:none;
+	}
+	h1#bigone{
+		max-width: 384px;
+		margin: auto;
+		margin-bottom:20px;
+	}
+	p.shared-sub-title {
+	max-width: 400px;
+	margin: auto;
+	margin-bottom: 60px;
+	line-height:1.3em;
+}
+.about-us-right {
+	
+width:600px !important;
+text-align:left;
+}
+.about-us-left {
+	
+	display:none;
+}
+#about .entry-content {text-align:center;}
+.about-us-right p img {display:inline-block !important}
+
 }
 @media screen and (max-width: 600px) {
 	.tranlink {
@@ -1621,12 +1699,13 @@ text-align: right;
 	h1.logintitle {
 		display:none;
 	}
+	.about-us-right p img {display:none !important;}
 	
-	.header-inner {
+	#loginbody .header-inner {
 		text-align:center;
 	}
 	
-	#logo {
+	#loginbody #logo {
 		float:none;
 	}
 	.statsleft {
@@ -1644,7 +1723,7 @@ text-align: right;
 		font-size: 75%;
 	}
 	.tranlink2 {
-		width: 200px;
+		width: 275px;
 	}
 	#seedprod_stats_text {
 		font-size: 75%;
@@ -1654,31 +1733,7 @@ text-align: right;
 		padding: 0;
 	}
 }
-@media screen and (max-width: 440px) {
-	.statstitle p {
-		font-size: 50%;
-	}
-	.statsleft a.zocial {
-		width: 150px !important;
-		font-size: 70% !important;
-	}
-	.statsright {
-		width: 200px;
-	}
-	.tranlink2 {
-		width: 150px;
-		padding-left: 0;
-		padding-right: 0;
-	}
-	.thestatsleft, .thestatsright {
-		font-size:20px;
-		line-height:.7em;
-		display: block;
-	}
-	.thestatsleft span, .thestatsright span{
-		font-size:10px;
-	}
-}
+
 
 /**
  * Makes the suggest section responsive
@@ -1694,6 +1749,12 @@ text-align: right;
 		width: 220px;
 		margin: 0 auto 10px auto;
 	}
+	.about-us-left {
+	
+		display:block;
+		width: 250px;
+		padding-left: 50px;	
+	}
 }
 
 /**
@@ -1706,9 +1767,11 @@ text-align: right;
 		margin: 0 auto;
 		padding: 0;
 	}
-	
+	.about-us-right {
+		width:80% !important;
+	}
 	#wrapper2, #wrapper {
-		min-height:825px !important;
+		min-height:875px !important;
 	}
 	
 	h1.logintitle {
@@ -1716,6 +1779,8 @@ text-align: right;
 		font-size:26px;
 		margin-top:10px;
 	}
+	
+	#suggest a {font-size:18px;padding:15px 20px ;}
 	#login,
 	#register {
 		width: 100%;
@@ -1777,6 +1842,10 @@ text-align: right;
 		padding-top: 14px;
 		margin: 20px auto;
 	}
+	
+	#seedprod_title_desc {
+		display:none;
+	}
 }
 
 @media screen and (max-width: 500px) {
@@ -1807,22 +1876,34 @@ text-align: right;
 		display: block;
 		width: 200px;
 	}
+	.about-us-right h2 {
+		font-size:32px
+	}
+	
 }
 
 
 
 @media only screen and (max-width: 768px) {
-.footer .copyright {
+#loginbody .footer .copyright {
 display: inline-block;
 text-align: right;
 padding: 0 !important;
 width: 47.917%;
 }
-
+.footer .copyright {
+display: inline-block;
+text-align: right;
+padding: 20px 0px !important;
+width: 47.917%;
+}
+#blog .featured-post {
+margin-bottom: 85px;
+}
 }
 
 @media screen and (max-width: 700px) {
-#loginbody .grids [class*="grid-"] {
+ .footer .grids [class*="grid-"] {
 	display: inline-block;
 	margin: 0 0 0 1.5%;
 	vertical-align: top;
@@ -1831,25 +1912,82 @@ width: 47.917%;
 }
 
 @media only screen and (max-width: 480px) { 
-    .footer .copyright { text-align: right;
-padding: 0px;
-display: inline-block;
-width: inherit !important;
-margin-top: 0px !important;
-margin: 0px !important;
-float:right;
+    #loginbody .footer .copyright { text-align: right;
+		text-align: right;
+		padding: 0px;
+		display: inline-block;
+		width: 151px !important;
+		margin: 0px !important;
+		float: right;
+		font-size: 12px;
+		padding-top: 5px !important;
 }
+
+
 .rawr {
 	margin-bottom:0px !important;
 }
-#loginbody .grids [class*="grid-"] {
+
+
+ .footer .grids [class*="grid-"] {
 	display: inline;
 margin:0px !important; }
 .footer .social-links {
 	margin-top:0px;
 }
-div#container {
-       
-       margin: 0px 0px -66px 0px;
+#loginbody div#container {
+
+ margin: 0px 0px -66px 0px;
+
  }
+}
+
+@media screen and (max-width: 440px) {
+	.statstitle p {
+		font-size: 70%;
+	}
+	.statsleft a.zocial {
+		width: 150px !important;
+		font-size: 70% !important;
+	}
+	.statsright {
+		width: 200px;
+	}
+	
+	.about-us-right h2 {
+		font-size:27px
+	}
+	.tranlink2 {
+		width: 175px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	.thestatsleft, .thestatsright {
+		font-size:20px;
+		line-height:.7em;
+	}
+	.thestatsleft span, .thestatsright span{
+		font-size:10px;
+	}
+	.about-us-right h2 {margin-bottom:0px !important}
+	
+	.footer .copyright {
+		font-size:12px;
+		float:right;
+		width:160px !important;
+		padding:8px 0px !important;
+	}
+}
+
+@media only screen and (max-width: 420px) { 
+	
+	h1#bigone {
+		font-size:29px;
+	}
+	
+	p.shared-sub-title {font-size:14px;
+	}
+	
+	.about-us-right h3 {font-size:17px;}	
+	.about-us-right h3 {font-size:21px;}	
 }
