@@ -1912,15 +1912,17 @@ margin-bottom: 85px;
 }
 
 @media only screen and (max-width: 480px) { 
-    #loginbody .footer .copyright { text-align: right;
-		text-align: right;
-		padding: 0px;
-		display: inline-block;
-		width: 151px !important;
-		margin: 0px !important;
-		float: right;
-		font-size: 12px;
-		padding-top: 5px !important;
+    #loginbody .footer .copyright { 
+		    text-align: right;
+		    padding-right: 0px;
+		    padding-bottom: 0px;
+		    padding-left: 0px;
+		    display: inline-block;
+		    width: 125px !important;
+		    margin: 0px !important;
+		    float: right;
+		    font-size: 9px;
+		    padding-top: 11px !important;
 }
 
 
@@ -1972,7 +1974,7 @@ margin:0px !important; }
 	.about-us-right h2 {margin-bottom:0px !important}
 	
 	.footer .copyright {
-		font-size:11px;
+		font-size:12px;
 		float:right;
 		width:160px !important;
 		padding:8px 0px !important;
