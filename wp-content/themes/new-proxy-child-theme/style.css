@@ -2001,4 +2001,9 @@ margin:0px !important; }
 	    margin-top: -1px;
 	    padding: 14px 6px;
 	    background-color: white
+	
+}
+.bigstatsbox {
+	width:90% !important;
+}
 }
