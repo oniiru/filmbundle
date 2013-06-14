@@ -12,7 +12,7 @@ class stag_section_seedprod extends WP_Widget{
     extract($args);
 
     // VARS FROM WIDGET SETTINGS
-    $title = apply_filters('widget_title', $instance['title'] );
+    $title = $instance['title'];
     $subtitle = $instance['subtitle'];
     $color = $instance['color'];
     $bg = $instance['bg'];
@@ -166,7 +166,7 @@ class stag_section_seedprod extends WP_Widget{
   
 
   <div id="myModal3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModal3Label" aria-hidden="true">
-    <div class="modal-header">
+    <div class="modal-header">  <button type="button" class="closeit" data-dismiss="modal" aria-hidden="true">X</button>
       <h3 id="myModal3Label">Join the inner circle</h3>
     </div>
     <div class="modal-body">
@@ -196,7 +196,7 @@ class stag_section_seedprod extends WP_Widget{
     $instance = $old_instance;
 
     // STRIP TAGS TO REMOVE HTML
-    $instance['title'] = strip_tags($new_instance['title']);
+    $instance['title'] = $new_instance['title'];
     $instance['subtitle'] = $new_instance['subtitle'];
     $instance['color'] = strip_tags($new_instance['color']);
     $instance['bg'] = strip_tags($new_instance['bg']);

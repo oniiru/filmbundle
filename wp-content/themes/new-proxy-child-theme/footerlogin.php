@@ -11,7 +11,7 @@
         <div class="inner-section">
 
             <div class="grids">
-              <div class="grid-6">
+              <div class="grid-6 rawr">
                 <ul class="social-links">
                   <?php
 
