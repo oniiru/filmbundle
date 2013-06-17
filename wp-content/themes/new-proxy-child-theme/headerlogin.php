@@ -39,6 +39,7 @@ html, body {
 
 /** Target Firefox */
 @-moz-document url-prefix() {
+  @media(min-width: 500px) and (max-width: 5000px) {
     input {
       -moz-box-sizing: content-box;
       padding: 5px 10px 5px 10px !important;
@@ -47,15 +48,40 @@ html, body {
     ::-moz-placeholder {
       font-style: italic;
     }
-
     #registerform input {
       width: 220px !important;
     }
+  }
+  @media(min-width: 300px) and (max-width: 499px) {
+    input {
+      -moz-box-sizing: content-box;
+      padding: 5px 10px 5px 10px !important;
+      min-width: 100px !important;
+      width: 180px !important;
+    }
+    ::-moz-placeholder {
+      font-style: italic;
+    }
+    #registerform input {
+      width: 180px !important;
+      min-width: 100px !important;
+    }
+  }
 
+  @media(min-width: 640px) and (max-width: 5000px) {
     #lostpasswordform input {
       width: 540px !important;
     }
+  }
+  @media(min-width: 300px) and (max-width: 639px) {
+    #lostpasswordform input {
+      width: 90% !important;
+    }
+  }
 }
+
+
+
 
 </style>
 </head>
@@ -66,7 +92,7 @@ html, body {
 
 
   <?php stag_header_before(); ?>
-AAAA
+
   <!-- BEGIN #header -->
   <header id="header" role="banner">
 
