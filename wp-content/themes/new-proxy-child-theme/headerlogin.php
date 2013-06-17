@@ -36,6 +36,27 @@
 html, body {
 	height:100%;
 }
+
+/** Target Firefox */
+@-moz-document url-prefix() {
+    input {
+      -moz-box-sizing: content-box;
+      padding: 5px 10px 5px 10px !important;
+      width: 230px !important;
+    }
+    ::-moz-placeholder {
+      font-style: italic;
+    }
+
+    #registerform input {
+      width: 220px !important;
+    }
+
+    #lostpasswordform input {
+      width: 540px !important;
+    }
+}
+
 </style>
 </head>
 
@@ -45,7 +66,7 @@ html, body {
 
 
   <?php stag_header_before(); ?>
-
+AAAA
   <!-- BEGIN #header -->
   <header id="header" role="banner">
 
