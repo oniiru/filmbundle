@@ -18,7 +18,9 @@
 		<script type="text/javascript" src="jquery.scrollTo-1.4.2-min.js"></script>
 		<script type="text/javascript" src="jquery.easing.1.3.js"></script>
 		<script type="text/javascript" src="jquery.pitchdeck.js"></script>
-<script type="text/javascript" src="jquery.collapsible.js"></script>
+		<script type="text/javascript" src="jquery.collapsible.js"></script>
+		<script type="text/javascript" src="jquery.main.js"></script>
+		
 <script type="text/javascript">
     $(document).ready(function() {
         //collapsible management
@@ -30,8 +32,24 @@
 		<script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-
-<div id="nav">
+	<div id="wrapper">
+	<div class="nav-holder active">
+		<ul id="nav">
+			<li class="active"><a href="#slide1"><span>Overview</span></a></li>
+			<li><a href="#slide2"><span>The Goals</span></a></li>
+			<li><a href="#slide4"><span>What We Do</span></a></li>
+			<li><a href="#slide5"><span>FAQ</span></a></li>
+			<li><a href="#slide7"><span>Contact</span></a></li>
+			
+		</ul>
+		<div class="slider-holder">
+			<div class="slider-block">
+				<div class="slider"><div class="pin"></div></div>
+			</div>
+		</div>
+	</div>
+	
+<!-- <div id="nav">
 	<div style="width:940px;margin:auto;">
 	<div id="nav_center">
 		<a href="#slide1" class="navbtn nav current" title="Intro"></a>
@@ -42,12 +60,11 @@
 		<a href="mailto:andrew@filmbundle.com" target="_blank" title="Introduce Yourself" id="introyourself"></a>
 	</div>
 	</div>
-</div>
+</div> -->
 <div class="slide" id="slide1">
 	<div class="container">
-		
-		<h1>FilmBundle</h1>
-		<h2>Filmmaker Kit</h2>
+		<img src="filmbundlelogo.png" width="400" style="margin-top:50px" 	alt="Filmbundlelogo">
+		<h1>Filmmaker Kit</h1>
 		<a href="#slide2" class="nav btn btn-info">Get Started</a>
 	</div> <!-- .container -->
 
@@ -80,7 +97,7 @@
 	
 	<div class="container" style="text-align:center;">
 		
-		<h3>Every month, we partner with 5-7 filmmakers and 2 non-profits to bring a limited-time,
+		<h3>Every month, we partner with 1 curator (typically a well known filmmaker or organization with genre expertise), 5-7 filmmakers and 2 non-profits to bring a limited-time,
 streamable bundle of <span style="font-weight:bold">amazing independent films </span>to consumers.</h3>
 
 
@@ -92,10 +109,10 @@ filmmakers if they feel so inclined), to the charities, and even to us. We put a
 <div class="purchase"><img src="click.png"></div><div class="popup"><img src="itgoeslikethis.png"></div>
 <h3 style="margin-top:60px">While this model is new to the film industry, <span style="font-weight:800;color:black">it has been used 
 very successfully in the independent video game space and has raised over 
-$20M for game developers and $10M for charities in the last 2 years.</span></h3>
-<h3>These numbers are all well and good, but you may be asking yourself one very common question...</h3>
-<h2>What's to stop people from paying $.01 for my work??</h2>
-<h3>Glad you asked! In short, they are free to do so, but if psychology tells us anything, most won't, and besides,
+$30M for indie game developers and $13M for charities in the last 2 years.</span></h3>
+<h3>Now, these numbers are all well and good, but you may be asking yourself one very common question...</h3>
+<h2>What's to stop people from getting my work for free??</h2>
+<h3>Glad you asked! In short, the minimum bid is only $.01, but if psychology and the history of pay-what-you-want promotions tell us anything, most will pay substantially more, and besides,
 	 we've worked in several hooks to keep prices up. :-)</h3>
 		<div class="pointcontainer">	
 	 <img class="morethan" src="morethan.png"><img class="arrow2" src="arrow2.png">
@@ -108,7 +125,7 @@ $20M for game developers and $10M for charities in the last 2 years.</span></h3>
 	<img class="bundlestats" src="bundlestats.png">
 	<img class="arrow3" src="arrow3.png">
 	<h3 class="dude2">Extreme transparency</h3>
-	<h4 class="sweet2">We show everybody how many bundles we've sold, the average price, how the money is divided, etc.
+	<h4 class="sweet2">We aren't shy about how many bundles we've sold, the average price, how the money is divided, etc.
 		 This empowers our audience, and makes them invested in seeing your film succeed.</h4>
 	<img class="stackup" src="stackup.png">
 	</div>
@@ -117,15 +134,15 @@ $20M for game developers and $10M for charities in the last 2 years.</span></h3>
 	<img class="arrow4" src="arrow4.png">
 	<h3 class="dude3">Top contributor leaderboard</h3>	
 	<h4 class="sweet3">The top contributors are shown on a leaderboard right on the home page. 
-		This encourages competition among cinephiles. Top contributors get access to unique content and opportunities and show their support of indie film.
+		This encourages competition among cinephiles, and indie film fans. Top contributors get access to unique content and opportunities and show their support of indie film.
 		We encourage competition around here. ;)</h4>		
 	</div>
 	<div class="pointcontainer">
 			<img src="tip.png" class="tip">
 			<img src="arrow5.png" class="arrow5">
 	<h3 class="dude4"> Two chances to win!</h3>
-	<h4 class="sweet4">While streaming your film, as the credits roll
-		 users have an opportunity to tip the filmmaker if they loved the film. 
+	<h4 class="sweet4">While your film streams, as the credits roll,
+		 users have an opportunity to "tip the filmmaker" if they love the film. 
 		 Because customers weren't forced into a set price initially, they are more 
 		 likely to further support films they loved.</h4>
 	</div>
@@ -146,9 +163,7 @@ $20M for game developers and $10M for charities in the last 2 years.</span></h3>
 <h3 class="collapsible" id="section1">What about the rights to our films?</h3>
 <div class="container">
     <div class="content">
-        <p>We take absolutely no rights to the films and you are free to continue selling them via any avenue you wish. 
-        	We aim simply to promote your work to a larger audience and help you get the money you deserve. 
-        	We only require that films not be available online for free during or within 2 months of the promotion.</p>
+        <p>We take only limited non-exclusive digital distribution rights that give us the ability to sell your film for a period of two weeks. During that time you are free to continue selling your film via any avenue you wish. We aim simply to promote your work to a larger audience and help you get the exposure you deserve. We do require that films not be available online for free during or within 2 months of the promotion.</p>
     </div>
 </div>
 <h3 class="collapsible" id="section2">How are the films distributed?</h3>
@@ -162,7 +177,7 @@ $20M for game developers and $10M for charities in the last 2 years.</span></h3>
 <h3 class="collapsible" id="section3">How do I get paid?</h3>
 <div class="container">
     <div class="content">
-        <p>After the promotion ends, we will send you 100% of the payment designated to you minus the 2.8% credit
+        <p>After the promotion ends, we will send you 100% of the payment designated to you minus the credit
         	card transaction fee which is taken before we receive payment.</p>
     </div>
 </div>
@@ -173,11 +188,11 @@ $20M for game developers and $10M for charities in the last 2 years.</span></h3>
 
 As experienced internet entrepreneurs we come from a background of SEO and SEM (search engine optimization and marketing), and have the ability to execute tactics that most filmmakers don't.<br><br>
 
-We built the site from the ground up to encourage sharing of content. We make it extremely easy for customers to tell their friends about it. We know they'll love your work and won't be able to post it to twitter, facebook, pinterest and everywhere else they live online. <br><br>
+We built the site from the ground up to encourage sharing of content. We make it extremely easy for customers to tell their friends about it. We know they'll love your work and won't be able to resist posting it to twitter, facebook, pinterest and everywhere else they live online if we give them the right tools. <br><br>
 
-Accompanying each launch, are several off-line events (mixer, panels, competitions) to build buzz and anticipation from our soon to be loyal following.<br><br>
+Accompanying each launch, are several off-line events (mixers, panels, competitions) to build buzz and anticipation from our soon to be loyal following.<br><br>
 
-We also rely on you as filmmakers and our non-profit partners to tell your fans about the bundle. That means that hopefully you will have the fan bases of 6 other filmmakers and 2 non-profits looking at your work.</p>
+We also rely on you as filmmaker to tell your fans about the bundle, along with our curators and our non-profit partners. That means that you will have the fan bases of 6 other filmmakers, 2 non-profits, and a well known curator looking at your work.</p>
     </div>
 </div>
 <h3 class="collapsible" id="section5">Level with me, how much will I make per sale?</h3>
@@ -221,7 +236,7 @@ We also rely on you as filmmakers and our non-profit partners to tell your fans 
 		<a href="#" class="next"></a>
 	</div> --> <!-- .transition -->
 </div> <!-- #slide7 -->
-
+</div>
 
 </body></html>
 </body>
