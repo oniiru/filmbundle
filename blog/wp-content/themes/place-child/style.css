@@ -500,5 +500,7 @@ background-color: #F64E17;
     width: 100%;
 	margin-bottom:5px;
 }
-
+.socialstuff p {
+    line-height: 1em;
+    margin-bottom: 10px;
 }
