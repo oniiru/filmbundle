@@ -493,3 +493,12 @@ background-color: #F64E17;
 #toTop a {display:none;}
 
 }
+
+@media only screen and (max-width: 420px) {
+
+.mc_merge_var {
+    width: 100%;
+	margin-bottom:5px;
+}
+
+}
