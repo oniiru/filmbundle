@@ -39,6 +39,22 @@ jQuery(document).ready(function($) {
 });
 </script>
 
+<style type='text/css'>
+/** Target Firefox */
+@-moz-document url-prefix() {
+    input {
+      -moz-box-sizing: content-box;
+      padding: 5px 10px 5px 10px !important;
+    }
+    ::-moz-placeholder {
+      font-style: italic;
+    }
+    .gform_wrapper input[type="text"] {
+      padding: 5px 10px 5px 10px !important;
+    }
+
+}
+</style>
 </head>
 
 <!-- BEGIN body -->
