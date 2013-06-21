@@ -2,6 +2,7 @@
 TAG DEFINITIONS
 ******************************************/
 body {
+	background: #e9e8e8;
 	min-width:940px;
 }
 
@@ -34,13 +35,11 @@ h2 {
 	font-size:60px;
 }
 
-::selection {
-	background:#3D9EBA;
-}
+
 /******************************************
 NAVIGATION
 ******************************************/
-/*#nav {
+#nav {
 	width: 100%;
 	position: fixed;
 	top: 0;
@@ -72,7 +71,7 @@ box-shadow: 0 1px 3px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .1);
 -moz-box-shadow: 0 1px 3px rgba(0,0,0,.25), inset 0 -1px 0 rgba(0,0,0,.1);
 box-shadow: 0 1px 3px rgba(0, 0, 0, .25), inset 0 -1px 0 rgba(0, 0, 0, .1);
 
-}*/
+}
 	
 	#nav_center {
 		width: 693px;
@@ -160,10 +159,9 @@ COMMON CLASSES
 	position: relative;
 	margin: 0;
 	width: 100%;
-	padding: 150px 0 200px;
+	padding: 100px 0 200px;
 	text-align:center;
 }
-
 
 .container {
 	position: relative;
@@ -237,10 +235,14 @@ SLIDE 1
 	padding: 108px 0 108px;
 	text-align:center;
 }
-
+#logo {
+	width: 356px;
+	height: 247px;
+	background: url(../images/appsumo-logo.png) no-repeat;
+	margin: 0 auto;
+}
 #slide1 h1 {
-	margin: -15px 0 0px;
-	font-size: 60px;
+	margin: 100px 0 0px;
 }
 #intro_items {
 	width: 600px;
@@ -331,10 +333,9 @@ box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),0 1px 2px rgba(0, 0, 0, 0.05);
 SLIDE 2
 ******************************************/
 #slide2 {
-	background: #f9f9f9;
+	background: #ffffff;
+	box-shadow:0 9px 12px -8px #575757, 0 -9px 12px -8px #575757;
 	padding-bottom:100px;
-	border-top:1px solid #ddd;
-	border-bottom:1px solid #ddd;
 }
 	#slide2 h1 {
 		color: #323232;
@@ -602,9 +603,8 @@ width:50%;	}
 SLIDE 5
 ******************************************/
 #slide5 {
-	background: #f9f9f9;
-	border-top:1px solid #ddd;
-	border-bottom:1px solid #ddd;
+	background: #ffffff;
+	box-shadow:0 9px 12px -8px #575757, 0 -9px 12px -8px #575757;
 }
 
 #problems_solutions {
@@ -631,7 +631,7 @@ SLIDE 5
 	}
 
 #slide5 h3 a {
-	color:#3D9EBA;
+	color:#0088cc;
 }
 #slide5 h3 a:hover {
 	text-decoration:underline;
@@ -697,75 +697,5 @@ SLIDE 7
 #slide7 h2 {font-size:40px;}
 #slide7 h3 {font-size:20px;margin-bottom:100px;}
 
-.nav-holder{ 
-	overflow:hidden; 
-	width:100%; 
-	position:fixed; 
-	height:99px; 
-	border-top:5px solid #3D9EBA; 
-	z-index:100; 
-} 
-.nav-holder.active{background:url(../images/bg-header.png);} 
-#nav { 
-	overflow:hidden; 
-	width:1000px; 
-	margin:0 auto ; 
-	padding:23px 0 20px; 
-	list-style:none; 
-	font:bold 12px/14px Arial, Helvetica, sans-serif; 
-	color:#a4a4a4; 
-} 
-#nav li{ 
-	float:left; 
-	text-align:center; 
-	margin:0 23px; 
-} 
-#nav a{ 
-	display:table-cell; 
-	vertical-align:middle; 
-	height:36px; 
-	color:#a4a4a4; 
-	text-decoration:none; 
-	text-align:center; 
-} 
-#nav .active a, 
-#nav  a:hover{color:#3D9EBA;} 
-.nav-holder .slider-holder:after{ 
-	content:''; 
-	display:block; 
-	clear:both; 
-} 
-.nav-holder .slider-holder{ 
-	width:1000px; 
-	margin:0 auto; 
-} 
-.nav-holder .slider-block{ 
-	float:left; 
-	background:url(bg-slider-block.png) no-repeat; 
-	height:5px; 
-	width:1005px; 
-	margin:0 -3px; 
-} 
-.nav-holder .slider { 
-	float:left; 
-	height:5px; 
-	background:url(bg-slider.png) no-repeat; 
-	position:relative; 
-	overflow:visible !important; 
-} 
-.nav-holder .slider .pin{ 
-	position:absolute; 
-	right:-10px; 
-	top:-8px; 
-	width:21px; 
-	height:21px; 
-	background:url(img-pin.png) no-repeat; 
-} 
+	
 
-.nav-holder.active {
-background: rgba(255,255,255,.9);
-}
-
-#nav li span {
-	font-size:15px;
-}
