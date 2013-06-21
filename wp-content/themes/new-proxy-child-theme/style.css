@@ -498,11 +498,8 @@ p.shared-sub-title {
 	font-weight: 700;
 	line-height: 1.6em;
 	font-size: 18px;
+	margin-bottom: 80px;
 	
-}
-
-.second-sub {
-	margin-bottom:80px;
 }
 .wsl_connect_with_provider {margin-bottom:10px !important;}
 
@@ -1677,11 +1674,8 @@ text-align: right;
 	p.shared-sub-title {
 	max-width: 400px;
 	margin: auto;
-	line-height:1.3em;
-}
-p.second-sub {
 	margin-bottom: 60px;
-	
+	line-height:1.3em;
 }
 .about-us-right {
 	
@@ -2012,12 +2006,7 @@ margin:0px !important; }
 .bigstatsbox {
 	width:90% !important;
 }
-iframe.twitter-follow-button {
-	display:none;
+p.shared-sub-title span {margin-top:10px;
 }
-.fb_edge_widget_with_comment {margin-right:0px !important;
-}
-.littlesocial {
-	right:27px !important;
-}
+
 }
