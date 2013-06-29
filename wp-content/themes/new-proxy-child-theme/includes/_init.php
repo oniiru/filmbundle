@@ -12,6 +12,7 @@ require_once('options/homepage-settings.php');
 /*--------------------------------------------------*/
 require_once('widgets/widget-about.php');
 require_once('widgets/widget-seedprod.php');
+require_once('widgets/widget-bundletop.php');
 
 require_once('widgets/widget-suggest.php');
 require_once('widgets/widget-blog.php');

@@ -1484,6 +1484,8 @@ text-align: right;
     top: 0;
     z-index: 40002;
 	margin:10px;
+	left:0px;
+	right:0px;
 }
 .socialModalBox {
     max-width: 500px;
