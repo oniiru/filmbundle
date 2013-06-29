@@ -27,7 +27,8 @@ class Pwyw
         return self::$instance;
     }
 
-    public function __construct() {
+    public function __construct()
+    {
         global $wpdb;
         register_activation_hook(__FILE__, array(&$this, 'pwyw_install'));
         register_deactivation_hook(__FILE__, array(&$this, 'pwyw_uninstall'));
@@ -49,14 +50,42 @@ class Pwyw
         $this->users = $wpdb->prefix . "pwyw_customers";
     }
 
+    /**
+     * PSR-0 compliant autoloader to load classes as needed.
+     *
+     * @since  2.1
+     *
+     * @param  string  $classname  The name of the class
+     * @return null    Return early if the class name does not start with the
+     *                 correct prefix
+     */
+    public static function autoload($className)
+    {
+        if (__CLASS__ !== mb_substr($className, 0, strlen(__CLASS__))) {
+            return;
+        }
+        $className = ltrim($className, '\\');
+        $fileName  = '';
+        $namespace = '';
+        if ($lastNsPos = strrpos($className, '\\')) {
+            $namespace = substr($className, 0, $lastNsPos);
+            $className = substr($className, $lastNsPos + 1);
+            $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace);
+            $fileName .= DIRECTORY_SEPARATOR;
+        }
+        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, 'lib_'.$className);
+        $fileName .='.php';
 
+        require $fileName;
+    }
 
 
     // -------------------------------------------------------------------------
     // Original PWYW code from v0.1
     // -------------------------------------------------------------------------
 
-    function pwyw_install() {
+    function pwyw_install()
+    {
         global $wpdb;
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
@@ -159,7 +188,8 @@ class Pwyw
         }
     }
 
-    function pwyw_uninstall() {
+    function pwyw_uninstall()
+    {
         global $wpdb;
 
         $sql = "DROP TABLE " . $this->bundles . "";
@@ -181,7 +211,8 @@ class Pwyw
         $k = $wpdb->query($sql);
     }
 
-    function PWYW_init() {
+    function PWYW_init()
+    {
 
         if (is_admin()) {
             wp_enqueue_style('dashboard');
@@ -194,7 +225,8 @@ class Pwyw
         }
     }
 
-    function PWYW_menu_pages() {
+    function PWYW_menu_pages()
+    {
         // Add the top-level admin menu
         $page_title = 'PWYW Settings';
         $menu_title = 'PWYW';
@@ -215,7 +247,8 @@ class Pwyw
         add_submenu_page($menu_slug, $submenu_page_title, $submenu_title, $capability, $submenu_slug, array(&$this, $submenu_function));
     }
 
-    function get_all_payment_info() {
+    function get_all_payment_info()
+    {
         global $wpdb;
                     
         $sql = "SELECT pi.`id` pid,c.`id` cid,c.`title`,pi.`sum` payment,c.`parent`,pa.`allocate_percent`
@@ -245,7 +278,8 @@ class Pwyw
         return $pwyw_category;
     }
 
-    function pwyw_get_bundle_info($bid = '') {
+    function pwyw_get_bundle_info($bid = '')
+    {
         global $wpdb;
 
         if (!empty($bid)) {
@@ -430,7 +464,8 @@ class Pwyw
         return $data;
     }
 
-    function pwyw_edit_bundle() {
+    function pwyw_edit_bundle()
+    {
         global $wpdb;
 
         if (isset($_REQUEST['activate'])) {
@@ -504,7 +539,8 @@ class Pwyw
         $PWYWListTable->display();
     }
 
-    function pwyw_view_bundle($id) {
+    function pwyw_view_bundle($id)
+    {
 
         $pwyw_data = $this->pwyw_get_bundle_info($id);
 
@@ -513,7 +549,8 @@ class Pwyw
         require_once( ABSPATH . 'wp-content/plugins/PWYW/bundle.php' );
     }
 
-    function pwyw_delete_bundle($id) {
+    function pwyw_delete_bundle($id)
+    {
         global $wpdb;
         $wpdb->query($wpdb->prepare("DELETE FROM {$this->bundles} WHERE id = %d", $id));
         require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
@@ -527,7 +564,8 @@ class Pwyw
         $PWYWListTable->display();
     }
 
-    function pwyw_new_bundle() {
+    function pwyw_new_bundle()
+    {
         global $wpdb;
 
         $pwyw_levels = $wpdb->get_results("SELECT l.`id`,l.`name` FROM {$wpdb->pmpro_membership_levels} l");
@@ -550,7 +588,8 @@ class Pwyw
         require_once( ABSPATH . 'wp-content/plugins/PWYW/bundle.php' );
     }
 
-    function pwyw_create_bundle() {
+    function pwyw_create_bundle()
+    {
         global $wpdb;
 
         if (isset($_REQUEST['activate'])) {
@@ -600,7 +639,8 @@ class Pwyw
         $PWYWListTable->display();
     }
 
-    function pwyw_settings() {
+    function pwyw_settings()
+    {
 
         if (!current_user_can('manage_options')) {
             wp_die('You do not have sufficient permissions to access this page.');
@@ -639,7 +679,8 @@ class Pwyw
         }
     }
 
-    function pwyw_add_payment($order) {
+    function pwyw_add_payment($order)
+    {
         global $wpdb;
         require_once( ABSPATH . 'wp-content/plugins/PWYW/Pubnub.php' );
         $pubnub = new Pubnub('pub-055f1968-8c42-4146-80b1-195d34e6c4c5', 'sub-5f5a6c30-278a-11e2-964e-034399c6c504');
@@ -691,7 +732,8 @@ class Pwyw
         $_SESSION['pwyw_bundle'] = '';
     }
 
-    function pwyw_bundle_update() {
+    function pwyw_bundle_update()
+    {
         if (check_ajax_referer('pwyw_ajax')) {
             if (isset($_REQUEST['bid']) && (int) $_REQUEST['bid'] > 0) {
 
@@ -705,7 +747,8 @@ class Pwyw
         echo 'ERROR';
     }
 
-    function pwyw_customers() {
+    function pwyw_customers()
+    {
         if (!current_user_can('manage_options')) {
             wp_die('You do not have sufficient permissions to access this page.');
         } else {
