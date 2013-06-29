@@ -11,6 +11,9 @@
 //init code
 //add_action('admin_init', 'PWYW_init1');
 
+/** Load all of the necessary class files for the plugin */
+spl_autoload_register('Pwyw::autoload');
+
 class Pwyw
 {
     /** Holds the plugin instance */
