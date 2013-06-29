@@ -161,14 +161,15 @@
               <?php endif; ?>
             </form>
           </div>
+<?php
+echo Pwyw_View::make('films');
+?>
+
         </div>
       </div>
 
      </div>
 </div>
-<?php
-echo Pwyw_View::make('films');
-?>
 
 
   <script type="text/javascript">
