@@ -11,7 +11,21 @@
 //init code
 //add_action('admin_init', 'PWYW_init1');
 
-class pwyw {
+class Pwyw
+{
+    /** Holds the plugin instance */
+    private static $instance = false;
+
+    /**
+     * Singleton class
+     */
+    public static function instance()
+    {
+        if (!self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
 
     public function __construct() {
         global $wpdb;
@@ -34,6 +48,13 @@ class pwyw {
         $this->price_allocation = $wpdb->prefix . "pwyw_price_allocation";
         $this->users = $wpdb->prefix . "pwyw_customers";
     }
+
+
+
+
+    // -------------------------------------------------------------------------
+    // Original PWYW code from v0.1
+    // -------------------------------------------------------------------------
 
     function pwyw_install() {
         global $wpdb;
@@ -720,9 +741,5 @@ class pwyw {
             $PWYWListTable->display();
         }
     }
-
 }
-
-global $pwyw_obj;
-$pwyw_obj = new pwyw();
-?>
+add_action('plugins_loaded', array('Pwyw', 'instance'));
