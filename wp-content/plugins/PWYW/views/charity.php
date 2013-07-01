@@ -15,7 +15,7 @@
             });
             $('#charity_image_button_<?php echo $array_id; ?>').click(function() {
               wp.media.editor.send.attachment = function(props, attachment) {
-                $('#charity_image_<?php echo $id; ?>').val(attachment.url);
+                $('#charity_image_<?php echo $array_id; ?>').val(attachment.url);
               }
               wp.media.editor.open(this);
               return false;
@@ -23,18 +23,18 @@
           });
           </script>
         <p>
-          <input name="charities[<?php echo $array_id; ?>][id]" type="hidden" value="<?php echo $id; ?>" />
-          <input name="charities[<?php echo $array_id; ?>][image]" id="charity_image_<?php echo $array_id; ?>" type="text" value="" class="regular-text" style="width:600px;" placeholder="Image" />
+          <input name="charities[<?php echo $array_id; ?>][id]" type="hidden" value="<?php echo $charity->id; ?>" />
+          <input name="charities[<?php echo $array_id; ?>][image]" id="charity_image_<?php echo $array_id; ?>" type="text" value="<?php echo $charity->image; ?>" class="regular-text" style="width:600px;" placeholder="Image" />
           <a class="button-secondary" id="charity_image_button_<?php echo $array_id; ?>" title="Media Image Library">Media Image Library</a>
         </p>
         <p>
-         <input name="charities[<?php echo $array_id; ?>][title]" id="charity_title_<?php echo $array_id; ?>" type="text" value="" class="regular-text" style="width:738px;" placeholder="Title" />
+         <input name="charities[<?php echo $array_id; ?>][title]" id="charity_title_<?php echo $array_id; ?>" type="text" value="<?php echo $charity->title; ?>" class="regular-text" style="width:738px;" placeholder="Title" />
         </p>
         <p>
-         <textarea name="charities[<?php echo $array_id; ?>][embed]" cols="80" rows="5" class="large-text" placeholder="Video Embed"></textarea>
+         <textarea name="charities[<?php echo $array_id; ?>][embed]" cols="80" rows="5" class="large-text" placeholder="Video Embed"><?php echo $charity->embed; ?></textarea>
         </p>
         <p>
-          <textarea name="charities[<?php echo $array_id; ?>][description]" cols="80" rows="5" class="large-text" placeholder="Description"></textarea>
+          <textarea name="charities[<?php echo $array_id; ?>][description]" cols="80" rows="5" class="large-text" placeholder="Description"><?php echo $charity->description; ?></textarea>
         </p>
       </div>
     </div>

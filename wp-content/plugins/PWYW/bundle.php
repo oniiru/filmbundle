@@ -162,7 +162,10 @@
           </div><!-- .bundlesettings -->
 <?php
 echo Pwyw_View::make('films');
-echo Pwyw_View::make('charities');
+
+// Initialize the charity views
+$data = array('charities' => Pwyw_Charities::all($_REQUEST['bundle']));
+echo Pwyw_View::make('charities', $data);
 ?>
         </form>
       </div>

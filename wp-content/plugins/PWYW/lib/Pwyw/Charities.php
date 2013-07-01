@@ -48,27 +48,32 @@ class Pwyw_Charities
                     $charity['embed'],
                     $charity['description']
                 );
-                var_dump($ch);
             } else {
-
+                $ch = new Pwyw_Charity($charity['id']);
+                $ch->bundle_id = $bundle_id;
+                $ch->title = $charity['title'];
+                $ch->image = $charity['image'];
+                $ch->embed = $charity['embed'];
+                $ch->description = $charity['description'];
             }
-            $ch->save();
+            var_dump($ch);
+            // $ch->save();
         }
-
-        // var_dump($_REQUEST['bundle']);
-        // var_dump($_POST);
         die('save edit bundle!');
     }
 
-    public static function create()
+    /**
+     * Returns an object with all charities for specified bundle.
+     */
+    public static function all($bundle_id)
     {
-    }
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        $table = $prefix.Pwyw_Database::CHARITIES;
+        $sql = "SELECT * FROM {$table}
+                WHERE bundle_id = {$bundle_id}
+                ORDER BY title ASC";
 
-    public static function delete()
-    {
-    }
-
-    public static function all()
-    {
+        return $wpdb->get_results($sql, OBJECT);
     }
 }

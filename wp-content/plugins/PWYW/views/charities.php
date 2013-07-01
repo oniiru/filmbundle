@@ -2,7 +2,7 @@
   jQuery(document).ready(function($) {
     var charity_data = {
         action: 'pwyw_add_charity',
-        array_id: 0
+        array_id: <?php echo count($charities); ?> 
     };
 
     function addCharity() {
@@ -26,9 +26,12 @@
 <h2>Charities</h2>
 
 <div id="charities">
-  <?php 
-    // $data = array('array_id' => 0);
-    // echo Pwyw_View::make('charity', $data);
+  <?php
+    foreach ($charities as $key => $charity) {
+      // var_dump($charity);
+      $data = array('array_id' => $key, 'charity' => $charity);
+      echo Pwyw_View::make('charity', $data);
+    }
   ?>
 </div>
 

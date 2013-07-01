@@ -22,8 +22,34 @@ class Pwyw_Charity
         }
     }
 
+
+    // -------------------------------------------------------------------------
+    // I/O
+    // -------------------------------------------------------------------------
+
+    /**
+     * Load a charity
+     */
     private function load()
     {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        $table = $prefix.Pwyw_Database::CHARITIES;
+        $sql = "SELECT * from {$table} WHERE id = {$this->id}";
+        $charity = $wpdb->get_row($sql, OBJECT);
+
+        // No charity with that id
+        if (is_null($charity)) {
+            return false;
+        }
+
+        // We found the charity, let's populate the object
+        $this->bundle_id = $charity->bundle_id;
+        $this->title = $charity->title;
+        $this->image = $charity->image;
+        $this->embed = $charity->embed;
+        $this->description = $charity->description;
+        return true;
     }
 
     /**
@@ -79,10 +105,6 @@ class Pwyw_Charity
     }
 
     public static function delete()
-    {
-    }
-
-    public static function all()
     {
     }
 }
