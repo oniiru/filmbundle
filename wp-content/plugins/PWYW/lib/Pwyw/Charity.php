@@ -26,8 +26,32 @@ class Pwyw_Charity
     {
     }
 
+    /**
+     * Save a charity in the database.
+     */
     public function save()
     {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        $table = $prefix.Pwyw_Database::CHARITIES;
+
+        $data =  array(
+            'bundle_id' => $this->bundle_id,
+            'title' => $this->title,
+            'image' => $this->image,
+            'embed' => $this->embed,
+            'description' => $this->description
+        );
+
+        if ($this->id == null) {
+            // Insert new provider
+            $wpdb->insert($table, $data, null);
+            $res = ($wpdb->insert_id == 0) ? false : true;
+        } else {
+            // Update existing provider
+            $res = $wpdb->update($table, $data, array('id' => $this->id), null);
+        }
+        return $res;
     }
 
 
@@ -35,8 +59,23 @@ class Pwyw_Charity
     // Static methods
     // -------------------------------------------------------------------------
 
-    public static function create()
-    {
+    /**
+     * Create a new Charity
+     */
+    public static function create(
+        $bundle_id,
+        $title,
+        $image,
+        $embed,
+        $description
+    ) {
+        $charity = new Pwyw_Charity;
+        $charity->bundle_id = $bundle_id;
+        $charity->title = $title;
+        $charity->image = $image;
+        $charity->embed = $embed;
+        $charity->description = $description;
+        return $charity;
     }
 
     public static function delete()

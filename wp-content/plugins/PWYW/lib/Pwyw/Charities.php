@@ -35,10 +35,28 @@ class Pwyw_Charities
     // Static methods
     // -------------------------------------------------------------------------
 
-    public static function save()
+    public static function save($bundle_id)
     {
-        var_dump($_REQUEST['bundle']);
-        var_dump($_POST);
+        $charities = isset($_POST['charities']) ? $_POST['charities'] : array();
+
+        foreach ($charities as $charity) {
+            if (!$charity['id']) {
+                $ch = Pwyw_Charity::create(
+                    $bundle_id,
+                    $charity['title'],
+                    $charity['image'],
+                    $charity['embed'],
+                    $charity['description']
+                );
+                var_dump($ch);
+            } else {
+
+            }
+            $ch->save();
+        }
+
+        // var_dump($_REQUEST['bundle']);
+        // var_dump($_POST);
         die('save edit bundle!');
     }
 
