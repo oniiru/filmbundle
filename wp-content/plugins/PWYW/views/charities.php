@@ -28,7 +28,6 @@
 <div id="charities">
   <?php
     foreach ($charities as $key => $charity) {
-      // var_dump($charity);
       $data = array('array_id' => $key, 'charity' => $charity);
       echo Pwyw_View::make('charity', $data);
     }

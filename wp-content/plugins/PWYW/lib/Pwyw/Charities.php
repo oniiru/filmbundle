@@ -25,7 +25,17 @@ class Pwyw_Charities
     public function addCharity()
     {
         $array_id = $_POST['array_id'];
-        $data = array('array_id' => $array_id, 'id' => '');
+
+        // Create a default, empty charity object
+        $charity = new stdClass;
+        $charity->id = '';
+        $charity->title = '';
+        $charity->image = '';
+        $charity->embed = '';
+        $charity->description = '';
+
+        // Create a new charity view to send to the front
+        $data = array('array_id' => $array_id, 'charity' => $charity);
         $charity = Pwyw_View::make('charity', $data);
         echo $charity;
         die();
@@ -56,10 +66,8 @@ class Pwyw_Charities
                 $ch->embed = $charity['embed'];
                 $ch->description = $charity['description'];
             }
-            var_dump($ch);
-            // $ch->save();
+            $ch->save();
         }
-        die('save edit bundle!');
     }
 
     /**
