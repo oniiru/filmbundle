@@ -496,8 +496,10 @@ class Pwyw
         } else {
             $pwyw_bundle_active = 0;
         }
-        var_dump($_POST);
-        die('save edit bundle!');
+
+        // Save the associated charities
+        Pwyw_Charities::save();
+
         $wpdb->query(
                 $wpdb->prepare(
                         "

@@ -35,6 +35,13 @@ class Pwyw_Charities
     // Static methods
     // -------------------------------------------------------------------------
 
+    public static function save()
+    {
+        var_dump($_REQUEST['bundle']);
+        var_dump($_POST);
+        die('save edit bundle!');
+    }
+
     public static function create()
     {
     }
