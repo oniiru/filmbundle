@@ -24,8 +24,8 @@ class Pwyw_Charities
 
     public function addCharity()
     {
-        $id = $_POST['id'];
-        $data = array('id' => $id);
+        $array_id = $_POST['array_id'];
+        $data = array('array_id' => $array_id);
         $charity = Pwyw_View::make('charity', $data);
         echo $charity;
         die();
