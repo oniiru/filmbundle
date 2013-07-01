@@ -92,6 +92,17 @@ class Pwyw_Charities
      */
     public static function delete($bundle_id)
     {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        $table = $prefix.Pwyw_Database::CHARITIES;
 
+        $result = $wpdb->query(
+            $wpdb->prepare(
+                "DELETE FROM {$table}
+                 WHERE bundle_id = %d",
+                $bundle_id
+            )
+        );
+        return $result;
     }
 }
