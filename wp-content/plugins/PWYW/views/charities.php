@@ -6,8 +6,19 @@
       <h3 class="hndle"><span>(no title set)</span></h3>
       <div class="inside">
         <p>
-          <input name="" id="" type="text" value="" class="regular-text" style="width:600px;" placeholder="Image" />
-          <a class="button-secondary" href="#" title="Media Image Library">Media Image Library</a>
+          <script>
+          jQuery(document).ready(function() {
+            jQuery('#charity_image_button').click(function() {
+              wp.media.editor.send.attachment = function(props, attachment) {
+                jQuery('#charity_image').val(attachment.url);
+              }
+              wp.media.editor.open(this);
+              return false;
+            });
+          });
+          </script>
+          <input name="" id="charity_image" type="text" value="" class="regular-text" style="width:600px;" placeholder="Image" />
+          <a class="button-secondary" id="charity_image_button" title="Media Image Library">Media Image Library</a>
         </p>
         <p>
          <input name="" id="" type="text" value="" class="regular-text" style="width:738px;" placeholder="Title" />
