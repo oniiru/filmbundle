@@ -50,6 +50,8 @@ class Pwyw_Charities
         $charities = isset($_POST['charities']) ? $_POST['charities'] : array();
 
         foreach ($charities as $charity) {
+            $charity = stripslashes_deep($charity);
+
             if (!$charity['id']) {
                 $ch = Pwyw_Charity::create(
                     $bundle_id,
