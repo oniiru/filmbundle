@@ -3,7 +3,8 @@
 var min=0;
 var max=100;
 
-$(function() {
+jQuery(document).ready(function($) {
+// $(function() {
         $( ".selector" ).slider(   
         { animate: true },
         { min: min },

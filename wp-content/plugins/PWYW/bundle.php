@@ -174,7 +174,8 @@ echo Pwyw_View::make('charities');
 
 
   <script type="text/javascript">
-    
+
+jQuery(document).ready(function($) {
     var min=0;
     var max=100;
     
@@ -227,6 +228,8 @@ echo Pwyw_View::make('charities');
       });
       
     }
+
+
     
     
     $(function() {
@@ -287,6 +290,8 @@ echo Pwyw_View::make('charities');
 
       
     });
+});
+
   </script>
 
 

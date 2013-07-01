@@ -4,8 +4,8 @@
    MIT (http://dev.jquery.com/browser/trunk/jquery/MIT-LICENSE.txt) licenses. 
    Please attribute the authors if you use it. */
 
-(function($) { // Hide the namespace
-
+// (function($) { // Hide the namespace
+jQuery(document).ready(function($) {
 var PROP_NAME = 'linkedSliders';
 
 /* Linked Sliders manager. */
@@ -164,4 +164,5 @@ $.fn.linkedSliders = function(options) {
 /* Initialise the linked sliders functionality. */
 $.linkedSliders = new LinkedSliders(); // singleton instance
 
-})(jQuery);
+// })(jQuery);
+});
