@@ -25,6 +25,7 @@ class Pwyw_Database
         $sql =
         "CREATE TABLE IF NOT EXISTS `$table` (
             id INT AUTO_INCREMENT NOT NULL,
+            bundle_id INT NOT NULL,
             title VARCHAR(255) NOT NULL,
             image VARCHAR(255) NOT NULL,
             embed TEXT NOT NULL,
