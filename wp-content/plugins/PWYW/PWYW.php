@@ -498,7 +498,7 @@ class Pwyw
         }
 
         // Save the associated charities
-        Pwyw_Charities::save();
+        Pwyw_Charities::save($_REQUEST['bundle']);
 
         $wpdb->query(
                 $wpdb->prepare(
