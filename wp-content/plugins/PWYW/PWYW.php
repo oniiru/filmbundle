@@ -38,8 +38,8 @@ class Pwyw
         
         //$wpdb->query("UPDATE `wp_pwyw_customers` SET `alias` = 'Anonymous' WHERE `alias` = 'Annonymous'");
 
-        add_action("init", array(&$this, "PWYW_init"));
         add_action('admin_menu', array(&$this, 'PWYW_menu_pages'));
+        add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
         add_action('pmpro_added_order', array(&$this, 'pwyw_add_payment'));
         add_action('wp_ajax_pwyw_bundle_update', array(&$this, 'pwyw_bundle_update'));
 
@@ -80,6 +80,29 @@ class Pwyw
         $fileName .='.php';
 
         require $fileName;
+    }
+
+    /**
+     * Queue scripts to be loaded in the admin
+     *
+     * @todo move this into an admin class if adding frontend scripts.
+     */
+    public function scripts()
+    {
+        // Get plugin version, to use for script loading
+        $plugin = get_plugin_data(__FILE__, false, false);
+        $version = $plugin['Version'];
+
+        wp_enqueue_style('dashboard');
+        wp_enqueue_script('dashboard');
+        wp_enqueue_script(
+            'PWYW_admin4',
+            plugins_url('/js/jquery.linkedsliders.js', __FILE__),
+            array('jquery-ui-slider'),
+            $version
+        );
+        wp_enqueue_script('popover', plugins_url('/js/jquery.popover-1.1.2.js', __FILE__), array(), "screen");
+        wp_enqueue_style('PWYW_admin', plugins_url('/pwyw.css', __FILE__), array(), "screen");
     }
 
 
@@ -218,21 +241,6 @@ class Pwyw
 
         // Uninstall tables
         Pwyw_Database::dropTables();
-    }
-
-    function PWYW_init()
-    {
-        if (is_admin()) {
-            // Get plugin version, to use for script loading
-            $plugin = get_plugin_data(__FILE__, false, false);
-            $version = $plugin['Version'];
-
-            wp_enqueue_style('dashboard');
-            wp_enqueue_script('dashboard');
-            wp_enqueue_script('PWYW_admin4', plugins_url('/js/jquery.linkedsliders.js', __FILE__), array('jquery-ui-slider'), $version);
-            wp_enqueue_script('popover', plugins_url('/js/jquery.popover-1.1.2.js', __FILE__), array(), "screen");
-            wp_enqueue_style('PWYW_admin', plugins_url('/pwyw.css', __FILE__), array(), "screen");
-        }
     }
 
     function PWYW_menu_pages()
@@ -485,6 +493,8 @@ class Pwyw
         } else {
             $pwyw_bundle_active = 0;
         }
+        var_dump($_POST);
+        die('save edit bundle!');
         $wpdb->query(
                 $wpdb->prepare(
                         "
@@ -609,6 +619,7 @@ class Pwyw
         } else {
             $pwyw_bundle_active = 0;
         }
+        die('save new bundle!');
         $wpdb->query(
                 $wpdb->prepare("INSERT INTO {$this->bundles} (title,suggested_val_1,suggested_val_2,suggested_val_3,pwyw_val,belowaverage,aboveaverage,activated)
                           VALUES (%s,%f,%f,%f,%f,%d,%d,%d)
