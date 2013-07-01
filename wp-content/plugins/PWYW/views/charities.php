@@ -42,3 +42,8 @@
     </div>
   </div>
 </div>
+
+<div style="text-align: right;">
+<?php submit_button('Save Changes', 'primary', 'submit', false); ?> 
+<a class="button-secondary" id="">+ Add Charity</a>
+</div>
