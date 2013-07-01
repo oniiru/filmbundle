@@ -222,14 +222,14 @@ class Pwyw
 
     function PWYW_init()
     {
-
         if (is_admin()) {
+            // Get plugin version, to use for script loading
+            $plugin = get_plugin_data(__FILE__, false, false);
+            $version = $plugin['Version'];
+
             wp_enqueue_style('dashboard');
             wp_enqueue_script('dashboard');
-//            wp_enqueue_script('PWYW_admin', plugins_url('/js/jquery.js', __FILE__), array(), "screen");
-//            wp_enqueue_script('PWYW_admin2', plugins_url('/js/jquery.ui.js', __FILE__), array(), "screen");
-            wp_enqueue_script('PWYW_admin4', plugins_url('/js/jquery.linkedsliders.js', __FILE__), array('jquery-ui-slider'), '0.1');
-            // wp_enqueue_script('PWYW_admin4', plugins_url('/js/jquery.linkedsliders.js', __FILE__), array(), "screen");
+            wp_enqueue_script('PWYW_admin4', plugins_url('/js/jquery.linkedsliders.js', __FILE__), array('jquery-ui-slider'), $version);
             wp_enqueue_script('popover', plugins_url('/js/jquery.popover-1.1.2.js', __FILE__), array(), "screen");
             wp_enqueue_style('PWYW_admin', plugins_url('/pwyw.css', __FILE__), array(), "screen");
         }
