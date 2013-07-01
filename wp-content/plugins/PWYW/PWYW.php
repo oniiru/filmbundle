@@ -51,6 +51,9 @@ class Pwyw
         $this->payment_info = $wpdb->prefix . "pwyw_payment_info";
         $this->price_allocation = $wpdb->prefix . "pwyw_price_allocation";
         $this->users = $wpdb->prefix . "pwyw_customers";
+
+        // Boot up constructing classes
+        Pwyw_Charities::instance();
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 /**
- * Class to handle charities.
+ * Class to hold charity entities.
  */
 class Pwyw_Charity
 {
