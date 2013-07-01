@@ -86,4 +86,12 @@ class Pwyw_Charities
 
         return $wpdb->get_results($sql, OBJECT);
     }
+
+    /**
+     * Deletes all charities associated with the bundle.
+     */
+    public static function delete($bundle_id)
+    {
+
+    }
 }
