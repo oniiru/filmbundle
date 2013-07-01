@@ -161,10 +161,11 @@
               <?php endif; ?>
           </div><!-- .bundlesettings -->
 <?php
+$bundle_id = isset($_REQUEST['bundle']) ? ($_REQUEST['bundle']) : 0;
 echo Pwyw_View::make('films');
 
 // Initialize the charity views
-$data = array('charities' => Pwyw_Charities::all($_REQUEST['bundle']));
+$data = array('charities' => Pwyw_Charities::all($bundle_id));
 echo Pwyw_View::make('charities', $data);
 ?>
         </form>
