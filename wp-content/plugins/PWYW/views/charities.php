@@ -7,21 +7,30 @@
       <div class="inside">
         <p>
           <script>
-          jQuery(document).ready(function() {
-            jQuery('#charity_image_button').click(function() {
+
+          jQuery(document).ready(function($) {
+            $('#title').keyup(function() {
+              var title = $('#title').val();
+              if (title == '') {
+                title = '(no title set)';
+              }
+              $('#third h3 span').text(title);
+            });
+            $('#charity_image_button').click(function() {
               wp.media.editor.send.attachment = function(props, attachment) {
-                jQuery('#charity_image').val(attachment.url);
+                $('#charity_image').val(attachment.url);
               }
               wp.media.editor.open(this);
               return false;
             });
           });
+
           </script>
           <input name="" id="charity_image" type="text" value="" class="regular-text" style="width:600px;" placeholder="Image" />
           <a class="button-secondary" id="charity_image_button" title="Media Image Library">Media Image Library</a>
         </p>
         <p>
-         <input name="" id="" type="text" value="" class="regular-text" style="width:738px;" placeholder="Title" />
+         <input name="" id="title" type="text" value="" class="regular-text" style="width:738px;" placeholder="Title" />
         </p>
         <p>
          <textarea id="" name="" cols="80" rows="5" class="large-text" placeholder="Video Embed"></textarea>
