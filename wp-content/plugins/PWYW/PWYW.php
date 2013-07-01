@@ -189,6 +189,9 @@ class Pwyw
                 dbDelta($sql);
             }
         }
+
+        // Install tables
+        Pwyw_Database::createTables();
     }
 
     function pwyw_uninstall()
@@ -212,6 +215,9 @@ class Pwyw
 
         $sql = "DROP TABLE " . $this->users . "";
         $k = $wpdb->query($sql);
+
+        // Install tables
+        Pwyw_Database::dropTables();
     }
 
     function PWYW_init()
