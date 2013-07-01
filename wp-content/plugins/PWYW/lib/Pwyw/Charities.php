@@ -54,6 +54,9 @@ class Pwyw_Charities
             // var_dump($charity);
 
             if (!$charity['id']) {
+                if ($charity['deleted'] == 'true') {
+                    continue;
+                }
                 $ch = Pwyw_Charity::create(
                     $bundle_id,
                     $charity['title'],
