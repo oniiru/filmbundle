@@ -624,7 +624,6 @@ class Pwyw
         } else {
             $pwyw_bundle_active = 0;
         }
-        die('save new bundle!');
         $wpdb->query(
                 $wpdb->prepare("INSERT INTO {$this->bundles} (title,suggested_val_1,suggested_val_2,suggested_val_3,pwyw_val,belowaverage,aboveaverage,activated)
                           VALUES (%s,%f,%f,%f,%f,%d,%d,%d)
@@ -633,6 +632,9 @@ class Pwyw
         );
 
         $bundle_id = $wpdb->insert_id;
+
+        // Save the associated charities
+        Pwyw_Charities::save($bundle_id);
 
         if ($bundle_id) {
             foreach ($_REQUEST['parent_category_val'] as $key => $val) {
