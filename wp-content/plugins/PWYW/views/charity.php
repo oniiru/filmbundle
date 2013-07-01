@@ -7,12 +7,18 @@
           <script>
           jQuery(document).ready(function($) {
             $('#charity_title_<?php echo $array_id; ?>').keyup(function() {
-              var title = $('#charity_title_<?php echo $array_id; ?>').val();
+              updateTitle(<?php echo $array_id; ?>);
+            });
+            updateTitle(<?php echo $array_id; ?>);
+
+            function updateTitle(array_id) {
+              var title = $('#charity_title_'+array_id).val();
               if (title == '') {
                 title = '(no title set)';
               }
-              $('#charity_<?php echo $array_id; ?> h3 span').text(title);
-            });
+              $('#charity_'+array_id+' h3 span').text(title);
+            }
+
             $('#charity_image_button_<?php echo $array_id; ?>').click(function() {
               wp.media.editor.send.attachment = function(props, attachment) {
                 $('#charity_image_<?php echo $array_id; ?>').val(attachment.url);
