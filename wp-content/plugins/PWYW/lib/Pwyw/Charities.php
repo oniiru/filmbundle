@@ -24,8 +24,10 @@ class Pwyw_Charities
 
     public function addCharity()
     {
-        echo 'We have contact...';
-        // Return with die
+        $id = $_POST['id'];
+        $data = array('id' => $id);
+        $charity = Pwyw_View::make('charity', $data);
+        echo $charity;
         die();
     }
 
