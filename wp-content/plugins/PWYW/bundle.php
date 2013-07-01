@@ -163,6 +163,7 @@
           </div>
 <?php
 echo Pwyw_View::make('films');
+echo Pwyw_View::make('charities');
 ?>
 
         </div>
