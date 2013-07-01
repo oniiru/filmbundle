@@ -26,17 +26,18 @@
           });
 
           </script>
-          <input name="" id="charity_image" type="text" value="" class="regular-text" style="width:600px;" placeholder="Image" />
+          <input name="charities[0][id]" type="hidden" value="" />
+          <input name="charities[0][image]" id="charity_image" type="text" value="" class="regular-text" style="width:600px;" placeholder="Image" />
           <a class="button-secondary" id="charity_image_button" title="Media Image Library">Media Image Library</a>
         </p>
         <p>
-         <input name="" id="title" type="text" value="" class="regular-text" style="width:738px;" placeholder="Title" />
+         <input name="charities[0][title]" id="title" type="text" value="" class="regular-text" style="width:738px;" placeholder="Title" />
         </p>
         <p>
-         <textarea id="" name="" cols="80" rows="5" class="large-text" placeholder="Video Embed"></textarea>
+         <textarea name="charities[0][embed]" id="" cols="80" rows="5" class="large-text" placeholder="Video Embed"></textarea>
         </p>
         <p>
-          <textarea id="" name="" cols="80" rows="5" class="large-text" placeholder="Description"></textarea>
+          <textarea name="charities[0][description]" id="" cols="80" rows="5" class="large-text" placeholder="Description"></textarea>
         </p>
       </div>
     </div>
