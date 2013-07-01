@@ -159,17 +159,15 @@
               <?php if(isset($pwyw_del)): ?>
                 <span class="deletebundle">Delete</span>
               <?php endif; ?>
-            </form>
-          </div>
+          </div><!-- .bundlesettings -->
 <?php
 echo Pwyw_View::make('films');
 echo Pwyw_View::make('charities');
 ?>
-
-        </div>
+        </form>
       </div>
-
-     </div>
+    </div>
+  </div>
 </div>
 
 
