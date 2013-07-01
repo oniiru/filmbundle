@@ -104,7 +104,22 @@ class Pwyw_Charity
         return $charity;
     }
 
-    public static function delete()
+    /**
+     * Delete a charity
+     */
+    public static function delete($id)
     {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        $table = $prefix.Pwyw_Database::CHARITIES;
+
+        return $wpdb->query(
+            $wpdb->prepare(
+                "DELETE FROM {$table}
+                 WHERE id = %d
+                ",
+                $id
+            )
+        );
     }
 }

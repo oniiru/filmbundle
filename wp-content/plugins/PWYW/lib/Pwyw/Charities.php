@@ -51,6 +51,7 @@ class Pwyw_Charities
 
         foreach ($charities as $charity) {
             $charity = stripslashes_deep($charity);
+            // var_dump($charity);
 
             if (!$charity['id']) {
                 $ch = Pwyw_Charity::create(
@@ -61,6 +62,10 @@ class Pwyw_Charities
                     $charity['description']
                 );
             } else {
+                if ($charity['deleted'] == 'true') {
+                    Pwyw_Charity::delete($charity['id']);
+                    continue;
+                }
                 $ch = new Pwyw_Charity($charity['id']);
                 $ch->bundle_id = $bundle_id;
                 $ch->title = $charity['title'];
