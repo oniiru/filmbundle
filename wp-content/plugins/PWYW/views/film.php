@@ -29,6 +29,20 @@ jQuery(document).ready(function($) {
         $('[name="films\[<?php echo $array_id; ?>\]\[deleted\]"]').val('true');
       }
   });
+
+  // ---------------------------------------------------------------------------
+  // Handle Reviews
+  // ---------------------------------------------------------------------------
+  $('#add_review_<?php echo $array_id; ?>').click(function() {
+    $('#film_<?php echo $array_id; ?>_reviews').append('to implement<br/>');
+  });
+
+  // ---------------------------------------------------------------------------
+  // Handle Special Features
+  // ---------------------------------------------------------------------------
+  $('#add_feature_<?php echo $array_id; ?>').click(function() {
+    $('#film_<?php echo $array_id; ?>_features').append('to implement<br/>');
+  });
 });
 </script>
 
@@ -88,19 +102,22 @@ jQuery(document).ready(function($) {
 
     <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0; width:924px;" />
     <h2>Reviews</h2>
+    <div id="film_<?php echo $array_id; ?>_reviews">
+    </div>
+
     <p style="text-align: right; width:924px;">
       <a id="add_review_<?php echo $array_id; ?>" class="button">+ Add Review</a>
     </p>
-
-  <label for="films[<?php echo $array_id; ?>][user_reviews]">
-    <input name="films[<?php echo $array_id; ?>][user_reviews]" id="films[<?php echo $array_id; ?>][user_reviews]" type="checkbox" value="1" <?php checked($film->user_reviews, 1, true); ?> />
-    Include User Reviews
-  </label>
-
-
+    <label for="films[<?php echo $array_id; ?>][user_reviews]">
+      <input name="films[<?php echo $array_id; ?>][user_reviews]" id="films[<?php echo $array_id; ?>][user_reviews]" type="checkbox" value="1" <?php checked($film->user_reviews, 1, true); ?> />
+      Include User Reviews
+    </label>
 
     <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0; width:924px;" />
     <h2>Special Features</h2>
+    <div id="film_<?php echo $array_id; ?>_features">
+    </div>
+
     <p style="text-align: right; width:924px;">
       <a id="add_feature_<?php echo $array_id; ?>" class="button">+ Add Special Feature</a>
     </p>
