@@ -6,6 +6,9 @@ class Pwyw_Database
 {
     /** Table names */
     const CHARITIES = 'charities';
+    const FILMS     = 'films';
+    const REVIEWS   = 'reviews';
+    const FEATURES  = 'features';
 
     /** Make the class static */
     private function __construct()
@@ -20,8 +23,8 @@ class Pwyw_Database
         global $wpdb;
         $prefix = $wpdb->prefix.'pwyw_';
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        $table = $prefix.self::CHARITIES;
 
+        $table = $prefix.self::CHARITIES;
         $sql =
         "CREATE TABLE IF NOT EXISTS `$table` (
             id INT AUTO_INCREMENT NOT NULL,
@@ -30,6 +33,27 @@ class Pwyw_Database
             image VARCHAR(255) NOT NULL,
             embed TEXT NOT NULL,
             description TEXT NOT NULL,
+            PRIMARY KEY id (id)
+        );";
+        dbDelta($sql);
+
+        $table = $prefix.self::FILMS;
+        $sql =
+        "CREATE TABLE IF NOT EXISTS `$table` (
+            id INT AUTO_INCREMENT NOT NULL,
+            bundle_id INT NOT NULL,
+            title VARCHAR(255) NOT NULL,
+            image VARCHAR(255) NOT NULL,
+            rating VARCHAR(255) NOT NULL,
+            embed TEXT NOT NULL,
+            logline TEXT NOT NULL,
+            genre VARCHAR(255) NOT NULL,
+            runtime VARCHAR(255) NOT NULL,
+            director VARCHAR(255) NOT NULL,
+            writers VARCHAR(255) NOT NULL,
+            stars VARCHAR(255) NOT NULL,
+            website VARCHAR(255) NOT NULL,
+            note TEXT NOT NULL,
             PRIMARY KEY id (id)
         );";
         dbDelta($sql);
@@ -42,10 +66,10 @@ class Pwyw_Database
     {
         global $wpdb;
         $prefix = $wpdb->prefix.'pwyw_';
-        $table = $prefix.self::CHARITIES;
+        $table1 = $prefix.self::CHARITIES;
+        $table2 = $prefix.self::FILMS;
 
-        $sql = "DROP TABLE IF EXISTS $table;";
-
+        $sql = "DROP TABLE IF EXISTS {$table1}, {$table2};";
         $wpdb->query($sql);
     }
 }

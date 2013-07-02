@@ -54,6 +54,10 @@ class Pwyw
 
         // Boot up constructing classes
         Pwyw_Charities::instance();
+
+        // Debugging DB install/uninstall
+        // Pwyw_Database::createTables();
+        // Pwyw_Database::dropTables();
     }
 
     /**
