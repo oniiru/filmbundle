@@ -162,6 +162,8 @@
           </div><!-- .bundlesettings -->
 <?php
 $bundle_id = isset($_REQUEST['bundle']) ? ($_REQUEST['bundle']) : 0;
+
+// Initialize the film views
 echo Pwyw_View::make('films');
 
 // Initialize the charity views
