@@ -74,12 +74,25 @@ jQuery(document).ready(function($) {
      <input name="films[<?php echo $array_id; ?>][website]" type="text" value="<?php echo $film->website; ?>" class="large-text" placeholder="Website" />
     </p>
 
-
     <p>
       <textarea name="films[<?php echo $array_id; ?>][note]" cols="80" rows="5" class="large-text" placeholder="Note from Filmmaker"><?php echo $film->note; ?></textarea>
     </p>
+
+    <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0; width:924px;" />
+    <h2>Reviews</h2>
+    <p style="text-align: right; width:924px;">
+      <a id="add_review_<?php echo $array_id; ?>" class="button">+ Add Review</a>
+    </p>
+
+    <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0; width:924px;" />
+    <h2>Special Features</h2>
+    <p style="text-align: right; width:924px;">
+      <a id="add_feature_<?php echo $array_id; ?>" class="button">+ Add Special Feature</a>
+    </p>
+
+    <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0; width:924px;" />
     <p>
-      <a id="delete_film_<?php echo $array_id; ?>" class="button button-small">Delete</a>
+      <a id="delete_film_<?php echo $array_id; ?>" class="button button-small">Delete Film</a>
     </p>
   </div>
 </div>
