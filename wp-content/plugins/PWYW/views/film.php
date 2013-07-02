@@ -46,13 +46,37 @@ jQuery(document).ready(function($) {
      <input name="films[<?php echo $array_id; ?>][title]" id="film_title_<?php echo $array_id; ?>" type="text" value="<?php echo $film->title; ?>" class="regular-text" style="width:738px;" placeholder="Title" />
     </p>
 
-------------
+    <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0;" />
+    <h2>Overview</h2>
 
     <p>
-     <textarea name="films[<?php echo $array_id; ?>][embed]" cols="80" rows="5" class="large-text" placeholder="Video Embed"><?php echo $charity->embed; ?></textarea>
+     <textarea name="films[<?php echo $array_id; ?>][embed]" cols="80" rows="5" class="large-text" placeholder="Embed Code"><?php echo $film->embed; ?></textarea>
     </p>
     <p>
-      <textarea name="films[<?php echo $array_id; ?>][description]" cols="80" rows="5" class="large-text" placeholder="Description"><?php echo $charity->description; ?></textarea>
+     <input name="films[<?php echo $array_id; ?>][logline]" type="text" value="<?php echo $film->logline; ?>" class="large-text" placeholder="Logline" />
+    </p>
+    <p>
+     <input name="films[<?php echo $array_id; ?>][genre]" type="text" value="<?php echo $film->genre; ?>" style="width:459px;" class="regular-text" placeholder="Genre" />
+     <input name="films[<?php echo $array_id; ?>][runtime]" type="text" value="<?php echo $film->runtime; ?>" style="width:459px;" class="regular-text" placeholder="Runtime" />
+    </p>
+
+    <p>
+     <input name="films[<?php echo $array_id; ?>][director]" type="text" value="<?php echo $film->director; ?>" class="large-text" placeholder="Director" />
+    </p>
+    <p>
+     <input name="films[<?php echo $array_id; ?>][writers]" type="text" value="<?php echo $film->writers; ?>" class="large-text" placeholder="Writer(s)" />
+    </p>
+    <p>
+     <input name="films[<?php echo $array_id; ?>][stars]" type="text" value="<?php echo $film->stars; ?>" class="large-text" placeholder="Star(s)" />
+    </p>
+
+    <p>
+     <input name="films[<?php echo $array_id; ?>][website]" type="text" value="<?php echo $film->website; ?>" class="large-text" placeholder="Website" />
+    </p>
+
+
+    <p>
+      <textarea name="films[<?php echo $array_id; ?>][note]" cols="80" rows="5" class="large-text" placeholder="Note from Filmmaker"><?php echo $film->note; ?></textarea>
     </p>
     <p>
       <a id="delete_film_<?php echo $array_id; ?>" class="button button-small">Delete</a>
