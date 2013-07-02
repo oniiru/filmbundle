@@ -28,26 +28,19 @@ class Pwyw_Films
 
         // Create a default, empty film object
         $film = new stdClass;
-        // $charity->id = '';
-        // $charity->title = '';
-        // $charity->image = '';
-        // $charity->embed = '';
-        // $charity->description = '';
-
-        // id INT AUTO_INCREMENT NOT NULL,
-        // bundle_id INT NOT NULL,
-        // title VARCHAR(255) NOT NULL,
-        // image VARCHAR(255) NOT NULL,
-        // rating VARCHAR(255) NOT NULL,
-        // embed TEXT NOT NULL,
-        // logline TEXT NOT NULL,
-        // genre VARCHAR(255) NOT NULL,
-        // runtime VARCHAR(255) NOT NULL,
-        // director VARCHAR(255) NOT NULL,
-        // writers VARCHAR(255) NOT NULL,
-        // stars VARCHAR(255) NOT NULL,
-        // website VARCHAR(255) NOT NULL,
-        // note TEXT NOT NULL,
+        $film->bundle_id = '';
+        $film->title     = '';
+        $film->image     = '';
+        $film->rating    = '';
+        $film->embed     = '';
+        $film->logline   = '';
+        $film->genre     = '';
+        $film->runtime   = '';
+        $film->director  = '';
+        $film->writers   = '';
+        $film->stars     = '';
+        $film->website   = '';
+        $film->note      = '';
 
         // Create a new film view to send to the front
         $data = array('array_id' => $array_id, 'film' => $film);
