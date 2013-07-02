@@ -83,7 +83,11 @@ class Pwyw_Films
         $film->user_reviews = 0;
 
         // Create a new film view to send to the front
-        $data = array('array_id' => $array_id, 'film' => $film);
+        $data = array(
+            'array_id' => $array_id,
+            'film' => $film,
+            'features' => array()
+        );
         $film = Pwyw_View::make('film', $data);
         echo $film;
         die();
@@ -211,7 +215,7 @@ class Pwyw_Films
 
 
     /**
-     * Deletes all charities associated with the bundle.
+     * Deletes all films associated with the bundle.
      */
     public static function delete($bundle_id)
     {
