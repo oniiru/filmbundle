@@ -31,7 +31,7 @@
   <?php
     // foreach ($charities as $key => $charity) {
     //   $data = array('array_id' => $key, 'charity' => $charity);
-      echo Pwyw_View::make('film', $data);
+    //   echo Pwyw_View::make('film', $data);
     // }
   ?>
 </div>
