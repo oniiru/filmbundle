@@ -99,6 +99,7 @@ class Pwyw_Film
         if ($this->id == null) {
             // Insert new film
             $wpdb->insert($table, $data, null);
+            $this->id = $wpdb->insert_id;
             $res = ($wpdb->insert_id == 0) ? false : true;
         } else {
             // Update existing film
