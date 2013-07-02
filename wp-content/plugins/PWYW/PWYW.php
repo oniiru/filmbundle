@@ -500,7 +500,8 @@ class Pwyw
             $pwyw_bundle_active = 0;
         }
 
-        // Save the associated charities
+        // Save the associated films and charities
+        Pwyw_Films::save($_REQUEST['bundle']);
         Pwyw_Charities::save($_REQUEST['bundle']);
 
         $wpdb->query(
@@ -640,7 +641,8 @@ class Pwyw
 
         $bundle_id = $wpdb->insert_id;
 
-        // Save the associated charities
+        // Save the associated films and charities
+        Pwyw_Films::save($bundle_id);
         Pwyw_Charities::save($bundle_id);
 
         if ($bundle_id) {

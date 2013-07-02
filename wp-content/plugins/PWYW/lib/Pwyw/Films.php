@@ -55,22 +55,30 @@ class Pwyw_Films
 
     public static function save($bundle_id)
     {
-        $charities = isset($_POST['charities']) ? $_POST['charities'] : array();
+        $films = isset($_POST['films']) ? $_POST['films'] : array();
 
-        foreach ($charities as $charity) {
-            $charity = stripslashes_deep($charity);
-            // var_dump($charity);
+        foreach ($films as $film) {
+            $film = stripslashes_deep($film);
+            // var_dump($film);
 
-            if (!$charity['id']) {
-                if ($charity['deleted'] == 'true') {
+            if (!$film['id']) {
+                if ($film['deleted'] == 'true') {
                     continue;
                 }
-                $ch = Pwyw_Charity::create(
+                $flm = Pwyw_Film::create(
                     $bundle_id,
-                    $charity['title'],
-                    $charity['image'],
-                    $charity['embed'],
-                    $charity['description']
+                    $film['title'],
+                    $film['image'],
+                    $film['rating'],
+                    $film['embed'],
+                    $film['logline'],
+                    $film['genre'],
+                    $film['runtime'],
+                    $film['director'],
+                    $film['writers'],
+                    $film['stars'],
+                    $film['website'],
+                    $film['note']
                 );
             } else {
                 if ($charity['deleted'] == 'true') {
@@ -84,7 +92,7 @@ class Pwyw_Films
                 $ch->embed = $charity['embed'];
                 $ch->description = $charity['description'];
             }
-            $ch->save();
+            $flm->save();
         }
     }
 

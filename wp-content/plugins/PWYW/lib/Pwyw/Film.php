@@ -52,19 +52,19 @@ class Pwyw_Film
         }
 
         // We found the film, let's populate the object
-        $this->bundle_id = $charity->bundle_id;
-        $this->title     = $charity->title;
-        $this->image     = $charity->image;
-        $this->rating    = $charity->rating;
-        $this->embed     = $charity->embed;
-        $this->logline   = $charity->logline;
-        $this->genre     = $charity->genre;
-        $this->runtime   = $charity->runtime;
-        $this->director  = $charity->director;
-        $this->writers   = $charity->writers;
-        $this->stars     = $charity->stars;
-        $this->website   = $charity->website;
-        $this->note      = $charity->note;
+        $this->bundle_id = $film->bundle_id;
+        $this->title     = $film->title;
+        $this->image     = $film->image;
+        $this->rating    = $film->rating;
+        $this->embed     = $film->embed;
+        $this->logline   = $film->logline;
+        $this->genre     = $film->genre;
+        $this->runtime   = $film->runtime;
+        $this->director  = $film->director;
+        $this->writers   = $film->writers;
+        $this->stars     = $film->stars;
+        $this->website   = $film->website;
+        $this->note      = $film->note;
         return true;
     }
 
@@ -116,16 +116,32 @@ class Pwyw_Film
         $bundle_id,
         $title,
         $image,
+        $rating,
         $embed,
-        $description
+        $logline,
+        $genre,
+        $runtime,
+        $director,
+        $writers,
+        $stars,
+        $website,
+        $note
     ) {
-        $charity = new Pwyw_Charity;
-        $charity->bundle_id = $bundle_id;
-        $charity->title = $title;
-        $charity->image = $image;
-        $charity->embed = $embed;
-        $charity->description = $description;
-        return $charity;
+        $film = new Pwyw_Film;
+        $film->bundle_id = $bundle_id;
+        $film->title     = $title;
+        $film->image     = $image;
+        $film->rating    = $rating;
+        $film->embed     = $embed;
+        $film->logline   = $logline;
+        $film->genre     = $genre;
+        $film->runtime   = $runtime;
+        $film->director  = $director;
+        $film->writers   = $writers;
+        $film->stars     = $stars;
+        $film->website   = $website;
+        $film->note      = $note;
+        return $film;
     }
 
     /**
