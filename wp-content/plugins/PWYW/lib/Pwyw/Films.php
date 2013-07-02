@@ -219,15 +219,17 @@ class Pwyw_Films
                     $review['link']
                 );
             } else {
-                if ($feature['deleted'] == 'true') {
-                    Pwyw_Feature::delete($feature['id']);
+                if ($review['deleted'] == 'true') {
+                    Pwyw_Review::delete($review['id']);
                     continue;
                 }
-                $obj = new Pwyw_Feature($feature['id']);
-                $obj->film_id  = $film_id;
-                $obj->image    = $feature['image'];
-                $obj->title    = $feature['title'];
-                $obj->subtitle = $feature['subtitle'];
+                $obj = new Pwyw_Review($review['id']);
+                $obj->film_id     = $film_id;
+                $obj->review      = $feature['review'];
+                $obj->author      = $feature['author'];
+                $obj->publication = $feature['publication'];
+                $obj->image       = $feature['image'];
+                $obj->link        = $feature['link'];
             }
             $obj->save();
         }
