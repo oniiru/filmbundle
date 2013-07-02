@@ -43,7 +43,7 @@ jQuery(document).ready(function($) {
 
   var review_data = {
       action: 'pwyw_add_review',
-      array_id: 0 <?php // echo count($films); ?> 
+      array_id: <?php echo count($reviews); ?> 
   };
 
   function addReview() {
@@ -67,7 +67,7 @@ jQuery(document).ready(function($) {
 
   var feature_data = {
       action: 'pwyw_add_feature',
-      array_id: 0 <?php // echo count($films); ?> 
+      array_id: <?php echo count($features); ?> 
   };
 
   function addFeature() {
