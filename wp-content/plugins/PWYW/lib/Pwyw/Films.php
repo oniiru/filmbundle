@@ -97,10 +97,6 @@ class Pwyw_Films
     {
         $films = isset($_POST['films']) ? $_POST['films'] : array();
 
-        var_dump($films);
-        die();
- 
-
         foreach ($films as $film) {
             $film = stripslashes_deep($film);
 
@@ -124,6 +120,7 @@ class Pwyw_Films
                     $film['note'],
                     isset($film['user_reviews']) ? 1 : 0
                 );
+                $obj->save();
             } else {
                 if ($film['deleted'] == 'true') {
                     Pwyw_Film::delete($film['id']);
@@ -144,6 +141,30 @@ class Pwyw_Films
                 $obj->website = $film['website'];
                 $obj->note = $film['note'];
                 $obj->user_reviews = isset($film['user_reviews']) ? 1 : 0;
+                // $obj->save();
+            }
+
+            if (array_key_exists('features', $film)) {
+                self::saveFeatures($obj->id, $film['features']);
+            }
+        }
+    }
+
+    public static function saveFeatures($film_id, $features)
+    {
+        foreach ($features as $feature) {
+            $feature = stripslashes_deep($feature);
+            if (!$feature['id']) {
+                if ($feature['deleted'] == 'true') {
+                    continue;
+                }
+                $obj = Pwyw_Feature::create(
+                    $film_id,
+                    $feature['image'],
+                    $feature['title'],
+                    $feature['subtitle']
+                );
+            } else {
             }
             $obj->save();
         }
