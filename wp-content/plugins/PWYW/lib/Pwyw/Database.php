@@ -58,6 +58,32 @@ class Pwyw_Database
             PRIMARY KEY id (id)
         );";
         dbDelta($sql);
+
+        $table = $prefix.self::REVIEWS;
+        $sql =
+        "CREATE TABLE IF NOT EXISTS `$table` (
+            id INT AUTO_INCREMENT NOT NULL,
+            film_id INT NOT NULL,
+            review TEXT NOT NULL,
+            author VARCHAR(255) NOT NULL,
+            publication VARCHAR(255) NOT NULL,
+            image VARCHAR(255) NOT NULL,
+            link VARCHAR(255) NOT NULL,
+            PRIMARY KEY id (id)
+        );";
+        dbDelta($sql);
+
+        $table = $prefix.self::FEATURES;
+        $sql =
+        "CREATE TABLE IF NOT EXISTS `$table` (
+            id INT AUTO_INCREMENT NOT NULL,
+            film_id INT NOT NULL,
+            image VARCHAR(255) NOT NULL,
+            title VARCHAR(255) NOT NULL,
+            subtitle VARCHAR(255) NOT NULL,
+            PRIMARY KEY id (id)
+        );";
+        dbDelta($sql);
     }
 
     /**
@@ -69,8 +95,10 @@ class Pwyw_Database
         $prefix = $wpdb->prefix.'pwyw_';
         $table1 = $prefix.self::CHARITIES;
         $table2 = $prefix.self::FILMS;
+        $table3 = $prefix.self::REVIEWS;
+        $table4 = $prefix.self::FEATURES;
 
-        $sql = "DROP TABLE IF EXISTS {$table1}, {$table2};";
+        $sql = "DROP TABLE IF EXISTS {$table1}, {$table2}, {$table3}, {$table4};";
         $wpdb->query($sql);
     }
 }
