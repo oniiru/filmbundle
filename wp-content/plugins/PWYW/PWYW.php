@@ -54,6 +54,7 @@ class Pwyw
 
         // Boot up constructing classes
         Pwyw_Charities::instance();
+        Pwyw_Films::instance();
 
         // Debugging DB install/uninstall
         // Pwyw_Database::createTables();

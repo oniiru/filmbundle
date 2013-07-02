@@ -7,6 +7,7 @@
 
     function addFilm() {
       $.post(ajaxurl, film_data, function(response) {
+        console.log(response);
         film_data.array_id++;
         postboxes.add_postbox_toggles();
         $('#films').append(response);
