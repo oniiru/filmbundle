@@ -46,6 +46,14 @@ jQuery(document).ready(function($) {
      <input name="films[<?php echo $array_id; ?>][title]" id="film_title_<?php echo $array_id; ?>" type="text" value="<?php echo $film->title; ?>" class="regular-text" style="width:738px;" placeholder="Title" />
     </p>
 
+    <p>
+      <label for="films[<?php echo $array_id; ?>][rating]">Above/below average?</label>
+      <select name="films[<?php echo $array_id; ?>][rating]" style="width: 200px; margin-left: 20px;">
+        <option value="above">Above</option>
+        <option value="below">Below</option>
+      </select>
+    </p>
+
     <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0;" />
     <h2>Overview</h2>
 

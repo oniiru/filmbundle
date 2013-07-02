@@ -32,7 +32,7 @@ class Pwyw_Films
         $film->bundle_id    = '';
         $film->title        = '';
         $film->image        = '';
-        $film->rating       = '';
+        $film->rating       = 'above';
         $film->embed        = '';
         $film->logline      = '';
         $film->genre        = '';
@@ -67,7 +67,7 @@ class Pwyw_Films
                 if ($film['deleted'] == 'true') {
                     continue;
                 }
-                $flm = Pwyw_Film::create(
+                $obj = Pwyw_Film::create(
                     $bundle_id,
                     $film['title'],
                     $film['image'],
@@ -84,18 +84,27 @@ class Pwyw_Films
                     $film['user_reviews']
                 );
             } else {
-                if ($charity['deleted'] == 'true') {
-                    Pwyw_Charity::delete($charity['id']);
+                if ($film['deleted'] == 'true') {
+                    Pwyw_Film::delete($film['id']);
                     continue;
                 }
-                $ch = new Pwyw_Charity($charity['id']);
-                $ch->bundle_id = $bundle_id;
-                $ch->title = $charity['title'];
-                $ch->image = $charity['image'];
-                $ch->embed = $charity['embed'];
-                $ch->description = $charity['description'];
+                $obj = new Pwyw_Film($film['id']);
+                $obj->bundle_id = $bundle_id;
+                $obj->title = $film['title'];
+                $obj->image = $film['image'];
+                $obj->rating = $film['rating'];
+                $obj->embed = $film['embed'];
+                $obj->logline = $film['logline'];
+                $obj->genre = $film['genre'];
+                $obj->runtime = $film['runtime'];
+                $obj->director = $film['director'];
+                $obj->writers = $film['writers'];
+                $obj->stars = $film['stars'];
+                $obj->website = $film['website'];
+                $obj->note = $film['note'];
+                $obj->user_review = $film['user_reviews'];
             }
-            $flm->save();
+            $obj->save();
         }
     }
 
