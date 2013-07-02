@@ -34,8 +34,19 @@ class Pwyw_Films
 
         // Create a default, empty review object
         $review = new stdClass;
+        $review->id          = '';
+        $review->film_id     = '';
+        $review->review      = '';
+        $review->author      = '';
+        $review->publication = '';
+        $review->image       = '';
+        $review->link        = '';
 
-        $data = array('array_id' => $array_id, 'id' => $id, 'review' => $review);
+        $data = array(
+            'array_id' => $array_id,
+            'id' => $id,
+            'review' => $review
+        );
         $review = Pwyw_View::make('review', $data);
         echo $review;
         die();
@@ -54,7 +65,11 @@ class Pwyw_Films
         $feature->title    = '';
         $feature->subtitle = '';
 
-        $data = array('array_id' => $array_id, 'id' => $id, 'feature' => $feature);
+        $data = array(
+            'array_id' => $array_id,
+            'id' => $id,
+            'feature' => $feature
+        );
         $feature = Pwyw_View::make('feature', $data);
         echo $feature;
         die();
@@ -151,6 +166,10 @@ class Pwyw_Films
             if (array_key_exists('features', $film)) {
                 self::saveFeatures($obj->id, $film['features']);
             }
+
+            if (array_key_exists('reviews', $film)) {
+                self::saveReviews($obj->id, $film['reviews']);
+            }
         }
     }
 
@@ -183,6 +202,36 @@ class Pwyw_Films
         }
     }
 
+    public static function saveReviews($film_id, $reviews)
+    {
+        foreach ($reviews as $review) {
+            $review = stripslashes_deep($review);
+            if (!$review['id']) {
+                if ($review['deleted'] == 'true') {
+                    continue;
+                }
+                $obj = Pwyw_Review::create(
+                    $film_id,
+                    $review['review'],
+                    $review['author'],
+                    $review['publication'],
+                    $review['image'],
+                    $review['link']
+                );
+            } else {
+                if ($feature['deleted'] == 'true') {
+                    Pwyw_Feature::delete($feature['id']);
+                    continue;
+                }
+                $obj = new Pwyw_Feature($feature['id']);
+                $obj->film_id  = $film_id;
+                $obj->image    = $feature['image'];
+                $obj->title    = $feature['title'];
+                $obj->subtitle = $feature['subtitle'];
+            }
+            $obj->save();
+        }
+    }
     /**
      * Returns an object with all films for specified bundle.
      */

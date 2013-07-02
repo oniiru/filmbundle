@@ -28,7 +28,7 @@ class Pwyw_Review
             'author'      => $this->author,
             'publication' => $this->publication,
             'image'       => $this->image,
-            'link'        => $this->link,
+            'link'        => $this->link
         );
 
         if ($this->id == null) {
@@ -58,14 +58,14 @@ class Pwyw_Review
         $image,
         $link
     ) {
-        $review = new Pwyw_Review;
-        $review->film_id     = $film_id;
-        $review->review      = $review;
-        $review->author      = $author;
-        $review->publication = $publication;
-        $review->image       = $image;
-        $review->link        = $link;
-        return $review;
+        $obj = new Pwyw_Review;
+        $obj->film_id     = $film_id;
+        $obj->review      = $review;
+        $obj->author      = $author;
+        $obj->publication = $publication;
+        $obj->image       = $image;
+        $obj->link        = $link;
+        return $obj;
     }
 
     /**
