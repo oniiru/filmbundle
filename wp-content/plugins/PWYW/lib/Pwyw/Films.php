@@ -223,6 +223,22 @@ class Pwyw_Films
         $prefix = $wpdb->prefix.'pwyw_';
         $table = $prefix.Pwyw_Database::FILMS;
 
+        // Build an array of all film id's we're going to delete.
+        $sql = "SELECT id FROM {$table}
+                 WHERE bundle_id = {$bundle_id}";
+
+        $ids = $wpdb->get_results($sql, ARRAY_N);
+        $filmIds = array();
+        foreach ($ids as $id) {
+            array_push($filmIds, $id[0]);
+        }
+
+        // Delete the reviews and special features
+        foreach ($filmIds as $id) {
+            Pwyw_Feature::deleteByFilm($id);
+        }
+
+        // Delete the films
         $result = $wpdb->query(
             $wpdb->prepare(
                 "DELETE FROM {$table}

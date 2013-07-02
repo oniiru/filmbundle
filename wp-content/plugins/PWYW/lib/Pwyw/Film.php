@@ -159,6 +159,9 @@ class Pwyw_Film
         $prefix = $wpdb->prefix.'pwyw_';
         $table = $prefix.Pwyw_Database::FILMS;
 
+        // Delete associated reviews and special features
+        Pwyw_Feature::deleteByFilm($id);
+
         return $wpdb->query(
             $wpdb->prepare(
                 "DELETE FROM {$table}
