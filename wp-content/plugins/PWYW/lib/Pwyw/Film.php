@@ -1,16 +1,24 @@
 <?php
 /**
- * Class to hold charity entities.
+ * Class to hold film entities.
  */
-class Pwyw_Charity
+class Pwyw_Film
 {
-    /** Holds the data for the charity instance */
+    /** Holds the data for the film instance */
     public $id = null;
     public $bundle_id = null;
     public $title;
     public $image;
+    public $rating;
     public $embed;
-    public $description;
+    public $logline;
+    public $genre;
+    public $runtime;
+    public $director;
+    public $writers;
+    public $stars;
+    public $website;
+    public $note;
 
     public function __construct($id = 0)
     {
@@ -28,32 +36,57 @@ class Pwyw_Charity
     // -------------------------------------------------------------------------
 
     /**
-     * Load a charity
+     * Load a film
      */
     private function load()
     {
         global $wpdb;
         $prefix = $wpdb->prefix.'pwyw_';
-        $table = $prefix.Pwyw_Database::CHARITIES;
+        $table = $prefix.Pwyw_Database::FILMS;
         $sql = "SELECT * from {$table} WHERE id = {$this->id}";
-        $charity = $wpdb->get_row($sql, OBJECT);
+        $film = $wpdb->get_row($sql, OBJECT);
 
-        // No charity with that id
-        if (is_null($charity)) {
+        // No film with that id
+        if (is_null($film)) {
             return false;
         }
 
+
+    public $id = null;
+    public $bundle_id = null;
+    public $title;
+    public $image;
+    public $rating;
+    public $embed;
+    public $logline;
+    public $genre;
+    public $runtime;
+    public $director;
+    public $writers;
+    public $stars;
+    public $website;
+    public $note;
+
+
         // We found the charity, let's populate the object
         $this->bundle_id = $charity->bundle_id;
-        $this->title = $charity->title;
-        $this->image = $charity->image;
-        $this->embed = $charity->embed;
-        $this->description = $charity->description;
+        $this->title     = $charity->title;
+        $this->image     = $charity->image;
+        $this->rating    = $charity->rating;
+        $this->embed     = $charity->embed;
+        $this->logline   = $charity->logline;
+        $this->genre     = $charity->genre;
+        $this->runtime   = $charity->runtime;
+        $this->director  = $charity->director;
+        $this->writers   = $charity->writers;
+        $this->stars     = $charity->stars;
+        $this->website   = $charity->website;
+        $this->note      = $charity->note;
         return true;
     }
 
     /**
-     * Save a charity in the database.
+     * Save a film in the database.
      */
     public function save()
     {
@@ -86,7 +119,7 @@ class Pwyw_Charity
     // -------------------------------------------------------------------------
 
     /**
-     * Create a new Charity
+     * Create a new film
      */
     public static function create(
         $bundle_id,
@@ -105,7 +138,7 @@ class Pwyw_Charity
     }
 
     /**
-     * Delete a charity
+     * Delete a film
      */
     public static function delete($id)
     {
