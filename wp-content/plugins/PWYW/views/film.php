@@ -49,8 +49,8 @@ jQuery(document).ready(function($) {
     <p>
       <label for="films[<?php echo $array_id; ?>][rating]">Above/below average?</label>
       <select name="films[<?php echo $array_id; ?>][rating]" id="films[<?php echo $array_id; ?>][rating]" style="width: 200px; margin-left: 20px;">
-        <option value="above">Above</option>
-        <option value="below">Below</option>
+        <option value="above" <?php selected($film->rating, 'above', true); ?>>Above</option>
+        <option value="below" <?php selected($film->rating, 'below', true); ?>>Below</option>
       </select>
     </p>
 
