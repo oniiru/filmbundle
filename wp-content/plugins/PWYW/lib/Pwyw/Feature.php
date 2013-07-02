@@ -11,6 +11,21 @@ class Pwyw_Feature
     public $title;
     public $subtitle;
 
+    public function __construct($id = 0)
+    {
+        if ($id > 0) {
+            $this->id = $id;
+            // if (!$this->load()) {
+            //     $this->id = null;
+            // }
+        }
+    }
+
+
+    // -------------------------------------------------------------------------
+    // I/O
+    // -------------------------------------------------------------------------
+
     /**
      * Save a special feature in the database.
      */

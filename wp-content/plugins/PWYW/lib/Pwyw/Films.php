@@ -165,6 +165,15 @@ class Pwyw_Films
                     $feature['subtitle']
                 );
             } else {
+                if ($feature['deleted'] == 'true') {
+                    Pwyw_Feature::delete($feature['id']);
+                    continue;
+                }
+                $obj = new Pwyw_Feature($feature['id']);
+                $obj->film_id  = $film_id;
+                $obj->image    = $feature['image'];
+                $obj->title    = $feature['title'];
+                $obj->subtitle = $feature['subtitle'];
             }
             $obj->save();
         }
