@@ -81,7 +81,7 @@ class Pwyw_Films
                     $film['stars'],
                     $film['website'],
                     $film['note'],
-                    isset($film['user_reviews']) ? true : false
+                    isset($film['user_reviews']) ? 1 : 0
                 );
             } else {
                 if ($film['deleted'] == 'true') {
@@ -102,7 +102,7 @@ class Pwyw_Films
                 $obj->stars = $film['stars'];
                 $obj->website = $film['website'];
                 $obj->note = $film['note'];
-                $obj->user_review = isset($film['user_reviews']) ? true : false;
+                $obj->user_reviews = isset($film['user_reviews']) ? 1 : 0;
             }
             $obj->save();
         }

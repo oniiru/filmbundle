@@ -48,7 +48,7 @@ jQuery(document).ready(function($) {
 
     <p>
       <label for="films[<?php echo $array_id; ?>][rating]">Above/below average?</label>
-      <select name="films[<?php echo $array_id; ?>][rating]" style="width: 200px; margin-left: 20px;">
+      <select name="films[<?php echo $array_id; ?>][rating]" id="films[<?php echo $array_id; ?>][rating]" style="width: 200px; margin-left: 20px;">
         <option value="above">Above</option>
         <option value="below">Below</option>
       </select>
@@ -92,8 +92,9 @@ jQuery(document).ready(function($) {
       <a id="add_review_<?php echo $array_id; ?>" class="button">+ Add Review</a>
     </p>
 
-  <label for="users_can_register">
-    <input name="films[<?php echo $array_id; ?>][user_reviews]" type="checkbox" value="1" />
+  <label for="films[<?php echo $array_id; ?>][user_reviews]">
+    <input name="films[<?php echo $array_id; ?>][user_reviews]" id="films[<?php echo $array_id; ?>][user_reviews]" type="checkbox" value="1" />
+    Include User Reviews
   </label>
 
 
