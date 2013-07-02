@@ -84,6 +84,12 @@ jQuery(document).ready(function($) {
       <a id="add_review_<?php echo $array_id; ?>" class="button">+ Add Review</a>
     </p>
 
+  <label for="users_can_register">
+    <input name="films[<?php echo $array_id; ?>][user_reviews]" type="checkbox" value="1" />
+  </label>
+
+
+
     <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0; width:924px;" />
     <h2>Special Features</h2>
     <p style="text-align: right; width:924px;">

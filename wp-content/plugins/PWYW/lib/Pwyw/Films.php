@@ -28,19 +28,21 @@ class Pwyw_Films
 
         // Create a default, empty film object
         $film = new stdClass;
-        $film->bundle_id = '';
-        $film->title     = '';
-        $film->image     = '';
-        $film->rating    = '';
-        $film->embed     = '';
-        $film->logline   = '';
-        $film->genre     = '';
-        $film->runtime   = '';
-        $film->director  = '';
-        $film->writers   = '';
-        $film->stars     = '';
-        $film->website   = '';
-        $film->note      = '';
+        $film->id           = '';
+        $film->bundle_id    = '';
+        $film->title        = '';
+        $film->image        = '';
+        $film->rating       = '';
+        $film->embed        = '';
+        $film->logline      = '';
+        $film->genre        = '';
+        $film->runtime      = '';
+        $film->director     = '';
+        $film->writers      = '';
+        $film->stars        = '';
+        $film->website      = '';
+        $film->note         = '';
+        $film->user_reviews = 0;
 
         // Create a new film view to send to the front
         $data = array('array_id' => $array_id, 'film' => $film);
@@ -78,7 +80,8 @@ class Pwyw_Films
                     $film['writers'],
                     $film['stars'],
                     $film['website'],
-                    $film['note']
+                    $film['note'],
+                    $film['user_reviews']
                 );
             } else {
                 if ($charity['deleted'] == 'true') {
@@ -97,14 +100,13 @@ class Pwyw_Films
     }
 
     /**
-     * Returns an object with all charities for specified bundle.
+     * Returns an object with all films for specified bundle.
      */
     public static function all($bundle_id)
     {
-        return array();
         global $wpdb;
         $prefix = $wpdb->prefix.'pwyw_';
-        $table = $prefix.Pwyw_Database::CHARITIES;
+        $table = $prefix.Pwyw_Database::FILMS;
         $sql = "SELECT * FROM {$table}
                 WHERE bundle_id = {$bundle_id}
                 ORDER BY title ASC";

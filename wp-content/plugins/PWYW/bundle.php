@@ -164,8 +164,8 @@
 $bundle_id = isset($_REQUEST['bundle']) ? ($_REQUEST['bundle']) : 0;
 
 // Initialize the film views
-$data = array('films' => Pwyw_Charities::all($bundle_id));
-echo Pwyw_View::make('films');
+$data = array('films' => Pwyw_Films::all($bundle_id));
+echo Pwyw_View::make('films', $data);
 
 // Initialize the charity views
 $data = array('charities' => Pwyw_Charities::all($bundle_id));

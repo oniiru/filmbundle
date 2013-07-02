@@ -29,10 +29,10 @@
 
 <div id="films">
   <?php
-    // foreach ($charities as $key => $charity) {
-    //   $data = array('array_id' => $key, 'charity' => $charity);
-    //   echo Pwyw_View::make('film', $data);
-    // }
+    foreach ($films as $key => $film) {
+      $data = array('array_id' => $key, 'film' => $film);
+      echo Pwyw_View::make('film', $data);
+    }
   ?>
 </div>
 

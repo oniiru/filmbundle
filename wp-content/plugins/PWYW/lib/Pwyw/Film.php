@@ -19,6 +19,7 @@ class Pwyw_Film
     public $stars;
     public $website;
     public $note;
+    public $user_reviews;
 
     public function __construct($id = 0)
     {
@@ -52,19 +53,20 @@ class Pwyw_Film
         }
 
         // We found the film, let's populate the object
-        $this->bundle_id = $film->bundle_id;
-        $this->title     = $film->title;
-        $this->image     = $film->image;
-        $this->rating    = $film->rating;
-        $this->embed     = $film->embed;
-        $this->logline   = $film->logline;
-        $this->genre     = $film->genre;
-        $this->runtime   = $film->runtime;
-        $this->director  = $film->director;
-        $this->writers   = $film->writers;
-        $this->stars     = $film->stars;
-        $this->website   = $film->website;
-        $this->note      = $film->note;
+        $this->bundle_id    = $film->bundle_id;
+        $this->title        = $film->title;
+        $this->image        = $film->image;
+        $this->rating       = $film->rating;
+        $this->embed        = $film->embed;
+        $this->logline      = $film->logline;
+        $this->genre        = $film->genre;
+        $this->runtime      = $film->runtime;
+        $this->director     = $film->director;
+        $this->writers      = $film->writers;
+        $this->stars        = $film->stars;
+        $this->website      = $film->website;
+        $this->note         = $film->note;
+        $this->user_reviews = $film->user_reviews;
         return true;
     }
 
@@ -78,19 +80,20 @@ class Pwyw_Film
         $table = $prefix.Pwyw_Database::FILMS;
 
         $data =  array(
-            'bundle_id' => $this->bundle_id,
-            'title'     => $this->title,
-            'image'     => $this->image,
-            'rating'    => $this->rating,
-            'embed'     => $this->embed,
-            'logline'   => $this->logline,
-            'genre'     => $this->genre,
-            'runtime'   => $this->runtime,
-            'director'  => $this->director,
-            'writers'   => $this->writers,
-            'stars'     => $this->stars,
-            'website'   => $this->website,
-            'note'      => $this->note,
+            'bundle_id'    => $this->bundle_id,
+            'title'        => $this->title,
+            'image'        => $this->image,
+            'rating'       => $this->rating,
+            'embed'        => $this->embed,
+            'logline'      => $this->logline,
+            'genre'        => $this->genre,
+            'runtime'      => $this->runtime,
+            'director'     => $this->director,
+            'writers'      => $this->writers,
+            'stars'        => $this->stars,
+            'website'      => $this->website,
+            'note'         => $this->note,
+            'user_reviews' => $this->user_reviews,
         );
 
         if ($this->id == null) {
@@ -125,22 +128,24 @@ class Pwyw_Film
         $writers,
         $stars,
         $website,
-        $note
+        $note,
+        $user_reviews
     ) {
         $film = new Pwyw_Film;
-        $film->bundle_id = $bundle_id;
-        $film->title     = $title;
-        $film->image     = $image;
-        $film->rating    = $rating;
-        $film->embed     = $embed;
-        $film->logline   = $logline;
-        $film->genre     = $genre;
-        $film->runtime   = $runtime;
-        $film->director  = $director;
-        $film->writers   = $writers;
-        $film->stars     = $stars;
-        $film->website   = $website;
-        $film->note      = $note;
+        $film->bundle_id    = $bundle_id;
+        $film->title        = $title;
+        $film->image        = $image;
+        $film->rating       = $rating;
+        $film->embed        = $embed;
+        $film->logline      = $logline;
+        $film->genre        = $genre;
+        $film->runtime      = $runtime;
+        $film->director     = $director;
+        $film->writers      = $writers;
+        $film->stars        = $stars;
+        $film->website      = $website;
+        $film->note         = $note;
+        $film->user_reviews = $user_reviews;
         return $film;
     }
 
