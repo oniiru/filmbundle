@@ -13,6 +13,18 @@ class Pwyw_Review
     public $image;
     public $link;
 
+
+    public function __construct($id = 0)
+    {
+        if ($id > 0) {
+            $this->id = $id;
+            // if (!$this->load()) {
+            //     $this->id = null;
+            // }
+        }
+    }
+
+
     /**
      * Save a review in the database.
      */
