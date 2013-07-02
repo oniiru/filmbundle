@@ -112,7 +112,7 @@ class Pwyw
           'PWYW_admin',
           plugins_url('/assets/css/pwyw.css', __FILE__), 
           array(),
-          "screen"
+          $version
         );
     }
 
