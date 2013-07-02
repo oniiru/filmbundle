@@ -643,7 +643,7 @@ class Pwyw
         $bundle_id = $wpdb->insert_id;
 
         // Save the associated films and charities
-        Pwyw_Film::save($bundle_id);
+        Pwyw_Films::save($bundle_id);
         Pwyw_Charities::save($bundle_id);
 
         if ($bundle_id) {

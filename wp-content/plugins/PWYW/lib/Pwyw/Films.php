@@ -61,7 +61,6 @@ class Pwyw_Films
 
         foreach ($films as $film) {
             $film = stripslashes_deep($film);
-            // var_dump($film);
 
             if (!$film['id']) {
                 if ($film['deleted'] == 'true') {
