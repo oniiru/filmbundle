@@ -101,7 +101,8 @@ class Pwyw_Films
         $data = array(
             'array_id' => $array_id,
             'film' => $film,
-            'features' => array()
+            'features' => array(),
+            'reviews' => array()
         );
         $film = Pwyw_View::make('film', $data);
         echo $film;
