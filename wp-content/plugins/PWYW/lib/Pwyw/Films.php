@@ -303,6 +303,7 @@ class Pwyw_Films
         // Delete the reviews and special features
         foreach ($filmIds as $id) {
             Pwyw_Feature::deleteByFilm($id);
+            Pwyw_Review::deleteByFilm($id);
         }
 
         // Delete the films
