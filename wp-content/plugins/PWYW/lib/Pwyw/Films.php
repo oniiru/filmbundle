@@ -29,13 +29,27 @@ class Pwyw_Films
     // -------------------------------------------------------------------------
     public function addReview()
     {
-        echo 'review';
+        $array_id = $_POST['array_id'];
+
+        // Create a default, empty review object
+        $review = new stdClass;
+
+        $data = array('array_id' => $array_id, 'review' => $review);
+        $review = Pwyw_View::make('review', $data);
+        echo $review;
         die();
     }
 
     public function addFeature()
     {
-        echo 'feature';
+        $array_id = $_POST['array_id'];
+
+        // Create a default, empty feature object
+        $feature = new stdClass;
+
+        $data = array('array_id' => $array_id, 'feature' => $feature);
+        $feature = Pwyw_View::make('feature', $data);
+        echo $feature;
         die();
     }
 
