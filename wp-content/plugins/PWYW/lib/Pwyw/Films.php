@@ -30,11 +30,12 @@ class Pwyw_Films
     public function addReview()
     {
         $array_id = $_POST['array_id'];
+        $id = $_POST['id'];
 
         // Create a default, empty review object
         $review = new stdClass;
 
-        $data = array('array_id' => $array_id, 'review' => $review);
+        $data = array('array_id' => $array_id, 'id' => $id, 'review' => $review);
         $review = Pwyw_View::make('review', $data);
         echo $review;
         die();
@@ -43,11 +44,17 @@ class Pwyw_Films
     public function addFeature()
     {
         $array_id = $_POST['array_id'];
+        $id = $_POST['id'];
 
         // Create a default, empty feature object
         $feature = new stdClass;
+        $feature->id       = '';
+        $feature->film_id  = '';
+        $feature->image    = '';
+        $feature->title    = '';
+        $feature->subtitle = '';
 
-        $data = array('array_id' => $array_id, 'feature' => $feature);
+        $data = array('array_id' => $array_id, 'id' => $id, 'feature' => $feature);
         $feature = Pwyw_View::make('feature', $data);
         echo $feature;
         die();
@@ -89,6 +96,10 @@ class Pwyw_Films
     public static function save($bundle_id)
     {
         $films = isset($_POST['films']) ? $_POST['films'] : array();
+
+        var_dump($films);
+        die();
+ 
 
         foreach ($films as $film) {
             $film = stripslashes_deep($film);

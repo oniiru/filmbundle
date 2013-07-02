@@ -43,12 +43,13 @@ jQuery(document).ready(function($) {
 
   var review_data = {
       action: 'pwyw_add_review',
-      array_id: <?php echo count($reviews); ?> 
+      array_id: <?php echo $array_id; ?>,
+      id: <?php echo count($reviews); ?> 
   };
 
   function addReview() {
     $.post(ajaxurl, review_data, function(response) {
-      review_data.array_id++;
+      review_data.id++;
       $('#film_<?php echo $array_id; ?>_reviews').append(response);
       $('#add_review_<?php echo $array_id; ?>').removeAttr('disabled');
     });
@@ -67,12 +68,13 @@ jQuery(document).ready(function($) {
 
   var feature_data = {
       action: 'pwyw_add_feature',
-      array_id: <?php echo count($features); ?> 
+      array_id: <?php echo $array_id; ?>,
+      id: <?php echo count($features); ?> 
   };
 
   function addFeature() {
     $.post(ajaxurl, feature_data, function(response) {
-      feature_data.array_id++;
+      feature_data.id++;
       $('#film_<?php echo $array_id; ?>_features').append(response);
       $('#add_feature_<?php echo $array_id; ?>').removeAttr('disabled');
     });
