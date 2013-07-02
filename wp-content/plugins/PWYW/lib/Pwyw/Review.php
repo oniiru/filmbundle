@@ -98,4 +98,23 @@ class Pwyw_Review
             )
         );
     }
+
+    /**
+     * Delete all reviews for a film
+     */
+    public static function deleteByFilm($film_id)
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        $table = $prefix.Pwyw_Database::REVIEWS;
+
+        return $wpdb->query(
+            $wpdb->prepare(
+                "DELETE FROM {$table}
+                 WHERE film_id = %d
+                ",
+                $film_id
+            )
+        );
+    }
 }

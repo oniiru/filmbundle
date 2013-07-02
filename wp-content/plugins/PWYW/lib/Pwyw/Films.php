@@ -161,7 +161,7 @@ class Pwyw_Films
                 $obj->website = $film['website'];
                 $obj->note = $film['note'];
                 $obj->user_reviews = isset($film['user_reviews']) ? 1 : 0;
-                // $obj->save();
+                $obj->save();
             }
 
             if (array_key_exists('features', $film)) {

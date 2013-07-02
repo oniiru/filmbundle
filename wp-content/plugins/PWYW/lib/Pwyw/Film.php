@@ -161,6 +161,7 @@ class Pwyw_Film
 
         // Delete associated reviews and special features
         Pwyw_Feature::deleteByFilm($id);
+        Pwyw_Review::deleteByFilm($id);
 
         return $wpdb->query(
             $wpdb->prepare(
