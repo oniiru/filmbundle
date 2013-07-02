@@ -51,24 +51,7 @@ class Pwyw_Film
             return false;
         }
 
-
-    public $id = null;
-    public $bundle_id = null;
-    public $title;
-    public $image;
-    public $rating;
-    public $embed;
-    public $logline;
-    public $genre;
-    public $runtime;
-    public $director;
-    public $writers;
-    public $stars;
-    public $website;
-    public $note;
-
-
-        // We found the charity, let's populate the object
+        // We found the film, let's populate the object
         $this->bundle_id = $charity->bundle_id;
         $this->title     = $charity->title;
         $this->image     = $charity->image;
@@ -92,22 +75,30 @@ class Pwyw_Film
     {
         global $wpdb;
         $prefix = $wpdb->prefix.'pwyw_';
-        $table = $prefix.Pwyw_Database::CHARITIES;
+        $table = $prefix.Pwyw_Database::FILMS;
 
         $data =  array(
             'bundle_id' => $this->bundle_id,
-            'title' => $this->title,
-            'image' => $this->image,
-            'embed' => $this->embed,
-            'description' => $this->description
+            'title'     => $this->title,
+            'image'     => $this->image,
+            'rating'    => $this->rating,
+            'embed'     => $this->embed,
+            'logline'   => $this->logline,
+            'genre'     => $this->genre,
+            'runtime'   => $this->runtime,
+            'director'  => $this->director,
+            'writers'   => $this->writers,
+            'stars'     => $this->stars,
+            'website'   => $this->website,
+            'note'      => $this->note,
         );
 
         if ($this->id == null) {
-            // Insert new provider
+            // Insert new film
             $wpdb->insert($table, $data, null);
             $res = ($wpdb->insert_id == 0) ? false : true;
         } else {
-            // Update existing provider
+            // Update existing film
             $res = $wpdb->update($table, $data, array('id' => $this->id), null);
         }
         return $res;
