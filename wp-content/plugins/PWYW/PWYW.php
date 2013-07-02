@@ -57,8 +57,8 @@ class Pwyw
         Pwyw_Films::instance();
 
         // Debugging DB install/uninstall
-        // Pwyw_Database::createTables();
         // Pwyw_Database::dropTables();
+        // Pwyw_Database::createTables();
     }
 
     /**
@@ -642,7 +642,7 @@ class Pwyw
         $bundle_id = $wpdb->insert_id;
 
         // Save the associated films and charities
-        Pwyw_Films::save($bundle_id);
+        Pwyw_Film::save($bundle_id);
         Pwyw_Charities::save($bundle_id);
 
         if ($bundle_id) {

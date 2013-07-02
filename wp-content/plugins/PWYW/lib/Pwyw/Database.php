@@ -54,6 +54,7 @@ class Pwyw_Database
             stars VARCHAR(255) NOT NULL,
             website VARCHAR(255) NOT NULL,
             note TEXT NOT NULL,
+            user_reviews TINYINT(1) NOT NULL,
             PRIMARY KEY id (id)
         );";
         dbDelta($sql);
