@@ -8,7 +8,9 @@
     function addCharity() {
       $.post(ajaxurl, charity_data, function(response) {
         charity_data.array_id++;
+        postboxes.add_postbox_toggles();
         $('#charities').append(response);
+        postboxes.add_postbox_toggles();
         $('#add_charity').removeAttr('disabled');
       });
     };
