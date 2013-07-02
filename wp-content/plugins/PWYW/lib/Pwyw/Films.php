@@ -225,11 +225,11 @@ class Pwyw_Films
                 }
                 $obj = new Pwyw_Review($review['id']);
                 $obj->film_id     = $film_id;
-                $obj->review      = $feature['review'];
-                $obj->author      = $feature['author'];
-                $obj->publication = $feature['publication'];
-                $obj->image       = $feature['image'];
-                $obj->link        = $feature['link'];
+                $obj->review      = $review['review'];
+                $obj->author      = $review['author'];
+                $obj->publication = $review['publication'];
+                $obj->image       = $review['image'];
+                $obj->link        = $review['link'];
             }
             $obj->save();
         }
