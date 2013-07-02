@@ -152,6 +152,16 @@ jQuery(document).ready(function($) {
     <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0; width:924px;" />
     <h2>Special Features</h2>
     <div id="film_<?php echo $array_id; ?>_features">
+    <?php
+      foreach ($features as $key => $feature) {
+        $data = array(
+          'array_id' => $array_id,
+          'id' => $key,
+          'feature' => $feature
+        );
+        echo Pwyw_View::make('feature', $data);
+      }
+    ?>
     </div>
 
     <p style="text-align: right; width:924px;">

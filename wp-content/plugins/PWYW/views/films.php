@@ -30,7 +30,11 @@
 <div id="films">
   <?php
     foreach ($films as $key => $film) {
-      $data = array('array_id' => $key, 'film' => $film);
+      $data = array(
+        'array_id' => $key,
+        'film' => $film,
+        'features' => Pwyw_Films::allFeatures($film->id)
+      );
       echo Pwyw_View::make('film', $data);
     }
   ?>

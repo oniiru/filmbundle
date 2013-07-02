@@ -186,6 +186,22 @@ class Pwyw_Films
     }
 
     /**
+     * Returns an object with all features for specified film.
+     */
+    public static function allFeatures($film_id)
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        $table = $prefix.Pwyw_Database::FEATURES;
+        $sql = "SELECT * FROM {$table}
+                WHERE film_id = {$film_id}
+                ORDER BY title ASC";
+
+        return $wpdb->get_results($sql, OBJECT);
+    }
+
+
+    /**
      * Deletes all charities associated with the bundle.
      */
     public static function delete($bundle_id)
