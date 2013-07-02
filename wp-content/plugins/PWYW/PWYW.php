@@ -583,7 +583,8 @@ class Pwyw
         global $wpdb;
         $wpdb->query($wpdb->prepare("DELETE FROM {$this->bundles} WHERE id = %d", $id));
 
-        // Delete charities
+        // Delete films and charities
+        Pwyw_Films::delete($id);
         Pwyw_Charities::delete($id);
 
         require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );

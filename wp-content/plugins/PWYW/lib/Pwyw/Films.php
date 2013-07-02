@@ -130,7 +130,7 @@ class Pwyw_Films
     {
         global $wpdb;
         $prefix = $wpdb->prefix.'pwyw_';
-        $table = $prefix.Pwyw_Database::CHARITIES;
+        $table = $prefix.Pwyw_Database::FILMS;
 
         $result = $wpdb->query(
             $wpdb->prepare(
