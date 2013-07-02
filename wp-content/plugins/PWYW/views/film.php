@@ -93,7 +93,7 @@ jQuery(document).ready(function($) {
     </p>
 
   <label for="films[<?php echo $array_id; ?>][user_reviews]">
-    <input name="films[<?php echo $array_id; ?>][user_reviews]" id="films[<?php echo $array_id; ?>][user_reviews]" type="checkbox" value="1" />
+    <input name="films[<?php echo $array_id; ?>][user_reviews]" id="films[<?php echo $array_id; ?>][user_reviews]" type="checkbox" value="1" <?php checked($film->user_reviews, 1, true); ?> />
     Include User Reviews
   </label>
 
