@@ -139,6 +139,16 @@ jQuery(document).ready(function($) {
     <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0; width:924px;" />
     <h2>Reviews</h2>
     <div id="film_<?php echo $array_id; ?>_reviews">
+    <?php
+      foreach ($reviews as $key => $review) {
+        $data = array(
+          'array_id' => $array_id,
+          'id' => $key,
+          'review' => $review
+        );
+        echo Pwyw_View::make('review', $data);
+      }
+    ?>
     </div>
 
     <p style="text-align: right; width:924px;">

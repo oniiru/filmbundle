@@ -264,6 +264,21 @@ class Pwyw_Films
         return $wpdb->get_results($sql, OBJECT);
     }
 
+    /**
+     * Returns an object with all reviews for specified film.
+     */
+    public static function allReviews($film_id)
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        $table = $prefix.Pwyw_Database::REVIEWS;
+        $sql = "SELECT * FROM {$table}
+                WHERE film_id = {$film_id}
+                ORDER BY id ASC";
+
+        return $wpdb->get_results($sql, OBJECT);
+    }
+
 
     /**
      * Deletes all films associated with the bundle.
