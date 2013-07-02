@@ -232,7 +232,7 @@ span.deletebundle {
     width: 24px !important;
     height: 24px !important;
     cursor: default !important;
-    background: url('/wp-content/plugins/PWYW/img/metal-slider.png') !important;
+    background: url('../img/metal-slider.png') !important;
     margin-left: -12px !important;
     border:none !important;
 }
