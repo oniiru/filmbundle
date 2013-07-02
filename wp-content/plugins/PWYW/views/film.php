@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript" >
 jQuery(document).ready(function($) {
   $('#film_title_<?php echo $array_id; ?>').keyup(function() {
     updateTitle(<?php echo $array_id; ?>);
@@ -34,15 +34,49 @@ jQuery(document).ready(function($) {
   // Handle Reviews
   // ---------------------------------------------------------------------------
   $('#add_review_<?php echo $array_id; ?>').click(function() {
-    $('#film_<?php echo $array_id; ?>_reviews').append('to implement<br/>');
+    if ($(this).attr('disabled') == 'disabled') {
+      return;
+    }
+    $('#add_review_<?php echo $array_id; ?>').attr('disabled', 'disabled');
+    addReview();
   });
+
+  var review_data = {
+      action: 'pwyw_add_review',
+      array_id: 0 <?php // echo count($films); ?> 
+  };
+
+  function addReview() {
+    $.post(ajaxurl, review_data, function(response) {
+      review_data.array_id++;
+      $('#film_<?php echo $array_id; ?>_reviews').append(response);
+      $('#add_review_<?php echo $array_id; ?>').removeAttr('disabled');
+    });
+  };
 
   // ---------------------------------------------------------------------------
   // Handle Special Features
   // ---------------------------------------------------------------------------
   $('#add_feature_<?php echo $array_id; ?>').click(function() {
-    $('#film_<?php echo $array_id; ?>_features').append('to implement<br/>');
+    if ($(this).attr('disabled') == 'disabled') {
+      return;
+    }
+    $('#add_feature_<?php echo $array_id; ?>').attr('disabled', 'disabled');
+    addFeature();
   });
+
+  var feature_data = {
+      action: 'pwyw_add_feature',
+      array_id: 0 <?php // echo count($films); ?> 
+  };
+
+  function addFeature() {
+    $.post(ajaxurl, feature_data, function(response) {
+      feature_data.array_id++;
+      $('#film_<?php echo $array_id; ?>_features').append(response);
+      $('#add_feature_<?php echo $array_id; ?>').removeAttr('disabled');
+    });
+  };
 });
 </script>
 

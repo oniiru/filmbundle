@@ -20,6 +20,23 @@ class Pwyw_Films
     private function __construct($id = 0)
     {
         add_action('wp_ajax_pwyw_add_film', array(&$this, 'addFilm'));
+        add_action('wp_ajax_pwyw_add_review', array(&$this, 'addReview'));
+        add_action('wp_ajax_pwyw_add_feature', array(&$this, 'addFeature'));
+    }
+
+    // -------------------------------------------------------------------------
+    // Ajax Handling
+    // -------------------------------------------------------------------------
+    public function addReview()
+    {
+        echo 'review';
+        die();
+    }
+
+    public function addFeature()
+    {
+        echo 'feature';
+        die();
     }
 
     public function addFilm()
