@@ -17,20 +17,25 @@ spl_autoload_register('Pwyw::autoload');
 class Pwyw
 {
     /** Holds the plugin instance */
-    private static $instance = false;
+    protected static $instance;
 
     /**
      * Singleton class
      */
-    public static function instance()
+    public static function getInstance()
     {
         if (!self::$instance) {
             self::$instance = new self();
+            self::$instance->construct();
         }
         return self::$instance;
     }
 
-    public function __construct()
+    private function __construct()
+    {
+    }
+
+    private function construct()
     {
         global $wpdb;
         register_deactivation_hook(__FILE__, array(&$this, 'pwyw_uninstall'));
@@ -52,12 +57,9 @@ class Pwyw
         $this->users = $wpdb->prefix . "pwyw_customers";
 
         // Boot up constructing classes
+        Pwyw_Admin::instance();
         Pwyw_Charities::instance();
         Pwyw_Films::instance();
-
-        // Debugging DB install/uninstall
-        // Pwyw_Database::dropTables();
-        // Pwyw_Database::createTables();
     }
 
     /**
@@ -284,6 +286,47 @@ class Pwyw
         $submenu_slug = 'PWYW-customers';
         $submenu_function = 'pwyw_customers';
         add_submenu_page($menu_slug, $submenu_page_title, $submenu_title, $capability, $submenu_slug, array(&$this, $submenu_function));
+    }
+
+    function pwyw_settings()
+    {
+
+        if (!current_user_can('manage_options')) {
+            wp_die('You do not have sufficient permissions to access this page.');
+        } else {
+            if (isset($_REQUEST['action'])) {
+                switch ($_REQUEST['action']) {
+                    case 'view':
+                        $this->pwyw_view_bundle($_REQUEST['bundle']);
+                        break;
+                    case 'delete':
+                        $this->pwyw_delete_bundle($_REQUEST['bundle']);
+                        break;
+                    case 'new':
+                        $this->pwyw_new_bundle();
+                        break;
+                    // These two are now handled from the admin class.
+                    // case 'edit':
+                    //     $this->pwyw_edit_bundle();
+                    //     break;
+                    // case 'create':
+                    //     $this->pwyw_create_bundle();
+                    //     break;
+                }
+            } else {
+                screen_icon('options-general');
+                ?>
+                <h2><?php echo get_admin_page_title(); ?></h2>
+                <a href="<?php echo sprintf('?page=%s&action=%s', $_REQUEST['page'], 'new'); ?>" class="add-new-h2">Add New Bundle </a>
+                <?php
+                require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
+
+                $PWYWListTable = new PWYW_Bundles_List_Table();
+
+                $PWYWListTable->prepare_items();
+                $PWYWListTable->display();
+            }
+        }
     }
 
     function get_all_payment_info()
@@ -570,17 +613,15 @@ class Pwyw
             }
         }
 
-        screen_icon('options-general');
-        ?>
-        <h2><?php echo get_admin_page_title(); ?></h2>
-        <a href="<?php echo sprintf('?page=%s&action=%s', $_REQUEST['page'], 'new'); ?>" class="add-new-h2">Add New Bundle </a>
-        <?php
-        require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
-
-        $PWYWListTable = new PWYW_Bundles_List_Table();
-
-        $PWYWListTable->prepare_items();
-        $PWYWListTable->display();
+        // Return to the view bundle
+        $url = admin_url(
+            sprintf(
+                'admin.php?page=PWYW-settings&action=view&bundle=%s',
+                $_REQUEST['bundle']
+            )
+        );
+        wp_redirect($url);
+        exit;
     }
 
     function pwyw_view_bundle($id)
@@ -678,58 +719,16 @@ class Pwyw
                 }
             }
         }
-        //   die;
-        screen_icon('options-general');
-        ?>
-        <h2><?php echo get_admin_page_title(); ?></h2>
-        <a href="<?php echo sprintf('?page=%s&action=%s', $_REQUEST['page'], 'new'); ?>" class="add-new-h2">Add New Bundle </a>
-        <?php
-        require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
 
-        $PWYWListTable = new PWYW_Bundles_List_Table();
-
-        $PWYWListTable->prepare_items();
-        $PWYWListTable->display();
-    }
-
-    function pwyw_settings()
-    {
-
-        if (!current_user_can('manage_options')) {
-            wp_die('You do not have sufficient permissions to access this page.');
-        } else {
-            if (isset($_REQUEST['action'])) {
-                switch ($_REQUEST['action']) {
-                    case 'view':
-                        $this->pwyw_view_bundle($_REQUEST['bundle']);
-                        break;
-                    case 'delete':
-                        $this->pwyw_delete_bundle($_REQUEST['bundle']);
-                        break;
-                    case 'edit':
-                        $this->pwyw_edit_bundle();
-                        break;
-                    case 'new':
-                        $this->pwyw_new_bundle();
-                        break;
-                    case 'create':
-                        $this->pwyw_create_bundle();
-                        break;
-                }
-            } else {
-                screen_icon('options-general');
-                ?>
-                <h2><?php echo get_admin_page_title(); ?></h2>
-                <a href="<?php echo sprintf('?page=%s&action=%s', $_REQUEST['page'], 'new'); ?>" class="add-new-h2">Add New Bundle </a>
-                <?php
-                require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
-
-                $PWYWListTable = new PWYW_Bundles_List_Table();
-
-                $PWYWListTable->prepare_items();
-                $PWYWListTable->display();
-            }
-        }
+        // Return to the view bundle
+        $url = admin_url(
+            sprintf(
+                'admin.php?page=PWYW-settings&action=view&bundle=%s',
+                $bundle_id
+            )
+        );
+        wp_redirect($url);
+        exit;
     }
 
     function pwyw_add_payment($order)
@@ -838,5 +837,5 @@ class Pwyw
         }
     }
 }
-add_action('plugins_loaded', array('Pwyw', 'instance'));
+add_action('plugins_loaded', array('Pwyw', 'getInstance'));
 register_activation_hook(__FILE__, array('Pwyw', 'install'));
