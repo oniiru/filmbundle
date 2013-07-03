@@ -33,7 +33,6 @@ class Pwyw
     public function __construct()
     {
         global $wpdb;
-        register_activation_hook(__FILE__, array(&$this, 'pwyw_install'));
         register_deactivation_hook(__FILE__, array(&$this, 'pwyw_uninstall'));
         
         //$wpdb->query("UPDATE `wp_pwyw_customers` SET `alias` = 'Anonymous' WHERE `alias` = 'Annonymous'");
@@ -109,10 +108,10 @@ class Pwyw
         );
         wp_enqueue_script('popover', plugins_url('/js/jquery.popover-1.1.2.js', __FILE__), array(), "screen");
         wp_enqueue_style(
-          'PWYW_admin',
-          plugins_url('/assets/css/pwyw.css', __FILE__), 
-          array(),
-          $version
+            'PWYW_admin',
+            plugins_url('/assets/css/pwyw.css', __FILE__),
+            array(),
+            $version
         );
     }
 
@@ -121,13 +120,24 @@ class Pwyw
     // Original PWYW code from v0.1
     // -------------------------------------------------------------------------
 
-    function pwyw_install()
+    /**
+     * When the plugin is activated.
+     */
+    public static function install()
     {
         global $wpdb;
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-        if ($wpdb->get_var("SHOW TABLES LIKE '{$this->bundles}'") != $this->bundles) {
-            $sql = "CREATE TABLE " . $this->bundles . " (
+        $bundles = $wpdb->prefix . "pwyw_bundles";
+        $categories = $wpdb->prefix . "pwyw_categories";
+        $bundle_categories = $wpdb->prefix . "pwyw_bundle_categories";
+        $payment_info = $wpdb->prefix . "pwyw_payment_info";
+        $price_allocation = $wpdb->prefix . "pwyw_price_allocation";
+        $users = $wpdb->prefix . "pwyw_customers";
+
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '{$bundles}'") != $bundles) {
+            $sql = "CREATE TABLE " . $bundles . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `title` varchar(255) NOT NULL ,
              `suggested_val_1` float(10,2),
@@ -144,8 +154,8 @@ class Pwyw
 
             dbDelta($sql);
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->payment_info}'") != $this->payment_info) {
-                $sql = "CREATE TABLE " . $this->payment_info . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$payment_info}'") != $payment_info) {
+                $sql = "CREATE TABLE " . $payment_info . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `cid` mediumint(9) ,
              `order_id` mediumint(9),
@@ -160,8 +170,8 @@ class Pwyw
                 dbDelta($sql);
             }
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->users}'") != $this->users) {
-                $sql = "CREATE TABLE " . $this->users . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$users}'") != $users) {
+                $sql = "CREATE TABLE " . $users . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `cid` mediumint(9) ,
              `is_twitter` smallint(1) DEFAULT 0,
@@ -172,8 +182,8 @@ class Pwyw
                 dbDelta($sql);
             }
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->price_allocation}'") != $this->price_allocation) {
-                $sql = "CREATE TABLE " . $this->price_allocation . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$price_allocation}'") != $price_allocation) {
+                $sql = "CREATE TABLE " . $price_allocation . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `payment_id` mediumint(9) ,
              `cat_id` mediumint(9),
@@ -185,8 +195,8 @@ class Pwyw
                 dbDelta($sql);
             }
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->categories}'") != $this->categories) {
-                $sql = "CREATE TABLE " . $this->categories . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$categories}'") != $categories) {
+                $sql = "CREATE TABLE " . $categories . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `title` varchar(255) NOT NULL ,
              `parent` mediumint(3)DEFAULT 0,
@@ -196,23 +206,23 @@ class Pwyw
 
                 dbDelta($sql);
 
-                $wpdb->insert($this->categories, array('title' => 'Filmmakers',
+                $wpdb->insert($categories, array('title' => 'Filmmakers',
                     'parent' => 0,
                     'order' => 1));
 
-                $wpdb->insert($this->categories, array('title' => 'Charities',
+                $wpdb->insert($categories, array('title' => 'Charities',
                     'parent' => 0,
                     'order' => 2));
 
-                $wpdb->insert($this->categories, array('title' => 'Bundle',
+                $wpdb->insert($categories, array('title' => 'Bundle',
                     'parent' => 0,
                     'order' => 3));
             }
 
 
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->bundle_categories}'") != $this->bundle_categories) {
-                $sql = "CREATE TABLE " . $this->bundle_categories . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$bundle_categories}'") != $bundle_categories) {
+                $sql = "CREATE TABLE " . $bundle_categories . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `cat_id` mediumint(9) ,
              `bundle_id` mediumint(9),
@@ -829,3 +839,4 @@ class Pwyw
     }
 }
 add_action('plugins_loaded', array('Pwyw', 'instance'));
+register_activation_hook(__FILE__, array('Pwyw', 'install'));
