@@ -81,21 +81,26 @@ class Pwyw_Films
 
         // Create a default, empty film object
         $film = new stdClass;
-        $film->id           = '';
-        $film->bundle_id    = '';
-        $film->title        = '';
-        $film->image        = '';
-        $film->rating       = 'above';
-        $film->embed        = '';
-        $film->logline      = '';
-        $film->genre        = '';
-        $film->runtime      = '';
-        $film->director     = '';
-        $film->writers      = '';
-        $film->stars        = '';
-        $film->website      = '';
-        $film->note         = '';
-        $film->user_reviews = 0;
+        $film->id              = '';
+        $film->bundle_id       = '';
+        $film->title           = '';
+        $film->image           = '';
+        $film->rating          = 'above';
+        $film->embed           = '';
+        $film->logline         = '';
+        $film->genre           = '';
+        $film->runtime         = '';
+        $film->director        = '';
+        $film->writers         = '';
+        $film->stars           = '';
+        $film->website         = '';
+        $film->filmmaker_note  = '';
+        $film->filmmaker_image = '';
+        $film->filmmaker_name  = '';
+        $film->curator_note    = '';
+        $film->curator_image   = '';
+        $film->curator_name    = '';
+        $film->user_reviews    = 0;
 
         // Create a new film view to send to the front
         $data = array(
@@ -137,7 +142,12 @@ class Pwyw_Films
                     $film['writers'],
                     $film['stars'],
                     $film['website'],
-                    $film['note'],
+                    $film['filmmaker_note'],
+                    $film['filmmaker_image'],
+                    $film['filmmaker_name'],
+                    $film['curator_note'],
+                    $film['curator_image'],
+                    $film['curator_name'],
                     isset($film['user_reviews']) ? 1 : 0
                 );
                 $obj->save();
@@ -147,20 +157,25 @@ class Pwyw_Films
                     continue;
                 }
                 $obj = new Pwyw_Film($film['id']);
-                $obj->bundle_id = $bundle_id;
-                $obj->title = $film['title'];
-                $obj->image = $film['image'];
-                $obj->rating = $film['rating'];
-                $obj->embed = $film['embed'];
-                $obj->logline = $film['logline'];
-                $obj->genre = $film['genre'];
-                $obj->runtime = $film['runtime'];
-                $obj->director = $film['director'];
-                $obj->writers = $film['writers'];
-                $obj->stars = $film['stars'];
-                $obj->website = $film['website'];
-                $obj->note = $film['note'];
-                $obj->user_reviews = isset($film['user_reviews']) ? 1 : 0;
+                $obj->bundle_id       = $bundle_id;
+                $obj->title           = $film['title'];
+                $obj->image           = $film['image'];
+                $obj->rating          = $film['rating'];
+                $obj->embed           = $film['embed'];
+                $obj->logline         = $film['logline'];
+                $obj->genre           = $film['genre'];
+                $obj->runtime         = $film['runtime'];
+                $obj->director        = $film['director'];
+                $obj->writers         = $film['writers'];
+                $obj->stars           = $film['stars'];
+                $obj->website         = $film['website'];
+                $obj->filmmaker_note  = $film['filmmaker_note'];
+                $obj->filmmaker_image = $film['filmmaker_image'];
+                $obj->filmmaker_name  = $film['filmmaker_name'];
+                $obj->curator_note    = $film['curator_note'];
+                $obj->curator_image   = $film['curator_image'];
+                $obj->curator_name    = $film['curator_name'];
+                $obj->user_reviews    = isset($film['user_reviews']) ? 1 : 0;
                 $obj->save();
             }
 
