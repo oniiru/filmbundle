@@ -10,6 +10,9 @@ class Pwyw_Database
     const REVIEWS   = 'reviews';
     const FEATURES  = 'features';
 
+    /** Track the installed DB version */
+    const OPTION_KEY = 'pwyw_db_version';
+
     /** Make the class static */
     private function __construct()
     {
@@ -84,6 +87,9 @@ class Pwyw_Database
             PRIMARY KEY id (id)
         );";
         dbDelta($sql);
+
+        // Set the DB version as 1.0.
+        update_option(self::OPTION_KEY, '1.0');
     }
 
     /**
@@ -99,6 +105,42 @@ class Pwyw_Database
         $table4 = $prefix.self::FEATURES;
 
         $sql = "DROP TABLE IF EXISTS {$table1}, {$table2}, {$table3}, {$table4};";
+        $wpdb->query($sql);
+    }
+
+    /**
+     * Upgrade database.
+     */
+    public static function upgrade()
+    {
+        $option = 'pwyw_db_version';
+        $version = get_option($option);
+
+        if (version_compare('1.1', $version, '>')) {
+            self::migrateTo11();
+            update_option(self::OPTION_KEY, '1.1');
+        }
+    }
+
+    /**
+     * Database migrations.
+     */
+    public static function migrateTo11()
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        $table = $prefix.self::FILMS;
+
+        $sql =
+            "ALTER TABLE {$table}
+                CHANGE note filmmaker_note  TEXT NOT NULL,
+                ADD COLUMN  filmmaker_image VARCHAR(255) AFTER filmmaker_note,
+                ADD COLUMN  filmmaker_name  VARCHAR(255) AFTER filmmaker_image,
+                ADD COLUMN  curator_note    TEXT         AFTER filmmaker_name,
+                ADD COLUMN  curator_image   VARCHAR(255) AFTER curator_note,
+                ADD COLUMN  curator_name    VARCHAR(255) AFTER curator_image
+            ;";
         $wpdb->query($sql);
     }
 }

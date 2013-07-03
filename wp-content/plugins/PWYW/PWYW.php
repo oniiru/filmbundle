@@ -60,6 +60,11 @@ class Pwyw
         Pwyw_Admin::instance();
         Pwyw_Charities::instance();
         Pwyw_Films::instance();
+
+        // Check if database needs upgrading
+        if (is_admin()){
+            Pwyw_Database::upgrade();
+        }
     }
 
     /**
