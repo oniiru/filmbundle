@@ -36,8 +36,5 @@ class Pwyw_Admin
                     break;
             }
         }
-
-        // var_dump($_POST);
-        // die;
     }
 }
