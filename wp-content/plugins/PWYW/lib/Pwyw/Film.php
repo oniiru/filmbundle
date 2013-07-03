@@ -18,7 +18,12 @@ class Pwyw_Film
     public $writers;
     public $stars;
     public $website;
-    public $note;
+    public $filmmaker_note;
+    public $filmmaker_image;
+    public $filmmaker_name;
+    public $curator_note;
+    public $curator_image;
+    public $curator_name;
     public $user_reviews;
 
     public function __construct($id = 0)
@@ -53,20 +58,25 @@ class Pwyw_Film
         }
 
         // We found the film, let's populate the object
-        $this->bundle_id    = $film->bundle_id;
-        $this->title        = $film->title;
-        $this->image        = $film->image;
-        $this->rating       = $film->rating;
-        $this->embed        = $film->embed;
-        $this->logline      = $film->logline;
-        $this->genre        = $film->genre;
-        $this->runtime      = $film->runtime;
-        $this->director     = $film->director;
-        $this->writers      = $film->writers;
-        $this->stars        = $film->stars;
-        $this->website      = $film->website;
-        $this->note         = $film->note;
-        $this->user_reviews = $film->user_reviews;
+        $this->bundle_id       = $film->bundle_id;
+        $this->title           = $film->title;
+        $this->image           = $film->image;
+        $this->rating          = $film->rating;
+        $this->embed           = $film->embed;
+        $this->logline         = $film->logline;
+        $this->genre           = $film->genre;
+        $this->runtime         = $film->runtime;
+        $this->director        = $film->director;
+        $this->writers         = $film->writers;
+        $this->stars           = $film->stars;
+        $this->website         = $film->website;
+        $this->filmmaker_note  = $film->filmmaker_note;
+        $this->filmmaker_image = $film->filmmaker_image;
+        $this->filmmaker_name  = $film->filmmaker_name;
+        $this->curator_note    = $film->curator_note;
+        $this->curator_image   = $film->curator_image;
+        $this->curator_name    = $film->curator_name;
+        $this->user_reviews    = $film->user_reviews;
         return true;
     }
 
@@ -80,20 +90,25 @@ class Pwyw_Film
         $table = $prefix.Pwyw_Database::FILMS;
 
         $data =  array(
-            'bundle_id'    => $this->bundle_id,
-            'title'        => $this->title,
-            'image'        => $this->image,
-            'rating'       => $this->rating,
-            'embed'        => $this->embed,
-            'logline'      => $this->logline,
-            'genre'        => $this->genre,
-            'runtime'      => $this->runtime,
-            'director'     => $this->director,
-            'writers'      => $this->writers,
-            'stars'        => $this->stars,
-            'website'      => $this->website,
-            'note'         => $this->note,
-            'user_reviews' => $this->user_reviews,
+            'bundle_id'       => $this->bundle_id,
+            'title'           => $this->title,
+            'image'           => $this->image,
+            'rating'          => $this->rating,
+            'embed'           => $this->embed,
+            'logline'         => $this->logline,
+            'genre'           => $this->genre,
+            'runtime'         => $this->runtime,
+            'director'        => $this->director,
+            'writers'         => $this->writers,
+            'stars'           => $this->stars,
+            'website'         => $this->website,
+            'filmmaker_note'  => $this->filmmaker_note,
+            'filmmaker_image' => $this->filmmaker_image,
+            'filmmaker_name'  => $this->filmmaker_name,
+            'curator_note'    => $this->curator_note,
+            'curator_image'   => $this->curator_image,
+            'curator_name'    => $this->curator_name,
+            'user_reviews'    => $this->user_reviews,
         );
 
         if ($this->id == null) {
@@ -129,24 +144,31 @@ class Pwyw_Film
         $writers,
         $stars,
         $website,
-        $note,
+        $filmmaker_note,
+        $filmmaker_image,
+        $filmmaker_name,
+        $curator_note,
+        $curator_image,
+        $curator_name,
         $user_reviews
     ) {
         $film = new Pwyw_Film;
-        $film->bundle_id    = $bundle_id;
-        $film->title        = $title;
-        $film->image        = $image;
-        $film->rating       = $rating;
-        $film->embed        = $embed;
-        $film->logline      = $logline;
-        $film->genre        = $genre;
-        $film->runtime      = $runtime;
-        $film->director     = $director;
-        $film->writers      = $writers;
-        $film->stars        = $stars;
-        $film->website      = $website;
-        $film->note         = $note;
-        $film->user_reviews = $user_reviews;
+        $film->bundle_id       = $bundle_id;
+        $film->title           = $title;
+        $film->image           = $image;
+        $film->rating          = $rating;
+        $film->embed           = $embed;
+        $film->logline         = $logline;
+        $film->genre           = $genre;
+        $film->runtime         = $runtime;
+        $film->director        = $director;
+        $film->writers         = $writers;
+        $film->stars           = $stars;
+        $film->website         = $website;
+        $film->filmmaker_note  = $filmmaker_note;
+        $film->filmmaker_image = $filmmaker_image;
+        $film->filmmaker_name  = $filmmaker_name;
+        $film->user_reviews    = $user_reviews;
         return $film;
     }
 
