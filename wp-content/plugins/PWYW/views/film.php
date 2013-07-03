@@ -133,7 +133,25 @@ jQuery(document).ready(function($) {
     </p>
 
     <p>
-      <textarea name="films[<?php echo $array_id; ?>][note]" cols="80" rows="5" class="large-text" placeholder="Note from Filmmaker"><?php echo $film->note; ?></textarea>
+      <textarea name="films[<?php echo $array_id; ?>][filmmaker_note]" cols="80" rows="5" class="large-text" placeholder="Note from Filmmaker"><?php echo $film->filmmaker_note; ?></textarea>
+    </p>
+    <p>
+      <input name="films[<?php echo $array_id; ?>][filmmaker_image]" id="film_image_<?php echo $array_id; ?>" type="text" value="<?php echo $film->filmmaker_image; ?>" class="regular-text" style="width:600px;" placeholder="Filmmaker Image" />
+      <a class="button-secondary" id="film_image_button_<?php echo $array_id; ?>" title="Media Image Library">Media Image Library</a>
+    </p>
+    <p>
+     <input name="films[<?php echo $array_id; ?>][filmmaker_name]" type="text" value="<?php echo $film->filmmaker_name; ?>" class="regular-text" style="width:738px;" placeholder="Filmmaker Name" />
+    </p>
+
+    <p>
+      <textarea name="films[<?php echo $array_id; ?>][curator_note]" cols="80" rows="5" class="large-text" placeholder="Note from Curator"><?php echo $film->curator_note; ?></textarea>
+    </p>
+    <p>
+      <input name="films[<?php echo $array_id; ?>][curator_image]" id="film_image_<?php echo $array_id; ?>" type="text" value="<?php echo $film->curator_image; ?>" class="regular-text" style="width:600px;" placeholder="Curator Image" />
+      <a class="button-secondary" id="film_image_button_<?php echo $array_id; ?>" title="Media Image Library">Media Image Library</a>
+    </p>
+    <p>
+     <input name="films[<?php echo $array_id; ?>][curator_name]" type="text" value="<?php echo $film->curator_name; ?>" class="regular-text" style="width:738px;" placeholder="Curator Name" />
     </p>
 
     <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0; width:924px;" />
