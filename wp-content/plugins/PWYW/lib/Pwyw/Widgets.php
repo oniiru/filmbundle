@@ -16,5 +16,10 @@ class Pwyw_Widgets
     /** Singleton Constructor */
     private function __construct()
     {
+        new Pwyw_WidgetBundles;
+        add_action(
+            'widgets_init',
+            function() { register_widget('Pwyw_WidgetBundles'); }
+        );
     }
 }
