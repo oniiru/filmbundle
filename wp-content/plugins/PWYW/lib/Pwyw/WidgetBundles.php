@@ -22,7 +22,13 @@ class Pwyw_WidgetBundles extends WP_Widget {
      *
      * @param array $instance Previously saved values from database.
      */
-    public function form( $instance ) {
+    public function form($instance)
+    {
+        $bundles = Pwyw_Bundles::getInstance();
+        // var_dump($bundlesObj->all());
+        // var_dump('hej');
+
+
         if ( isset( $instance[ 'title' ] ) ) {
             $title = $instance[ 'title' ];
         }
@@ -35,6 +41,12 @@ class Pwyw_WidgetBundles extends WP_Widget {
         <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
         <?php 
+        $data = array(
+            'widget' => $this,
+            'instance' => $instance,
+            'bundles' => $bundles->all()
+        );
+        echo Pwyw_View::make('widget-bundles', $data);
     }
 
     /**
@@ -47,9 +59,12 @@ class Pwyw_WidgetBundles extends WP_Widget {
      *
      * @return array Updated safe values to be saved.
      */
-    public function update( $new_instance, $old_instance ) {
+    public function update($new_instance, $old_instance)
+    {
         $instance = array();
         $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+
+        $instance['bundle'] = $new_instance['bundle'];
 
         return $instance;
     }
