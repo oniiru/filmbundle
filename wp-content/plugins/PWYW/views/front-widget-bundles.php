@@ -15,7 +15,8 @@
     foreach ($bundle->films as $film) {
         // Place the ones below average here
         if ($film->rating === 'below') {
-            echo "<a class='pwyw-bundle-show'>{$film->title}</a>";
+            echo "<a class='pwyw-bundle-show' data-id='{$film->id}'>".
+                 "{$film->title}</a>";
         }
     }
     ?>
