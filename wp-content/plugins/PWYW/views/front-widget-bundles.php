@@ -1,6 +1,7 @@
 <script type='text/javascript'>
     <?php
     // Hold an object with all films and information.
+    echo "var pwyw_films = {$filmsJson};";
     ?>
 </script>
 <div class='pwyw-bundle'>
@@ -10,6 +11,7 @@
     </p>
 
     <?php
+    // Build the row of movie covers that slide down information
     foreach ($bundle->films as $film) {
         // Place the ones below average here
         if ($film->rating === 'below') {
@@ -18,10 +20,6 @@
     }
     ?>
     
-    <a class='pwyw-bundle-show'>Click to show</a>
-    <a class='pwyw-bundle-show'>Click to show</a>
-    <a class='pwyw-bundle-show'>Click to show</a>
-
     <div class='pwyw-bundle-info'>
         <div class='pwyw-info-header pwyw-clearfix'>
             <div class='pwyw-previous'>

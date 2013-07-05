@@ -79,8 +79,10 @@ class Pwyw_WidgetBundles extends WP_Widget {
         $bundles = Pwyw_Bundles::getInstance();
         $bundle = $bundles->get($instance['bundle']);
 
+
         $data = array(
-            'bundle' => $bundle
+            'bundle' => $bundle,
+            'filmsJson' => json_encode($bundle->films)
         );
 
         echo $before_widget;
