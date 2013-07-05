@@ -397,5 +397,21 @@ span.deletebundle {
 }
 
 
+/** ----------------------------------------------------------------------------
+ * Widget Admin
+ * -------------------------------------------------------------------------- */
 
-
+div[id*="pwyw"] .widget-top{
+    background: #d5f2c7 !important;
+    border-color: #c2deb4 !important;
+    box-shadow: inset 0 1px 0 white !important;
+    -webkit-box-shadow: inset 0 1px 0 white !important;
+    -moz-box-shadow: inset 0 1px 0 white !important;
+    -ms-box-shadow: inset 0 1px 0 white !important;
+    -o-box-shadow: inset 0 1px 0 white !important;
+    background: -moz-linear-gradient(top,  #f1ffeb 0%, #d5f2c7 100%) !important;
+    background: -webkit-linear-gradient(top, #f1ffeb 0%,#d5f2c7 100%) !important;
+    background: linear-gradient(to bottom, #f1ffeb 0%,#d5f2c7 100%) !important;
+    border-bottom: 1px solid #a5bf97 !important;
+    margin-top: 0px;
+}
