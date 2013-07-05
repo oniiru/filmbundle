@@ -62,7 +62,7 @@ class Pwyw
         Pwyw_Admin::instance();
         Pwyw_Charities::instance();
         Pwyw_Films::instance();
-        Pwyw_Widget::getInstance();
+        Pwyw_Widgets::getInstance();
 
 
 

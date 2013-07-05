@@ -1,5 +1,5 @@
 <?php
-class Pwyw_Widget
+class Pwyw_Widgets
 {
     /** Holds the class instance */
     protected static $instance = false;
