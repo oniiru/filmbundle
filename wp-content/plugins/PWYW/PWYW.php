@@ -3,9 +3,9 @@
   Plugin Name: PWYW
   Plugin URI: http://www.filmbundle.com
   Description: Plugin to allow users to pay what they want.
-  Version: 0.1
-  Author: OniWorks
-  Author URI: http://www.oniworks.com
+  Version: 0.2
+  Author: Filmbundle
+  Author URI: http://www.filmbundle.com
  */
 
 //init code
