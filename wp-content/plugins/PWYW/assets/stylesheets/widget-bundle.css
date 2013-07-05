@@ -1,6 +1,40 @@
+.pwyw-bundle {
+    width: 1000px;
+    margin: 0 auto;
+}
 .pwyw-bundle-show {
-	cursor: pointer;
+    cursor: pointer;
 }
 .pwyw-bundle-info {
-	display: none;
+/*  display: none;*/
+}
+
+/** ----------------------------------------------------------------------------
+ *  INFO HEADER
+ * -------------------------------------------------------------------------- */
+.pwyw-info-header {
+}
+.pwyw-previous {
+    float: left;
+    width: 100px;
+}
+.pwyw-next {
+    float: right;
+    width: 100px;
+    text-align: right;
+}
+.pwyw-tabs {
+    margin: 0 100px;
+    text-align: center;
+}
+
+/** ----------------------------------------------------------------------------
+ *  MISC
+ * -------------------------------------------------------------------------- */
+.pwyw-clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
