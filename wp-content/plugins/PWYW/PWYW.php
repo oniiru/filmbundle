@@ -19,6 +19,9 @@ class Pwyw
     /** Holds the plugin instance */
     protected static $instance;
 
+    /** Define plugin constants */
+    const FILE = __FILE__;
+
     /**
      * Singleton class
      */
@@ -43,7 +46,6 @@ class Pwyw
         //$wpdb->query("UPDATE `wp_pwyw_customers` SET `alias` = 'Anonymous' WHERE `alias` = 'Annonymous'");
 
         add_action('admin_menu', array(&$this, 'PWYW_menu_pages'));
-        add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
         add_action('pmpro_added_order', array(&$this, 'pwyw_add_payment'));
         add_action('wp_ajax_pwyw_bundle_update', array(&$this, 'pwyw_bundle_update'));
 
@@ -95,34 +97,6 @@ class Pwyw
         $fileName .='.php';
 
         require $fileName;
-    }
-
-    /**
-     * Queue scripts to be loaded in the admin
-     *
-     * @todo move this into an admin class if adding frontend scripts.
-     */
-    public function scripts()
-    {
-        // Get plugin version, to use for script loading
-        $plugin = get_plugin_data(__FILE__, false, false);
-        $version = $plugin['Version'];
-
-        wp_enqueue_style('dashboard');
-        wp_enqueue_script('dashboard');
-        wp_enqueue_script(
-            'PWYW_admin4',
-            plugins_url('/js/jquery.linkedsliders.js', __FILE__),
-            array('jquery-ui-slider'),
-            $version
-        );
-        wp_enqueue_script('popover', plugins_url('/js/jquery.popover-1.1.2.js', __FILE__), array(), "screen");
-        wp_enqueue_style(
-            'PWYW_admin',
-            plugins_url('/assets/stylesheets/admin.css', __FILE__),
-            array(),
-            $version
-        );
     }
 
 

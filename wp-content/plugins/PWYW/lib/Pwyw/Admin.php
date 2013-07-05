@@ -18,6 +18,39 @@ class Pwyw_Admin
     private function __construct()
     {
         $this->handlePostData();
+        add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
+    }
+
+    /**
+     * Queue scripts to be loaded in the admin
+     */
+    public function scripts()
+    {
+        // Get plugin version, to use for script loading
+        $plugin = get_plugin_data(Pwyw::FILE, false, false);
+        $version = $plugin['Version'];
+
+        wp_enqueue_style('dashboard');
+        wp_enqueue_script('dashboard');
+        wp_enqueue_script(
+            'PWYW_admin4',
+            plugins_url('/js/jquery.linkedsliders.js', Pwyw::FILE),
+            array('jquery-ui-slider'),
+            $version
+        );
+        wp_enqueue_script(
+            'popover',
+            plugins_url('/js/jquery.popover-1.1.2.js', Pwyw::FILE),
+            array(),
+            $version
+        );
+
+        wp_enqueue_style(
+            'PWYW_admin',
+            plugins_url('/assets/stylesheets/admin.css', Pwyw::FILE),
+            array(),
+            $version
+        );
     }
 
     /**
