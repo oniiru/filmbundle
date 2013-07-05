@@ -1,6 +1,6 @@
 <?php
 /**
- * Adds Foo_Widget widget.
+ * Adds widget.
  */
 class Pwyw_WidgetBundles extends WP_Widget {
 
@@ -9,9 +9,9 @@ class Pwyw_WidgetBundles extends WP_Widget {
      */
     function __construct() {
         parent::__construct(
-            'pwyw_bundles', // Base ID
-            'PWYW Bundles', // Name
-            array( 'description' => __( 'A Foo Widget', 'text_domain' ), ) // Args
+            'pwyw_bundles',
+            'PWYW Bundles',
+            array('description' => 'Presents film from PWYW bundles.')
         );
     }
 
