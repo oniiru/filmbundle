@@ -1,4 +1,8 @@
 <div class='pwyw-bundle'>
+    <h2><?php echo $bundle->title; ?></h2>
+    <p class="description">
+        Here would a description be inserted if we had one in the database...
+    </p>
     <a class='pwyw-bundle-show'>Click to show</a>
     <a class='pwyw-bundle-show'>Click to show</a>
     <a class='pwyw-bundle-show'>Click to show</a>

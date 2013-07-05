@@ -76,10 +76,12 @@ class Pwyw_WidgetBundles extends WP_Widget {
     public function widget($args, $instance)
     {
         extract($args);
-        $data = array('instance' => $instance);
+        $bundles = Pwyw_Bundles::getInstance();
+        $data = array(
+            'bundle' => $bundles->get($instance['bundle'])
+        );
 
         echo $before_widget;
-        echo "Bundle: {$instance['bundle']}";
         // $title = apply_filters( 'widget_title', $instance['title'] );
         // if ( ! empty( $title ) )
         //     echo $before_title . $title . $after_title;

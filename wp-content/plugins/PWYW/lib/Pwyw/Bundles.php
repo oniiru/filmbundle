@@ -36,4 +36,22 @@ class Pwyw_Bundles
 
         return $wpdb->get_results($sql, OBJECT);
     }
+
+    /**
+     * Get a specific bundle, include all films, film meta and charities
+     * associated with the bundle.
+     *
+     * @return object
+     */
+    public function get($id)
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        $table = $prefix.Pwyw_Database::BUNDLES;
+        $sql = "SELECT * FROM {$table}
+                WHERE id = {$id}";
+
+        return $wpdb->get_row($sql, OBJECT);
+
+    }
 }

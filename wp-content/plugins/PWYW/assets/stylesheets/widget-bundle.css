@@ -2,6 +2,14 @@
     width: 1000px;
     margin: 0 auto;
 }
+.pwyw-bundle h2 {
+    text-align: center;
+}
+.pwyw-bundle .description {
+    text-align: center;
+    display: block;
+    margin: 0 0 16px 0;
+}
 .pwyw-bundle-show {
     cursor: pointer;
 }
