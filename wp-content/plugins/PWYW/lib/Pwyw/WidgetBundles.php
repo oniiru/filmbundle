@@ -25,10 +25,6 @@ class Pwyw_WidgetBundles extends WP_Widget {
     public function form($instance)
     {
         $bundles = Pwyw_Bundles::getInstance();
-        // var_dump($bundlesObj->all());
-        // var_dump('hej');
-
-
         if ( isset( $instance[ 'title' ] ) ) {
             $title = $instance[ 'title' ];
         }
@@ -77,16 +73,18 @@ class Pwyw_WidgetBundles extends WP_Widget {
      * @param array $args     Widget arguments.
      * @param array $instance Saved values from database.
      */
-    public function widget($args, $instance) {
-        // extract( $args );
-        // $title = apply_filters( 'widget_title', $instance['title'] );
+    public function widget($args, $instance)
+    {
+        extract($args);
+        $data = array('instance' => $instance);
 
-        // echo $before_widget;
+        echo $before_widget;
+        echo "Bundle: {$instance['bundle']}";
+        // $title = apply_filters( 'widget_title', $instance['title'] );
         // if ( ! empty( $title ) )
         //     echo $before_title . $title . $after_title;
         // echo __( 'Hello, World!', 'text_domain' );
-        // echo $after_widget;
-        $data = array();
         echo Pwyw_View::make('front-widget-bundles', $data);
+        echo $after_widget;
     }
 }
