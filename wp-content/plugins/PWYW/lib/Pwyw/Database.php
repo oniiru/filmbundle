@@ -9,6 +9,7 @@ class Pwyw_Database
     const FILMS     = 'films';
     const REVIEWS   = 'reviews';
     const FEATURES  = 'features';
+    const BUNDLES   = 'bundles';
 
     /** Track the installed DB version */
     const OPTION_KEY = 'pwyw_db_version';
