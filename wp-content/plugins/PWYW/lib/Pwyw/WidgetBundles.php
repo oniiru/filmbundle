@@ -16,25 +16,6 @@ class Pwyw_WidgetBundles extends WP_Widget {
     }
 
     /**
-     * Front-end display of widget.
-     *
-     * @see WP_Widget::widget()
-     *
-     * @param array $args     Widget arguments.
-     * @param array $instance Saved values from database.
-     */
-    public function widget( $args, $instance ) {
-        extract( $args );
-        $title = apply_filters( 'widget_title', $instance['title'] );
-
-        echo $before_widget;
-        if ( ! empty( $title ) )
-            echo $before_title . $title . $after_title;
-        echo __( 'Hello, World!', 'text_domain' );
-        echo $after_widget;
-    }
-
-    /**
      * Back-end widget form.
      *
      * @see WP_Widget::form()
@@ -71,5 +52,26 @@ class Pwyw_WidgetBundles extends WP_Widget {
         $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
 
         return $instance;
+    }
+
+    /**
+     * Front-end display of widget.
+     *
+     * @see WP_Widget::widget()
+     *
+     * @param array $args     Widget arguments.
+     * @param array $instance Saved values from database.
+     */
+    public function widget($args, $instance) {
+        // extract( $args );
+        // $title = apply_filters( 'widget_title', $instance['title'] );
+
+        // echo $before_widget;
+        // if ( ! empty( $title ) )
+        //     echo $before_title . $title . $after_title;
+        // echo __( 'Hello, World!', 'text_domain' );
+        // echo $after_widget;
+        $data = array();
+        echo Pwyw_View::make('front-widget-bundles', $data);
     }
 }
