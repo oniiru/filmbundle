@@ -77,8 +77,10 @@ class Pwyw_WidgetBundles extends WP_Widget {
     {
         extract($args);
         $bundles = Pwyw_Bundles::getInstance();
+        $bundle = $bundles->get($instance['bundle']);
+
         $data = array(
-            'bundle' => $bundles->get($instance['bundle'])
+            'bundle' => $bundle
         );
 
         echo $before_widget;

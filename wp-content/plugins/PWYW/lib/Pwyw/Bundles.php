@@ -51,7 +51,18 @@ class Pwyw_Bundles
         $sql = "SELECT * FROM {$table}
                 WHERE id = {$id}";
 
-        return $wpdb->get_row($sql, OBJECT);
+        $bundle = $wpdb->get_row($sql, OBJECT);
 
+        // Now let's collect all movies associated with the bundle
+        $table = $prefix.Pwyw_Database::FILMS;
+        $sql = "SELECT * FROM {$table}
+                WHERE bundle_id = {$id}";
+
+        $films = $wpdb->get_results($sql, OBJECT);
+
+        // Insert the films object in the bundle object
+        $bundle->films = $films;
+
+        return $bundle;
     }
 }
