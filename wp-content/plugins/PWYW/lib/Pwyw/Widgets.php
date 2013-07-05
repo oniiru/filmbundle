@@ -4,6 +4,9 @@ class Pwyw_Widgets
     /** Holds the class instance */
     protected static $instance = false;
 
+    /** Define class constants */
+    const SCRIPT_VERSIONS = '1.0';
+
     /** Singleton class */
     public static function getInstance()
     {
@@ -30,11 +33,22 @@ class Pwyw_Widgets
      */
     public function scripts()
     {
+        wp_enqueue_style( $handle, $src, $deps, $ver, $media );
+        // wp_register_style(
+        //     'pwyw-widget-bundle', plugins_url('style.css', __FILE__) );
+        wp_enqueue_style(
+            'pwyw-widget-bundle',
+            plugins_url('/assets/stylesheets/widget-bundle.css', Pwyw::FILE),
+            false,
+            self::SCRIPT_VERSIONS,
+            'all'
+        );
+
         wp_enqueue_script(
             'pwyw-widget-bundle',
             plugins_url('/assets/javascripts/widget-bundle.js', Pwyw::FILE),
             array('jquery'),
-            '1.0',
+            self::SCRIPT_VERSIONS,
             true
         );
     }
