@@ -33,9 +33,6 @@ class Pwyw_Widgets
      */
     public function scripts()
     {
-        wp_enqueue_style( $handle, $src, $deps, $ver, $media );
-        // wp_register_style(
-        //     'pwyw-widget-bundle', plugins_url('style.css', __FILE__) );
         wp_enqueue_style(
             'pwyw-widget-bundle',
             plugins_url('/assets/stylesheets/widget-bundle.css', Pwyw::FILE),
