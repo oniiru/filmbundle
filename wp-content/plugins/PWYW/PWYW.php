@@ -119,7 +119,7 @@ class Pwyw
         wp_enqueue_script('popover', plugins_url('/js/jquery.popover-1.1.2.js', __FILE__), array(), "screen");
         wp_enqueue_style(
             'PWYW_admin',
-            plugins_url('/assets/css/pwyw.css', __FILE__),
+            plugins_url('/assets/stylesheets/admin.css', __FILE__),
             array(),
             $version
         );
