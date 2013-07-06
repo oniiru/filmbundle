@@ -86,6 +86,12 @@ jQuery(document).ready(function($) {
             }
         }
 
+        // Populate the reviews tab
+        $(".pwyw-tab-reviews").empty();
+        var reviews = selected_film.reviews;
+        for (var key in reviews) {
+            $('.pwyw-tab-reviews').append(review_template);
+        }
     }
 
     // -------------------------------------------------------------------------
@@ -127,4 +133,15 @@ jQuery(document).ready(function($) {
         return false;
     }
 
+    // -------------------------------------------------------------------------
+    // Templates
+    // -------------------------------------------------------------------------
+    var review_template = "\
+    <div class='pwyw-review'> \
+        <div class='review'>REVIEW</div> \
+        <div class='author'>AUTHOR</div> \
+        <div class='publication'>PUBLICATION</div> \
+        <div class='link'>LINK</div> \
+    </div> \
+    ";
 });

@@ -60,6 +60,17 @@ class Pwyw_Bundles
 
         $films = $wpdb->get_results($sql, OBJECT);
 
+        // Let's collect all reviews for all films
+        foreach ($films as &$film) {
+            $table = $prefix.Pwyw_Database::REVIEWS;
+            $sql = "SELECT * FROM {$table}
+                    WHERE film_id = {$film->id}";
+            $reviews = $wpdb->get_results($sql, OBJECT);
+
+            // Insert the reviews object in the film object
+            $film->reviews = $reviews;
+        }
+
         // Insert the films object in the bundle object
         $bundle->films = $films;
 

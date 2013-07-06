@@ -45,10 +45,8 @@
                     <?php echo Pwyw_View::make('front-bundles-overview'); ?>
                 </div>
                 <div class="pwyw-tab-reviews">
-                    reviews
                 </div>
                 <div class="pwyw-tab-specialfeatures">
-                    special features
                 </div>
             </div>
         </div>
