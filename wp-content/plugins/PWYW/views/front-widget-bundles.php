@@ -33,9 +33,9 @@
             </div>
             <div class='pwyw-tabs'>
                 <h3>film title</h3>
-                <a class='tab' data-tab='overview'>overview</a>
-                <a class='tab' data-tab='reviews'>reviews</a>
-                <a class='tab' data-tab='specialfeatures'>special features</a>
+                <a class='tab' data-tab='overview'>Overview</a>
+                <a class='tab' data-tab='reviews'>Reviews</a>
+                <a class='tab' data-tab='specialfeatures'>Special Features</a>
             </div>
         </div>
 

@@ -1,7 +1,7 @@
 .pwyw-bundle {
 }
 .pwyw-bundle-info {
-    display: none;
+    display: naone;
 }
 
 /** ----------------------------------------------------------------------------
@@ -30,10 +30,11 @@
  * -------------------------------------------------------------------------- */
 .pwyw-info-header {
     width: 1000px;
-    margin: 0 auto;
+    margin: 0 auto 24px auto;
 }
 .pwyw-info-header h3 {
     font-size: 20px;
+    margin: 0 0 6px 0;
 }
 .pwyw-previous {
     float: left;
@@ -44,9 +45,29 @@
     width: 100px;
     text-align: right;
 }
+
 .pwyw-tabs {
     margin: 0 100px;
     text-align: center;
+}
+.pwyw-tabs .tab {
+    margin: 0 5px;
+    padding: 5px 10px;
+    width: 150px;
+    display: inline-block;
+    border: 1px solid #abacae;
+    border-radius: 5px;
+    color: #abacae;
+    cursor: pointer;
+}
+.pwyw-tabs .tab:hover {
+    color: #f7f7f7;
+    text-decoration: none;
+    background-color: #666666;
+}
+.pwyw-tabs .selected {
+    color: #f7f7f7;
+    background-color: #292929 !important;
 }
 
 

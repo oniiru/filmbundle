@@ -61,8 +61,11 @@ jQuery(document).ready(function($) {
      * Handle the logic for the film tabs.
      */
     $('.pwyw-tabs .tab').click(function() {
-        var tab = $(this).data(tab);
+        // Set selected class
+        $('.pwyw-tabs a').removeClass('selected');
+        $(this).addClass('selected');
 
+        var tab = $(this).data(tab);
         $('[class^=pwyw-tab-]').hide();
         $('.pwyw-tab-'+tab.tab).show();
     });
