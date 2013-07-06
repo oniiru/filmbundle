@@ -17,7 +17,8 @@
             // Place the ones below average here
             if ($film->rating === 'below') {
                 echo "<a class='pwyw-bundle-show' data-id='{$film->id}'>".
-                     "{$film->title}</a>";
+                     "<img src='{$film->image}' alt='{$film->title}' />".
+                     "</a>";
             }
         }
         ?>

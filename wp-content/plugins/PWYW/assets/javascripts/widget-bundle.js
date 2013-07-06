@@ -77,6 +77,8 @@ jQuery(document).ready(function($) {
     {
         // reset tabs
         $('[class^=pwyw-tab-]').hide();
+        $('.pwyw-tabs a').removeClass('selected');
+        $('.pwyw-tabs a').first().addClass('selected');
         $('.pwyw-tab-overview').show();
 
         // Set title

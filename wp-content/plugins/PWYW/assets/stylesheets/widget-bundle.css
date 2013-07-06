@@ -1,7 +1,7 @@
 .pwyw-bundle {
 }
 .pwyw-bundle-info {
-    display: naone;
+    display: none;
 }
 
 /** ----------------------------------------------------------------------------
@@ -9,6 +9,7 @@
  * -------------------------------------------------------------------------- */
 .pwyw-bundle h2 {
     text-align: center;
+    font-size: 32px;
 }
 .pwyw-bundle .description {
     text-align: center;
@@ -18,6 +19,10 @@
 .pwyw-bundle-show {
     cursor: pointer;
 }
+.pwyw-bundle-show img {
+    height: 280px;
+}
+
 .pwyw-bundle .shelf {
     width: 1000px;
     margin: 0 auto;
@@ -30,20 +35,22 @@
  * -------------------------------------------------------------------------- */
 .pwyw-info-header {
     width: 1000px;
-    margin: 0 auto 24px auto;
+    margin: 0 auto 6px auto;
 }
 .pwyw-info-header h3 {
-    font-size: 20px;
+    font-size: 32px;
     margin: 0 0 6px 0;
 }
 .pwyw-previous {
     float: left;
     width: 100px;
+    cursor: pointer;
 }
 .pwyw-next {
     float: right;
     width: 100px;
     text-align: right;
+    cursor: pointer;
 }
 
 .pwyw-tabs {
