@@ -90,7 +90,8 @@ jQuery(document).ready(function($) {
         $(".pwyw-tab-reviews").empty();
         var reviews = selected_film.reviews;
         for (var key in reviews) {
-            $('.pwyw-tab-reviews').append(review_template);
+            var review = parseTemplate(reviews[key], review_template);
+            $('.pwyw-tab-reviews').append(review);
         }
     }
 
@@ -133,15 +134,28 @@ jQuery(document).ready(function($) {
         return false;
     }
 
+    /**
+     * Parse a template to replace holders with data from the supplied object
+     *
+     * @returns string
+     */
+    function parseTemplate(dataObj, template)
+    {
+        for (var prop in dataObj) {
+            template = template.replace('{'+prop+'}', dataObj[prop]);
+        }
+        return template
+    }
+
     // -------------------------------------------------------------------------
     // Templates
     // -------------------------------------------------------------------------
     var review_template = "\
     <div class='pwyw-review'> \
-        <div class='review'>REVIEW</div> \
-        <div class='author'>AUTHOR</div> \
-        <div class='publication'>PUBLICATION</div> \
-        <div class='link'>LINK</div> \
+        <div class='review'>{review}</div> \
+        <div class='author'>{author}</div> \
+        <div class='publication'>{publication}</div> \
+        <div class='link'>{link}</div> \
     </div> \
     ";
 });
