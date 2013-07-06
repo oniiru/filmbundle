@@ -31,18 +31,30 @@ jQuery(document).ready(function($) {
                 update();
             }
         }
-        // console.log(selected_film.id);
-        // if ($('.pwyw-bundle-info').is(':visible'))
     });
 
     /**
      * Handle the logic for previous and next buttons
      */
     $('.pwyw-previous').click(function() {
-        console.log('previous');
+        var key = getCurrentFilmKey();
+        key--;
+        // Loop array if beginning reached
+        if (key < 0) {
+            key = pwyw_films.length - 1;
+        }
+        selected_film = pwyw_films[key];
+        update();
     });
     $('.pwyw-next').click(function() {
-        console.log('next');
+        var key = getCurrentFilmKey();
+        key++;
+        // Loop array if end reached
+        if (key >= pwyw_films.length) {
+            key = 0;
+        }
+        selected_film = pwyw_films[key];
+        update();
     });
 
     /**
@@ -68,6 +80,24 @@ jQuery(document).ready(function($) {
             if(pwyw_films.hasOwnProperty(key)){
                 if (pwyw_films[key].id == id) {
                     return pwyw_films[key];
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get the key of the currently selected film in the film array
+     *
+     * @returns integer
+     */
+    function getCurrentFilmKey()
+    {
+        var id = selected_film.id;
+        for (var key in pwyw_films) {
+            if(pwyw_films.hasOwnProperty(key)){
+                if (pwyw_films[key].id == id) {
+                    return key;
                 }
             }
         }
