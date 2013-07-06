@@ -93,6 +93,14 @@ jQuery(document).ready(function($) {
             var review = parseTemplate(reviews[key], review_template);
             $('.pwyw-tab-reviews').append(review);
         }
+
+        // Populate the special features tab
+        $(".pwyw-tab-specialfeatures").empty();
+        var features = selected_film.features;
+        for (var key in features) {
+            var feature = parseTemplate(features[key], feature_template);
+            $('.pwyw-tab-specialfeatures').append(feature);
+        }
     }
 
     // -------------------------------------------------------------------------
@@ -156,6 +164,13 @@ jQuery(document).ready(function($) {
         <div class='author'>{author}</div> \
         <div class='publication'>{publication}</div> \
         <div class='link'>{link}</div> \
+    </div> \
+    ";
+
+    var feature_template = "\
+    <div class='pwyw-special-feature'> \
+        <div class='title'>{title}</div> \
+        <div class='subtitle'>{subtitle}</div> \
     </div> \
     ";
 });
