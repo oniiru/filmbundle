@@ -1,9 +1,35 @@
 jQuery(document).ready(function($) {
+
+	/** Holds the object of the currently selected film */
+	var selected_film = undefined;
+
 	$('.pwyw-bundle-show').click(function() {
 		var id = $(this).data('id');
-		var film = getFilmById(id);
-		console.log(film);
-		$('.pwyw-bundle-info').slideToggle('fast');
+
+		// if selected_film is undefined, we shall open the info section
+		// else we shall change film, or close it.
+		if (selected_film == undefined) {
+			selected_film = getFilmById(id);
+			$('.pwyw-bundle-info').slideDown('fast');
+		} else {
+			// if clicked the opened film, lets close the view
+			// else load the new film into the view 
+			if (selected_film.id == id) {
+				$('.pwyw-bundle-info').slideUp('fast', function() {
+					selected_film = undefined;
+				});
+			} else {
+				selected_film = getFilmById(id);
+			}
+		}
+
+
+		// console.log(selected_film.id);
+
+
+
+		// if ($('.pwyw-bundle-info').is(':visible'))
+
 	});
 
 	// -------------------------------------------------------------------------
@@ -26,4 +52,5 @@ jQuery(document).ready(function($) {
 		}
 		return false;
 	}
+
 });
