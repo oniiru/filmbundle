@@ -60,7 +60,15 @@
             ?>
         </div>
         <div class='films'>
-            films
+        <?php
+            // Build the row of above average films
+            foreach ($bundle->films as $film) {
+                // Place the ones below average here
+                if ($film->rating === 'above') {
+                    echo "<img src='{$film->image}' alt='{$film->title}' />";
+                }
+            }
+            ?>
         </div>
     </div>
 </div>

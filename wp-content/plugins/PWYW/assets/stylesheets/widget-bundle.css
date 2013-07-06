@@ -79,9 +79,12 @@
     vertical-align: middle;
     margin: 0 24px 0 0;
  }
-
  .pwyw-bundle-footer .films {
     float: right;
+ }
+ .pwyw-bundle-footer .films img {
+    height: 100px;
+    margin: 0 0 0 24px;
  }
 
 
