@@ -106,6 +106,10 @@ jQuery(document).ready(function($) {
             var feature = parseTemplate(features[key], feature_template);
             $('.pwyw-tab-specialfeatures').append(feature);
         }
+
+        // Handle special cases
+        $('.pwyw-tab-overview a.website').html('Website');
+        $('.pwyw-tab-overview a.website').prop('href', selected_film['website']);
     }
 
     // -------------------------------------------------------------------------
@@ -154,9 +158,12 @@ jQuery(document).ready(function($) {
      */
     function parseTemplate(dataObj, template)
     {
+        // Set all text related data in the template
         for (var prop in dataObj) {
             template = template.replace('{'+prop+'}', dataObj[prop]);
         }
+
+        // Handle special cases
         return template
     }
 
