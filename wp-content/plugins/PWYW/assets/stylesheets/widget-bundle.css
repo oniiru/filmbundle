@@ -1,7 +1,12 @@
 .pwyw-bundle {
-    width: 1000px;
-    margin: 0 auto;
 }
+.pwyw-bundle-info {
+    display: none;
+}
+
+/** ----------------------------------------------------------------------------
+ *  MOVIE SHELF
+ * -------------------------------------------------------------------------- */
 .pwyw-bundle h2 {
     text-align: center;
 }
@@ -13,14 +18,22 @@
 .pwyw-bundle-show {
     cursor: pointer;
 }
-.pwyw-bundle-info {
-/*  display: none;*/
+.pwyw-bundle .shelf {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
 }
+
 
 /** ----------------------------------------------------------------------------
  *  INFO HEADER
  * -------------------------------------------------------------------------- */
 .pwyw-info-header {
+    width: 1000px;
+    margin: 0 auto;
+}
+.pwyw-info-header h3 {
+    font-size: 20px;
 }
 .pwyw-previous {
     float: left;
@@ -35,6 +48,20 @@
     margin: 0 100px;
     text-align: center;
 }
+
+
+/** ----------------------------------------------------------------------------
+ *  INFO CONTENT
+ * -------------------------------------------------------------------------- */
+ .pwyw-info-content {
+    color: #fff;
+    background-color: #292929;
+ }
+ .pwyw-info-content-container {
+    width: 1000px;
+    margin: 0 auto;
+ }
+
 
 /** ----------------------------------------------------------------------------
  *  MISC
