@@ -42,7 +42,7 @@
         <div class='pwyw-info-content'>
             <div class='pwyw-info-content-container'>
                 <div class="pwyw-tab-overview">
-                    overview
+                    <?php echo Pwyw_View::make('front-bundles-overview'); ?>
                 </div>
                 <div class="pwyw-tab-reviews">
                     reviews

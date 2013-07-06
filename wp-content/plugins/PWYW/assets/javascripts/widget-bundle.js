@@ -76,8 +76,16 @@ jQuery(document).ready(function($) {
         $('[class^=pwyw-tab-]').hide();
         $('.pwyw-tab-overview').show();
 
-
+        // Set title
         $('.pwyw-tabs h3').html(selected_film.title);
+
+        // Populate the overview tab
+        for (var prop in selected_film) {
+            if(selected_film.hasOwnProperty(prop)){
+                $('.pwyw-tab-overview .'+prop).html(selected_film[prop]);
+            }
+        }
+
     }
 
     // -------------------------------------------------------------------------
