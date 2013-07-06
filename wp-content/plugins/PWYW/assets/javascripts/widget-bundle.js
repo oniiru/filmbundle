@@ -58,10 +58,25 @@ jQuery(document).ready(function($) {
     });
 
     /**
+     * Handle the logic for the film tabs.
+     */
+    $('.pwyw-tabs .tab').click(function() {
+        var tab = $(this).data(tab);
+
+        $('[class^=pwyw-tab-]').hide();
+        $('.pwyw-tab-'+tab.tab).show();
+    });
+
+    /**
      * Update the information section with the current selected film object
      */
     function update()
     {
+        // reset tabs
+        $('[class^=pwyw-tab-]').hide();
+        $('.pwyw-tab-overview').show();
+
+
         $('.pwyw-tabs h3').html(selected_film.title);
     }
 
