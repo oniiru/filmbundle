@@ -26,10 +26,10 @@
     <div class='pwyw-bundle-info'>
         <div class='pwyw-info-header pwyw-clearfix'>
             <div class='pwyw-previous'>
-                previous
+                <a>previous</a>
             </div>
             <div class='pwyw-next'>
-                next
+                <a>next</a>
             </div>
             <div class='pwyw-tabs'>
                 <h3>film title</h3>
