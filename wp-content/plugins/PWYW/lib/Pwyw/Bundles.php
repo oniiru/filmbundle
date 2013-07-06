@@ -80,6 +80,14 @@ class Pwyw_Bundles
         // Insert the films object in the bundle object
         $bundle->films = $films;
 
+        // Get the charities and insert into the bundle
+        $table = $prefix.Pwyw_Database::CHARITIES;
+        $sql = "SELECT * FROM {$table}
+                WHERE bundle_id = {$bundle->id}";
+
+        $charities = $wpdb->get_results($sql, OBJECT);
+        $bundle->charities = $charities;
+
         return $bundle;
     }
 }
