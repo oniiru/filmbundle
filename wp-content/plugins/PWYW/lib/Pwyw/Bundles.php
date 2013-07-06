@@ -38,25 +38,25 @@ class Pwyw_Bundles
     }
 
     /**
-     * Get a specific bundle, include all films, film meta and charities
+     * Get the activated bundle, include all films, film meta and charities
      * associated with the bundle.
      *
      * @return object
      */
-    public function get($id)
+    public function getActiveBundle()
     {
         global $wpdb;
         $prefix = $wpdb->prefix.'pwyw_';
         $table = $prefix.Pwyw_Database::BUNDLES;
         $sql = "SELECT * FROM {$table}
-                WHERE id = {$id}";
+                WHERE activated = 1";
 
         $bundle = $wpdb->get_row($sql, OBJECT);
 
         // Now let's collect all movies associated with the bundle
         $table = $prefix.Pwyw_Database::FILMS;
         $sql = "SELECT * FROM {$table}
-                WHERE bundle_id = {$id}";
+                WHERE bundle_id = {$bundle->id}";
 
         $films = $wpdb->get_results($sql, OBJECT);
 

@@ -24,25 +24,6 @@ class Pwyw_WidgetBundles extends WP_Widget {
      */
     public function form($instance)
     {
-        $bundles = Pwyw_Bundles::getInstance();
-        if ( isset( $instance[ 'title' ] ) ) {
-            $title = $instance[ 'title' ];
-        }
-        else {
-            $title = __( 'New title', 'text_domain' );
-        }
-        ?>
-        <p>
-        <label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-        <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
-        </p>
-        <?php 
-        $data = array(
-            'widget' => $this,
-            'instance' => $instance,
-            'bundles' => $bundles->all()
-        );
-        echo Pwyw_View::make('widget-bundles', $data);
     }
 
     /**
@@ -58,10 +39,6 @@ class Pwyw_WidgetBundles extends WP_Widget {
     public function update($new_instance, $old_instance)
     {
         $instance = array();
-        $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-
-        $instance['bundle'] = $new_instance['bundle'];
-
         return $instance;
     }
 
@@ -75,10 +52,8 @@ class Pwyw_WidgetBundles extends WP_Widget {
      */
     public function widget($args, $instance)
     {
-        extract($args);
         $bundles = Pwyw_Bundles::getInstance();
-        $bundle = $bundles->get($instance['bundle']);
-
+        $bundle = $bundles->getActiveBundle();
 
         $data = array(
             'bundle' => $bundle,
@@ -86,10 +61,6 @@ class Pwyw_WidgetBundles extends WP_Widget {
         );
 
         echo $before_widget;
-        // $title = apply_filters( 'widget_title', $instance['title'] );
-        // if ( ! empty( $title ) )
-        //     echo $before_title . $title . $after_title;
-        // echo __( 'Hello, World!', 'text_domain' );
         echo Pwyw_View::make('front-widget-bundles', $data);
         echo $after_widget;
     }
