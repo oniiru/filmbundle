@@ -3,6 +3,9 @@ jQuery(document).ready(function($) {
 	/** Holds the object of the currently selected film */
 	var selected_film = undefined;
 
+	/**
+	 * Handle the logic when clicking films on the shelf
+	 */
 	$('.pwyw-bundle-show').click(function() {
 		var id = $(this).data('id');
 
@@ -10,6 +13,7 @@ jQuery(document).ready(function($) {
 		// else we shall change film, or close it.
 		if (selected_film == undefined) {
 			selected_film = getFilmById(id);
+			update();
 			$('.pwyw-bundle-info').slideDown('fast');
 		} else {
 			// if clicked the opened film, lets close the view
@@ -20,17 +24,20 @@ jQuery(document).ready(function($) {
 				});
 			} else {
 				selected_film = getFilmById(id);
+				update();
 			}
 		}
-
-
 		// console.log(selected_film.id);
-
-
-
 		// if ($('.pwyw-bundle-info').is(':visible'))
-
 	});
+
+	/**
+	 * Update the information section with the current selected film object
+	 */
+	function update()
+	{
+		$('.pwyw-tabs h3').html(selected_film.title);
+	}
 
 	// -------------------------------------------------------------------------
 	// Helpers
