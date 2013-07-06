@@ -60,15 +60,21 @@ class Pwyw_Bundles
 
         $films = $wpdb->get_results($sql, OBJECT);
 
-        // Let's collect all reviews for all films
+        // Let's collect reviews and special features for the films
         foreach ($films as &$film) {
             $table = $prefix.Pwyw_Database::REVIEWS;
             $sql = "SELECT * FROM {$table}
                     WHERE film_id = {$film->id}";
             $reviews = $wpdb->get_results($sql, OBJECT);
 
-            // Insert the reviews object in the film object
+            $table = $prefix.Pwyw_Database::FEATURES;
+            $sql = "SELECT * FROM {$table}
+                    WHERE film_id = {$film->id}";
+            $features = $wpdb->get_results($sql, OBJECT);
+
+            // Insert the reviews and features objects in the film object
             $film->reviews = $reviews;
+            $film->features = $features;
         }
 
         // Insert the films object in the bundle object
