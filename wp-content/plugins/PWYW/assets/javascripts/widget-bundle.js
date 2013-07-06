@@ -181,15 +181,17 @@ jQuery(document).ready(function($) {
     // -------------------------------------------------------------------------
     var review_template = "\
     <div class='pwyw-review'> \
+        <img src='{image}' /> \
         <div class='review'>{review}</div> \
         <div class='author'>{author}</div> \
         <div class='publication'>{publication}</div> \
-        <div class='link'>{link}</div> \
+        <a href='{link}'>Link</a> \
     </div> \
     ";
 
     var feature_template = "\
     <div class='pwyw-special-feature'> \
+        <img src='{image}' /> \
         <div class='title'>{title}</div> \
         <div class='subtitle'>{subtitle}</div> \
     </div> \
