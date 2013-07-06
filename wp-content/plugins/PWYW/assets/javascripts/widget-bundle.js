@@ -110,6 +110,15 @@ jQuery(document).ready(function($) {
         // Handle special cases
         $('.pwyw-tab-overview a.website').html('Website');
         $('.pwyw-tab-overview a.website').prop('href', selected_film['website']);
+
+        $('.pwyw-tab-overview .filmmaker img').prop(
+            'src',
+            selected_film['filmmaker_image']
+        );
+        $('.pwyw-tab-overview .curator img').prop(
+            'src',
+            selected_film['curator_image']
+        );
     }
 
     // -------------------------------------------------------------------------
