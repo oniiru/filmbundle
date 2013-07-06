@@ -49,4 +49,18 @@
             </div>
         </div>
     </div>
+
+    <div class='pwyw-bundle-footer pwyw-clearfix'>
+        <div class='charities'>
+            <?php
+            // Build the row of charity logos
+            foreach ($bundle->charities as $charity) {
+                echo "<img src='{$charity->image}' alt='{$charity->title}' />";
+            }
+            ?>
+        </div>
+        <div class='films'>
+            films
+        </div>
+    </div>
 </div>
