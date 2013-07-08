@@ -7,20 +7,26 @@
 /** ----------------------------------------------------------------------------
  *  MOVIE SHELF
  * -------------------------------------------------------------------------- */
+.pwyw-bundle .presentation {
+    padding: 32px 0 0 0;
+}
 .pwyw-bundle h2 {
     text-align: center;
     font-size: 32px;
+    color: #fff;
 }
 .pwyw-bundle .description {
     text-align: center;
     display: block;
     margin: 0 0 16px 0;
+    color: #fff;
 }
 .pwyw-bundle-show {
     cursor: pointer;
 }
 .pwyw-bundle-show img {
     height: 280px;
+    margin: 0 10px;
 }
 
 .pwyw-bundle .shelf {

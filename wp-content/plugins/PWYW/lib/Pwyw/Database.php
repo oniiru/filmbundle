@@ -126,6 +126,11 @@ class Pwyw_Database
             self::migrateTo12();
             update_option(self::OPTION_KEY, '1.2');
         }
+
+        if (version_compare('1.3', $version, '>')) {
+            self::migrateTo13();
+            update_option(self::OPTION_KEY, '1.3');
+        }
     }
 
     /**
@@ -160,6 +165,20 @@ class Pwyw_Database
         $sql =
             "ALTER TABLE {$table}
                 ADD COLUMN description TEXT AFTER title
+            ;";
+        $wpdb->query($sql);
+    }
+
+    public static function migrateTo13()
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        $table = $prefix.self::BUNDLES;
+
+        $sql =
+            "ALTER TABLE {$table}
+                ADD COLUMN bg_image VARCHAR(255) NOT NULL AFTER description
             ;";
         $wpdb->query($sql);
     }

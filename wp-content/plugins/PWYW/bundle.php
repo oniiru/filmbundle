@@ -1,4 +1,17 @@
 
+<script type='text/javascript'>
+jQuery(document).ready(function($) {
+  // Image Insert button
+  $('#bg_image_button').click(function() {
+    console.log('here3');
+    wp.media.editor.send.attachment = function(props, attachment) {
+      $('#bg_image').val(attachment.url);
+    }
+    wp.media.editor.open(this);
+    return false;
+  });
+});
+</script>
 <h2>Bundle Settings</h2>
 <div class="postbox-container" style="width: 980px">
       <div class="metabox-holder">
@@ -73,6 +86,13 @@
                     <textarea name="description" type="textarea"><?php
                       echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->description:'';
                     ?></textarea>
+                  </div>
+                  <div class="bundlebgimageinput">
+                    <h4>Bundle Background Image</h4>
+                    <input name="bg_image" id="bg_image" type="text" value="<?php
+                      echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->bg_image:'';
+                    ?>" />
+                    <a class="button-secondary" id="bg_image_button" title="Media Image Library">Media Image Library</a>
                   </div>
 
               <div class="suggestedvalues">

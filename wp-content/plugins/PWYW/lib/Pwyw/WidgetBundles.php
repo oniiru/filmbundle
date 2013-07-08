@@ -2,17 +2,21 @@
 /**
  * Adds widget.
  */
-class Pwyw_WidgetBundles extends WP_Widget {
+class Pwyw_WidgetBundles extends WP_Widget
+{
 
     /**
      * Register widget with WordPress.
      */
-    function __construct() {
+    public function __construct()
+    {
         parent::__construct(
             'pwyw_bundles',
             'PWYW Bundles',
             array('description' => 'Presents film from PWYW bundles.')
         );
+
+        add_action('wp_head', array(&$this, 'head'));
     }
 
     /**
@@ -72,4 +76,28 @@ class Pwyw_WidgetBundles extends WP_Widget {
         echo Pwyw_View::make('front-widget-bundles', $data);
         echo $after_widget;
     }
+
+    // -------------------------------------------------------------------------
+    // Additional Methods
+    // -------------------------------------------------------------------------
+
+    public function head()
+    {
+        $bundles = Pwyw_Bundles::getInstance();
+        $bundle = $bundles->getActiveBundle();
+
+        echo "
+        <style type='text/css'>
+            .pwyw-bundle .presentation {
+                background: url('{$bundle->bg_image}') no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+        </style>
+        ";
+    }
+
+
 }

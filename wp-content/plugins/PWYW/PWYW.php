@@ -550,6 +550,7 @@ class Pwyw
                     UPDATE {$this->bundles}
                         SET title = %s,
                             description = %s,
+                            bg_image = %s,
                             suggested_val_1 = %f,
                             suggested_val_2 = %f,
                             suggested_val_3 = %f,
@@ -558,7 +559,7 @@ class Pwyw
                             aboveaverage = %d,
                             activated = %d
                         WHERE id = %d
-                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active, $_REQUEST['bundle']
+                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['bg_image'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active, $_REQUEST['bundle']
                 )
         );
 
@@ -673,9 +674,9 @@ class Pwyw
             $pwyw_bundle_active = 0;
         }
         $wpdb->query(
-                $wpdb->prepare("INSERT INTO {$this->bundles} (title,description,suggested_val_1,suggested_val_2,suggested_val_3,pwyw_val,belowaverage,aboveaverage,activated)
-                          VALUES (%s,%s,%f,%f,%f,%f,%d,%d,%d)
-                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active
+                $wpdb->prepare("INSERT INTO {$this->bundles} (title,description,bg_image,suggested_val_1,suggested_val_2,suggested_val_3,pwyw_val,belowaverage,aboveaverage,activated)
+                          VALUES (%s,%s,%s,%f,%f,%f,%f,%d,%d,%d)
+                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['bg_image'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active
                 )
         );
 

@@ -5,23 +5,25 @@
     ?>
 </script>
 <div class='pwyw-bundle'>
-    <h2><?php echo $bundle->title; ?></h2>
-    <p class='description'>
-        <?php echo $bundle->description; ?>
-    </p>
+    <div class='presentation'>
+        <h2><?php echo $bundle->title; ?></h2>
+        <p class='description'>
+            <?php echo $bundle->description; ?>
+        </p>
 
-    <div class='shelf'>
-        <?php
-        // Build the row of movie covers that slide down information
-        foreach ($bundle->films as $film) {
-            // Place the ones below average here
-            if ($film->rating === 'below') {
-                echo "<a class='pwyw-bundle-show' data-id='{$film->id}'>".
-                     "<img src='{$film->image}' alt='{$film->title}' />".
-                     "</a>";
+        <div class='shelf'>
+            <?php
+            // Build the row of movie covers that slide down information
+            foreach ($bundle->films as $film) {
+                // Place the ones below average here
+                if ($film->rating === 'below') {
+                    echo "<a class='pwyw-bundle-show' data-id='{$film->id}'>".
+                         "<img src='{$film->image}' alt='{$film->title}' />".
+                         "</a>";
+                }
             }
-        }
-        ?>
+            ?>
+        </div>
     </div>
     
     <div class='pwyw-bundle-info'>
