@@ -63,10 +63,18 @@
 
                 <div class="bundlesettings">
                   <h3><span>Settings</span></h3>
+
                   <div class="bundletitleinput">
                     <h4>Bundle Title</h4>
                     <input name="title" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->title:'';?>" />
-              </div>
+                  </div>
+                  <div class="bundledescriptioninput">
+                    <h4>Bundle Description</h4>
+                    <textarea name="description" type="textarea"><?php
+                      echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->description:'';
+                    ?></textarea>
+                  </div>
+
               <div class="suggestedvalues">
                 <h4>Suggested Values:</h4>
                 <div class="indivvalues">

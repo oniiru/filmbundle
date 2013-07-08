@@ -4,24 +4,24 @@ if (!class_exists('WP_List_Table')) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-class PWYW_Bundles_List_Table extends WP_List_Table {
+class PWYW_Bundles_List_Table extends WP_List_Table
+{
 
-    function __construct() {
-        parent::__construct(array(
-                    'singular' => 'bundle', //singular name of the listed records
-                    'plural' => 'bundles', //plural name of the listed records
-                    'ajax' => false        //does this table support ajax?
-                ));
+    public function __construct()
+    {
+        global $status, $page;
+                
+        //Set parent defaults
+        parent::__construct(
+            array(
+                'singular' => 'bundle', //singular name of the listed records
+                'plural' => 'bundles', //plural name of the listed records
+                'ajax' => false        //does this table support ajax?
+            )
+        );
         global $wpdb;
         $this->_pwyw_bundles = $wpdb->prefix . "pwyw_bundles";
     }
-
-//    function __construct() {
-//        global $status, $page;
-//
-//        //Set parent defaults
-
-//    }
 
     function get_data($current_page, $per_page) {
         global $wpdb;
@@ -43,6 +43,7 @@ class PWYW_Bundles_List_Table extends WP_List_Table {
             $data[] = array(
                 'ID' => $bundle->id,
                 'bundle' => $bundle->title,
+                'description' => $bundle->description,
                 'activated' => $bundle->activated
             );
         }
@@ -69,6 +70,8 @@ class PWYW_Bundles_List_Table extends WP_List_Table {
         switch ($column_name) {
             case 'bundle':
                 return $item[$column_name];
+            case 'description':
+                return $item[$column_name];
             default:
                 return print_r($item, true); //Show the whole array for troubleshooting purposes
         }
@@ -84,7 +87,8 @@ class PWYW_Bundles_List_Table extends WP_List_Table {
         $columns = array(
             'cb' => '<input type="checkbox" />', //Render a checkbox instead of text
             'bundle' => 'Bundle',
-            'active' => ''
+            'description' => 'Description',
+            'active' => 'Activated'
         );
         return $columns;
     }

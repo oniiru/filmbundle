@@ -7,7 +7,7 @@
 <div class='pwyw-bundle'>
     <h2><?php echo $bundle->title; ?></h2>
     <p class='description'>
-        Here would a description be inserted if we had one in the database...
+        <?php echo $bundle->description; ?>
     </p>
 
     <div class='shelf'>

@@ -121,6 +121,11 @@ class Pwyw_Database
             self::migrateTo11();
             update_option(self::OPTION_KEY, '1.1');
         }
+
+        if (version_compare('1.2', $version, '>')) {
+            self::migrateTo12();
+            update_option(self::OPTION_KEY, '1.2');
+        }
     }
 
     /**
@@ -141,6 +146,20 @@ class Pwyw_Database
                 ADD COLUMN  curator_note    TEXT         AFTER filmmaker_name,
                 ADD COLUMN  curator_image   VARCHAR(255) AFTER curator_note,
                 ADD COLUMN  curator_name    VARCHAR(255) AFTER curator_image
+            ;";
+        $wpdb->query($sql);
+    }
+
+    public static function migrateTo12()
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        $table = $prefix.self::BUNDLES;
+
+        $sql =
+            "ALTER TABLE {$table}
+                ADD COLUMN description TEXT AFTER title
             ;";
         $wpdb->query($sql);
     }

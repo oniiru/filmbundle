@@ -91,15 +91,18 @@
 
 }
 
-.bundletitleinput {
+.bundletitleinput,
+.bundledescriptioninput
+{
     margin:0 20px;
     font-size:16px;
 }
 
+.bundledescriptioninput textarea,
 .bundletitleinput input {
     width:300px;
     border-radius:5px;
-    border:1px solid darkgrey;
+    border: 1px solid darkgrey;
     margin-left:20px;
 }
 .indivvalues {
