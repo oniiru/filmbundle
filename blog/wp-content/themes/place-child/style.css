@@ -9,6 +9,11 @@ Template:       Place
 
 @import url("../Place/style.css");
 
+.post_entry p {
+	font-size:15px;
+	line-height:1.5em;
+	margin-bottom:10px;
+}
 
 .large_thumb .icon_bar {
 width: 60px;
@@ -505,8 +510,5 @@ background-color: #F64E17;
     margin-bottom: 10px;
 }
 
-.post_entry p {
-	font-size:15px;
-	line-height:1.5em;
-	margin-bottom:10px;
 }
+
