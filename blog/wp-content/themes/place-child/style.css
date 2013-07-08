@@ -505,7 +505,7 @@ background-color: #F64E17;
     margin-bottom: 10px;
 }
 
-#leftContent p {
+.post_entry p {
 	font-size:15px;
 	line-height:1.5em;
 	margin-bottom:10px;
