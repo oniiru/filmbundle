@@ -12,9 +12,12 @@ Template:       Place
 .post_entry p {
 	font-size:15px;
 	line-height:1.5em;
-	margin-bottom:10px;
+	margin-bottom:15px;
 }
 
+.post_entry li {
+	font-size:15px !important;
+}
 .large_thumb .icon_bar {
 width: 60px;
 height: 60px;
