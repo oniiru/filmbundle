@@ -75,7 +75,9 @@
             foreach ($bundle->films as $film) {
                 // Place the ones below average here
                 if ($film->rating === 'above') {
-                    echo "<img src='{$film->image}' alt='{$film->title}' />";
+                    echo "<a class='pwyw-bundle-show' data-id='{$film->id}'>".
+                         "<img src='{$film->image}' alt='{$film->title}' />".
+                         "</a>";
                 }
             }
             ?>
