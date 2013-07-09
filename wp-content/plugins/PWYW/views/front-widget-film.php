@@ -3,8 +3,8 @@
     <!-- OVERVIEW -->
     <div class='pwyw-tab-overview'>
         <div class='pwyw-clearfix'>
-            <div class='overview-left'>
-                <div class='embed'><?php echo $film->embed; ?></div>
+            <div class='embed'>
+                <?php echo $film->embed; ?>
             </div>
 
             <div class='overview-right'>

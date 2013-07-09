@@ -128,10 +128,12 @@
 /** ----------------------------------------------------------------------------
  *  FILM CONTENT
  * -------------------------------------------------------------------------- */
-.pwyw-film-section .overview-left {
+/** Overview */
+.pwyw-film-section .embed {
     float: left;
     width: 50%;
     margin-bottom: 8px;
+    max-width: 50%
 }
 .pwyw-film-section .overview-right {
     float: left;
@@ -146,6 +148,7 @@
 .pwyw-note {
     background-color: #3a3a3a;
     margin-bottom: 8px;
+    height: 75px;
 }
 .pwyw-note span {
     display: block;
@@ -158,13 +161,19 @@
     border-left: 8px solid #0077a2;
     padding-right: 20px;
 }
+.pwyw-film-section .curator {
+    border-right: 8px solid #3cb879;
+    padding-left: 20px;
+}
 .pwyw-film-section .filmmaker img {
     float: left;
     margin-right: 20px;
+    max-height: 100%;
 }
 .pwyw-film-section .curator img {
     float: right;
     margin-left: 20px;
+    max-height: 100%;
 }
 .pwyw-film-section .filmmaker span {
     color: #0077a2;
@@ -172,16 +181,14 @@
 .pwyw-film-section .curator span {
     color: #3cb879;
 }
-.pwyw-film-section .curator {
-    border-right: 8px solid #3cb879;
-    padding-left: 20px;
-}
 .pwyw-note .filmmaker_name,
 .pwyw-note .curator_name {
     text-align: right;
     color: #9e9e9e;
 }
 
+/** Reviews */
+/** Special Features */
 
 /** ----------------------------------------------------------------------------
  *  FOOTER
