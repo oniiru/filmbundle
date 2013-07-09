@@ -118,12 +118,6 @@
     white-space: normal;
 }
 
-.mupp {
-    position: absolute;
-    top: -24px;
-    z-index: 10000;
-
-}
 
 /** ----------------------------------------------------------------------------
  *  FILM CONTENT
@@ -188,7 +182,14 @@
 }
 
 /** Reviews */
+.pwyw-tab-reviews {
+    display: none;
+}
+
 /** Special Features */
+.pwyw-tab-specialfeatures {
+    display: none;
+}
 
 /** ----------------------------------------------------------------------------
  *  FOOTER
