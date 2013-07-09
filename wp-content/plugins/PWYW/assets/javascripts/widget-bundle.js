@@ -19,6 +19,12 @@ jQuery(document).ready(function($) {
         if (current_film == undefined) {
             $('.pwyw-bundle-info').slideDown('fast');
             slideToFilm(id);
+            
+            // Scroll document to the film section
+            // The extra 80 pixels is to compensate for the top menu bar
+            $('html, body').animate({
+                scrollTop: $('.pwyw-bundle-info').offset().top - 80
+            }, 500);
         } else {
             // if clicked the opened film, lets close the view
             // else load the new film into the view 
