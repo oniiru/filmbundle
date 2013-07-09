@@ -59,17 +59,8 @@ class Pwyw_WidgetBundles extends WP_Widget
         $bundles = Pwyw_Bundles::getInstance();
         $bundle = $bundles->getActiveBundle();
 
-        // below average films (For shelf display)
-        $belowFilms = array();
-        foreach ($bundle->films as $film) {
-            if ($film->rating === 'below') {
-                array_push($belowFilms, $film);
-            }
-        }
-
         $data = array(
-            'bundle' => $bundle,
-            'filmsJson' => json_encode($belowFilms)
+            'bundle' => $bundle
         );
 
         echo $before_widget;

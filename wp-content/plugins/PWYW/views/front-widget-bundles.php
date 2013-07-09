@@ -1,9 +1,3 @@
-<script type='text/javascript'>
-    <?php
-    // Hold an object with all films and information.
-    echo "var pwyw_films = {$filmsJson};";
-    ?>
-</script>
 <div class='pwyw-bundle'>
     <div class='presentation'>
         <h2><?php echo $bundle->title; ?></h2>
@@ -25,33 +19,46 @@
             ?>
         </div>
     </div>
+
     
     <div class='pwyw-bundle-info'>
-        <div class='pwyw-info-header pwyw-clearfix'>
+        <div class='pwyw-films-wrap'>
             <div class='pwyw-previous'>
                 <a>previous</a>
             </div>
             <div class='pwyw-next'>
                 <a>next</a>
             </div>
-            <div class='pwyw-tabs'>
-                <h3>film title</h3>
-                <a class='tab' data-tab='overview'>Overview</a>
-                <a class='tab' data-tab='reviews'>Reviews</a>
-                <a class='tab' data-tab='specialfeatures'>Special Features</a>
+
+            <div class='pwyw-films pwyw-film-header'>
+                <?php
+                foreach ($bundle->films as $film) { ?>
+                    <div class='pwyw-film' data-id='<?php echo $film->id; ?>'>
+                        <h3><?php echo $film->title; ?></h3>
+                        <div class='pwyw-tabs'>
+                            <a class='tab selected' data-tab='overview'>Overview</a>
+                            <a class='tab' data-tab='reviews'>Reviews</a>
+                            <a class='tab' data-tab='specialfeatures'>Special Features</a>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
 
-        <div class='pwyw-info-content'>
-            <div class='pwyw-info-content-container'>
-                <div class="pwyw-tab-overview">
-                    <?php echo Pwyw_View::make('front-bundles-overview'); ?>
+        <div class='pwyw-film-section'>
+            <div class='pwyw-films-wrap'>
+                <div class='pwyw-films'>
+                    <?php
+                    foreach ($bundle->films as $film) {
+                        $data = array('film' => $film);
+                        echo Pwyw_View::make('front-widget-film', $data);
+                    }
+                    ?>
                 </div>
-                <div class="pwyw-tab-reviews"></div>
-                <div class="pwyw-tab-specialfeatures"></div>
             </div>
         </div>
     </div>
+
 
     <div class='pwyw-bundle-footer pwyw-clearfix'>
         <div class='charities'>

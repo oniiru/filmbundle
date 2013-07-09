@@ -1,8 +1,5 @@
 .pwyw-bundle {
 }
-.pwyw-bundle-info {
-    display: none;
-}
 
 /** ----------------------------------------------------------------------------
  *  MOVIE SHELF
@@ -39,24 +36,31 @@
 /** ----------------------------------------------------------------------------
  *  INFO HEADER
  * -------------------------------------------------------------------------- */
-.pwyw-info-header {
-    width: 1000px;
-    margin: 0 auto 6px auto;
+.pwyw-bundle-info {
+    display: none;
 }
-.pwyw-info-header h3 {
+.pwyw-film-header {
+    z-index: 500;
+    margin: 0 0 12px 0;
+}
+.pwyw-film-header h3 {
     font-size: 32px;
     margin: 0 0 6px 0;
+    text-align: center;
 }
 .pwyw-previous {
-    float: left;
+    position: absolute;
     width: 100px;
     cursor: pointer;
+    z-index: 1000;
 }
 .pwyw-next {
-    float: right;
+    position: absolute;
+    right: 0;
     width: 100px;
     text-align: right;
     cursor: pointer;
+    z-index: 1000;
 }
 
 .pwyw-tabs {
@@ -85,31 +89,57 @@
 
 
 /** ----------------------------------------------------------------------------
- *  INFO CONTENT
+ *  FILM SLIDER
  * -------------------------------------------------------------------------- */
-.pwyw-info-content {
+.pwyw-film-section {
     color: #fff;
     background-color: #292929;
     margin: 0 0 24px 0;
 }
-.pwyw-info-content-container {
+.pwyw-films-wrap {
     margin: 0 auto;
-    padding: 24px 0;
+    padding: 12px 0 0 0;
+    overflow: hidden;
     width: 1000px;
+    position: relative;
+    white-space: nowrap;
+}
+.pwyw-films {
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.pwyw-film {
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+    white-space: normal;
 }
 
-.pwyw-info-content .overview-left {
+.mupp {
+    position: absolute;
+    top: -24px;
+    z-index: 10000;
+
+}
+
+/** ----------------------------------------------------------------------------
+ *  FILM CONTENT
+ * -------------------------------------------------------------------------- */
+.pwyw-film-section .overview-left {
     float: left;
     width: 50%;
     margin-bottom: 8px;
 }
-.pwyw-info-content .overview-right {
+.pwyw-film-section .overview-right {
     float: left;
     width: 50%;
     padding-left: 20px;
     margin-bottom: 8px;
 }
-.pwyw-info-content hr {
+.pwyw-film-section hr {
     border-top: 1px solid #121212;
     border-bottom: 1px solid #343434;
 }
@@ -124,25 +154,25 @@
 .pwyw-note p {
     display: block;
 }
-.pwyw-info-content .filmmaker {
+.pwyw-film-section .filmmaker {
     border-left: 8px solid #0077a2;
     padding-right: 20px;
 }
-.pwyw-info-content .filmmaker img {
+.pwyw-film-section .filmmaker img {
     float: left;
     margin-right: 20px;
 }
-.pwyw-info-content .curator img {
+.pwyw-film-section .curator img {
     float: right;
     margin-left: 20px;
 }
-.pwyw-info-content .filmmaker span {
+.pwyw-film-section .filmmaker span {
     color: #0077a2;
 }
-.pwyw-info-content .curator span {
+.pwyw-film-section .curator span {
     color: #3cb879;
 }
-.pwyw-info-content .curator {
+.pwyw-film-section .curator {
     border-right: 8px solid #3cb879;
     padding-left: 20px;
 }
@@ -154,7 +184,7 @@
 
 
 /** ----------------------------------------------------------------------------
- *  footer
+ *  FOOTER
  * -------------------------------------------------------------------------- */
  .pwyw-bundle-footer {
     width: 1000px;

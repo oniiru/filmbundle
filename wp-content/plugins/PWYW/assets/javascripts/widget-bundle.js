@@ -1,7 +1,8 @@
 jQuery(document).ready(function($) {
 
-    /** Holds the object of the currently selected film */
-    var selected_film = undefined;
+    /** Holds the database ID of the currently displayed film */
+    var current_film = undefined;
+
 
     // -------------------------------------------------------------------------
     // Catch Interaction
@@ -13,22 +14,20 @@ jQuery(document).ready(function($) {
     $('.pwyw-bundle-show').click(function() {
         var id = $(this).data('id');
 
-        // if selected_film is undefined, we shall open the info section
+        // if current_film is undefined, we shall open the info section
         // else we shall change film, or close it.
-        if (selected_film == undefined) {
-            selected_film = getFilmById(id);
-            update();
+        if (current_film == undefined) {
             $('.pwyw-bundle-info').slideDown('fast');
+            slideToFilm(id);
         } else {
             // if clicked the opened film, lets close the view
             // else load the new film into the view 
-            if (selected_film.id == id) {
+            if (current_film == id) {
                 $('.pwyw-bundle-info').slideUp('fast', function() {
-                    selected_film = undefined;
+                    current_film = undefined;
                 });
             } else {
-                selected_film = getFilmById(id);
-                update();
+                slideToFilm(id);
             }
         }
     });
@@ -37,163 +36,98 @@ jQuery(document).ready(function($) {
      * Handle the logic for previous and next buttons
      */
     $('.pwyw-previous').click(function() {
-        var key = getCurrentFilmKey();
-        key--;
-        // Loop array if beginning reached
-        if (key < 0) {
-            key = pwyw_films.length - 1;
+        var prev = findNextPrev('prev');
+        if (prev == undefined) {
+            prev = findLast();
         }
-        selected_film = pwyw_films[key];
-        update();
+        slideToFilm(prev);
     });
     $('.pwyw-next').click(function() {
-        var key = getCurrentFilmKey();
-        key++;
-        // Loop array if end reached
-        if (key >= pwyw_films.length) {
-            key = 0;
+        var next = findNextPrev('next');
+        if (next == undefined) {
+            next = findFirst();
         }
-        selected_film = pwyw_films[key];
-        update();
+        slideToFilm(next);
     });
 
     /**
      * Handle the logic for the film tabs.
      */
     $('.pwyw-tabs .tab').click(function() {
-        // Set selected class
-        $('.pwyw-tabs a').removeClass('selected');
+        // Set selected class for tab buttons
+        $('.pwyw-film[data-id='+current_film+'] .pwyw-tabs a')
+            .removeClass('selected');
         $(this).addClass('selected');
 
+        // Get selected tab
         var tab = $(this).data(tab);
-        $('[class^=pwyw-tab-]').hide();
-        $('.pwyw-tab-'+tab.tab).show();
+
+        // Display selected tab
+        $('.pwyw-film[data-id='+current_film+'] [class^=pwyw-tab-]').hide();
+        $('.pwyw-film[data-id='+current_film+'] .pwyw-tab-'+tab.tab).show();
     });
 
-    /**
-     * Update the information section with the current selected film object
-     */
-    function update()
+
+
+    function slideToFilm(id)
     {
-        // reset tabs
-        $('[class^=pwyw-tab-]').hide();
-        $('.pwyw-tabs a').removeClass('selected');
-        $('.pwyw-tabs a').first().addClass('selected');
-        $('.pwyw-tab-overview').show();
+        var film = $('.pwyw-film[data-id='+id+']');
+        var position  = -film.position().left;
 
-        // Set title
-        $('.pwyw-tabs h3').html(selected_film.title);
-
-        // Populate the overview tab
-        for (var prop in selected_film) {
-            if(selected_film.hasOwnProperty(prop)){
-                $('.pwyw-tab-overview .'+prop).html(selected_film[prop]);
-            }
-        }
-
-        // Populate the reviews tab
-        $(".pwyw-tab-reviews").empty();
-        var reviews = selected_film.reviews;
-        for (var key in reviews) {
-            var review = parseTemplate(reviews[key], review_template);
-            $('.pwyw-tab-reviews').append(review);
-        }
-
-        // Populate the special features tab
-        $(".pwyw-tab-specialfeatures").empty();
-        var features = selected_film.features;
-        for (var key in features) {
-            var feature = parseTemplate(features[key], feature_template);
-            $('.pwyw-tab-specialfeatures').append(feature);
-        }
-
-        // Handle special cases
-        $('.pwyw-tab-overview a.website').html('Website');
-        $('.pwyw-tab-overview a.website').prop('href', selected_film['website']);
-
-        $('.pwyw-tab-overview .filmmaker img').prop(
-            'src',
-            selected_film['filmmaker_image']
-        );
-        $('.pwyw-tab-overview .curator img').prop(
-            'src',
-            selected_film['curator_image']
-        );
+        $('.pwyw-films').animate({left: position}, 'slow', 'swing', function() {
+            // Animation complete
+            current_film = id;
+        });
     }
 
+
     // -------------------------------------------------------------------------
-    // Helpers
+    // Helpers 
     // -------------------------------------------------------------------------
 
     /**
-     * Lookup a film in the film object array.
+     * Finds the next or previous film in relation to current displayed film.
      *
-     * @returns object
+     * @param direction 'next' or 'prev'
+     * @returns integer or undefined
      */
-    function getFilmById(id)
+    function findNextPrev(direction)
     {
-        for (var key in pwyw_films) {
-            if(pwyw_films.hasOwnProperty(key)){
-                if (pwyw_films[key].id == id) {
-                    return pwyw_films[key];
-                }
+        // Prepare variables
+        var ctr = 0;
+        var offset = (direction == 'next') ? 1 : -1;
+        var found = undefined;
+
+        // Loop through all films
+        $('.pwyw-films').children().each(function () {
+            var id = $(this).data('id');
+            if (id == current_film) {
+                var children = $('.pwyw-films').children();
+                var find = children[ctr + offset];
+                found = $(find).data('id');
             }
-        }
-        return false;
+            ctr++;
+        });
+        return found;
     }
 
     /**
-     * Get the key of the currently selected film in the film array
+     * Finds the first film div and returns its database ID.
      *
-     * @returns integer
+     * @return integer
      */
-    function getCurrentFilmKey()
+    function findFirst()
     {
-        var id = selected_film.id;
-        for (var key in pwyw_films) {
-            if(pwyw_films.hasOwnProperty(key)){
-                if (pwyw_films[key].id == id) {
-                    return key;
-                }
-            }
-        }
-        return false;
+        return $('.pwyw-film').first().data('id');
     }
 
     /**
-     * Parse a template to replace holders with data from the supplied object
+     * Finds the last film div and returns its database ID.
      *
-     * @returns string
+     * @return integer
      */
-    function parseTemplate(dataObj, template)
+    function findLast()
     {
-        // Set all text related data in the template
-        for (var prop in dataObj) {
-            template = template.replace('{'+prop+'}', dataObj[prop]);
-        }
-
-        // Handle special cases
-        return template
+        return $('.pwyw-film').last().data('id');
     }
-
-    // -------------------------------------------------------------------------
-    // Templates
-    // -------------------------------------------------------------------------
-    var review_template = "\
-    <div class='pwyw-review'> \
-        <img src='{image}' /> \
-        <div class='review'>{review}</div> \
-        <div class='author'>{author}</div> \
-        <div class='publication'>{publication}</div> \
-        <a href='{link}'>Link</a> \
-    </div> \
-    ";
-
-    var feature_template = "\
-    <div class='pwyw-special-feature'> \
-        <img src='{image}' /> \
-        <div class='title'>{title}</div> \
-        <div class='subtitle'>{subtitle}</div> \
-    </div> \
-    ";
 });
