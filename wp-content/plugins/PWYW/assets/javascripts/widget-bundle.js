@@ -18,7 +18,7 @@ jQuery(document).ready(function($) {
         // else we shall change film, or close it.
         if (current_film == undefined) {
             $('.pwyw-bundle-info').slideDown('fast');
-            slideToFilm(id);
+            goToFilm(id);
             
             // Scroll document to the film section
             // The extra 80 pixels is to compensate for the top menu bar
@@ -73,8 +73,9 @@ jQuery(document).ready(function($) {
         $('.pwyw-film[data-id='+current_film+'] .pwyw-tab-'+tab.tab).show();
     });
 
-
-
+    /**
+     * Animates the film position to scroll to the selected film.
+     */
     function slideToFilm(id)
     {
         var film = $('.pwyw-film[data-id='+id+']');
@@ -84,6 +85,18 @@ jQuery(document).ready(function($) {
             // Animation complete
             current_film = id;
         });
+    }
+
+    /**
+     * Changes the film position to immediately go to the selected film.
+     */
+    function goToFilm(id)
+    {
+        var film = $('.pwyw-film[data-id='+id+']');
+        var position  = -film.position().left;
+
+        $('.pwyw-films').css({left: position});
+        current_film = id;
     }
 
 
