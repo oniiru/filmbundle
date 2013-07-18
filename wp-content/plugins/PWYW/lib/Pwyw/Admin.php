@@ -17,7 +17,8 @@ class Pwyw_Admin
     /** Singleton Constructor */
     private function __construct()
     {
-        $this->handlePostData();
+        // $this->handlePostData();
+        add_action('init', array(&$this, 'handlePostData'));
         add_action('admin_enqueue_scripts', array(&$this, 'scripts'));
     }
 
@@ -56,8 +57,14 @@ class Pwyw_Admin
     /**
      * Handles form submissions.
      */
-    private function handlePostData()
+    public function handlePostData()
     {
+        // See so we are in the PWYW section
+        $page = (isset($_GET['page'])) ? $_GET['page'] : '';
+        if ($page != 'PWYW-settings') {
+            return;
+        }
+
         if (isset($_REQUEST['action'])) {
             $pwyw = Pwyw::getInstance();
             switch ($_REQUEST['action']) {
