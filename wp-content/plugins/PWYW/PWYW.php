@@ -302,6 +302,15 @@ class Pwyw
                 <a href="<?php echo sprintf('?page=%s&action=%s', $_REQUEST['page'], 'new'); ?>" class="add-new-h2">Add New Bundle </a>
                 <?php
                 require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
+                echo "
+                <script type='text/javascript'>
+                    jQuery(document).ready(function($) {
+                        $('.delete').click(function(){
+                            return confirm('Are you sure you want to delete the company?');
+                        });
+                    });                
+                </script>
+                ";
 
                 $PWYWListTable = new PWYW_Bundles_List_Table();
 

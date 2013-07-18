@@ -1,4 +1,3 @@
-
 <script type='text/javascript'>
 jQuery(document).ready(function($) {
   // Image Insert button
@@ -315,10 +314,12 @@ jQuery(document).ready(function($) {
       })
       
        <?php if(isset($pwyw_del)): ?>
-         $('.deletebundle').click(function(){                        
-                       location.href = "<?php echo $pwyw_del?>";
-                       return false;                        
-                     })
+        $('.deletebundle').click(function(){                        
+          if (confirm("Are you sure you want to delete the bundle?")) {
+            location.href = "<?php echo $pwyw_del?>";
+            return false;                        
+          }
+        })
        <?php endif; ?>
 
       
