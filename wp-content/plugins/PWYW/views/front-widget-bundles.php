@@ -26,7 +26,7 @@
             <div class='pwyw-previous'></div>
             <div class='pwyw-next'></div>
 
-            <div class='pwyw-films pwyw-film-header'>
+            <div class='pwyw-films pwyw-nav-header'>
                 <?php
                 foreach ($bundle->films as $film) { ?>
                     <div class='pwyw-film' data-id='<?php echo $film->id; ?>'>
@@ -62,7 +62,7 @@
             <div class='pwyw-previous'></div>
             <div class='pwyw-next'></div>
 
-            <div class='pwyw-charities pwyw-film-header2'>
+            <div class='pwyw-charities pwyw-nav-header'>
                 <?php
                 foreach ($bundle->charities as $charity) { ?>
                     <div class='pwyw-charity' data-id='<?php echo $charity->id; ?>'>

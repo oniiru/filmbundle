@@ -40,15 +40,19 @@
 .pwyw-charity-info {
     display: none;
 }
-.pwyw-film-header {
+.pwyw-nav-header {
     z-index: 100;
     margin: 0 0 12px 0;
 }
-.pwyw-film-header h3 {
+.pwyw-nav-header h3 {
     font-size: 32px;
     margin: 0 0 6px 0;
     text-align: center;
 }
+.pwyw-charity-info .pwyw-nav-header h3 {
+    margin: 24px 0 14px 0;
+}
+
 .pwyw-previous {
     position: absolute;
     width: 100px;
