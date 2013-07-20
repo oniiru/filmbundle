@@ -9,6 +9,7 @@ class Pwyw_Charity
     public $bundle_id = null;
     public $title;
     public $image;
+    public $url;
     public $embed;
     public $description;
 
@@ -47,6 +48,7 @@ class Pwyw_Charity
         $this->bundle_id = $charity->bundle_id;
         $this->title = $charity->title;
         $this->image = $charity->image;
+        $this->image = $charity->url;
         $this->embed = $charity->embed;
         $this->description = $charity->description;
         return true;
@@ -65,6 +67,7 @@ class Pwyw_Charity
             'bundle_id' => $this->bundle_id,
             'title' => $this->title,
             'image' => $this->image,
+            'url'   => $this->url,
             'embed' => $this->embed,
             'description' => $this->description
         );
@@ -92,6 +95,7 @@ class Pwyw_Charity
         $bundle_id,
         $title,
         $image,
+        $url,
         $embed,
         $description
     ) {
@@ -99,6 +103,7 @@ class Pwyw_Charity
         $charity->bundle_id = $bundle_id;
         $charity->title = $title;
         $charity->image = $image;
+        $charity->url   = $url;
         $charity->embed = $embed;
         $charity->description = $description;
         return $charity;

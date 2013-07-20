@@ -31,6 +31,7 @@ class Pwyw_Charities
         $charity->id = '';
         $charity->title = '';
         $charity->image = '';
+        $charity->url = '';
         $charity->embed = '';
         $charity->description = '';
 
@@ -61,6 +62,7 @@ class Pwyw_Charities
                     $bundle_id,
                     $charity['title'],
                     $charity['image'],
+                    $charity['url'],
                     $charity['embed'],
                     $charity['description']
                 );
@@ -73,6 +75,7 @@ class Pwyw_Charities
                 $ch->bundle_id = $bundle_id;
                 $ch->title = $charity['title'];
                 $ch->image = $charity['image'];
+                $ch->url = $charity['url'];
                 $ch->embed = $charity['embed'];
                 $ch->description = $charity['description'];
             }

@@ -43,15 +43,23 @@ jQuery(document).ready(function($) {
       <input name="charities[<?php echo $array_id; ?>][image]" id="charity_image_<?php echo $array_id; ?>" type="text" value="<?php echo $charity->image; ?>" class="regular-text" style="width:600px;" placeholder="Image" />
       <a class="button-secondary" id="charity_image_button_<?php echo $array_id; ?>" title="Media Image Library">Media Image Library</a>
     </p>
+
     <p>
      <input name="charities[<?php echo $array_id; ?>][title]" id="charity_title_<?php echo $array_id; ?>" type="text" value="<?php echo $charity->title; ?>" class="regular-text" style="width:738px;" placeholder="Title" />
     </p>
+
+    <p>
+     <input name="charities[<?php echo $array_id; ?>][url]" id="charity_url_<?php echo $array_id; ?>" type="text" value="<?php echo $charity->url; ?>" class="regular-text" style="width:738px;" placeholder="Url" />
+    </p>
+
     <p>
      <textarea name="charities[<?php echo $array_id; ?>][embed]" cols="80" rows="5" class="large-text" placeholder="Video Embed"><?php echo $charity->embed; ?></textarea>
     </p>
+
     <p>
       <textarea name="charities[<?php echo $array_id; ?>][description]" cols="80" rows="5" class="large-text" placeholder="Description"><?php echo $charity->description; ?></textarea>
     </p>
+
     <p>
       <a id="delete_<?php echo $array_id; ?>" class="button button-small">Delete</a>
     </p>
