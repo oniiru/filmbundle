@@ -10,6 +10,7 @@ class Pwyw_Feature
     public $image;
     public $title;
     public $subtitle;
+    public $runtime;
 
     public function __construct($id = 0)
     {
@@ -39,7 +40,8 @@ class Pwyw_Feature
             'film_id'  => $this->film_id,
             'image'    => $this->image,
             'title'    => $this->title,
-            'subtitle' => $this->subtitle
+            'subtitle' => $this->subtitle,
+            'runtime'  => $this->runtime
         );
 
         if ($this->id == null) {
@@ -65,13 +67,15 @@ class Pwyw_Feature
         $film_id,
         $image,
         $title,
-        $subtitle
+        $subtitle,
+        $runtime
     ) {
         $feature = new Pwyw_Feature;
         $feature->film_id  = $film_id;
         $feature->image    = $image;
         $feature->title    = $title;
         $feature->subtitle = $subtitle;
+        $feature->runtime  = $runtime;
         return $feature;
     }
 

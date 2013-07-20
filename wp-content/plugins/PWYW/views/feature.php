@@ -43,6 +43,10 @@ jQuery(document).ready(function($) {
     </p>
 
     <p>
+     <input name="<?php echo $prefix; ?>[runtime]" type="text" value="<?php echo $feature->runtime; ?>" class="large-text" placeholder="Runtime" />
+    </p>
+
+    <p>
       <a id="film_<?php echo $array_id; ?>_delete_feature_<?php echo $id; ?>" class="button button-small">Delete Special Feature</a>
     </p>
 

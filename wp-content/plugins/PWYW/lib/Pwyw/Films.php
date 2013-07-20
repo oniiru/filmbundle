@@ -64,6 +64,7 @@ class Pwyw_Films
         $feature->image    = '';
         $feature->title    = '';
         $feature->subtitle = '';
+        $feature->runtime  = '';
 
         $data = array(
             'array_id' => $array_id,
@@ -201,7 +202,8 @@ class Pwyw_Films
                     $film_id,
                     $feature['image'],
                     $feature['title'],
-                    $feature['subtitle']
+                    $feature['subtitle'],
+                    $feature['runtime']
                 );
             } else {
                 if ($feature['deleted'] == 'true') {
@@ -213,6 +215,7 @@ class Pwyw_Films
                 $obj->image    = $feature['image'];
                 $obj->title    = $feature['title'];
                 $obj->subtitle = $feature['subtitle'];
+                $obj->runtime  = $feature['runtime'];
             }
             $obj->save();
         }
