@@ -7,7 +7,7 @@
                 <?php echo $film->embed; ?>
             </div>
 
-            <div class='overview-right'>
+            <div class='right'>
                 <div class='logline'><?php echo $film->logline; ?></div>
                 <br/>
                 Genre(s): <span class='genre'><?php echo $film->genre; ?></span> 
