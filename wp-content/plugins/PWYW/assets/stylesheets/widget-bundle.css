@@ -54,6 +54,12 @@
     width: 100px;
     cursor: pointer;
     z-index: 200;
+    background: url('../images/nav-arrow-left.png') no-repeat;
+    background-position: 0px 6px;
+    width: 30px;
+    height: 90px;
+    background-color: #fff;
+    display: block;
 }
 .pwyw-next {
     position: absolute;
@@ -62,6 +68,12 @@
     text-align: right;
     cursor: pointer;
     z-index: 200;
+    background: url('../images/nav-arrow-right.png') no-repeat;
+    background-position: 0px 6px;
+    width: 30px;
+    height: 90px;
+    background-color: #fff;
+    display: block;
 }
 
 .pwyw-tabs {

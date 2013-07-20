@@ -23,12 +23,8 @@
     <!-- Start: Details for the films -->
     <div class='pwyw-bundle-info'>
         <div class='pwyw-slider-wrap' data-container='.pwyw-films' data-single='.pwyw-film'>
-            <div class='pwyw-previous'>
-                <a>previous</a>
-            </div>
-            <div class='pwyw-next'>
-                <a>next</a>
-            </div>
+            <div class='pwyw-previous'></div>
+            <div class='pwyw-next'></div>
 
             <div class='pwyw-films pwyw-film-header'>
                 <?php
@@ -63,12 +59,8 @@
     <!-- Start: Details for the charities -->
     <div class='pwyw-charity-info'>
         <div class='pwyw-slider-wrap' data-container='.pwyw-charities' data-single='.pwyw-charity'>
-            <div class='pwyw-previous'>
-                <a>previous</a>
-            </div>
-            <div class='pwyw-next'>
-                <a>next</a>
-            </div>
+            <div class='pwyw-previous'></div>
+            <div class='pwyw-next'></div>
 
             <div class='pwyw-charities pwyw-film-header2'>
                 <?php
