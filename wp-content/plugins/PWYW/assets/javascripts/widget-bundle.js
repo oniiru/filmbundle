@@ -85,8 +85,14 @@ jQuery(document).ready(function($) {
             
             // Scroll document to the film section
             // The extra 80 pixels is to compensate for the top menu bar
+            if ($('.pwyw-bundle-info').css('display') == 'none') {
+                var targetDiv = '.pwyw-charity-info';
+            } else {
+                var targetDiv = '.pwyw-bundle-info';
+            }
+
             $('html, body').animate({
-                scrollTop: $('.pwyw-charity-info').offset().top - 80
+                scrollTop: $(targetDiv).offset().top - 80
             }, 500);
         } else {
             // if clicked the opened film, lets close the view
