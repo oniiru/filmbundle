@@ -7,7 +7,6 @@
 
         <div class='right'>
             <?php echo $charity->description; ?>
-
             <a class='more' href='<?php echo $charity->url; ?>'>Learn more...</a>
         </div>
     </div>

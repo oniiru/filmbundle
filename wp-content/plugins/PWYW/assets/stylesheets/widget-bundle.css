@@ -120,6 +120,7 @@
     color: #fff;
     background-color: #292929;
     margin: 0 0 24px 0;
+    padding: 20px 0;
 }
 .pwyw-films,
 .pwyw-charities {
@@ -130,7 +131,6 @@
 .pwyw-film,
 .pwyw-charity {
     vertical-align: top;
-    margin: 0;
     padding: 0;
     width: 100%;
     display: inline-block;
@@ -203,6 +203,38 @@
 /** Reviews */
 .pwyw-tab-reviews {
     display: none;
+}
+.pwyw-review {
+    float: left;
+    width: 50%;
+    padding: 20px;
+}
+.pwyw-review .review {
+    background-color: #3a3a3a;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+.pwyw-review .review a {
+    display: block;
+    text-align: right;
+    margin-top: 12px
+}
+.pwyw-review-author {
+    padding-left: 100px;
+}
+.pwyw-review-author img {
+    max-height: 50px;
+    border-left: 8px solid #0077a2;
+    float: left;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.pwyw-review-author-info {
+    float: left;
+    margin-top: 13px;
+}
+.pwyw-review-author-info .author {
+    color: #0077a2;
 }
 
 /** Special Features */

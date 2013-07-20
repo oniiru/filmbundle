@@ -38,16 +38,33 @@
     <!-- REVIEWS -->
     <div class='pwyw-tab-reviews'>
         <?php
+        $ctr = 0;
         foreach ($film->reviews as $review) { ?>
 
             <div class='pwyw-review'>
-                <img src='<?php echo $review->image; ?>' />
-                <div class='review'><?php echo $review->review; ?></div>
-                <div class='author'><?php echo $review->author; ?></div>
-                <div class='publication'><?php echo $review->publication; ?></div>
-                <a href='<?php echo $review->link; ?>'>Link</a>
+                <div class='review'>
+                    <?php echo $review->review; ?>
+                    <a href='<?php echo $review->link; ?>'>Read the full review</a>
+                </div>
+
+                <div class='pwyw-review-author pwyw-clearfix'>
+                    <img src='<?php echo $review->image; ?>' />
+                    <div class='pwyw-review-author-info'>
+                        <div class='author'><?php echo $review->author; ?></div>
+                        <div class='publication'><?php echo $review->publication; ?></div>
+                    </div>
+                </div>
+
+
             </div>
-        <?php } ?>
+        <?php
+            $ctr++;
+            if ($ctr % 2 == 0) {
+                echo '<div class="pwyw-clearfix"></div>';
+            }
+        }
+        ?>
+
     </div>
 
 
