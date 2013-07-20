@@ -131,6 +131,11 @@ class Pwyw_Database
             self::migrateTo13();
             update_option(self::OPTION_KEY, '1.3');
         }
+
+        if (version_compare('1.4', $version, '>')) {
+            self::migrateTo14();
+            update_option(self::OPTION_KEY, '1.4');
+        }
     }
 
     /**
@@ -179,6 +184,27 @@ class Pwyw_Database
         $sql =
             "ALTER TABLE {$table}
                 ADD COLUMN bg_image VARCHAR(255) NOT NULL AFTER description
+            ;";
+        $wpdb->query($sql);
+    }
+
+    public static function migrateTo14()
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        $charities = $prefix.self::CHARITIES;
+        $features = $prefix.self::FEATURES;
+
+        $sql =
+            "ALTER TABLE {$charities}
+                ADD COLUMN url VARCHAR(255) NOT NULL AFTER image
+            ";
+        $wpdb->query($sql);
+
+        $sql =
+             "ALTER TABLE {$features}
+                ADD COLUMN runtime VARCHAR(255) NOT NULL AFTER subtitle
             ;";
         $wpdb->query($sql);
     }
