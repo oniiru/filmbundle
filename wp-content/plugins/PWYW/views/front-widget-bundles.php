@@ -20,9 +20,9 @@
         </div>
     </div>
 
-    
+    <!-- Start: Details for the films -->
     <div class='pwyw-bundle-info'>
-        <div class='pwyw-films-wrap'>
+        <div class='pwyw-slider-wrap' data-container='.pwyw-films' data-single='.pwyw-film'>
             <div class='pwyw-previous'>
                 <a>previous</a>
             </div>
@@ -45,8 +45,8 @@
             </div>
         </div>
 
-        <div class='pwyw-film-section'>
-            <div class='pwyw-films-wrap'>
+        <div class='pwyw-dark-section'>
+            <div class='pwyw-slider-wrap'>
                 <div class='pwyw-films'>
                     <?php
                     foreach ($bundle->films as $film) {
@@ -58,14 +58,52 @@
             </div>
         </div>
     </div>
+    <!-- End: Details for the films -->
 
+    <!-- Start: Details for the charities -->
+    <div class='pwyw-charity-info'>
+        <div class='pwyw-slider-wrap' data-container='.pwyw-charities' data-single='.pwyw-charity'>
+            <div class='pwyw-previous'>
+                <a>previous</a>
+            </div>
+            <div class='pwyw-next'>
+                <a>next</a>
+            </div>
+
+            <div class='pwyw-charities pwyw-film-header2'>
+                <?php
+                foreach ($bundle->charities as $charity) { ?>
+                    <div class='pwyw-charity' data-id='<?php echo $charity->id; ?>'>
+                        <h3><?php echo $charity->title; ?></h3>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+
+        <div class='pwyw-dark-section'>
+            <div class='pwyw-slider-wrap'>
+                <div class='pwyw-charities'>
+                    <?php
+                    foreach ($bundle->charities as $charity) {
+                        $data = array('charity' => $charity);
+                        echo Pwyw_View::make('front-widget-charity', $data);
+                    }
+                    ?>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- End: Details for the charities -->
 
     <div class='pwyw-bundle-footer pwyw-clearfix'>
         <div class='charities'>
             <?php
             // Build the row of charity logos
             foreach ($bundle->charities as $charity) {
-                echo "<img src='{$charity->image}' alt='{$charity->title}' />";
+                echo "<a class='pwyw-charity-show' data-id='{$charity->id}'>".
+                     "<img src='{$charity->image}' alt='{$charity->title}' />".
+                     "</a>";
             }
             ?>
         </div>

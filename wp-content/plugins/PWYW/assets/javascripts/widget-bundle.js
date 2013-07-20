@@ -3,9 +3,12 @@ jQuery(document).ready(function($) {
     /** Holds the database ID of the currently displayed film */
     var current_film = undefined;
 
+    /** Holds the database ID of the currently displayed charity */
+    var current_charity = undefined;
+
 
     // -------------------------------------------------------------------------
-    // Catch Interaction
+    // FILM: Catch Interaction
     // -------------------------------------------------------------------------
 
     /**
@@ -14,11 +17,16 @@ jQuery(document).ready(function($) {
     $('.pwyw-bundle-show').click(function() {
         var id = $(this).data('id');
 
+        // If the charity section is opened, let's start by closing it.
+        if (current_charity != undefined) {
+            closeSection('charity');
+        }
+
         // if current_film is undefined, we shall open the info section
         // else we shall change film, or close it.
         if (current_film == undefined) {
             $('.pwyw-bundle-info').slideDown('fast');
-            goToFilm(id);
+            goTo(id, '.pwyw-films', '.pwyw-film');
             
             // Scroll document to the film section
             // The extra 80 pixels is to compensate for the top menu bar
@@ -29,31 +37,11 @@ jQuery(document).ready(function($) {
             // if clicked the opened film, lets close the view
             // else load the new film into the view 
             if (current_film == id) {
-                $('.pwyw-bundle-info').slideUp('fast', function() {
-                    current_film = undefined;
-                });
+                closeSection('film');
             } else {
-                slideToFilm(id);
+                slideTo(id, '.pwyw-films', '.pwyw-film');
             }
         }
-    });
-
-    /**
-     * Handle the logic for previous and next buttons
-     */
-    $('.pwyw-previous').click(function() {
-        var prev = findNextPrev('prev');
-        if (prev == undefined) {
-            prev = findLast();
-        }
-        slideToFilm(prev);
-    });
-    $('.pwyw-next').click(function() {
-        var next = findNextPrev('next');
-        if (next == undefined) {
-            next = findFirst();
-        }
-        slideToFilm(next);
     });
 
     /**
@@ -73,55 +61,148 @@ jQuery(document).ready(function($) {
         $('.pwyw-film[data-id='+current_film+'] .pwyw-tab-'+tab.tab).show();
     });
 
-    /**
-     * Animates the film position to scroll to the selected film.
-     */
-    function slideToFilm(id)
-    {
-        var film = $('.pwyw-film[data-id='+id+']');
-        var position  = -film.position().left;
 
-        $('.pwyw-films').animate({left: position}, 'slow', 'swing', function() {
+    // -------------------------------------------------------------------------
+    // CHARITIES: Catch Interaction
+    // -------------------------------------------------------------------------
+
+    /**
+     * Handle the logic when clicking films on the shelf
+     */
+    $('.pwyw-charity-show').click(function() {
+        var id = $(this).data('id');
+
+        // If the film section is opened, let's start by closing it.
+        if (current_film != undefined) {
+            closeSection('film');
+        }
+
+        // if current_film is undefined, we shall open the info section
+        // else we shall change film, or close it.
+        if (current_charity == undefined) {
+            $('.pwyw-charity-info').slideDown('fast');
+            goTo(id, '.pwyw-charities', '.pwyw-charity');
+            
+            // Scroll document to the film section
+            // The extra 80 pixels is to compensate for the top menu bar
+            $('html, body').animate({
+                scrollTop: $('.pwyw-charity-info').offset().top - 80
+            }, 500);
+        } else {
+            // if clicked the opened film, lets close the view
+            // else load the new film into the view 
+            if (current_charity == id) {
+                closeSection('charity');
+            } else {
+                slideTo(id, '.pwyw-charities', '.pwyw-charity');
+            }
+        }
+    });
+
+
+    // -------------------------------------------------------------------------
+    // Sliding 
+    // -------------------------------------------------------------------------
+
+    /**
+     * Animates the position to scroll to the selected film/charity.
+     *
+     * @param id
+     * @param container
+     * @param single
+     * @return void
+     */
+    function slideTo(id, container, single)
+    {
+        var div = $(single+'[data-id='+id+']');
+        var position  = -div.position().left;
+
+        $(container).animate({left: position}, 'slow', 'swing', function() {
             // Animation complete
-            current_film = id;
+            setHolderVal(container, id);
         });
     }
 
     /**
      * Changes the film position to immediately go to the selected film.
      */
-    function goToFilm(id)
+    function goTo(id, container, single)
     {
-        var film = $('.pwyw-film[data-id='+id+']');
+        var film = $(single+'[data-id='+id+']');
         var position  = -film.position().left;
 
-        $('.pwyw-films').css({left: position});
-        current_film = id;
+        $(container).css({left: position});
+        setHolderVal(container, id);
+    }
+
+    /**
+     * Slides up and closes the film section.
+     *
+     * @param section
+     * @return void
+     */
+    function closeSection(section)
+    {
+        if (section == 'film') {
+            $('.pwyw-bundle-info').slideUp('fast', function() {
+                current_film = undefined;
+            });
+        }
+        if (section == 'charity') {
+            $('.pwyw-charity-info').slideUp('fast', function() {
+                current_charity = undefined;
+            });
+        }
     }
 
 
     // -------------------------------------------------------------------------
-    // Helpers 
+    // Navigation 
     // -------------------------------------------------------------------------
+
+    /**
+     * Handle the logic for previous and next buttons
+     */
+    $('.pwyw-previous').click(function() {
+        var container = $(this).parent().data('container');
+        var single = $(this).parent().data('single');
+
+        var prev = findNextPrev('prev', container);
+        if (prev == undefined) {
+            prev = findLast(single);
+        }
+        slideTo(prev, container, single);
+    });
+    $('.pwyw-next').click(function() {
+        var container = $(this).parent().data('container');
+        var single = $(this).parent().data('single');
+
+        var next = findNextPrev('next', container);
+        if (next == undefined) {
+            next = findFirst(single);
+        }
+        slideTo(next, container, single);
+    });
 
     /**
      * Finds the next or previous film in relation to current displayed film.
      *
      * @param direction 'next' or 'prev'
-     * @returns integer or undefined
+     * @param container containing div for all slide elements
+     * @return integer or undefined
      */
-    function findNextPrev(direction)
+    function findNextPrev(direction, container)
     {
         // Prepare variables
         var ctr = 0;
         var offset = (direction == 'next') ? 1 : -1;
         var found = undefined;
 
-        // Loop through all films
-        $('.pwyw-films').children().each(function () {
+        // Loop through sliding elements
+        $(container).children().each(function () {
             var id = $(this).data('id');
-            if (id == current_film) {
-                var children = $('.pwyw-films').children();
+            if (id == getHolderVal(container)) {
+                var children = $(container).children();
                 var find = children[ctr + offset];
                 found = $(find).data('id');
             }
@@ -133,20 +214,60 @@ jQuery(document).ready(function($) {
     /**
      * Finds the first film div and returns its database ID.
      *
+     * @param string single
      * @return integer
      */
-    function findFirst()
+    function findFirst(single)
     {
-        return $('.pwyw-film').first().data('id');
+        return $(single).first().data('id');
     }
 
     /**
      * Finds the last film div and returns its database ID.
      *
+     * @param string div
      * @return integer
      */
-    function findLast()
+    function findLast(single)
     {
-        return $('.pwyw-film').last().data('id');
+        return $(single).last().data('id');
+    }
+
+
+    // -------------------------------------------------------------------------
+    // Helpers
+    // -------------------------------------------------------------------------
+
+    /**
+     * Get current DB id for a container
+     *
+     * @param container
+     * @return int
+     */
+    function getHolderVal(container)
+    {
+        if (container == '.pwyw-films') {
+            return current_film;
+        }
+        if (container == '.pwyw-charities') {
+            return current_charity;
+        }
+    }
+
+    /**
+     * Set current DB id for a container
+     *
+     * @param container
+     * @param val
+     * @return void
+     */
+    function setHolderVal(container, val)
+    {
+        if (container == '.pwyw-films') {
+            current_film = val;
+        }
+        if (container == '.pwyw-charities') {
+            current_charity = val;
+        }
     }
 });

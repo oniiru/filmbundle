@@ -36,7 +36,8 @@
 /** ----------------------------------------------------------------------------
  *  INFO HEADER
  * -------------------------------------------------------------------------- */
-.pwyw-bundle-info {
+.pwyw-bundle-info,
+.pwyw-charity-info {
     display: none;
 }
 .pwyw-film-header {
@@ -89,14 +90,9 @@
 
 
 /** ----------------------------------------------------------------------------
- *  FILM SLIDER
+ *  SLIDER
  * -------------------------------------------------------------------------- */
-.pwyw-film-section {
-    color: #fff;
-    background-color: #292929;
-    margin: 0 0 24px 0;
-}
-.pwyw-films-wrap {
+.pwyw-slider-wrap {
     margin: 0 auto;
     padding: 12px 0 0 0;
     overflow: hidden;
@@ -104,12 +100,19 @@
     position: relative;
     white-space: nowrap;
 }
-.pwyw-films {
+.pwyw-dark-section {
+    color: #fff;
+    background-color: #292929;
+    margin: 0 0 24px 0;
+}
+.pwyw-films,
+.pwyw-charities {
     position: relative;
     left: 0;
     top: 0;
 }
-.pwyw-film {
+.pwyw-film,
+.pwyw-charity {
     vertical-align: top;
     margin: 0;
     padding: 0;
@@ -123,19 +126,19 @@
  *  FILM CONTENT
  * -------------------------------------------------------------------------- */
 /** Overview */
-.pwyw-film-section .embed {
+.pwyw-dark-section .embed {
     float: left;
     width: 50%;
     margin-bottom: 8px;
     max-width: 50%
 }
-.pwyw-film-section .overview-right {
+.pwyw-dark-section .overview-right {
     float: left;
     width: 50%;
     padding-left: 20px;
     margin-bottom: 8px;
 }
-.pwyw-film-section hr {
+.pwyw-dark-section hr {
     border-top: 1px solid #121212;
     border-bottom: 1px solid #343434;
 }
@@ -151,28 +154,28 @@
 .pwyw-note p {
     display: block;
 }
-.pwyw-film-section .filmmaker {
+.pwyw-dark-section .filmmaker {
     border-left: 8px solid #0077a2;
     padding-right: 20px;
 }
-.pwyw-film-section .curator {
+.pwyw-dark-section .curator {
     border-right: 8px solid #3cb879;
     padding-left: 20px;
 }
-.pwyw-film-section .filmmaker img {
+.pwyw-dark-section .filmmaker img {
     float: left;
     margin-right: 20px;
     max-height: 100%;
 }
-.pwyw-film-section .curator img {
+.pwyw-dark-section .curator img {
     float: right;
     margin-left: 20px;
     max-height: 100%;
 }
-.pwyw-film-section .filmmaker span {
+.pwyw-dark-section .filmmaker span {
     color: #0077a2;
 }
-.pwyw-film-section .curator span {
+.pwyw-dark-section .curator span {
     color: #3cb879;
 }
 .pwyw-note .filmmaker_name,
@@ -205,6 +208,7 @@
     width: 150px;
     vertical-align: middle;
     margin: 0 24px 0 0;
+    cursor: pointer;
  }
  .pwyw-bundle-footer .films {
     float: right;
