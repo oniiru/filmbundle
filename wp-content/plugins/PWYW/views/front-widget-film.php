@@ -64,20 +64,27 @@
             }
         }
         ?>
-
     </div>
-
 
     <!-- SPECIAL FEATURES -->
     <div class='pwyw-tab-specialfeatures'>
         <?php
         foreach ($film->features as $feature) { ?>
             <div class='pwyw-special-feature'>
-                <img src='<?php echo $feature->image; ?>' />
-                <div class='title'><?php echo $feature->title; ?></div>
-                <div class='subtitle'><?php echo $feature->subtitle; ?></div>
+                <div class='special-feature pwyw-clearfix'>
+                    <img src='<?php echo $feature->image; ?>' />
+                    <div class='title'><?php echo $feature->title; ?></div>
+                    <div class='subtitle'><?php echo $feature->subtitle; ?></div>
+                    <div class='runtime'>Runtime: <?php echo $feature->runtime; ?></div>
+                </div>
             </div>
-        <?php } ?>
+        <?php
+            $ctr++;
+            if ($ctr % 2 == 0) {
+                echo '<div class="pwyw-clearfix"></div>';
+            }
+        }
+        ?>
     </div>
 
 </div>

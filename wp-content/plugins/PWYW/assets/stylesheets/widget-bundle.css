@@ -241,6 +241,26 @@
 .pwyw-tab-specialfeatures {
     display: none;
 }
+.pwyw-special-feature {
+    float: left;
+    width: 50%;
+    padding: 20px;
+}
+.pwyw-special-feature .special-feature {
+    background-color: #3a3a3a;
+}
+.pwyw-special-feature img {
+    max-height: 150px;
+    float: left;
+    margin-right: 20px
+}
+.pwyw-special-feature .title {
+    color: #0077a2;
+    padding-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 
 /** Charities */
 .pwyw-charity .more {
