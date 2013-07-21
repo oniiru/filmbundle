@@ -44,7 +44,7 @@ class Pwyw_Widgets
         wp_enqueue_script(
             'pwyw-widget-bundle',
             plugins_url('/assets/javascripts/widget-bundle.js', Pwyw::FILE),
-            array('jquery'),
+            array('jquery', 'jquery-ui-core'),
             self::SCRIPT_VERSIONS,
             true
         );
