@@ -7,7 +7,7 @@
         <div class='pwyw-purchase'>
             <a href='#' class='btn btn-large btn-success'>Purchase</a>
             <div class='pwyw-countdown'>
-                Countdown placeholder
+                <div class='remaining'>Time Remaining</div>
                 <?php
                     $atts = array(
                         't'           => '20-12-2013 20:12:20',
