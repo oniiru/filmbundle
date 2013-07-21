@@ -20,9 +20,15 @@ class Pwyw_Widgets
     private function __construct()
     {
         new Pwyw_WidgetBundles;
+        new Pwyw_WidgetCheckout;
         add_action(
             'widgets_init',
             function() { register_widget('Pwyw_WidgetBundles'); }
+        );
+
+        add_action(
+            'widgets_init',
+            function() { register_widget('Pwyw_WidgetCheckout'); }
         );
 
         add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
