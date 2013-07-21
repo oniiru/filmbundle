@@ -22,9 +22,7 @@ class Pwyw
     /** Define plugin constants */
     const FILE = __FILE__;
 
-    /**
-     * Singleton class
-     */
+    /** Singleton class */
     public static function getInstance()
     {
         if (!self::$instance) {
@@ -34,10 +32,12 @@ class Pwyw
         return self::$instance;
     }
 
+    /** Singleton constructor */
     private function __construct()
     {
     }
 
+    /** Custom constructor */
     private function construct()
     {
         global $wpdb;
@@ -63,8 +63,6 @@ class Pwyw
         Pwyw_Charities::instance();
         Pwyw_Films::instance();
         Pwyw_Widgets::getInstance();
-
-
 
         // Check if database needs upgrading
         if (is_admin()){
