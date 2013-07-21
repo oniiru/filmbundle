@@ -4,6 +4,12 @@
         <p class='description'>
             <?php echo $bundle->description; ?>
         </p>
+        <div class='pwyw-purchase'>
+            <a href='#' class='btn btn-large btn-success'>Purchase</a>
+            <div class='pwyw-countdown'>
+                Countdown placeholder
+            </div>
+        </div>
 
         <div class='shelf'>
             <?php
