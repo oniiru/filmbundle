@@ -8,6 +8,19 @@
             <a href='#' class='btn btn-large btn-success'>Purchase</a>
             <div class='pwyw-countdown'>
                 Countdown placeholder
+                <?php
+                    $atts = array(
+                        't'           => '20-12-2013 20:12:20',
+                        'days'        => 'd',
+                        'hours'       => 'h',
+                        'minutes'     => 'm',
+                        'seconds'     => 's',
+                        'omitweeks'   => 'true',
+                        'style'       => 'pwyw',
+                        'jsplacement' => 'inline'
+                    );
+                    echo tminuscountdown($atts);
+                ?>
             </div>
         </div>
 

@@ -326,3 +326,98 @@
     clear: both;
     visibility: hidden;
 }
+
+/** ----------------------------------------------------------------------------
+ *  T MINUS COUNTDOWN STYLING
+ * -------------------------------------------------------------------------- */
+
+
+/*above the dashboard*/
+.pwyw-tophtml {
+    margin: 0;
+    padding: 0;
+}
+
+/*above the dashboard*/
+.pwyw-dashboard {
+    height: 60px;
+    width: 250px;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.pwyw-dash {
+    width: 42px;
+    height: 44px;
+    float: left;
+    margin-left: 2px;
+    padding-left: 2px;
+    padding-top: 10px;
+    position: relative;
+    color: #FFF;
+}
+
+.pwyw-tripdash {
+    width: 62px;
+    height: 44px;
+    float: left;
+    margin-left: 2px;
+    padding-left: 2px;
+    padding-top: 10px;
+    position: relative;
+    color: #FFF;
+}
+
+.pwyw-hours_dash, .pwyw-minutes_dash, .pwyw-seconds_dash  {
+}
+
+.pwyw-days_dash  {
+    margin-left: 2px;
+}
+
+.pwyw-days_trip_dash  {
+}
+
+.pwyw-weeks_dash  {
+    margin-left: 2px;
+}
+
+.pwyw-weeks_trip_dash  {
+    margin-left: 2px;
+}
+
+.pwyw-digit {
+    font: normal normal normal 12pt/normal arial;
+    float: left;
+    width: 17px;
+    text-align: center;
+    position: relative;
+}
+
+.pwyw-dash .pwyw-dash_title {
+    display: block;
+    position: absolute;
+    text-transform:uppercase;
+    top: 33px;
+    color: #AAA;
+    text-align: center;
+    font-size: 9px;
+}
+
+.pwyw-tripdash .pwyw-dash_title {
+    display: block;
+    position: absolute;
+    text-transform: uppercase;
+    top: 33px;
+    left: 17px;
+    color: #AAA;
+    text-align: center;
+    font-size: 9px;
+}
+
+/*below the dashboard*/
+.pwyw-bothtml {
+    margin: 0;
+    padding: 0;
+}
