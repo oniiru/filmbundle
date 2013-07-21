@@ -223,7 +223,7 @@ class Pwyw_Database
 
         $sql =
             "ALTER TABLE {$table}
-                ADD COLUMN end_time DATETIME NOT NULL AFTER bg_image
+                ADD COLUMN end_time DATETIME AFTER bg_image
             ;";
         $wpdb->query($sql);
     }
