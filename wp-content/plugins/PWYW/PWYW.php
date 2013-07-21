@@ -306,7 +306,7 @@ class Pwyw
                 <script type='text/javascript'>
                     jQuery(document).ready(function($) {
                         $('.delete').click(function(){
-                            return confirm('Are you sure you want to delete the company?');
+                            return confirm('Are you sure you want to delete the bundle?');
                         });
                     });                
                 </script>
