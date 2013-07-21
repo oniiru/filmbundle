@@ -15,12 +15,12 @@ jQuery(document).ready(function($) {
             $('#pubnub-server').text(m.server);
             $('#pubnub-time').text(m.server_time);
         }
-    })
+    });
 });
 </script>
 
 <p>Latest pubnub update<br/>
-(refresh any page in admin, for a new pubhub to be pushed)<br/>
+<em>(refresh any page in admin, for a new pubhub to be pushed)</em><br/>
 From server: <span id='pubnub-server'></span><br/>
 At server time: <span id='pubnub-time'></span><br/>
 </p>
