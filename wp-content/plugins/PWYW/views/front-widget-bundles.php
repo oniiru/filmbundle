@@ -10,7 +10,7 @@
                 <div class='remaining'>Time Remaining</div>
                 <?php
                     $atts = array(
-                        't'           => '20-12-2013 20:12:20',
+                        't'           => $bundle->end_time,
                         'days'        => 'd',
                         'hours'       => 'h',
                         'minutes'     => 'm',
