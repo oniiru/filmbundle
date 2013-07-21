@@ -8,9 +8,6 @@
   Author URI: http://www.filmbundle.com
  */
 
-//init code
-//add_action('admin_init', 'PWYW_init1');
-
 /** Load all of the necessary class files for the plugin */
 spl_autoload_register('Pwyw::autoload');
 
@@ -64,6 +61,19 @@ class Pwyw
         Pwyw_Films::instance();
         Pwyw_Widgets::getInstance();
 
+        // Pubnub push! Remove when checkout hook is in place.
+        $subscribeKey = 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe';
+        $publishKey = 'pub-c-3f69d611-264c-477e-a751-48ebc60048fe';
+        $pubnub = new Pubnub_Pubnub($publishKey, $subscribeKey);
+        $pubnub->publish(array(
+            'channel' => 'filmbundle',
+            'message' => array( 
+                'price' => 'would go here',
+                'server' => php_uname('n'),
+                'server_time' => date('Y-m-d H:i:s')
+            )
+        ));
+
         // Check if database needs upgrading
         if (is_admin()){
             Pwyw_Database::upgrade();
@@ -79,7 +89,10 @@ class Pwyw
      */
     public static function autoload($className)
     {
-        if (__CLASS__ !== mb_substr($className, 0, strlen(__CLASS__))) {
+        if (!
+           ('Pwyw' === mb_substr($className, 0, strlen('Pwyw')) ||
+            'Pubnub' === mb_substr($className, 0, strlen('Pubnub'))
+        )) {
             return;
         }
         $className = ltrim($className, '\\');
@@ -91,10 +104,8 @@ class Pwyw
             $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace);
             $fileName .= DIRECTORY_SEPARATOR;
         }
-        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, 'lib_'.$className);
-        $fileName .='.php';
-
-        require $fileName;
+        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+        require 'lib'.DIRECTORY_SEPARATOR.$fileName;
     }
 
 
