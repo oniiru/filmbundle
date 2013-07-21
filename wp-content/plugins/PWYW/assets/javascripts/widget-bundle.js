@@ -6,6 +6,9 @@ jQuery(document).ready(function($) {
     /** Holds the database ID of the currently displayed charity */
     var current_charity = undefined;
 
+    /** Hold the easing method to use for animations */
+    var easing = 'easeInOutSine';
+
 
     // -------------------------------------------------------------------------
     // FILM: Catch Interaction
@@ -25,14 +28,14 @@ jQuery(document).ready(function($) {
         // if current_film is undefined, we shall open the info section
         // else we shall change film, or close it.
         if (current_film == undefined) {
-            $('.pwyw-bundle-info').slideDown('fast');
+            $('.pwyw-bundle-info').slideDown('fast', easing);
             goTo(id, '.pwyw-films', '.pwyw-film');
             
             // Scroll document to the film section
             // The extra 80 pixels is to compensate for the top menu bar
             $('html, body').animate({
                 scrollTop: $('.pwyw-bundle-info').offset().top - 80
-            }, 500);
+            }, 500, easing);
         } else {
             // if clicked the opened film, lets close the view
             // else load the new film into the view 
@@ -80,7 +83,7 @@ jQuery(document).ready(function($) {
         // if current_film is undefined, we shall open the info section
         // else we shall change film, or close it.
         if (current_charity == undefined) {
-            $('.pwyw-charity-info').slideDown('fast');
+            $('.pwyw-charity-info').slideDown('fast', easing);
             goTo(id, '.pwyw-charities', '.pwyw-charity');
             
             // Scroll document to the film section
@@ -93,7 +96,7 @@ jQuery(document).ready(function($) {
 
             $('html, body').animate({
                 scrollTop: $(targetDiv).offset().top - 80
-            }, 500);
+            }, 500, easing);
         } else {
             // if clicked the opened film, lets close the view
             // else load the new film into the view 
@@ -123,7 +126,7 @@ jQuery(document).ready(function($) {
         var div = $(single+'[data-id='+id+']');
         var position  = -div.position().left;
 
-        $(container).animate({left: position}, 'slow', 'swing', function() {
+        $(container).animate({left: position}, 'slow', easing, function() {
             // Animation complete
             setHolderVal(container, id);
         });
@@ -150,12 +153,12 @@ jQuery(document).ready(function($) {
     function closeSection(section)
     {
         if (section == 'film') {
-            $('.pwyw-bundle-info').slideUp('fast', function() {
+            $('.pwyw-bundle-info').slideUp('fast', easing, function() {
                 current_film = undefined;
             });
         }
         if (section == 'charity') {
-            $('.pwyw-charity-info').slideUp('fast', function() {
+            $('.pwyw-charity-info').slideUp('fast', easing, function() {
                 current_charity = undefined;
             });
         }
