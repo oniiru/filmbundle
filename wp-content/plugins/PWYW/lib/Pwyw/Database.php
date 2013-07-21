@@ -136,6 +136,11 @@ class Pwyw_Database
             self::migrateTo14();
             update_option(self::OPTION_KEY, '1.4');
         }
+
+        if (version_compare('1.5', $version, '>')) {
+            self::migrateTo15();
+            update_option(self::OPTION_KEY, '1.5');
+        }
     }
 
     /**
@@ -205,6 +210,20 @@ class Pwyw_Database
         $sql =
              "ALTER TABLE {$features}
                 ADD COLUMN runtime VARCHAR(255) NOT NULL AFTER subtitle
+            ;";
+        $wpdb->query($sql);
+    }
+
+    public static function migrateTo15()
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        $table = $prefix.self::BUNDLES;
+
+        $sql =
+            "ALTER TABLE {$table}
+                ADD COLUMN end_time DATETIME NOT NULL AFTER bg_image
             ;";
         $wpdb->query($sql);
     }
