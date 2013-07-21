@@ -28,14 +28,14 @@ jQuery(document).ready(function($) {
         // if current_film is undefined, we shall open the info section
         // else we shall change film, or close it.
         if (current_film == undefined) {
-            $('.pwyw-bundle-info').slideDown('fast', easing);
+            $('.pwyw-bundle-info').slideDown('slow', easing);
             goTo(id, '.pwyw-films', '.pwyw-film');
             
             // Scroll document to the film section
             // The extra 80 pixels is to compensate for the top menu bar
             $('html, body').animate({
                 scrollTop: $('.pwyw-bundle-info').offset().top - 80
-            }, 500, easing);
+            }, 'slow', easing);
         } else {
             // if clicked the opened film, lets close the view
             // else load the new film into the view 
@@ -83,7 +83,7 @@ jQuery(document).ready(function($) {
         // if current_film is undefined, we shall open the info section
         // else we shall change film, or close it.
         if (current_charity == undefined) {
-            $('.pwyw-charity-info').slideDown('fast', easing);
+            $('.pwyw-charity-info').slideDown('slow', easing);
             goTo(id, '.pwyw-charities', '.pwyw-charity');
             
             // Scroll document to the film section
@@ -96,7 +96,7 @@ jQuery(document).ready(function($) {
 
             $('html, body').animate({
                 scrollTop: $(targetDiv).offset().top - 80
-            }, 500, easing);
+            }, 'slow', easing);
         } else {
             // if clicked the opened film, lets close the view
             // else load the new film into the view 
@@ -153,12 +153,12 @@ jQuery(document).ready(function($) {
     function closeSection(section)
     {
         if (section == 'film') {
-            $('.pwyw-bundle-info').slideUp('fast', easing, function() {
+            $('.pwyw-bundle-info').slideUp('slow', easing, function() {
                 current_film = undefined;
             });
         }
         if (section == 'charity') {
-            $('.pwyw-charity-info').slideUp('fast', easing, function() {
+            $('.pwyw-charity-info').slideUp('slow', easing, function() {
                 current_charity = undefined;
             });
         }
