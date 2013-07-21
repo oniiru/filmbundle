@@ -93,7 +93,8 @@
 
 .bundletitleinput,
 .bundledescriptioninput,
-.bundlebgimageinput
+.bundlebgimageinput,
+.bundleendtimeinput
 {
     margin:0 20px;
     font-size:16px;
@@ -101,7 +102,8 @@
 
 .bundledescriptioninput textarea,
 .bundlebgimageinput input,
-.bundletitleinput input {
+.bundletitleinput input,
+.bundleendtimeinput input {
     width:300px;
     border-radius:5px;
     border: 1px solid darkgrey;

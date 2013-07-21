@@ -93,6 +93,11 @@ jQuery(document).ready(function($) {
                     ?>" />
                     <a class="button-secondary" id="bg_image_button" title="Media Image Library">Media Image Library</a>
                   </div>
+                  <div class="bundleendtimeinput">
+                    <h4>Bundle End Time</h4>
+                    <input name="end_time" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->end_time:'';?>" />
+                  </div>
+
 
               <div class="suggestedvalues">
                 <h4>Suggested Values:</h4>
