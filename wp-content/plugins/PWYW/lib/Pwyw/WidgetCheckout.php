@@ -60,10 +60,10 @@ class Pwyw_WidgetCheckout extends WP_Widget
         // $data = array(
         //     'bundle' => $bundle
         // );
+        $data = array();
 
-        // echo $before_widget;
-        // echo Pwyw_View::make('front-widget-bundles', $data);
-        // echo $after_widget;
-        echo 'CHECKOUT GOES HERE';
+        echo $before_widget;
+        echo Pwyw_View::make('front-widget-checkout', $data);
+        echo $after_widget;
     }
 }
