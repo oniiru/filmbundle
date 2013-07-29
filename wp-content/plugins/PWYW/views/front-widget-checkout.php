@@ -1,8 +1,22 @@
-<h1>
-    Store all old code that can be used here, to be un-spaghetti'd
-</h1>
+<div class='pwyw-stats'>
+    <div class='pwyw-stats-wrap'>
+        <div class='pwyw-stats-title-section'>
+            <h3>The Stats</h3>
+        </div>
+        <hr />
+        <div class='pwyw-stats-title-section'>
+            <h3>Top Contributors</h3>
+            <p>
+                These heroes have really gone to<br/>
+                bat for indie filmmakers everywhere.<br/>
+                Isn't it your turn to be on the list?
+            </p>
+        </div>
+    </div>
+</div>
 
-<?php 
+
+<?php
 $pwyw = Pwyw::getInstance();
 $pwyw_data = $pwyw->pwyw_get_bundle_info();
 $nonce = wp_create_nonce('pwyw_bundle_checkout');
@@ -21,10 +35,9 @@ jQuery(document).ready(function($) {
 
     var min_amount,avg_price;
     
-    if(pwyw_data.payment_info == null){
+    if (pwyw_data.payment_info == null) {
        min_amount = 0;
-    }
-    else{
+    } else {
        min_amount = parseFloat(pwyw_data.min_amount);
     }
 
@@ -66,7 +79,6 @@ jQuery(document).ready(function($) {
             
           $('#bundle_checkout').submit();
           return false;  
-        
     });
 });
 </script>
@@ -98,14 +110,7 @@ jQuery(document).ready(function($) {
         </div>
 
         <div class="content2">
-                    <?php // if(!empty($pwyw_data['payment_info'])):?>
             <div class="statsbox">
-                <!-- <div class="statsboxtitle">
-                    <div class="statsboxtitleline"></div>
-                    Bundle Stats
-                    <div class="statsboxtitleline"></div>
-
-                </div> -->
                 <div class="statsleft">
                     <h3>Bundle Stats</h3>
                     <ul>
@@ -136,9 +141,6 @@ jQuery(document).ready(function($) {
                              ?>
 <!--                    </ul>-->
                 </div>
-
-
-  
             </div>
   
             <h2>Purchase</h2>
@@ -241,8 +243,8 @@ jQuery(document).ready(function($) {
                           </div>
                       </div>
                       <div class="modal-footer">
-                          <button class="btn btn_reset">Reset</button>
-                          <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Save and Close</button>
+                        <button class="btn btn_reset">Reset</button>
+                        <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Save and Close</button>
                       </div>
                   </div>
             <?php endif; ?>

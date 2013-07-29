@@ -1,3 +1,53 @@
+/** ----------------------------------------------------------------------------
+ *  STATS SECTION
+ * -------------------------------------------------------------------------- */
+.pwyw-stats {
+    background-color: #292929;
+    color: #fff;
+}
+.pwyw-stats-wrap {
+    margin: 0 auto;
+    padding: 12px 0 12px 0;
+    overflow: hidden;
+    width: 1000px;
+    position: relative;
+    white-space: nowrap;
+}
+.pwyw-stats-title-section {
+    background-image: url('../images/stats-title-top-left.png'), url('../images/stats-title-bottom-right.png');
+    background-position: left top, right bottom;
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding: 0 8px;
+}
+.pwyw-stats-title-section p {
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+.pwyw-stats h3 {
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Droid Sans', sans-serif;
+    text-transform: none;
+    margin: 0;
+    padding: 0;
+}
+.pwyw-stats hr {
+    border-top: 1px solid #121212;
+    border-bottom: 1px solid #343434;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .conteneur {
     width: 270px;
     margin: auto;
