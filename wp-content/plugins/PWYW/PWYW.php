@@ -74,10 +74,25 @@ class Pwyw
             )
         ));
 
+        // edd hook test
+        // add_action('edd_add_to_cart', array(&$this, 'test'), 5);
+        add_filter('edd_get_download_price', array(&$this, 'test'));
+
         // Check if database needs upgrading
         if (is_admin()){
             Pwyw_Database::upgrade();
         }
+    }
+
+    public function test($price)
+    {
+        // var_dump($price);
+        return 50;
+        var_dump($id);
+       // var_dump($id);
+       // var_dump($options);
+       // file_put_contents('c:\filename.txt', print_r($data, true));
+       die; 
     }
 
     /**
