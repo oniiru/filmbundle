@@ -2,36 +2,12 @@
     Store all old code that can be used here, to be un-spaghetti'd
 </h1>
 
-
-
 <?php 
-// // $pwyw = new pwyw();
-// // $pwyw_data = $pwyw->pwyw_get_bundle_info() ;
-$nonce = wp_create_nonce('pwyw_bundle_checkout');
-$nonce2 = wp_create_nonce('pwyw_ajax');
-
-// Temp pwyw_data array for testing old code
-
-
-// $cat_obj['info']['title']
-
-// $pwyw_data = array(
-//     'categories' => array(
-//         0 => 'cat 1',
-//         1 => 'cat 2'
-//     ),
-// );
-
 $pwyw = Pwyw::getInstance();
 $pwyw_data = $pwyw->pwyw_get_bundle_info();
-
-// var_dump($pwyw_data);
-
+$nonce = wp_create_nonce('pwyw_bundle_checkout');
+$nonce2 = wp_create_nonce('pwyw_ajax');
 ?>
-<!--
-    <script type='text/javascript' src='<?php bloginfo('stylesheet_directory'); ?>/js/bundle.js'></script>
-   <script type='text/javascript' src='<?php bloginfo('stylesheet_directory'); ?>/js/jquery.linkedsliders.js'></script>
--->
 
 <style type='text/css'>
 .conteneur
@@ -353,34 +329,6 @@ jQuery(document).ready(function($) {
                 </div>
                 <p class="averageprice">Pay more than the average of <span>$<?php echo !empty($pwyw_data['payment_info'])&&$pwyw_data['payment_info']->avg_price>0?number_format($pwyw_data['payment_info']->avg_price,2):'0.00' ?></span> to get these great films too!</p>
             </div>
-            
-                <div class="fourpointscontain">
-
-            
-                <div class="fourpoints">
-                    <h3>Support Filmmakers</h3>
-                    <p>
-                        Show talented Independent Filmmakers some love! Pay however much you think their 
-                        <br /> work is worth.
-                        </p>
-                </div>
-                <div class="fourpoints">
-                    <h3>Discover Amazing Films</h3>
-                        <p>
-                        These films are amazing and many don't get the distribution they deserve. Pick up a bundle and get the inside track.
-                        </p>
-                </div>
-                <div class="fourpoints">
-                    <h3>Donate to charities</h3>
-                    <p>We partner with two arts driven non-profits on each bundle. You choose how much of your purchase goes to them.</p>
-                </div>
-                <div class="fourpoints">
-                    <h3>Pay What You Want</h3>
-                    <p>
-                    Pay only what you think the bundle is worth, and choose exactly where your money will go. Split it up evenly, or give it all to a specific filmaker or charities.
-                    </p>
-                </div>
-            </div>
         </div>
 
         <div class="content2">
@@ -516,38 +464,6 @@ jQuery(document).ready(function($) {
                 <a href="#" class="btn btn-large btn-success"> Checkout </a>
             </div>
         </div>
-        <div class="content3"> 
-            <div class="pagefooterleft">
-                <ul>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>/about">About</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>/support">Support</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>/contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="pagefootermiddle">
-                <ul>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>/blog">Blog</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>/terms">Terms and Conditions</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>/privacy">Privacy Policy</a></li>
-                </ul>
-            </div>
-                <div class="pagefootermiddle">
-                <ul>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>/suggest">Suggest a Film</a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>/submit">Submit a Film</a></li>
-                </ul>
-            </div>
-<!--
-            <div class="pagefooterright">
-                <img src="<?php bloginfo('stylesheet_directory'); ?>/img/Twitter.png">
-                <img src="<?php bloginfo('stylesheet_directory'); ?>/img/Facebook.png">
-                <img src="<?php bloginfo('stylesheet_directory'); ?>/img/YouTube.png">
-                <img src="<?php bloginfo('stylesheet_directory'); ?>/img/Vimeo.png">
-
-            </div>
--->
-        </div>
-        
     </div>
 
 
