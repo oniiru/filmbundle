@@ -2,10 +2,10 @@ jQuery(document).ready(function($) {
     var min=0;
     var max=100;
 
-    function setSliderHandlers(slider_class,input_class){
+    function setSliderHandlers(slider_class,input_class)
+    {
         var default_val = 0;
         $('.'+input_class).val(0);
-
 
         $( "."+slider_class ).slider(
         { animate: true },
@@ -44,8 +44,6 @@ jQuery(document).ready(function($) {
     }
 
     setSliderHandlers('linked3','percent');
-    setSliderHandlers('charities','charities_percent');
-    setSliderHandlers('filmmakers','filmmakers_percent');
-
-
+    // setSliderHandlers('charities','charities_percent');
+    // setSliderHandlers('filmmakers','filmmakers_percent');
 });
