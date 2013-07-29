@@ -13,6 +13,22 @@
     position: relative;
     white-space: nowrap;
 }
+.pwyw-stats-section {
+    display: inline-block;
+    width: 25%;
+    font-weight: bold;
+}
+.pwyw-stats .center {
+    text-align: center;
+    color: #dea242;
+}
+.pwyw-stats .right {
+    text-align: right;
+}
+.pwyw-stats .value {
+    font-weight: normal;
+    font-size: 30px;
+}
 .pwyw-stats-title-section {
     background-image: url('../images/stats-title-top-left.png'), url('../images/stats-title-bottom-right.png');
     background-position: left top, right bottom;

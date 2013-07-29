@@ -1,9 +1,19 @@
 <div class='pwyw-stats'>
     <div class='pwyw-stats-wrap'>
-        <div class='pwyw-stats-title-section'>
-            <h3>The Stats</h3>
+        <div class='pwyw-stats-section'>
+            <div class='pwyw-stats-title-section'>
+                <h3>The Stats</h3>
+            </div>
+        </div><div class='pwyw-stats-section'>
+            <span class='value'>214</span> Number of Purchases
+        </div><div class='pwyw-stats-section center'>
+            <span class='value'>$14.00</span> Average Purchase
+        </div><div class='pwyw-stats-section right'>
+            <span class='value'>$37,000</span> Total Payments
         </div>
+
         <hr />
+        
         <div class='pwyw-stats-title-section'>
             <h3>Top Contributors</h3>
             <p>
@@ -14,6 +24,10 @@
         </div>
     </div>
 </div>
+
+
+
+
 
 
 <?php
