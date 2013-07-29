@@ -46,6 +46,13 @@ class Pwyw_Widgets
             self::SCRIPT_VERSIONS,
             'all'
         );
+        wp_enqueue_style(
+            'pwyw-widget-checkout',
+            plugins_url('/assets/stylesheets/widget-checkout.css', Pwyw::FILE),
+            false,
+            self::SCRIPT_VERSIONS,
+            'all'
+        );
 
         wp_enqueue_script(
             'pwyw-widget-bundle',
