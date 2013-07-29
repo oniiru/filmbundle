@@ -46,6 +46,14 @@ class Pwyw_Widgets
             self::SCRIPT_VERSIONS,
             'all'
         );
+        wp_enqueue_script(
+            'pwyw-widget-bundle',
+            plugins_url('/assets/javascripts/widget-bundle.js', Pwyw::FILE),
+            array('jquery', 'jquery-ui-core', 'jquery-effects-core'),
+            self::SCRIPT_VERSIONS,
+            true
+        );
+
         wp_enqueue_style(
             'pwyw-widget-checkout',
             plugins_url('/assets/stylesheets/widget-checkout.css', Pwyw::FILE),
@@ -54,10 +62,18 @@ class Pwyw_Widgets
             'all'
         );
 
+        wp_register_script(
+            'linked-sliders',
+            plugins_url('/assets/javascripts/jquery.linkedsliders.js', Pwyw::FILE),
+            array('jquery', 'jquery-ui-core', 'jquery-ui-slider'), 
+            '1.1.0',
+            true
+        );
+        
         wp_enqueue_script(
-            'pwyw-widget-bundle',
-            plugins_url('/assets/javascripts/widget-bundle.js', Pwyw::FILE),
-            array('jquery', 'jquery-ui-core', 'jquery-effects-core'),
+            'pwyw-widget-checkout',
+            plugins_url('/assets/javascripts/widget-checkout.js', Pwyw::FILE),
+            array('linked-sliders'),
             self::SCRIPT_VERSIONS,
             true
         );
