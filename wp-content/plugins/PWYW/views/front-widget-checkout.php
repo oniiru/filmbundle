@@ -15,8 +15,9 @@ jQuery(document).ready(function($) {
     var main_cat = [];
     var alias; 
     var user_alias,twitter_alias; 
+
     pwyw_data = <?php echo json_encode($pwyw_data); ?>;
-//console.log(pwyw_data);
+    //console.log(pwyw_data);
 
     var min_amount,avg_price;
     
@@ -143,7 +144,6 @@ jQuery(document).ready(function($) {
      
 
 });
-
 </script>
 
 <div class="container">
@@ -155,10 +155,6 @@ jQuery(document).ready(function($) {
                 <h3>Discover Indie Films, Support Filmmakers, Help Charities.</h3>
                 <h3 class="line2">Pay what you want to get all the films below.</h3>    
                 <p id="scroll" class="btn btn-info homebutton btn-large">Purchase</p>   
-                    <div class="homecountdown">
-                        <?php dynamic_sidebar('Countdowndiv') ?>
-                    </div>
-                <p class="timeremaining">Time Remaining</p>
             </div>
         </div>
         <form id="bundle_checkout" method="POST" action="<?php echo $pwyw->plugin_url ?>bundle_checkout.php">
@@ -171,20 +167,7 @@ jQuery(document).ready(function($) {
 
         <div class="content1">
         
-            <div class="shelf">
-                <?php echo apply_filters('the_content', '[myvideogall:current]'); ?>
-            </div>
-            <div class="charities-mod">
-                <h2>Supported Charities</h2>
-                <a href="#charitymodal1" data-toggle="modal"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/charity2.jpeg">
-                </a>
-                <a href="#charitymodal2" data-toggle="modal"><img src="<?php bloginfo('stylesheet_directory'); ?>/img/filmaidlogo.jpg" width="150px" style="height:75px !important">
-                </a> 
-            </div>        
             <div class="shelf2">
-                <div class="shelf2films">
-                    <?php echo apply_filters('the_content', '[myvideogall:above]'); ?>
-                </div>
                 <p class="averageprice">Pay more than the average of <span>$<?php echo !empty($pwyw_data['payment_info'])&&$pwyw_data['payment_info']->avg_price>0?number_format($pwyw_data['payment_info']->avg_price,2):'0.00' ?></span> to get these great films too!</p>
             </div>
         </div>
