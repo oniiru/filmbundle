@@ -9,18 +9,8 @@ $nonce = wp_create_nonce('pwyw_bundle_checkout');
 $nonce2 = wp_create_nonce('pwyw_ajax');
 ?>
 
-
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> 
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
-
-<script type='text/javascript' src='/wp-content/plugins/pwyw/js/jquery.linkedsliders.front.js'></script>
 <script type='text/javascript'>
 jQuery(document).ready(function($) {
-
-
-    var min=0;
-    var max=100;
     var pwyw_data = {};
     var main_cat = [];
     var alias; 
@@ -67,76 +57,34 @@ jQuery(document).ready(function($) {
 //    console.log(linkedSliders);
 
 
-    function setSliderHandlers(slider_class,input_class){
-        var default_val = 0;
-        $('.'+input_class).val(0);
 
-
-        $( "."+slider_class ).slider(
-        { animate: true },
-        { min: min },
-        { max: max },
-        {change: function(event, ui) {
-                var id = $(this).attr('id').match(/slider_(.+)/)[1];
-                $('#'+id+'_inp').val($(this).slider('value'));
-            }},
-        {slide: function(event, ui) {
-                var id = $(this).attr('id').match(/slider_(.+)/)[1];
-                $('#'+id+'_inp').val($(this).slider('value'));
-            }});
-
-        $('.'+input_class).each(function(){
-            var id = $(this).attr('id').match(/(.+)_inp/)[1];
-            var slider = $('#slider_'+id);
-
-            if(slider.attr('value') != ''){
-                $(this).val(slider.attr('value'));
-                slider.slider("value",slider.attr('value'));
-            }else{
-                $(this).val(default_val);
-            }
-
-            $(this).change(function(){
-                slider.slider("value" , $(this).val());
-            })
-        })
-
-        $('div.'+slider_class).linkedSliders({
-            total: 100,  // The total for all the linked sliders
-            policy: 'next' // Adjustment policy: 'next', 'prev', 'first', 'last', 'all'
-        });
-
-    }
 
 // jQuery(document).ready(function($) {
 //$(function(){
 
 
         //if(pwyw_data.payment_info!=null){
-            var interval = window.setInterval(function(){
-                $.ajax({
-                    type:'POST',
-                    url:'<?php echo $pwyw->plugin_url?>ajax.php',
-                    data:{bid:'<?php echo $pwyw_data['bundle']->id?>',_ajax_nonce: '<?php echo $nonce2?>'},
-                    dataType:'json',
-                    success: function(data){
-                        if(typeof(data.error) == 'undefined'){
-                            if(typeof(data.payment_info)!='undefined'&&data.payment_info!=null){
-                                  update_view(data);                              
-                            }
-
-                        }
-                        else{console.log(data.error)}
-                    }
-                })
-            },1000);
+//            var interval = window.setInterval(function(){
+//                $.ajax({
+//                    type:'POST',
+//                    url:'<?php echo $pwyw->plugin_url?>ajax.php',
+//                    data:{bid:'<?php echo $pwyw_data['bundle']->id?>',_ajax_nonce: '<?php echo $nonce2?>'},
+//                    dataType:'json',
+//                    success: function(data){
+//                        if(typeof(data.error) == 'undefined'){
+//                            if(typeof(data.payment_info)!='undefined'&&data.payment_info!=null){
+//                                  update_view(data);                              
+//                            }
+//
+//                        }
+//                        else{console.log(data.error)}
+//                    }
+//                })
+//            },1000);
        // }
 
 
 
-        setSliderHandlers('linked3','percent');
-        setSliderHandlers('charities','charities_percent');
-        setSliderHandlers('filmmakers','filmmakers_percent');
         
         $('.btn_reset').click(function(){
             var title = '';
