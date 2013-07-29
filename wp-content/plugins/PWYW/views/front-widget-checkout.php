@@ -5,11 +5,11 @@
                 <h3>The Stats</h3>
             </div>
         </div><div class='pwyw-stats-section'>
-            <span class='value'>214</span> Number of Purchases
+            <span class='value'><?php echo $totalSales; ?></span> Number of Purchases
         </div><div class='pwyw-stats-section center'>
-            <span class='value'>$14.00</span> Average Purchase
+            <span class='value'><?php echo $averagePrice; ?></span> Average Purchase
         </div><div class='pwyw-stats-section right'>
-            <span class='value'>$37,000</span> Total Payments
+            <span class='value'><?php echo $totalPayments; ?></span> Total Payments
         </div>
 
         <hr />
@@ -125,20 +125,7 @@ jQuery(document).ready(function($) {
 
         <div class="content2">
             <div class="statsbox">
-                <div class="statsleft">
-                    <h3>Bundle Stats</h3>
-                    <ul>
-                        <li class="averageprice1">$<?php echo isset($pwyw_data['payment_info']->avg_price)?number_format($pwyw_data['payment_info']->avg_price,2):'0.00' ?></li>
-                        <li class="averageprice2">Average Purchase</li>
-                        <li class="lineseparator"></li>
-                        <li class="totalpurchase1"><?php echo isset($pwyw_data['payment_info']->total_sales)?$pwyw_data['payment_info']->total_sales:'0' ?> </li>
-                        <li class="totalpurchase2">Total Purchases</li>
-                        <li class="lineseparator"></li>
-                        <li class="totalpayments1">$<?php echo isset($pwyw_data['payment_info']->total_payments)?number_format($pwyw_data['payment_info']->total_payments,2):'0.00'?></li>
-                        <li class="totalpayments2">Total Payments</li>
 
-                    </ul>
-                </div>
                 <div class="statsmiddle">
                     <h3>Top Contributors:</h3>
 <!--                    <ul>-->

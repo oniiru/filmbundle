@@ -54,13 +54,25 @@ class Pwyw_WidgetCheckout extends WP_Widget
      */
     public function widget($args, $instance)
     {
-        // $bundles = Pwyw_Bundles::getInstance();
-        // $bundle = $bundles->getActiveBundle();
+        $pwyw = Pwyw::getInstance();
+        $pwyw_data = $pwyw->pwyw_get_bundle_info();
+        $payment = $pwyw_data['payment_info'];
 
-        // $data = array(
-        //     'bundle' => $bundle
-        // );
-        $data = array();
+        // Prepare data
+        $totalSales = isset($payment->total_sales) ?
+                      $payment->total_sales : '0';
+        $averagePrice = isset($payment->avg_price) ? 
+                        number_format($payment->avg_price, 2) : '0.00';
+        $totalPayments = isset($payment->total_payments) ?
+                         number_format($payment->total_payments, 2) : '0.00';
+
+
+        $data = array(
+            'bundle'        => $pwyw_data,
+            'totalSales'    => $totalSales,
+            'averagePrice'  => '$'.$averagePrice,
+            'totalPayments' => '$'.$totalPayments
+        );
 
         echo $before_widget;
         echo Pwyw_View::make('front-widget-checkout', $data);
