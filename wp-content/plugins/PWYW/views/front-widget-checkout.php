@@ -55,7 +55,35 @@
         </li>
 
         <li>
-            Where would you like your contribution to go?
+            <p>Where would you like your contribution to go?</p>
+            <div class="slidercontent clearfix">
+                <div class="slidertitles">
+                    <ul>
+                        <li>Filmmakers:</li>
+                        <li>Charities:</li>
+                        <li>FilmBundle:</li>
+                    </ul>
+                </div>  
+                <div class="conteneur">
+                    <?php foreach($bundle['categories'] as $key=>$cat_obj): ?>
+                        <div id="slider_<?php echo strtolower($cat_obj['info']['title']) ?>" value="<?php echo $cat_obj['info']['val'] ?>" class="linked3 selector inactive sliderhome"></div>
+                    <?php endforeach;?>
+                </div>​
+                
+                <div class="divedeeper input-append">
+                    <ul>
+                        <?php foreach($bundle['categories'] as $key=>$cat_obj): ?>
+                            <li id="mcat_<?php echo $key ?>" class="mcat">
+                                <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="text" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
+                                <span class="add-on">%</span>
+                                <?php if($key !=3):?>
+                                    <a class="btn btn-info btn-small" href="#<?php echo strtolower($cat_obj['info']['title']) ?>_modal" data-toggle="modal" type="button">Dive Deeper!</a>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach;?>
+                    </ul>
+                </div>
+            </div>
         </li>
 
         <li>
@@ -191,33 +219,7 @@ jQuery(document).ready(function($) {
   
             <h2>Purchase</h2>
             <div class="step2">
-                <div class="slidercontent">
-                    <div class="slidertitles">
-                        <ul>
-                            <li>Filmmakers:</li>
-                            <li>Charities:</li>
-                            <li>FilmBundle:</li>
-                        </ul>
-                    </div>  
-                    <div class="conteneur">
-                        <?php foreach($pwyw_data['categories'] as $key=>$cat_obj): ?>
-                            <div id="slider_<?php echo strtolower($cat_obj['info']['title']) ?>" value="<?php echo $cat_obj['info']['val'] ?>" class="linked3 selector inactive sliderhome"></div>
-                        <?php endforeach;?>
-                    </div>​ 
-                    <div class="divedeeper input-append">
-                        <ul>
-                            <?php foreach($pwyw_data['categories'] as $key=>$cat_obj): ?>
-                                <li id="mcat_<?php echo $key ?>" class="mcat">
-                                    <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="text" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
-                                    <span class="add-on">%</span>
-                                    <?php if($key !=3):?>
-                                        <a class="btn btn-info btn-small" href="#<?php echo strtolower($cat_obj['info']['title']) ?>_modal" data-toggle="modal" type="button">Want more control?</a>
-                                    <?php endif; ?>
-                                </li>
-                            <?php endforeach;?>
-                        </ul>
-                    </div>
-                </div>
+
                 <a href="#" class="btn btn-large btn-success"> Checkout </a>
             </div>
         </div>
