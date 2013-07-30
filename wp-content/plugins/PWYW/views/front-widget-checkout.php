@@ -57,7 +57,7 @@
         <li>
             <p>Where would you like your contribution to go?</p>
 
-            <?php foreach($bundle['categories'] as $key=>$cat_obj) {
+            <?php foreach($bundle['categories'] as $key => $cat_obj) {
                 $title = $cat_obj['info']['title'];
                 if ($title == 'Bundle') {
                     $title = 'FilmBundle';
@@ -70,9 +70,6 @@
                 <div id="slider_<?php echo strtolower($cat_obj['info']['title']) ?>" value="<?php echo $cat_obj['info']['val'] ?>" class="linked3 selector inactive sliderhome"></div>
 
 
-
-
-
                 <div class="input-append">
                 <span class="add-on">%</span>
                 <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="text" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
@@ -82,8 +79,47 @@
                     <a class="btn btn-info btn-small" href="#<?php echo strtolower($cat_obj['info']['title']) ?>_modal" data-toggle="modal" type="button">Dive Deeper!</a>
                 <?php endif; ?>
 
-
                 </div>
+
+
+
+<div class='clearfix'>
+
+                <?php
+                // Handle the sub categories
+                // var_dump($cat_obj['sub']);
+
+
+                if($key != 3):
+        $smalltitle = strtolower($cat_obj['info']['title']);
+        ?>   
+                          <div class="slidertitles">
+                              <ul>
+                                  <?php foreach ($cat_obj['sub'] as $key_s => $sub): ?>
+                                      <li><?= $sub['info']['title'] ?>:</li>
+                                  <?php endforeach; ?>
+                              </ul>
+                          </div>
+                          <div class="conteneur">    
+                              <?php foreach ($cat_obj['sub'] as $key_s => $sub): ?>
+                              <div id="slider_<?php echo $smalltitle ?>_<?= $key_s ?>" value="<?= $sub['info']['val'] ?>" class="selector sub_<?php echo $smalltitle ?> inactive sliderhome"></div>
+                              <?php endforeach; ?>      
+                          </div>​
+
+                          <div class="divedeeper input-append">
+                              <ul>
+                                  <?php foreach ($cat_obj['sub'] as $key_s => $sub): ?>
+                                      <li class="subcat"> <input id="<?php echo $smalltitle ?>_<?= $key_s ?>_inp" name="categories[<?php echo $key_s ?>]" class="<?php echo $smalltitle ?>_percent" type="text" value="<?= $sub['info']['val'] ?>"/><span class="add-on">%</span></li>
+                                  <?php endforeach; ?>
+                              </ul>
+                          </div>
+            <?php endif; ?>
+
+</div>
+
+
+
+
 
             <?php } ?>
         </li>
@@ -93,6 +129,8 @@
         </li>
     </ol>
 </div>
+
+
 
 
 
@@ -219,64 +257,12 @@ jQuery(document).ready(function($) {
                 </div>
             </div>
   
-            <h2>Purchase</h2>
             <div class="step2">
-
                 <a href="#" class="btn btn-large btn-success"> Checkout </a>
             </div>
         </div>
     </div>
 
-<!-- Slider 1 Modal -->
-       <?php foreach($pwyw_data['categories'] as $key=>$cat_obj):  ?>
-               <?php if($key != 3):?>
-        <?php 
-        $smalltitle = strtolower($cat_obj['info']['title']);
-        switch($key){
-              case 1:
-                  $ctitle = 'Films';
-              break;
-              case 2:
-                  $ctitle = 'Charities';
-              break;
-          
-              } 
-        ?>   
-                    <div class="modal hide fade" id="<?php echo $smalltitle ?>_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                          <h3 id="myModalLabel"><?php echo $ctitle ?></h3>
-                          <p>How should we split up your payment?</p>
-                      </div>
-                      <div class="modal-body">      
-                          <div class="slidertitles">
-                              <ul>
-                                  <?php foreach ($cat_obj['sub'] as $key_s => $sub): ?>
-                                      <li><?= $sub['info']['title'] ?>:</li>
-                                  <?php endforeach; ?>
-                              </ul>
-                          </div>
-                          <div class="conteneur">    
-                              <?php foreach ($cat_obj['sub'] as $key_s => $sub): ?>
-                              <div id="slider_<?php echo $smalltitle ?>_<?= $key_s ?>" value="<?= $sub['info']['val'] ?>" class="selector <?php echo $smalltitle ?> inactive sliderhome"></div>
-                              <?php endforeach; ?>      
-                          </div>​
-
-                          <div class="divedeeper input-append">
-                              <ul>
-                                  <?php foreach ($cat_obj['sub'] as $key_s => $sub): ?>
-                                      <li class="subcat"> <input id="<?php echo $smalltitle ?>_<?= $key_s ?>_inp" name="categories[<?php echo $key_s ?>]" class="<?php echo $smalltitle ?>_percent" type="text" value="<?= $sub['info']['val'] ?>"/><span class="add-on">%</span></li>
-                                  <?php endforeach; ?>
-                              </ul>
-                          </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn_reset">Reset</button>
-                        <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Save and Close</button>
-                      </div>
-                  </div>
-            <?php endif; ?>
-       <?php endforeach;?>
 </form>
 
 

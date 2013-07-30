@@ -57,7 +57,7 @@ jQuery(document).ready(function($) {
 
     }
 
-    setSliderHandlers('linked3','percent');
-    // setSliderHandlers('charities','charities_percent');
-    // setSliderHandlers('filmmakers','filmmakers_percent');
+    setSliderHandlers('linked3', 'percent');
+    setSliderHandlers('sub_charities','charities_percent');
+    setSliderHandlers('sub_filmmakers','filmmakers_percent');
 });
