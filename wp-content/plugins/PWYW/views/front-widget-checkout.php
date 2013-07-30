@@ -5,11 +5,14 @@
                 <h3>The Stats</h3>
             </div>
         </div><div class='pwyw-stats-section'>
-            <span class='value'><?php echo $totalSales; ?></span> Number of Purchases
+            <span class='value'><?php echo $totalSales; ?></span>
+            Number of Purchases
         </div><div class='pwyw-stats-section center'>
-            <span class='value'><?php echo $averagePrice; ?></span> Average Purchase
+            <span class='value'><?php echo $averagePrice; ?></span>
+            Average Purchase
         </div><div class='pwyw-stats-section right'>
-            <span class='value'><?php echo $totalPayments; ?></span> Total Payments
+            <span class='value'><?php echo $totalPayments; ?></span>
+            Total Payments
         </div>
 
         <hr />
@@ -25,8 +28,22 @@
     </div>
 </div>
 
+<div class='pwyw-checkout'>
+    <h2>Purchase the Bundle</h2>
+    <p>Complete the purchase below and these amazing films are all yours!</p>
 
-
+    <ol>
+        <li>
+            Choose how much the bundle is worth to you.
+        </li>
+        <li>
+            Where would you like your contribution to go?
+        </li>
+        <li>
+            Checkout and claim your films!
+        </li>
+    </ol>
+</div>
 
 
 

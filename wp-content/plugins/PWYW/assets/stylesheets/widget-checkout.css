@@ -54,9 +54,58 @@
 }
 
 
-
-
-
+/** ----------------------------------------------------------------------------
+ *  CHEECKOUT SECTION
+ * -------------------------------------------------------------------------- */
+.pwyw-checkout {
+    margin: 0 auto;
+    padding: 12px 0 12px 0;
+    overflow: hidden;
+    width: 1000px;
+    position: relative;
+    white-space: nowrap;
+}
+.pwyw-checkout h2 {
+    font-size: 32px;
+}
+.pwyw-checkout p {
+    margin-bottom: 12px;
+}
+.pwyw-checkout ol {
+    counter-reset: li;
+    margin-left: 0;
+    padding-left: 0;
+}
+.pwyw-checkout ol > li {
+    position: relative;
+    margin: 0 0 6px 2em;
+    padding: 4px 8px;
+    list-style: none;
+}
+.pwyw-checkout ol > li:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    top: -2px;
+    left: -2em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 2em;
+    /* Some space between the number and the content in browsers that support
+       generated content but not positioning it */
+    margin-right: 8px;
+    padding: 3px 2px 3px 2px;
+    color: #474a4f;
+    font-weight: normal;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    text-align: center;
+    border: 1px solid #474a4f;
+    border-radius: 100px;
+}
+.pwyw-checkout li ol,
+.pwyw-checkout li ul { margin-top: 6px; }
+.pwyw-checkout ol ol li:last-child { margin-bottom: 0; }
 
 
 

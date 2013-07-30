@@ -66,7 +66,6 @@ class Pwyw_WidgetCheckout extends WP_Widget
         $totalPayments = isset($payment->total_payments) ?
                          number_format($payment->total_payments, 2) : '0.00';
 
-
         $data = array(
             'bundle'        => $pwyw_data,
             'totalSales'    => $totalSales,
