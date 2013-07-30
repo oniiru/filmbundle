@@ -36,7 +36,7 @@
         <li>
             <p>Choose how much the bundle is worth to you.</p>
             <p>
-                <div class="btn-group" data-toggle="buttons-radio">
+                <div class="pwyw-amount btn-group" data-toggle="buttons-radio">
                     <button  value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_1; ?></button>
                     <button  value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_2; ?></button>
                     <button value="<?=$bundle['bundle']->suggested_val_3; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_3; ?></button>

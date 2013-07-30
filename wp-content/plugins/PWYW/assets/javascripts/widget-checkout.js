@@ -1,4 +1,18 @@
 jQuery(document).ready(function($) {
+
+    // Amount buttons
+    // -------------------------------------------------------------------------
+    $('.customshow').hide();
+    $('.pwyw-amount button').click(function() {
+        if ($(this).attr('id') == 'custom_price') {
+            $('.customshow').fadeIn('fast');
+        } else {
+            $('.customshow').fadeOut('fast');
+        }
+    });
+
+    // Sliders
+    // -------------------------------------------------------------------------
     var min=0;
     var max=100;
 

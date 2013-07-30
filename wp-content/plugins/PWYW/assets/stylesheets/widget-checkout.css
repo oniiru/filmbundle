@@ -112,15 +112,17 @@
  * Purchase Amount buttons */
 .pwyw-checkout .input-prepend {
     margin: 0 12px;
+    display: inline;
 }
 .pwyw-checkout .input-prepend input {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     min-width: 100px;
     width: 100px;
+    padding: 14px 20px 14px 10px;
 }
 .pwyw-checkout .add-on {
-    height: 32px;
+    height: 30px;
     display: inline-block;
     font-size: 20px;
     color: #797b80;
