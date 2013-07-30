@@ -62,6 +62,7 @@
                 if ($title == 'Bundle') {
                     $title = 'FilmBundle';
                 }
+                $titleLow = strtolower($title);
             ?>
                 <div class="clearfix">
 
@@ -75,15 +76,15 @@
                 <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="text" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
                 </div>
 
-                <?php if($key !=3):?>
-                    <a class="btn btn-info btn-small" href="#<?php echo strtolower($cat_obj['info']['title']) ?>_modal" data-toggle="modal" type="button">Dive Deeper!</a>
-                <?php endif; ?>
+                <?php if ($key !=3) { ?>
+                    <a data-id='#dive-<?php echo $titleLow; ?>' class="btn btn-info btn-small dive-deeper" type="button">Dive Deeper!</a>
+                <?php } ?>
 
                 </div>
 
 
 
-<div class='clearfix'>
+<div id='dive-<?php echo $titleLow;?>' class='clearfix'>
 
                 <?php
                 // Handle the sub categories
@@ -119,8 +120,6 @@
 
 
 
-
-
             <?php } ?>
         </li>
 
@@ -135,10 +134,6 @@
 
 
 
-            <div class="step1">
-                <div class="buttonslidegroup">
-                </div>  
-            </div>
 
             <div class="alertboxes">
                 <div class="lowpaymentwarning alert alert-error" style="display:none">Pay only <b id="difference"></b> more to unlock the bonus films. Come on, help some starving filmmakers out. ;)
