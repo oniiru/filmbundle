@@ -34,16 +34,53 @@
 
     <ol>
         <li>
-            Choose how much the bundle is worth to you.
+            <p>Choose how much the bundle is worth to you.</p>
+            <p>
+                <div class="btn-group" data-toggle="buttons-radio">
+                    <button  value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_1; ?></button>
+                    <button  value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_2; ?></button>
+                    <button value="<?=$bundle['bundle']->suggested_val_3; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_3; ?></button>
+                    <button id="custom_price" value="<?=$bundle['bundle']->pwyw_val; ?>" class=" btn btn-info">Custom</button>
+                </div>
+
+                <div class="input-prepend customshow">
+                    <span class="add-on">$</span>
+                    <input class="custompricefield currenciesOnly" 
+                           onchange="checkvalue()" 
+                           value="<?=$bundle['bundle']->pwyw_val; ?>" 
+                           type="text"
+                    />
+                </div>
+            </p>
         </li>
+
         <li>
             Where would you like your contribution to go?
         </li>
+
         <li>
             Checkout and claim your films!
         </li>
     </ol>
 </div>
+
+
+
+
+            <div class="step1">
+                <div class="buttonslidegroup">
+                </div>  
+            </div>
+
+            <div class="alertboxes">
+                <div class="lowpaymentwarning alert alert-error" style="display:none">Pay only <b id="difference"></b> more to unlock the bonus films. Come on, help some starving filmmakers out. ;)
+                </div>
+                <div class="leaderboardinput alert alert-success" style="display:none"><b>You Rock!</b> This amount makes you one of the top contributors. Enter your   
+                     <span class="add-on">@</span><input class="span2" id="PrependedInput" placeholder="twitterhandle" type="text"> or any <input  class="span2" placeholder="username" type="text"> to be added on our top contributor board.
+                </div>
+                <div class="nozero alert alert-error" style="display:none">We're all about paying what you want, but we've got to draw the line somewhere. Please pay at least $0.01. :)
+                </div>
+            </div> 
 
 
 
@@ -116,15 +153,6 @@ jQuery(document).ready(function($) {
 
 <div class="container">
     <div class="bodyhome">
-        
-        <div class="inner">
-            <div class="titlebox">
-                <h1>Bundle 1</h1>
-                <h3>Discover Indie Films, Support Filmmakers, Help Charities.</h3>
-                <h3 class="line2">Pay what you want to get all the films below.</h3>    
-                <p id="scroll" class="btn btn-info homebutton btn-large">Purchase</p>   
-            </div>
-        </div>
         <form id="bundle_checkout" method="POST" action="<?php echo $pwyw->plugin_url ?>bundle_checkout.php">
                     <input type="hidden" name="c_price" value=""/>
                     <input type="hidden" name="alias" value=""/>
@@ -162,28 +190,6 @@ jQuery(document).ready(function($) {
             </div>
   
             <h2>Purchase</h2>
-            <div class="step1">
-                <div class="buttonslidegroup">
-                    <div class="btn-group" data-toggle="buttons-radio">
-                        <button  value="<?=$pwyw_data['bundle']->suggested_val_1; ?>" class="btn btn-info">$<?=$pwyw_data['bundle']->suggested_val_1; ?></button>
-                        <button  value="<?=$pwyw_data['bundle']->suggested_val_2; ?>"class="btn btn-info">$<?=$pwyw_data['bundle']->suggested_val_2; ?></button>
-                        <button value="<?=$pwyw_data['bundle']->suggested_val_3; ?>"class="btn btn-info">$<?=$pwyw_data['bundle']->suggested_val_3; ?></button>
-                        <button id="custom_price" value="<?=$pwyw_data['bundle']->pwyw_val; ?>"class=" btn btn-info">Custom</button>
-                    </div>
-                    <div class="input-prepend customshow" style="display:none;">
-                    <span class="add-on">$</span><input class="span1 custompricefield currenciesOnly" onchange="checkvalue()" value="<?=$pwyw_data['bundle']->pwyw_val; ?>" type="text">
-                    </div>
-                </div>  
-            </div>  
-            <div class="alertboxes">
-                <div class="lowpaymentwarning alert alert-error" style="display:none">Pay only <b id="difference"></b> more to unlock the bonus films. Come on, help some starving filmmakers out. ;)
-                </div>
-                <div class="leaderboardinput alert alert-success" style="display:none"><b>You Rock!</b> This amount makes you one of the top contributors. Enter your   
-                     <span class="add-on">@</span><input class="span2" id="PrependedInput" placeholder="twitterhandle" type="text"> or any <input  class="span2" placeholder="username" type="text"> to be added on our top contributor board.
-                </div>
-                <div class="nozero alert alert-error" style="display:none">We're all about paying what you want, but we've got to draw the line somewhere. Please pay at least $0.01. :)
-                </div>
-            </div> 
             <div class="step2">
                 <div class="slidercontent">
                     <div class="slidertitles">

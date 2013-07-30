@@ -69,7 +69,7 @@
     font-size: 32px;
 }
 .pwyw-checkout p {
-    margin-bottom: 12px;
+    margin-bottom: 24px;
 }
 .pwyw-checkout ol {
     counter-reset: li;
@@ -108,7 +108,24 @@
 .pwyw-checkout ol ol li:last-child { margin-bottom: 0; }
 
 
-
+/**
+ * Purchase Amount buttons */
+.pwyw-checkout .input-prepend {
+    margin: 0 12px;
+}
+.pwyw-checkout .input-prepend input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    min-width: 100px;
+    width: 100px;
+}
+.pwyw-checkout .add-on {
+    height: 32px;
+    display: inline-block;
+    font-size: 20px;
+    color: #797b80;
+    padding: 5px 10px;
+}
 
 
 
