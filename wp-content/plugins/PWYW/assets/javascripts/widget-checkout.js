@@ -66,4 +66,8 @@ jQuery(document).ready(function($) {
         var id = $(this).data('id');
         $(id).toggle('slow');
     });
+    $('.dive-deeper').tooltip({
+        placement: 'top',
+        html: true
+    });
 });

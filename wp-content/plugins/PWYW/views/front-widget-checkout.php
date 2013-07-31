@@ -74,8 +74,17 @@
                         <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="text" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
                     </div>
 
-                    <?php if ($key !=3) { ?>
-                        <a data-id='#dive-<?php echo $titleLow; ?>' class="btn btn-info dive-deeper" type="button">Dive Deeper!</a>
+                    <?php if ($key !=3) {
+                        $type = ($key == 1) ? 'films' : 'charities';
+                        $tooltip = "Allocate your contribution<br/>to specific {$type}.";
+                    ?>
+                        <a
+                            data-id='#dive-<?php echo $titleLow; ?>'
+                            class="btn btn-info dive-deeper"
+                            type="button"
+                            data-toggle="tooltip"
+                            data-title="<?php echo $tooltip; ?>"
+                        >Dive Deeper!</a>
                     <?php } ?>
                 </div>
 
