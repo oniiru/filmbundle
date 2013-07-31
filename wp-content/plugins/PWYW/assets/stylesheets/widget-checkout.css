@@ -52,6 +52,28 @@
     border-top: 1px solid #121212;
     border-bottom: 1px solid #343434;
 }
+/** Top contributors */
+.pwyw-contributor-section {
+    display: inline-block;
+    width: 33%;
+}
+.pwyw-contributor-section ol {
+    list-style-type: decimal;
+}
+.pwyw-contributor-section ol.contributor-left {
+    margin-right: 40px;
+}
+.pwyw-contributor-section ol.contributor-right {
+    margin-left: 40px;
+}
+.pwyw-contributor-section li {
+    width: 100%;
+}
+.contributor-amount {
+    text-align: right;
+}
+
+
 
 
 /** ----------------------------------------------------------------------------

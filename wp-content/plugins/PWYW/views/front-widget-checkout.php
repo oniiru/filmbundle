@@ -17,14 +17,35 @@
 
         <hr />
         
-        <div class='pwyw-stats-title-section'>
-            <h3>Top Contributors</h3>
-            <p>
-                These heroes have really gone to<br/>
-                bat for indie filmmakers everywhere.<br/>
-                Isn't it your turn to be on the list?
-            </p>
+        <div class='pwyw-contributor-section'>
+            <div class='pwyw-stats-title-section'>
+                <h3>Top Contributors</h3>
+                <p>
+                    These heroes have really gone to<br/>
+                    bat for indie filmmakers everywhere.<br/>
+                    Isn't it your turn to be on the list?
+                </p>
+            </div>
         </div>
+        <div class='pwyw-contributor-section'>
+            <ol class='contributor-left'>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+            </ol>
+        </div>
+        <div class='pwyw-contributor-section'>
+            <ol start='6' class='contributor-right'>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+                <li>foobar <span class='pull-right'>$232.23</span></li>
+            </ol>
+        </div>
+
     </div>
 </div>
 
