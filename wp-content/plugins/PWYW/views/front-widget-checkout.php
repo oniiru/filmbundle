@@ -79,38 +79,34 @@
                     <?php } ?>
                 </div>
 
+                <?php /** Handle the sub categories */ ?>
+                <div id='dive-<?php echo $titleLow;?>' class='clearfix'>
+                    <?php
+                    if($key != 3) {
+                        $smalltitle = strtolower($cat_obj['info']['title']);
+                        foreach ($cat_obj['sub'] as $key_s => $sub) { ?>
+                            <div class='clearfix'>
+                                <div class='slider-title'><?php echo $sub['info']['title']; ?>:</div>
 
+                                <div
+                                    id="slider_<?php echo $smalltitle ?>_<?= $key_s ?>"
+                                    value="<?= $sub['info']['val'] ?>"
+                                    class="selector sub_<?php echo $smalltitle ?> inactive sliderhome"></div>
 
-<div id='dive-<?php echo $titleLow;?>' class='clearfix'>
-
-                <?php
-                // Handle the sub categories
-                // var_dump($cat_obj['sub']);
-
-
-                if($key != 3):
-        $smalltitle = strtolower($cat_obj['info']['title']);
-        ?>   
-
-              <?php foreach ($cat_obj['sub'] as $key_s => $sub) { ?>
-                <div class='clearfix'>
-                    <div class='slider-title'><?php echo $sub['info']['title']; ?>:</div>
-
-                              <div id="slider_<?php echo $smalltitle ?>_<?= $key_s ?>" value="<?= $sub['info']['val'] ?>" class="selector sub_<?php echo $smalltitle ?> inactive sliderhome"></div>
-
-
-                          <div class="input-prepend">
-                                        <span class="add-on">%</span>
-                                        <input id="<?php echo $smalltitle ?>_<?= $key_s ?>_inp" name="categories[<?php echo $key_s ?>]" class="<?php echo $smalltitle ?>_percent" type="text" value="<?= $sub['info']['val'] ?>"/>
-                          </div>
+                                <div class="input-prepend">
+                                    <span class="add-on">%</span>
+                                    <input 
+                                        id="<?php echo $smalltitle ?>_<?= $key_s ?>_inp"
+                                        name="categories[<?php echo $key_s ?>]" 
+                                        class="<?php echo $smalltitle ?>_percent" 
+                                        type="text" 
+                                        value="<?= $sub['info']['val'] ?>"
+                                    />
+                                </div>
+                            </div>
+                        <?php } ?>
+                    <?php } ?>
                 </div>
-
-
-              <?php } ?>
-            <?php endif; ?>
-</div>
-
-
 
             <?php } ?>
         </li>
