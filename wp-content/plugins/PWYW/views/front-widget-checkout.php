@@ -67,7 +67,7 @@
                 <div class='pwyw-checkout-slider clearfix'>
                     <div class='pwyw-slider-title'><?php echo $title; ?></div>
 
-                    <div id="slider_<?php echo strtolower($cat_obj['info']['title']) ?>" value="<?php echo $cat_obj['info']['val'] ?>" class="linked3 selector inactive sliderhome"></div>
+                    <div id="slider_<?php echo strtolower($cat_obj['info']['title']) ?>" value="<?php echo $cat_obj['info']['val'] ?>" class="linked3 selector inactive"></div>
 
                     <div class="input-prepend">
                         <span class="add-on">$</span>
@@ -100,7 +100,7 @@
                                 <div
                                     id="slider_<?php echo $smalltitle ?>_<?= $key_s ?>"
                                     value="<?= $sub['info']['val'] ?>"
-                                    class="selector sub_<?php echo $smalltitle ?> inactive sliderhome"></div>
+                                    class="selector sub_<?php echo $smalltitle ?> inactive"></div>
 
                                 <div class="input-prepend">
                                     <span class="add-on">$</span>
