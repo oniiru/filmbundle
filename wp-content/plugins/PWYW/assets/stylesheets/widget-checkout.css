@@ -134,36 +134,21 @@
 
 /**
  * Sliders */
-.slidercontent {
-/*    text-align: center;
-    width: 642px;
-    margin: auto;
-    height: 210px;
-*/}
-.slider-title {
+.pwyw-checkout-slider {
+    margin-bottom: 42px;
+}
+.pwyw-checkout-sub-slider {
+    margin-left: 100px;
+}
+.pwyw-slider-title {
     display: inline-block;
-    width: 200px;
+    width: 150px;
+}
+.pwyw-checkout-sub-slider .pwyw-slider-title {
+    display: inline-block;
+    width: 172px;
 }
 
-.slidertitles {
-    float: left;
-    text-align: left;
-    font-size: 20px;
-}
-.slidertitles ul {
-    margin-left: 0px
-}
-.slidertitles li {
-    list-style: none;
-    line-height: 60px;
-}
-.conteneur {
-    width: 270px;
-    margin: auto;
-    float: left;
-    margin-top: 25px;
-    margin-left: 37px;
-}
 
 
 .sliderhome {

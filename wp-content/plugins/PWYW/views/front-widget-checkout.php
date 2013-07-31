@@ -64,8 +64,8 @@
                 }
                 $titleLow = strtolower($title);
             ?>
-                <div class='clearfix'>
-                    <div class='slider-title'><?php echo $title; ?>:</div>
+                <div class='pwyw-checkout-slider clearfix'>
+                    <div class='pwyw-slider-title'><?php echo $title; ?></div>
 
                     <div id="slider_<?php echo strtolower($cat_obj['info']['title']) ?>" value="<?php echo $cat_obj['info']['val'] ?>" class="linked3 selector inactive sliderhome"></div>
 
@@ -75,7 +75,7 @@
                     </div>
 
                     <?php if ($key !=3) { ?>
-                        <a data-id='#dive-<?php echo $titleLow; ?>' class="btn btn-info btn-small dive-deeper" type="button">Dive Deeper!</a>
+                        <a data-id='#dive-<?php echo $titleLow; ?>' class="btn btn-info dive-deeper" type="button">Dive Deeper!</a>
                     <?php } ?>
                 </div>
 
@@ -85,8 +85,8 @@
                     if($key != 3) {
                         $smalltitle = strtolower($cat_obj['info']['title']);
                         foreach ($cat_obj['sub'] as $key_s => $sub) { ?>
-                            <div class='clearfix'>
-                                <div class='slider-title'><?php echo $sub['info']['title']; ?>:</div>
+                            <div class='pwyw-checkout-slider pwyw-checkout-sub-slider clearfix'>
+                                <div class='pwyw-slider-title'><?php echo $sub['info']['title']; ?></div>
 
                                 <div
                                     id="slider_<?php echo $smalltitle ?>_<?= $key_s ?>"
@@ -94,7 +94,7 @@
                                     class="selector sub_<?php echo $smalltitle ?> inactive sliderhome"></div>
 
                                 <div class="input-prepend">
-                                    <span class="add-on">%</span>
+                                    <span class="add-on">$</span>
                                     <input 
                                         id="<?php echo $smalltitle ?>_<?= $key_s ?>_inp"
                                         name="categories[<?php echo $key_s ?>]" 
