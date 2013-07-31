@@ -64,22 +64,19 @@
                 }
                 $titleLow = strtolower($title);
             ?>
-                <div class="clearfix">
+                <div class='clearfix'>
+                    <div class='slider-title'><?php echo $title; ?>:</div>
 
-                <div><?php echo $title; ?>:</div>
+                    <div id="slider_<?php echo strtolower($cat_obj['info']['title']) ?>" value="<?php echo $cat_obj['info']['val'] ?>" class="linked3 selector inactive sliderhome"></div>
 
-                <div id="slider_<?php echo strtolower($cat_obj['info']['title']) ?>" value="<?php echo $cat_obj['info']['val'] ?>" class="linked3 selector inactive sliderhome"></div>
+                    <div class="input-prepend">
+                        <span class="add-on">$</span>
+                        <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="text" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
+                    </div>
 
-
-                <div class="input-append">
-                <span class="add-on">%</span>
-                <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="text" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
-                </div>
-
-                <?php if ($key !=3) { ?>
-                    <a data-id='#dive-<?php echo $titleLow; ?>' class="btn btn-info btn-small dive-deeper" type="button">Dive Deeper!</a>
-                <?php } ?>
-
+                    <?php if ($key !=3) { ?>
+                        <a data-id='#dive-<?php echo $titleLow; ?>' class="btn btn-info btn-small dive-deeper" type="button">Dive Deeper!</a>
+                    <?php } ?>
                 </div>
 
 
@@ -94,28 +91,23 @@
                 if($key != 3):
         $smalltitle = strtolower($cat_obj['info']['title']);
         ?>   
-                          <div class="slidertitles">
-                              <ul>
-                                  <?php foreach ($cat_obj['sub'] as $key_s => $sub): ?>
-                                      <li><?= $sub['info']['title'] ?>:</li>
-                                  <?php endforeach; ?>
-                              </ul>
-                          </div>
-                          <div class="conteneur">    
-                              <?php foreach ($cat_obj['sub'] as $key_s => $sub): ?>
+
+              <?php foreach ($cat_obj['sub'] as $key_s => $sub) { ?>
+                <div class='clearfix'>
+                    <div class='slider-title'><?php echo $sub['info']['title']; ?>:</div>
+
                               <div id="slider_<?php echo $smalltitle ?>_<?= $key_s ?>" value="<?= $sub['info']['val'] ?>" class="selector sub_<?php echo $smalltitle ?> inactive sliderhome"></div>
-                              <?php endforeach; ?>      
-                          </div>​
 
-                          <div class="divedeeper input-append">
-                              <ul>
-                                  <?php foreach ($cat_obj['sub'] as $key_s => $sub): ?>
-                                      <li class="subcat"> <input id="<?php echo $smalltitle ?>_<?= $key_s ?>_inp" name="categories[<?php echo $key_s ?>]" class="<?php echo $smalltitle ?>_percent" type="text" value="<?= $sub['info']['val'] ?>"/><span class="add-on">%</span></li>
-                                  <?php endforeach; ?>
-                              </ul>
+
+                          <div class="input-prepend">
+                                        <span class="add-on">%</span>
+                                        <input id="<?php echo $smalltitle ?>_<?= $key_s ?>_inp" name="categories[<?php echo $key_s ?>]" class="<?php echo $smalltitle ?>_percent" type="text" value="<?= $sub['info']['val'] ?>"/>
                           </div>
-            <?php endif; ?>
+                </div>
 
+
+              <?php } ?>
+            <?php endif; ?>
 </div>
 
 
