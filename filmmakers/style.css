@@ -345,18 +345,18 @@ SLIDE 2
 	}
 	
 	.circle {
-		border-radius:50%;
-		font-size:40px;
-		background: #fc5939;
-		display:inline-block;
-		width:45px;
-		height:45px;
-		color:white;
+		border-radius: 50%;
+		font-size: 30px;
+		display: inline-block;
+		width: 35px;
+		height: 35px;
+		color: rgb(99, 99, 99);
 		position: relative;
-bottom: 18px;
-line-height:1.1em;
-text-shadow: 1px 1px 2px black;
-box-shadow: 1px 1px 0px grey;
+		bottom: 37px;
+		line-height: 1.1em;
+		
+		border: 2px solid #646464;
+		}
 	}
 	#slide2 .title th {
 		background-image: url(../images/dotted-bg-blue.png);

@@ -8,12 +8,152 @@ Template:       proxy
 */
 
 @import url("../proxy/style.css");
+@font-face {
+    font-family: 'museo300';
+    src: url('assets/fonts/museosans-300-webfont.eot');
+    src: url('assets/fonts/museosans-300-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/museosans-300-webfont.woff') format('woff'),
+         url('assets/fonts/museosans-300-webfont.ttf') format('truetype'),
+         url('assets/fonts/museosans-300-webfont.svg#museo_sans300') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
+}
+@font-face {
+    font-family: 'museo500';
+    src: url('assets/fonts/museosans_500-webfont.eot');
+    src: url('assets/fonts/museosans_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/museosans_500-webfont.woff') format('woff'),
+         url('assets/fonts/museosans_500-webfont.ttf') format('truetype'),
+         url('assets/fonts/museosans_500-webfont.svg#museo_sans500') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'museo700';
+    src: url('assets/fonts/museosans_700-webfont.eot');
+    src: url('assets/fonts/museosans_700-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/museosans_700-webfont.woff') format('woff'),
+         url('assets/fonts/museosans_700-webfont.ttf') format('truetype'),
+         url('assets/fonts/museosans_700-webfont.svg#museo_sans700') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea { background: #f8f8f8; width: 100%; padding: 15px 20px 15px 10px; font-size: 14px; border: 1px solid rgb(180, 180, 180); -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
 
 #header {
 	padding:15px 0;
+}
+
+.topbanner-inner h1 {
+	font-family: 'museo300';
+	text-shadow:1px 1px 1px #474747;
+	font-size:37px;
+	padding-top:130px;
+	color:white;
+	width:1030px;
+}
+
+.topbanner-inner h3 {
+	font-family: 'museo700';
+	font-size:18px;
+	color:white;
+	width:1030px;
+	padding-top: 7px;
+	margin-bottom: 30px;
+}
+.topbanner-inner a {
+	background:#1c93c5 !important;
+	border-radius:4px;
+	color:white;
+	font-family: 'museo700';
+	
+}
+.topbanner-inner a:hover {
+	text-decoration:none;
+}
+
+.topbanner {
+	background-size:cover;
+	height:280px;
+	width:100%;
+	
+}
+
+.filmmakerclass h2 {
+	font-size:30px;
+	font-family: 'museo500';
+	margin-bottom:0px;
+	
+}
+.filmmakerclass h4 {
+	font-size: 16px;
+	font-family: 'museo500';
+	margin-top: 5px;
+	
+}
+.filmmakerclass h5 {
+	font-size: 16px;
+	font-family: 'museo500';
+	text-transform:uppercase;
+	margin-bottom: 5px;
+	
+}
+.filmmakerclass p, .filmmakerclass li {
+	font-size: 14px;
+	font-family: 'museo300';
+
+	
+}
+.hentry {
+	padding-bottom:100px;
+}
+.filmmakersbanner {
+	text-align:center;
+	width:100%;
+	background:#585858;
+	height:75px;
+	margin-bottom:76px;
+	padding-top:17px;
+}
+
+.filmmakersbanner h3 {
+	display:inline-block;
+	color:white;
+	font-family: 'museo300';
+	font-size:30px;
+	vertical-align: middle;
+	margin-right: 30px;
+}
+
+.filmmakersbanner a {
+	background:#1c93c5 !important;
+	border-radius:4px;
+	color:white;
+	font-family: 'museo500';
+	font-size:20px;
+	vertical-align:middle;
+	
+	
+}
+.filmmakersbanner a:hover {
+	text-decoration:none;
+}
+article {
+	max-width: 1210px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin:auto;
+	margin-bottom:30px;
+}
+.topbanner-inner {
+	max-width: 1210px;
+padding-left: 20px;
+padding-right: 20px;
+margin:auto;
 }
 #services .service-title { text-align:center;}
 
