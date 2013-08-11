@@ -93,6 +93,9 @@
         <li>
             <p>Choose how much the bundle is worth to you.</p>
             <p>
+                <script type='text/javascript'>
+                    var bundle_checkout_amount = 100;
+                </script>
                 <div class="pwyw-amount btn-group" data-toggle="buttons-radio">
                     <button  value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_1; ?></button>
                     <button  value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_2; ?></button>
@@ -103,7 +106,6 @@
                 <div class="input-prepend customshow">
                     <span class="add-on">$</span>
                     <input class="custompricefield currenciesOnly" 
-                           onchange="checkvalue()" 
                            value="<?=$bundle['bundle']->pwyw_val; ?>" 
                            type="text"
                     />
