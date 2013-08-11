@@ -107,6 +107,11 @@ jQuery(document).ready(function($) {
     setSliderHandlers('sub_charities','charities_percent', 100);
     setSliderHandlers('sub_filmmakers','filmmakers_percent', 100);
 
+    // Set initial amount
+    var new_amount = $('.pwyw-amount button').first().val();
+    new_amount = Math.floor(new_amount);
+    updateSliders(new_amount);
+
     // Handle the dive deeper buttons
     $('.dive-deeper').click(function() {
         var id = $(this).data('id');

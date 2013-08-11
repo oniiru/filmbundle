@@ -95,9 +95,10 @@
             <p>
                 <script type='text/javascript'>
                     var bundle_checkout_amount = 100;
+
                 </script>
                 <div class="pwyw-amount btn-group" data-toggle="buttons-radio">
-                    <button  value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_1; ?></button>
+                    <button  value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn btn-info active">$<?=$bundle['bundle']->suggested_val_1; ?></button>
                     <button  value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_2; ?></button>
                     <button value="<?=$bundle['bundle']->suggested_val_3; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_3; ?></button>
                     <button id="custom_price" value="<?=$bundle['bundle']->pwyw_val; ?>" class=" btn btn-info">Custom</button>
