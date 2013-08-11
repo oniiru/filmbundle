@@ -109,6 +109,8 @@
 			<form method="get" id="searchform" action="<?php echo home_url();?>">
 			<div class="header_search"><div class="search_zoom search_btn"></div> <input id="s" name="s"   type="text" placeholder="<?php _e('Type & hit enter to search','presslayer');?>" class="search_box" /> </div>	</form>	
 		</div>	
+		<?php if ( dynamic_sidebar('home_left_1') ) : else : endif; ?>
+		
 	</div><!-- #header -->
 	
 
