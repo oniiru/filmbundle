@@ -29,6 +29,18 @@
         </div>
         <div class='pwyw-contributor-section'>
             <ol class='contributor-left'>
+                <?php
+                // Prepare
+                $contributors = array();
+                foreach ($bundle['top'] as $contributor) {
+                    $contributors[] = "<li>{$contributor->display_name} <span class='pull-right'>\${$contributor->amount}</span></li>";
+                }
+
+                // First column
+                for ($i=0; $i<0; $i++) {
+                    echo '<li>test</li>';
+                }
+                ?>
                 <li>foobar <span class='pull-right'>$232.23</span></li>
                 <li>foobar <span class='pull-right'>$232.23</span></li>
                 <li>foobar <span class='pull-right'>$232.23</span></li>
@@ -48,6 +60,30 @@
 
     </div>
 </div>
+
+
+
+            <div class="statsbox">
+
+                <div class="statsmiddle">
+                    <h3>Top Contributors:</h3>
+<!--                    <ul>-->
+                        <?php
+                            $j = 1;
+                            if(isset($pwyw_data['top'])&&!empty($pwyw_data['top'])): ?>
+                                <table>
+                               <?php foreach($pwyw_data['top'] as $user):?>
+                                    <tr><td><?php echo $j?>. <?php echo $user->display_name ?> </td><td> <span class="top_price">$<?php echo $user->amount?></span></td></tr>
+                            <?php $j++;
+                                 endforeach; ?>
+                                   </table> 
+                            <?php endif;
+                             ?>
+<!--                    </ul>-->
+                </div>
+            </div>
+
+
 
 <div class='pwyw-checkout'>
     <h2>Purchase the Bundle</h2>
@@ -250,25 +286,7 @@ jQuery(document).ready(function($) {
         </div>
 
         <div class="content2">
-            <div class="statsbox">
 
-                <div class="statsmiddle">
-                    <h3>Top Contributors:</h3>
-<!--                    <ul>-->
-                        <?php
-                            $j = 1;
-                            if(isset($pwyw_data['top'])&&!empty($pwyw_data['top'])): ?>
-                                <table>
-                               <?php foreach($pwyw_data['top'] as $user):?>
-                                    <tr><td><?php echo $j?>. <?php echo $user->display_name ?> </td><td> <span class="top_price">$<?php echo $user->amount?></span></td></tr>
-                            <?php $j++;
-                                 endforeach; ?>
-                                   </table> 
-                            <?php endif;
-                             ?>
-<!--                    </ul>-->
-                </div>
-            </div>
   
             <div class="step2">
                 <a href="#" class="btn btn-large btn-success"> Checkout </a>
