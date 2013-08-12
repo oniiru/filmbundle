@@ -19,6 +19,11 @@ class Pwyw
     /** Define plugin constants */
     const FILE = __FILE__;
 
+    /** Define PubNub setup */
+    const PUBNUB_SUBSCRIBE_KEY = 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe';
+    const PUBNUB_PUBLISH_KEY   = 'pub-c-3f69d611-264c-477e-a751-48ebc60048fe';
+    const PUBNUB_CHANNEL       = 'filmbundle';
+
     /** Singleton class */
     public static function getInstance()
     {
@@ -62,11 +67,12 @@ class Pwyw
         Pwyw_Widgets::getInstance();
 
         // Pubnub push! Remove when checkout hook is in place.
-        $subscribeKey = 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe';
-        $publishKey = 'pub-c-3f69d611-264c-477e-a751-48ebc60048fe';
-        $pubnub = new Pubnub_Pubnub($publishKey, $subscribeKey);
+        $pubnub = new Pubnub_Pubnub(
+            self::PUBNUB_PUBLISH_KEY,
+            self::PUBNUB_SUBSCRIBE_KEY
+        );
         $pubnub->publish(array(
-            'channel' => 'filmbundle',
+            'channel' => self::PUBNUB_CHANNEL,
             'message' => array( 
                 'price' => 'would go here',
                 'server' => php_uname('n'),
