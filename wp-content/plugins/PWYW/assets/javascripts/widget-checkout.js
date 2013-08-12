@@ -16,12 +16,14 @@ jQuery(document).ready(function($) {
         } else {
             $('.customshow').fadeOut('fast');
         }
+
+        handleAlerts(new_amount);
     });
 
     // Only allow numbers in the custom price field
     $('.pwyw-checkout .custompricefield').keypress(function(e) {
         var charCode = (e.which) ? e.which : e.keyCode;
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        if (charCode > 31 && (charCode < 46 || charCode > 57)) {
             return false;
         }
     });
@@ -31,6 +33,7 @@ jQuery(document).ready(function($) {
         var new_amount = $(this).val();
         $('.pwyw-amount button#custom_price').val(new_amount);
         updateSliders('linked3', 'percent', new_amount, bundle_checkout_amount);
+        handleAlerts(new_amount);
     });
 
 
@@ -185,4 +188,84 @@ jQuery(document).ready(function($) {
         placement: 'top',
         html: true
     });
+
+
+    // Alerts
+    // -------------------------------------------------------------------------
+    function handleAlerts(amount)
+    {
+        if(amount == null){
+            amount = parseFloat($('.custompricefield').val());
+        }
+
+        // Prepare variables
+        avg_price = parseFloat(avg_price);
+        min_amount = parseFloat(min_amount);
+
+        var top_count = 10;
+        if(typeof(bundle.top)!='undefined'){
+            top_count = bundle.top.length;
+        }
+   
+        if ((top_count==10&&amount>min_amount)||(top_count<10&&amount>=0.01)) {
+            $('.leaderboardinput:hidden').fadeIn('slow');
+            if(amount>avg_price){
+               $('.lowpaymentwarning:visible').hide();
+            }
+            $('.nozero:visible').hide();
+        }
+
+        if((amount < avg_price)&& (amount > 0.00)){
+            difference = number_format(avg_price - amount + 0.01,2);
+            $('#difference').html(difference);
+            $('.lowpaymentwarning:hidden').fadeIn('slow');
+            if((top_count==10&&amount<=min_amount)){
+                $('.leaderboardinput:visible').hide();
+            }
+            $('.nozero:visible').hide()
+        }
+
+        if(amount < 0.01) {
+            $('.leaderboardinput:visible').hide();
+            $('.lowpaymentwarning:visible').hide();
+            $('.nozero:hidden').fadeIn('slow');
+        }
+    }
+
+    // Format a number with grouped thousands
+    //
+    // +   original by: Jonas Raoni Soares Silva (http://www.jsfromhell.com)
+    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+    // +     bugfix by: Michael White (http://crestidg.com)
+    function number_format(number, decimals, dec_point, thousands_sep)
+    {
+        var i, j, kw, kd, km;
+
+        // input sanitation & defaults
+        if( isNaN(decimals = Math.abs(decimals)) ){
+            decimals = 2;
+        }
+        if( dec_point == undefined ){
+            dec_point = ".";
+        }
+        if( thousands_sep == undefined ){
+            thousands_sep = ".";
+        }
+
+        i = parseInt(number = (+number || 0).toFixed(decimals)) + "";
+
+        if( (j = i.length) > 3 ){
+            j = j % 3;
+        } else{
+            j = 0;
+        }
+
+        km = (j ? i.substr(0, j) + thousands_sep : "");
+        kw = i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands_sep);
+        //kd = (decimals ? dec_point + Math.abs(number - i).toFixed(decimals).slice(2) : "");
+        kd = (decimals ? dec_point + Math.abs(number - i).toFixed(decimals).replace(/-/, 0).slice(2) : "");
+
+        return km + kw + kd;
+    }
+
 });

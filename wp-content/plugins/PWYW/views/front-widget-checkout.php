@@ -1,3 +1,21 @@
+<script type='text/javascript'>
+    /** Global variables */
+    var bundle = <?php echo json_encode($bundle); ?>;
+    var min_amount;
+    var avg_price;
+
+    if (bundle.payment_info == null) {
+       min_amount = 0;
+    } else {
+       min_amount = parseFloat(bundle.min_amount);
+    }
+
+    if (bundle.payment_info == null) {
+        avg_price = 0;
+    } else {
+        avg_price =  parseFloat(bundle.payment_info.avg_price);
+    }
+</script>
 <div id='pwyw-checkout-widget' class='pwyw-stats'>
     <div class='pwyw-stats-wrap'>
 
@@ -76,12 +94,14 @@
     <p>Complete the purchase below and these amazing films are all yours!</p>
 
     <ol>
+        <!-- ===================================================================
+        || Amount buttons
+        ==================================================================== -->
         <li>
             <p>Choose how much the bundle is worth to you.</p>
             <p>
                 <script type='text/javascript'>
                     var bundle_checkout_amount = 100;
-
                 </script>
                 <div class="pwyw-amount btn-group" data-toggle="buttons-radio">
                     <button  value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn btn-info active">$<?=$bundle['bundle']->suggested_val_1; ?></button>
@@ -98,8 +118,33 @@
                     />
                 </div>
             </p>
+
+            <div class="alertboxes">
+                <div class="lowpaymentwarning alert alert-error" style="display:none">
+                    Pay only <b id="difference"></b> more to unlock the bonus films. Come on, help some starving filmmakers out. ;)
+                </div>
+
+                <div class="leaderboardinput alert alert-success" style="display:none">
+                    <b>You Rock!</b> This amount makes you one of the top contributors. Enter your
+                    <div class="input-prepend">
+                        <span class="add-on">@</span>
+                        <input placeholder="twitterhandle" type="text" style="width: 200px;">
+                    </div>
+                    or any<br/>
+                    <input placeholder="username" type="text" style="width: 200px;">
+                    to be added on our top contributor board.
+                </div>
+
+                <div class="nozero alert alert-error" style="display:none">
+                    We're all about paying what you want, but we've got to draw the line somewhere. Please pay at least $0.01. :)
+                </div>
+            </div> 
         </li>
 
+
+        <!-- ===================================================================
+        || Sliders
+        ==================================================================== -->
         <li>
             <p>Where would you like your contribution to go?</p>
 
@@ -184,15 +229,6 @@
 
 
 
-            <div class="alertboxes">
-                <div class="lowpaymentwarning alert alert-error" style="display:none">Pay only <b id="difference"></b> more to unlock the bonus films. Come on, help some starving filmmakers out. ;)
-                </div>
-                <div class="leaderboardinput alert alert-success" style="display:none"><b>You Rock!</b> This amount makes you one of the top contributors. Enter your   
-                     <span class="add-on">@</span><input class="span2" id="PrependedInput" placeholder="twitterhandle" type="text"> or any <input  class="span2" placeholder="username" type="text"> to be added on our top contributor board.
-                </div>
-                <div class="nozero alert alert-error" style="display:none">We're all about paying what you want, but we've got to draw the line somewhere. Please pay at least $0.01. :)
-                </div>
-            </div> 
 
 
 
@@ -210,22 +246,7 @@ jQuery(document).ready(function($) {
     var alias; 
     var user_alias,twitter_alias; 
 
-    pwyw_data = <?php echo json_encode($pwyw_data); ?>;
-    //console.log(pwyw_data);
-
-    var min_amount,avg_price;
     
-    if (pwyw_data.payment_info == null) {
-       min_amount = 0;
-    } else {
-       min_amount = parseFloat(pwyw_data.min_amount);
-    }
-
-    if(pwyw_data.payment_info == null){
-        avg_price = 0;
-    }else{
-        avg_price =  parseFloat(pwyw_data.payment_info.avg_price);
-    }
 
 /*
     $('.btn-success').click(function(){
