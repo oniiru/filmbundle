@@ -1,4 +1,4 @@
-<div class='pwyw-stats'>
+<div id='pwyw-checkout-widget' class='pwyw-stats'>
     <div class='pwyw-stats-wrap'>
 
         <!-- ===================================================================
@@ -178,6 +178,12 @@
 
 
 
+
+
+
+
+
+
             <div class="alertboxes">
                 <div class="lowpaymentwarning alert alert-error" style="display:none">Pay only <b id="difference"></b> more to unlock the bonus films. Come on, help some starving filmmakers out. ;)
                 </div>
@@ -221,6 +227,7 @@ jQuery(document).ready(function($) {
         avg_price =  parseFloat(pwyw_data.payment_info.avg_price);
     }
 
+/*
     $('.btn-success').click(function(){
         user_alias = $('input[placeholder="username"]').val();
         twit_alias = $('input[placeholder="twitterhandle"]').val();
@@ -254,6 +261,8 @@ jQuery(document).ready(function($) {
           $('#bundle_checkout').submit();
           return false;  
     });
+*/
+
 });
 </script>
 

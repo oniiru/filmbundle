@@ -5,7 +5,7 @@
             <?php echo $bundle->description; ?>
         </p>
         <div class='pwyw-purchase'>
-            <a href='#' class='btn btn-large btn-success'>Purchase</a>
+            <a id='pwyw-purchase-button' class='btn btn-large btn-success'>Purchase</a>
             <div class='pwyw-countdown'>
                 <div class='remaining'>Time Remaining</div>
                 <?php
