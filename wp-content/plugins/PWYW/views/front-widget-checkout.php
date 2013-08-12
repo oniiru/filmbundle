@@ -1,5 +1,9 @@
 <div class='pwyw-stats'>
     <div class='pwyw-stats-wrap'>
+
+        <!-- ===================================================================
+        || Display of generic statistics
+        ==================================================================== -->
         <div class='pwyw-stats-section'>
             <div class='pwyw-stats-title-section'>
                 <h3>The Stats</h3>
@@ -17,6 +21,20 @@
 
         <hr />
         
+        <!-- ===================================================================
+        || List of Top Contributors
+        ==================================================================== -->
+        <?php
+        // Prepare
+        $contributors = array();
+        foreach ($bundle['top'] as $contributor) {
+            if ($contributor->amount == '-') {
+                $contributors[] = "<li>{$contributor->display_name}</li>";
+            } else {
+                $contributors[] = "<li>{$contributor->display_name} <span class='pull-right'>\${$contributor->amount}</span></li>";
+            }
+        }
+        ?>
         <div class='pwyw-contributor-section'>
             <div class='pwyw-stats-title-section'>
                 <h3>Top Contributors</h3>
@@ -30,31 +48,19 @@
         <div class='pwyw-contributor-section'>
             <ol class='contributor-left'>
                 <?php
-                // Prepare
-                $contributors = array();
-                foreach ($bundle['top'] as $contributor) {
-                    $contributors[] = "<li>{$contributor->display_name} <span class='pull-right'>\${$contributor->amount}</span></li>";
-                }
-
-                // First column
-                for ($i=0; $i<0; $i++) {
-                    echo '<li>test</li>';
+                for ($i = 0; $i < 5; $i++) {
+                    echo $contributors[$i];
                 }
                 ?>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
             </ol>
         </div>
         <div class='pwyw-contributor-section'>
             <ol start='6' class='contributor-right'>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
-                <li>foobar <span class='pull-right'>$232.23</span></li>
+                <?php
+                for ($i = 5; $i < 10; $i++) {
+                    echo $contributors[$i];
+                }
+                ?>
             </ol>
         </div>
 
@@ -62,29 +68,9 @@
 </div>
 
 
-
-            <div class="statsbox">
-
-                <div class="statsmiddle">
-                    <h3>Top Contributors:</h3>
-<!--                    <ul>-->
-                        <?php
-                            $j = 1;
-                            if(isset($pwyw_data['top'])&&!empty($pwyw_data['top'])): ?>
-                                <table>
-                               <?php foreach($pwyw_data['top'] as $user):?>
-                                    <tr><td><?php echo $j?>. <?php echo $user->display_name ?> </td><td> <span class="top_price">$<?php echo $user->amount?></span></td></tr>
-                            <?php $j++;
-                                 endforeach; ?>
-                                   </table> 
-                            <?php endif;
-                             ?>
-<!--                    </ul>-->
-                </div>
-            </div>
-
-
-
+<!-- ===========================================================================
+|| Checkout section
+============================================================================ -->
 <div class='pwyw-checkout'>
     <h2>Purchase the Bundle</h2>
     <p>Complete the purchase below and these amazing films are all yours!</p>
