@@ -5,7 +5,8 @@ jQuery(document).ready(function($) {
     $('.customshow').hide();
     $('.pwyw-amount button').click(function() {
 
-        updateSliders($(this).val());
+        var new_amount = $(this).val();
+        updateSliders('linked3', 'percent', new_amount, bundle_checkout_amount);
 
         if ($(this).attr('id') == 'custom_price') {
             $('.customshow').fadeIn('fast');
@@ -26,21 +27,21 @@ jQuery(document).ready(function($) {
     $('.pwyw-checkout .custompricefield').change(function() {
         var new_amount = $(this).val();
         $('.pwyw-amount button#custom_price').val(new_amount);
-        updateSliders(new_amount);
+        updateSliders('linked3', 'percent', new_amount, bundle_checkout_amount);
     });
 
 
     // Sliders
     // -------------------------------------------------------------------------
-
-    function updateSliders(new_amount)
+    var init_sliders = true;
+    function updateSliders(slider_class, input_class, new_amount, old_amount)
     {
         // Convert to a number, as linkedsliders gets problem otherwise
         new_amount = Math.floor(new_amount);
 
-        $('div.linked3').linkedSliders('destroy');
+        // Get rid of the current sliders, so we can calc new options
+        $('div.'+slider_class).linkedSliders('destroy');
 
-        var input_class = 'percent';
         $('.'+input_class).each(function(){
             // Recalc the values
             var id = $(this).attr('id').match(/(.+)_inp/)[1];
@@ -48,16 +49,42 @@ jQuery(document).ready(function($) {
 
             // Old values percentage of old amount
             var old_value = $(this).val();
-            var percentage = old_value / bundle_checkout_amount;
+            var percentage = old_value / old_amount;
 
             // New value based on new amount and the percentage
             var new_value = percentage * new_amount;
             slider.attr('value', new_value);
+
+            // Update eventual subsliders
+            if (init_sliders) {
+                old_value = 100;
+                init_sliders = false;
+            }
+            if ($(this).attr('id') == 'filmmakers_inp') {
+                updateSliders(
+                    'sub_filmmakers',
+                    'filmmakers_percent',
+                    new_value,
+                    old_value
+                );
+            }
+            if ($(this).attr('id') == 'charities_inp') {
+                updateSliders(
+                    'sub_charities',
+                    'charities_percent',
+                    new_value,
+                    old_value
+                );
+            }
         });
 
-        bundle_checkout_amount = new_amount;
+        // If it's the main sliders, updated the checkout amount
+        if (slider_class == 'linked3') {
+            bundle_checkout_amount = new_amount;
+        }
 
-        setSliderHandlers('linked3', 'percent', new_amount);
+        // Recreate the sliders with the new settings
+        setSliderHandlers(slider_class, input_class, new_amount);
     }
 
 
@@ -73,10 +100,48 @@ jQuery(document).ready(function($) {
             {change: function(event, ui) {
                 var id = $(this).attr('id').match(/slider_(.+)/)[1];
                 $('#'+id+'_inp').val($(this).slider('value'));
+
+                var old_value = $('#'+id+'_inp').val();
+                var new_value = $(this).slider('value');
+                if (id == 'filmmakers') {
+                    updateSliders(
+                        'sub_filmmakers',
+                        'filmmakers_percent',
+                        new_value,
+                        old_value
+                    );
+                }
+                if (id == 'charities') {
+                    updateSliders(
+                        'sub_charities',
+                        'charities_percent',
+                        new_value,
+                        old_value
+                    );
+                }
             }},
             {slide: function(event, ui) {
                 var id = $(this).attr('id').match(/slider_(.+)/)[1];
                 $('#'+id+'_inp').val($(this).slider('value'));
+
+                var old_value = $('#'+id+'_inp').val();
+                var new_value = $(this).slider('value');
+                if (id == 'filmmakers') {
+                    updateSliders(
+                        'sub_filmmakers',
+                        'filmmakers_percent',
+                        new_value,
+                        old_value
+                    );
+                }
+                if (id == 'charities') {
+                    updateSliders(
+                        'sub_charities',
+                        'charities_percent',
+                        new_value,
+                        old_value
+                    );
+                }
             }
         });
 
@@ -97,20 +162,16 @@ jQuery(document).ready(function($) {
         });
 
         $('div.'+slider_class).linkedSliders({
-            total: max_val,      // The total for all the linked sliders
+            total: max_val,  // The total for all the linked sliders
             policy: 'next'   // Adjustment policy: 'next', 'prev', 'first', 'last', 'all'
         });
 
     }
 
-    setSliderHandlers('linked3', 'percent', 100);
-    setSliderHandlers('sub_charities','charities_percent', 100);
-    setSliderHandlers('sub_filmmakers','filmmakers_percent', 100);
-
     // Set initial amount
     var new_amount = $('.pwyw-amount button').first().val();
     new_amount = Math.floor(new_amount);
-    updateSliders(new_amount);
+    updateSliders('linked3', 'percent', new_amount, bundle_checkout_amount);
 
     // Handle the dive deeper buttons
     $('.dive-deeper').click(function() {
@@ -121,13 +182,4 @@ jQuery(document).ready(function($) {
         placement: 'top',
         html: true
     });
-
-    function updateSliderTotalAmount(slider_class, amount) {
-        console.log(amount);
-
-        $('div.'+slider_class).linkedSliders({
-            total: 200,
-            policy: 'next'
-        });
-    }
 });
