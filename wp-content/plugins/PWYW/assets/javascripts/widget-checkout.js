@@ -1,8 +1,11 @@
 jQuery(document).ready(function($) {
 
+    // Hide elements that can be revealed later
+    $('.customshow').hide();
+    $('[id^=dive-]').hide();
+
     // Amount buttons
     // -------------------------------------------------------------------------
-    $('.customshow').hide();
     $('.pwyw-amount button').click(function() {
 
         var new_amount = $(this).val();
