@@ -452,17 +452,36 @@ class Pwyw
 
             $amount_q = "(SELECT SUM(`sum`) FROM  {$this->payment_info} WHERE cid = cu.`ID` AND `bundle` = {$pwyw_bundle->id})";
 
-            $pwyw_top_contr = $wpdb->get_results("SELECT DISTINCT p.`cid`,cu.`display_name`,{$amount_q} amount,u.`alias`,u.`is_twitter`  FROM `wp_users` cu
-                                                        RIGHT JOIN {$this->payment_info} p ON cu.`ID` = p.`cid`
-                                                        LEFT JOIN {$this->users} u ON cu.`ID` = u.`cid`
-                                                        WHERE p.`bundle` = {$pwyw_bundle->id}
-                                                        GROUP BY p.`cid`
-                                                        ORDER BY amount DESC LIMIT 10");
+            /**
+             * Database table structure for customers / payments / orders
+             *
+             * payment_info: the main table. an entry here is used as-is. cid
+             *               column is a foreign key for wp_users (hardcoded
+             *               it seems).
+             * customers:    if an entry exists in this column, it overrides the
+             *               displayname provided by wp_users. This is optional
+             *               but are probably created on each new user (will
+             *               look more into that during the order process).
+             *               cid column is a foreign key for wp_users.
+             */
+            $pwyw_top_contr = $wpdb->get_results(
+                "SELECT DISTINCT p.`cid`,cu.`display_name`,{$amount_q} amount,u.`alias`,u.`is_twitter`
+                 FROM `wp_users` cu
+                 RIGHT JOIN {$this->payment_info} p ON cu.`ID` = p.`cid`
+                 LEFT JOIN {$this->users} u ON cu.`ID` = u.`cid`
+                 WHERE p.`bundle` = {$pwyw_bundle->id}
+                 GROUP BY p.`cid`
+                 ORDER BY amount DESC LIMIT 10"
+            );
 
             foreach ($pwyw_top_contr as $top) {
                 if (!empty($top->alias)) {
                     if ($top->is_twitter) {
-                        $top->display_name = sprintf('<a target="_blank" href="http://twitter.com/%s">@%s</a>', $top->alias, $top->alias);
+                        $top->display_name = sprintf(
+                            '<a target="_blank" href="%s">@%s</a>',
+                            'http://twitter.com/'.$top->alias,
+                            $top->alias
+                        );
                     } else {
                         $top->display_name = $top->alias;
                     }
