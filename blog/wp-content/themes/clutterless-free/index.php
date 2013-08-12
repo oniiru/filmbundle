@@ -4,10 +4,10 @@
 
 <div class="leftthing">
  <div class="inner-leftthing">
-	 <h1>FilmBundle Blog </h1>
+	 <a href="http://filmbundle.com/blog"><h1>FilmBundle Blog </h1>
 	 <h2> Ramblings about the state of film and home of FilmBundle.TV </h2>
 	 <a class="indexbutton1" href="http://filmbundle.tv"> Watch FilmBundle.TV </a>
-	 <a class="indexbutton2" href="http://filmbundle.tv"> Back to FilmBundle </a>
+	 <a class="indexbutton2" href="http://filmbundle.com"> Back to FilmBundle </a>
 		
  </div>
 </div>
