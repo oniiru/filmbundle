@@ -389,23 +389,6 @@ jQuery(document).ready(function($) {
 ?>
 
 <h2>Pubnub test</h2>
-<script type="text/javascript" >
-jQuery(document).ready(function($) {
-    var pubnub = $.PUBNUB.init({
-        subscribe_key : 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe'
-    });
-
-    pubnub.subscribe({
-        channel : 'filmbundle',
-        message : function(m){
-            console.log(m);
-            $('#pubnub-server').text(m.server);
-            $('#pubnub-time').text(m.server_time);
-        }
-    });
-});
-</script>
-
 <p>Latest pubnub update<br/>
 <em>(refresh any page in admin, for a new pubhub to be pushed)</em><br/>
 From server: <span id='pubnub-server'></span><br/>

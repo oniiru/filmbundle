@@ -1,8 +1,26 @@
 jQuery(document).ready(function($) {
 
     // Hide elements that can be revealed later
+    // -------------------------------------------------------------------------
     $('.customshow').hide();
     $('[id^=dive-]').hide();
+
+
+    // PubNub handling
+    // -------------------------------------------------------------------------
+    var pubnub = $.PUBNUB.init({
+        subscribe_key : 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe'
+    });
+
+    pubnub.subscribe({
+        channel : 'filmbundle',
+        message : function(m){
+            console.log(m);
+            $('#pubnub-server').text(m.server);
+            $('#pubnub-time').text(m.server_time);
+        }
+    });
+
 
     // Amount buttons
     // -------------------------------------------------------------------------
@@ -267,5 +285,4 @@ jQuery(document).ready(function($) {
 
         return km + kw + kd;
     }
-
 });
