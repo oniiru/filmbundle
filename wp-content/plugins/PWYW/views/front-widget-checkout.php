@@ -46,11 +46,7 @@
         // Prepare
         $contributors = array();
         foreach ($bundle['top'] as $contributor) {
-            if ($contributor->amount == '-') {
-                $contributors[] = "<li>{$contributor->display_name}</li>";
-            } else {
-                $contributors[] = "<li>{$contributor->display_name} <span class='pull-right'>\${$contributor->amount}</span></li>";
-            }
+            $contributors[] = "<li>{$contributor->display_name} <span class='pull-right'>\${$contributor->amount}</span></li>";
         }
         ?>
         <div class='pwyw-contributor-section'>
@@ -380,6 +376,17 @@ jQuery(document).ready(function($) {
 
 
 <h1>Checkout out widget</h1>
+
+<?php
+/*
+    vid en pubnub, uppdatera
+    var bundle = <?php echo json_encode($bundle); ?>;
+
+    // används av alerts.
+    var min_amount;
+    var avg_price;
+*/
+?>
 
 <h2>Pubnub test</h2>
 <script src='http://cdn.pubnub.com/pubnub-3.5.3.min.js'></script>

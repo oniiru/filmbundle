@@ -494,19 +494,6 @@ class Pwyw
             }
         }
 
-        // If we don't have 10 contributors yet, fill up the remaining spots
-        // with placeholders.
-        if (count($pwyw_top_contr) < 10) {
-            $dummy = new stdClass;
-            $dummy->display_name = $dummy->alias = '-';
-            $dummy->amount = '-';
-            $dummy->is_twitter = false;
-            $missing = 10 - count($pwyw_top_contr);
-            for ($i = 0; $i < $missing; $i++) {
-                $pwyw_top_contr[] = $dummy;
-            }
-        }
-
         $pwyw_categoriees = $wpdb->get_results($sql);
 
         foreach ($pwyw_categoriees as $category) {
