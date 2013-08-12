@@ -322,4 +322,4 @@ class FilmBundleBlog_ThemeFunctions
 	include_once 'metaboxes/select-spec.php';
 
 	/* eof */
-	
+	add_filter( 'pre_user_description', 'wp_filter_post_kses' );
