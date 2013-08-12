@@ -389,7 +389,6 @@ jQuery(document).ready(function($) {
 ?>
 
 <h2>Pubnub test</h2>
-<script src='http://cdn.pubnub.com/pubnub-3.5.3.min.js'></script>
 <script type="text/javascript" >
 jQuery(document).ready(function($) {
     var pubnub = $.PUBNUB.init({

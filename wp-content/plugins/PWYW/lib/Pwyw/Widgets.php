@@ -63,6 +63,14 @@ class Pwyw_Widgets
         );
 
         wp_register_script(
+            'pubnub',
+            'http://cdn.pubnub.com/pubnub-3.5.3.min.js',
+            array(), 
+            '3.5.3',
+            true
+        );
+
+        wp_register_script(
             'linked-sliders',
             plugins_url('/assets/javascripts/jquery.linkedsliders.js', Pwyw::FILE),
             array('jquery', 'jquery-ui-core', 'jquery-ui-slider'), 
@@ -73,7 +81,7 @@ class Pwyw_Widgets
         wp_enqueue_script(
             'pwyw-widget-checkout',
             plugins_url('/assets/javascripts/widget-checkout.js', Pwyw::FILE),
-            array('linked-sliders'),
+            array('pubnub', 'linked-sliders'),
             self::SCRIPT_VERSIONS,
             true
         );
