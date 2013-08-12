@@ -1,5 +1,10 @@
 jQuery(document).ready(function($) {
 
+    /** PubNub Setup */
+    var pubnub_subscribe_key = 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe';
+    var pubnub_channel       = 'filmbundle';
+
+
     // Hide elements that can be revealed later
     // -------------------------------------------------------------------------
     $('.customshow').hide();
@@ -9,11 +14,11 @@ jQuery(document).ready(function($) {
     // PubNub handling
     // -------------------------------------------------------------------------
     var pubnub = $.PUBNUB.init({
-        subscribe_key : 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe'
+        subscribe_key : pubnub_subscribe_key
     });
 
     pubnub.subscribe({
-        channel : 'filmbundle',
+        channel : pubnub_channel,
         message : function(m){
             console.log(m);
             $('#pubnub-server').text(m.server);
