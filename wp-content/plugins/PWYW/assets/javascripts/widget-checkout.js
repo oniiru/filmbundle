@@ -21,8 +21,8 @@ jQuery(document).ready(function($) {
         channel : pubnub_channel,
         message : function(m){
             console.log(m);
-            $('#pubnub-server').text(m.server);
-            $('#pubnub-time').text(m.server_time);
+            // $('#pubnub-server').text(m.server);
+            // $('#pubnub-time').text(m.server_time);
         }
     });
 

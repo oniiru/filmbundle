@@ -914,14 +914,20 @@ class Pwyw
             self::PUBNUB_PUBLISH_KEY,
             self::PUBNUB_SUBSCRIBE_KEY
         );
-        $pubnub->publish(array(
-            'channel' => self::PUBNUB_CHANNEL,
-            'message' => array( 
-                'price' => 'would go here',
-                'server' => php_uname('n'),
-                'server_time' => date('Y-m-d H:i:s')
+
+        $data = Pwyw_WidgetCheckout::makeData();
+        $pubnub->publish(
+            array(
+                'channel' => self::PUBNUB_CHANNEL,
+                'message' => array(
+                    'totalSales'    => $data['totalSales'],
+                    'averagePrice'  => $data['averagePrice'],
+                    'totalPayments' => $data['totalPayments'],
+                    'server'        => php_uname('n'),
+                    'server_time'   => date('Y-m-d H:i:s')
+                )
             )
-        ));
+        );
     }
 }
 
