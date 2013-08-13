@@ -910,7 +910,15 @@ class Pwyw
             wp_die('You do not have permission to access this page.');
         }
 
-        echo Pwyw_View::make('admin-pubnub');
+        if ($_POST['submit']) {
+            $published = true;
+        }
+
+        $data = array(
+            'published' => isset($published) ? true : false
+        );
+
+        echo Pwyw_View::make('admin-pubnub', $data);
     }
 }
 
