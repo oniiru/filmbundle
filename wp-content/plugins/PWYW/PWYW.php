@@ -65,20 +65,6 @@ class Pwyw
         Pwyw_Films::instance();
         Pwyw_Widgets::getInstance();
 
-        // Pubnub push! Remove when checkout hook is in place.
-        $pubnub = new Pubnub_Pubnub(
-            self::PUBNUB_PUBLISH_KEY,
-            self::PUBNUB_SUBSCRIBE_KEY
-        );
-        $pubnub->publish(array(
-            'channel' => self::PUBNUB_CHANNEL,
-            'message' => array( 
-                'price' => 'would go here',
-                'server' => php_uname('n'),
-                'server_time' => date('Y-m-d H:i:s')
-            )
-        ));
-
         // edd hook test
         // add_action('edd_add_to_cart', array(&$this, 'test'), 5);
         add_filter('edd_get_download_price', array(&$this, 'test'));
@@ -911,6 +897,7 @@ class Pwyw
         }
 
         if ($_POST['submit']) {
+            $this->pubNubPublish();
             $published = true;
         }
 
@@ -919,6 +906,22 @@ class Pwyw
         );
 
         echo Pwyw_View::make('admin-pubnub', $data);
+    }
+
+    public function pubNubPublish()
+    {
+        $pubnub = new Pubnub_Pubnub(
+            self::PUBNUB_PUBLISH_KEY,
+            self::PUBNUB_SUBSCRIBE_KEY
+        );
+        $pubnub->publish(array(
+            'channel' => self::PUBNUB_CHANNEL,
+            'message' => array( 
+                'price' => 'would go here',
+                'server' => php_uname('n'),
+                'server_time' => date('Y-m-d H:i:s')
+            )
+        ));
     }
 }
 
