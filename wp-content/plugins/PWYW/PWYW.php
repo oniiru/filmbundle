@@ -916,7 +916,7 @@ class Pwyw
     // -------------------------------------------------------------------------
     public function pubNubSettings()
     {
-        echo 'here';
+        echo Pwyw_View::make('admin-pubnub');
     }
 }
 add_action('plugins_loaded', array('Pwyw', 'getInstance'));
