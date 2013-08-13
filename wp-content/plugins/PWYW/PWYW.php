@@ -278,7 +278,7 @@ class Pwyw
         Pwyw_Database::dropTables();
     }
 
-    function PWYW_menu_pages()
+    public function PWYW_menu_pages()
     {
         // Add the top-level admin menu
         $page_title = 'PWYW Settings';
@@ -286,18 +286,49 @@ class Pwyw
         $capability = 'manage_options';
         $menu_slug = 'PWYW-settings';
 
-        add_menu_page($page_title, $menu_title, $capability, $menu_slug, array(&$this, 'pwyw_settings'));
+        add_menu_page(
+            $page_title,
+            $menu_title,
+            $capability,
+            $menu_slug,
+            array(&$this, 'pwyw_settings')
+        );
 
         // Add submenu page with same slug as parent to ensure no duplicates
         $sub_menu_title = 'PWYW Settings';
-        add_submenu_page($menu_slug, $page_title, $sub_menu_title, $capability, $menu_slug, array(&$this, 'pwyw_settings'));
+        add_submenu_page(
+            $menu_slug,
+            $page_title,
+            $sub_menu_title,
+            $capability,
+            $menu_slug,
+            array(&$this, 'pwyw_settings')
+        );
 
         // Now add the submenu page for Help
         $submenu_page_title = 'Customers';
         $submenu_title = 'Customers';
         $submenu_slug = 'PWYW-customers';
         $submenu_function = 'pwyw_customers';
-        add_submenu_page($menu_slug, $submenu_page_title, $submenu_title, $capability, $submenu_slug, array(&$this, $submenu_function));
+
+        add_submenu_page(
+            $menu_slug,
+            $submenu_page_title,
+            $submenu_title,
+            $capability,
+            $submenu_slug,
+            array(&$this, $submenu_function)
+        );
+
+        // Let's add a page for some manual PubNub control
+        add_submenu_page(
+            $menu_slug,
+            'PubNub',
+            'PubNub',
+            $capability,
+            'PWYW-pubnub',
+            array(&$this, 'pubNubSettings')
+        );
     }
 
     function pwyw_settings()
@@ -878,6 +909,14 @@ class Pwyw
             <?php
             $PWYWListTable->display();
         }
+    }
+
+    // -------------------------------------------------------------------------
+    // PubNub handling
+    // -------------------------------------------------------------------------
+    public function pubNubSettings()
+    {
+        echo 'here';
     }
 }
 add_action('plugins_loaded', array('Pwyw', 'getInstance'));
