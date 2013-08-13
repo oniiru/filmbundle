@@ -914,10 +914,21 @@ class Pwyw
     // -------------------------------------------------------------------------
     // PubNub handling
     // -------------------------------------------------------------------------
+
+    /**
+     * Initialize the PubNub Admin view.
+     *
+     * @return void
+     */
     public function pubNubSettings()
     {
+        if (!current_user_can('manage_options')) {
+            wp_die('You do not have permission to access this page.');
+        }
+
         echo Pwyw_View::make('admin-pubnub');
     }
 }
+
 add_action('plugins_loaded', array('Pwyw', 'getInstance'));
 register_activation_hook(__FILE__, array('Pwyw', 'install'));
