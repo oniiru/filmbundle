@@ -49,7 +49,6 @@ class Pwyw
 
         add_action('admin_menu', array(&$this, 'PWYW_menu_pages'));
         add_action('pmpro_added_order', array(&$this, 'pwyw_add_payment'));
-        add_action('wp_ajax_pwyw_bundle_update', array(&$this, 'pwyw_bundle_update'));
 
         $this->plugin_url = trailingslashit(WP_PLUGIN_URL . '/' . dirname(plugin_basename(__FILE__)));
         $this->plugin_name = plugin_basename(__FILE__);
@@ -856,21 +855,6 @@ class Pwyw
         }
 
         $_SESSION['pwyw_bundle'] = '';
-    }
-
-    function pwyw_bundle_update()
-    {
-        if (check_ajax_referer('pwyw_ajax')) {
-            if (isset($_REQUEST['bid']) && (int) $_REQUEST['bid'] > 0) {
-
-                $pwyw_info = $this->pwyw_get_bundle_info($bid);
-                if (!empty($pwyw_info)) {
-                    echo json_encode($pwyw_info);
-                    exit;
-                }
-            }
-        }
-        echo 'ERROR';
     }
 
     function pwyw_customers()
