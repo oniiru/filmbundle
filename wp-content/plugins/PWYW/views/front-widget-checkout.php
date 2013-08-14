@@ -27,13 +27,13 @@
                 <h3>The Stats</h3>
             </div>
         </div><div class='pwyw-stats-section'>
-            <span class='value'><?php echo $totalSales; ?></span>
+            <span id='pwyw-total-sales' class='value'><?php echo $totalSales; ?></span>
             Number of Purchases
         </div><div class='pwyw-stats-section center'>
-            <span class='value'><?php echo $averagePrice; ?></span>
+            <span id='pwyw-average-price' class='value'><?php echo $averagePrice; ?></span>
             Average Purchase
         </div><div class='pwyw-stats-section right'>
-            <span class='value'><?php echo $totalPayments; ?></span>
+            <span id='pwyw-total-payments' class='value'><?php echo $totalPayments; ?></span>
             Total Payments
         </div>
 
@@ -46,7 +46,11 @@
         // Prepare
         $contributors = array();
         foreach ($bundle['top'] as $contributor) {
-            $contributors[] = "<li>{$contributor->display_name} <span class='pull-right'>\${$contributor->amount}</span></li>";
+            $contributors[] = "
+            <li>
+                {$contributor->display_name}
+                <span class='pull-right'>\${$contributor->amount}</span>
+            </li>";
         }
         ?>
         <div class='pwyw-contributor-section'>
