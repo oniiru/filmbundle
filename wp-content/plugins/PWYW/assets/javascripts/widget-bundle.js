@@ -9,6 +9,39 @@ jQuery(document).ready(function($) {
     /** Hold the easing method to use for animations */
     var easing = 'easeInOutSine';
 
+    /** PubNub Setup */
+    var pubnub_subscribe_key = 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe';
+    var pubnub_channel       = 'filmbundle';
+
+
+    // -------------------------------------------------------------------------
+    // PubNub handling
+    // -------------------------------------------------------------------------
+    var pubnub = $.PUBNUB.init({
+        subscribe_key : pubnub_subscribe_key
+    });
+
+    pubnub.subscribe({
+        channel : pubnub_channel,
+        message : function(m){
+            // console.log(m);
+
+            /** Update Global Variables */
+            var average = parseFloat(m.averagePrice).toFixed(2);
+
+            console.log(average);
+
+            /** Update the average price numbers */
+            // $('#pwyw-total-sales').text(m.totalSales);
+            // $('#pwyw-average-price').text(
+            //     '$'+
+            // );
+            // $('#pwyw-total-payments').text(
+            //     '$'+parseFloat(m.totalPayments).toFixed(2)
+            // );
+        }
+    });
+
 
     // -------------------------------------------------------------------------
     // Purchase button: Catch Clicks
