@@ -297,16 +297,7 @@ jQuery(document).ready(function($) {
                     <input type="hidden" name="_ajax_nonce" value="<?php echo $nonce ?>"/>
                     <input type="hidden" name="bid" value="<?php echo $pwyw_data['bundle']->id?>"/>
 
-        <div class="content1">
-        
-            <div class="shelf2">
-                <p class="averageprice">Pay more than the average of <span>$<?php echo !empty($pwyw_data['payment_info'])&&$pwyw_data['payment_info']->avg_price>0?number_format($pwyw_data['payment_info']->avg_price,2):'0.00' ?></span> to get these great films too!</p>
-            </div>
-        </div>
-
         <div class="content2">
-
-  
             <div class="step2">
                 <a href="#" class="btn btn-large btn-success"> Checkout </a>
             </div>
