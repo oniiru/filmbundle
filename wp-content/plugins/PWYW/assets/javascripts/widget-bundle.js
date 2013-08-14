@@ -26,19 +26,9 @@ jQuery(document).ready(function($) {
         message : function(m){
             // console.log(m);
 
-            /** Update Global Variables */
-            var average = parseFloat(m.averagePrice).toFixed(2);
-
-            console.log(average);
-
             /** Update the average price numbers */
-            // $('#pwyw-total-sales').text(m.totalSales);
-            // $('#pwyw-average-price').text(
-            //     '$'+
-            // );
-            // $('#pwyw-total-payments').text(
-            //     '$'+parseFloat(m.totalPayments).toFixed(2)
-            // );
+            var average = parseFloat(m.averagePrice).toFixed(2);
+            $('.pwyw-bundle .pwyw-average-amount').text('$'+average);
         }
     });
 
