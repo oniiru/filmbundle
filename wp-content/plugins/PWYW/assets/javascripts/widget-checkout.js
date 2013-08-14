@@ -20,8 +20,9 @@ jQuery(document).ready(function($) {
     pubnub.subscribe({
         channel : pubnub_channel,
         message : function(m){
-            console.log(m);
-            // Update the stats section
+            // console.log(m);
+
+            /** Update the stats section */
             $('#pwyw-total-sales').text(m.totalSales);
             $('#pwyw-average-price').text(
                 '$'+parseFloat(m.averagePrice).toFixed(2)
@@ -29,6 +30,27 @@ jQuery(document).ready(function($) {
             $('#pwyw-total-payments').text(
                 '$'+parseFloat(m.totalPayments).toFixed(2)
             );
+
+            /** Update top contributors */
+            // Prepare
+            var contributors = new Array();
+            for (var key in m.contributors) {
+                var item = "<li>{n} <span class='pull-right'>${a}</span></li>";
+                var name = m.contributors[key].name;
+                var amount = parseFloat(m.contributors[key].amount).toFixed(2);
+                item = item.replace('{n}', name);
+                item = item.replace('{a}', amount);
+                contributors.push(item);
+            }
+
+            // Populate
+            $('.pwyw-contributor-section ol').empty();
+            for (var i = 0; i < 5; i++) {
+                $('.pwyw-contributor-section ol.contributor-left').append(contributors[i]);
+            }
+            for (var i = 5; i < 10; i++) {
+                $('.pwyw-contributor-section ol.contributor-right').append(contributors[i]);
+            }
         }
     });
 
