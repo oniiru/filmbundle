@@ -915,14 +915,26 @@ class Pwyw
             self::PUBNUB_SUBSCRIBE_KEY
         );
 
-        $data = Pwyw_WidgetCheckout::makeData();
+        $data = $this->pwyw_get_bundle_info();
+
+        // Create a streamlined array of top contributors
+        $contributors = array();
+        foreach ($data['top'] as $contributor) {
+            $array = array(
+                'name' => $contributor->display_name,
+                'amount' => $contributor ->amount
+            );
+            $contributors[] = $array;
+        }
+
         $pubnub->publish(
             array(
                 'channel' => self::PUBNUB_CHANNEL,
                 'message' => array(
-                    'totalSales'    => $data['totalSales'],
-                    'averagePrice'  => $data['averagePrice'],
-                    'totalPayments' => $data['totalPayments'],
+                    'contributors'  => $contributors,
+                    'totalSales'    => $data['payment_info']->total_sales,
+                    'averagePrice'  => $data['payment_info']->avg_price,
+                    'totalPayments' => $data['payment_info']->total_payments,
                     'server'        => php_uname('n'),
                     'server_time'   => date('Y-m-d H:i:s')
                 )
@@ -931,5 +943,6 @@ class Pwyw
     }
 }
 
+// Go!
 add_action('plugins_loaded', array('Pwyw', 'getInstance'));
 register_activation_hook(__FILE__, array('Pwyw', 'install'));
