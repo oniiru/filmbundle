@@ -339,71 +339,9 @@ jQuery(document).ready(function($) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h1>Checkout out widget</h1>
-
-<?php
-/*
-    vid en pubnub, uppdatera
-    var bundle = <?php echo json_encode($bundle); ?>;
-
-    // används av alerts.
-    var min_amount;
-    var avg_price;
-*/
-?>
-
-<h2>Pubnub test</h2>
-<p>Latest pubnub update<br/>
-<em>(refresh any page in admin, for a new pubhub to be pushed)</em><br/>
-From server: <span id='pubnub-server'></span><br/>
-At server time: <span id='pubnub-time'></span><br/>
-</p>
-
 <p>
 <?php
 echo do_shortcode(
 '[purchase_link id="306" text="Purchase" style="button" color="blue"]');
 ?>
-
-
 </p>
