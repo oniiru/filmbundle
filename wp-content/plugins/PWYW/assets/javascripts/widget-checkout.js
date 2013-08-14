@@ -21,8 +21,14 @@ jQuery(document).ready(function($) {
         channel : pubnub_channel,
         message : function(m){
             console.log(m);
-            // $('#pubnub-server').text(m.server);
-            // $('#pubnub-time').text(m.server_time);
+            // Update the stats section
+            $('#pwyw-total-sales').text(m.totalSales);
+            $('#pwyw-average-price').text(
+                '$'+parseFloat(m.averagePrice).toFixed(2)
+            );
+            $('#pwyw-total-payments').text(
+                '$'+parseFloat(m.totalPayments).toFixed(2)
+            );
         }
     });
 
