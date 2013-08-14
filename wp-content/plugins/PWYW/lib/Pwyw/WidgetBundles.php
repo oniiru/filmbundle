@@ -56,11 +56,20 @@ class Pwyw_WidgetBundles extends WP_Widget
      */
     public function widget($args, $instance)
     {
+        // Bundle Film Data
         $bundles = Pwyw_Bundles::getInstance();
         $bundle = $bundles->getActiveBundle();
 
+        // Bundle Payment Data
+        $pwyw = Pwyw::getInstance();
+        $pwywData = $pwyw->pwyw_get_bundle_info();
+        $payment = $pwywData['payment_info'];
+        $averagePrice = isset($payment->avg_price) ? 
+                        number_format($payment->avg_price, 2) : '0.00';
+
         $data = array(
-            'bundle' => $bundle
+            'bundle' => $bundle,
+            'averagePrice' => $averagePrice
         );
 
         echo $before_widget;
