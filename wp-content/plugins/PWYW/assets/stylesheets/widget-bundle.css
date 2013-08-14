@@ -169,6 +169,16 @@
  *  FILM CONTENT
  * -------------------------------------------------------------------------- */
 /** Overview */
+.pwyw-beat-average {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.pwyw-average-amount {
+    font-weight: bold;
+    color: #dea242;
+    font-size: 1.2em;
+}
 .pwyw-dark-section .embed {
     float: left;
     width: 50%;
