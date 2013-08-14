@@ -125,7 +125,7 @@
             ?>
         </div>
         <div class='films'>
-        <?php
+            <?php
             // Build the row of above average films
             foreach ($bundle->films as $film) {
                 // Place the ones below average here
@@ -136,6 +136,12 @@
                 }
             }
             ?>
+
+            <div class='pay-more-text'>
+                Pay more than the<br/>average of 
+                <span class='pwyw-average-amount'><?php echo $averagePrice; ?></span>
+                to get<br/>these bonus films too!
+            </div>
         </div>
     </div>
 </div>
