@@ -2,6 +2,9 @@
 
     <!-- OVERVIEW -->
     <div class='pwyw-tab-overview'>
+        <?php if ($film->rating === 'above') { ?>
+        Beat the current average of <?php echo $averagePrice; ?> to get this amazing film with your purchase!
+        <?php } ?>
         <div class='pwyw-clearfix'>
             <div class='embed'>
                 <?php echo $film->embed; ?>
@@ -68,6 +71,7 @@
 
     <!-- SPECIAL FEATURES -->
     <div class='pwyw-tab-specialfeatures'>
+        Pay more than then the current average of <?php echo $averagePrice; ?> to get these great special features too!
         <?php
         foreach ($film->features as $feature) { ?>
             <div class='pwyw-special-feature'>

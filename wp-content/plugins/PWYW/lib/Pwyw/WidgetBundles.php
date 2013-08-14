@@ -69,7 +69,7 @@ class Pwyw_WidgetBundles extends WP_Widget
 
         $data = array(
             'bundle' => $bundle,
-            'averagePrice' => $averagePrice
+            'averagePrice' => '$'.$averagePrice
         );
 
         echo $before_widget;

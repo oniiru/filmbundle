@@ -65,7 +65,10 @@
                 <div class='pwyw-films'>
                     <?php
                     foreach ($bundle->films as $film) {
-                        $data = array('film' => $film);
+                        $data = array(
+                            'film' => $film,
+                            'averagePrice' => $averagePrice
+                        );
                         echo Pwyw_View::make('front-widget-film', $data);
                     }
                     ?>
