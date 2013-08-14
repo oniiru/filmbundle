@@ -69,7 +69,8 @@ class Pwyw_WidgetBundles extends WP_Widget
 
         $data = array(
             'bundle' => $bundle,
-            'averagePrice' => '$'.$averagePrice
+            'averagePrice' => '$'.$averagePrice,
+            'assetsUrl' => plugins_url('/assets/', Pwyw::FILE),
         );
 
         echo $before_widget;

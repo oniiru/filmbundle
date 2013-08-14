@@ -1,5 +1,5 @@
 <div class='pwyw-bundle'>
-    <div class='presentation'>
+    <div class='presentation pwyw-clearfix'>
         <h2><?php echo $bundle->title; ?></h2>
         <p class='description'>
             <?php echo $bundle->description; ?>
@@ -36,6 +36,9 @@
                 }
             }
             ?>
+        </div>
+        <div class='shelf-background'>
+            <img src='<?php echo $assetsUrl; ?>images/shelf-large.png' />
         </div>
     </div>
 
