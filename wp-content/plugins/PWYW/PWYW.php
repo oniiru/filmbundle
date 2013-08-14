@@ -932,6 +932,7 @@ class Pwyw
                 'channel' => self::PUBNUB_CHANNEL,
                 'message' => array(
                     'contributors'  => $contributors,
+                    'minAmount'     => $data['min_amount'],
                     'totalSales'    => $data['payment_info']->total_sales,
                     'averagePrice'  => $data['payment_info']->avg_price,
                     'totalPayments' => $data['payment_info']->total_payments,

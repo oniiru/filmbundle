@@ -22,6 +22,10 @@ jQuery(document).ready(function($) {
         message : function(m){
             // console.log(m);
 
+            /** Update Global Variables */
+            avg_price = parseFloat(m.averagePrice);
+            min_amount = parseFloat(m.minAmount);
+
             /** Update the stats section */
             $('#pwyw-total-sales').text(m.totalSales);
             $('#pwyw-average-price').text(
@@ -46,10 +50,14 @@ jQuery(document).ready(function($) {
             // Populate
             $('.pwyw-contributor-section ol').empty();
             for (var i = 0; i < 5; i++) {
-                $('.pwyw-contributor-section ol.contributor-left').append(contributors[i]);
+                $('.pwyw-contributor-section ol.contributor-left').append(
+                    contributors[i]
+                );
             }
             for (var i = 5; i < 10; i++) {
-                $('.pwyw-contributor-section ol.contributor-right').append(contributors[i]);
+                $('.pwyw-contributor-section ol.contributor-right').append(
+                    contributors[i]
+                );
             }
         }
     });
