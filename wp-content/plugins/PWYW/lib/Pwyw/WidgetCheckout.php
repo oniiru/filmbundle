@@ -54,20 +54,6 @@ class Pwyw_WidgetCheckout extends WP_Widget
      */
     public function widget($args, $instance)
     {
-        $data = $this->makeData();
-
-        echo $before_widget;
-        echo Pwyw_View::make('front-widget-checkout', $data);
-        echo $after_widget;
-    }
-
-    /**
-     * Prepares the bundle data neeeded for the checkout widget.
-     *
-     * @return array
-     */
-    public static function makeData()
-    {
         $pwyw = Pwyw::getInstance();
         $pwyw_data = $pwyw->pwyw_get_bundle_info();
         $payment = $pwyw_data['payment_info'];
@@ -87,6 +73,8 @@ class Pwyw_WidgetCheckout extends WP_Widget
             'totalPayments' => '$'.$totalPayments
         );
 
-        return $data;        
+        echo $before_widget;
+        echo Pwyw_View::make('front-widget-checkout', $data);
+        echo $after_widget;
     }
 }
