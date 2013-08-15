@@ -852,15 +852,14 @@ class Pwyw
             ?>
             <h2><?php echo get_admin_page_title(); ?></h2>
 
-
             <?php
             require_once( ABSPATH . 'wp-content/plugins/PWYW/customers.php' );
             $PWYWListTable = new PWYW_Customer_List_Table();
             $PWYWListTable->prepare_items();
             $PWYWListTable->payments = $this->get_all_payment_info();
             ?>
-            <script type="text/javascript">
-                $(function(){
+            <script type="text/javascript" >
+                jQuery(document).ready(function($) {
                     $('.payment_amount').live('click',function(){
 
                         var content = $(this).parents('td').find('.totalsbox').html();
