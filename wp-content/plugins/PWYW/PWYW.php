@@ -77,8 +77,9 @@ class Pwyw
 
     public function test($price)
     {
+        return $price;
         // var_dump($price);
-        return 50;
+        return 80;
         var_dump($id);
        // var_dump($id);
        // var_dump($options);
@@ -112,6 +113,69 @@ class Pwyw
         }
         $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
         require 'lib'.DIRECTORY_SEPARATOR.$fileName;
+    }
+
+
+    // -------------------------------------------------------------------------
+    // PubNub handling
+    // -------------------------------------------------------------------------
+
+    /**
+     * Initialize the PubNub Admin view.
+     *
+     * @return void
+     */
+    public function pubNubSettings()
+    {
+        if (!current_user_can('manage_options')) {
+            wp_die('You do not have permission to access this page.');
+        }
+
+        if ($_POST['submit']) {
+            $this->pubNubPublish();
+            $published = true;
+        }
+
+        $data = array(
+            'published' => isset($published) ? true : false
+        );
+
+        echo Pwyw_View::make('admin-pubnub', $data);
+    }
+
+    public function pubNubPublish()
+    {
+        $pubnub = new Pubnub_Pubnub(
+            self::PUBNUB_PUBLISH_KEY,
+            self::PUBNUB_SUBSCRIBE_KEY
+        );
+
+        $data = $this->pwyw_get_bundle_info();
+
+        // Create a streamlined array of top contributors
+        $contributors = array();
+        foreach ($data['top'] as $contributor) {
+            $array = array(
+                'name' => $contributor->display_name,
+                'amount' => $contributor ->amount
+            );
+            $contributors[] = $array;
+        }
+
+        $pubnub->publish(
+            array(
+                'channel' => self::PUBNUB_CHANNEL,
+                'message' => array(
+                    'contributors'  => $contributors,
+                    'minAmount'     => $data['min_amount'],
+                    'totalSales'    => $data['payment_info']->total_sales,
+                    'averagePrice'  => $data['payment_info']->avg_price,
+                    'totalPayments' => $data['payment_info']->total_payments,
+                    'server'        => php_uname('n'),
+                    'server_time'   => date('Y-m-d H:i:s')
+                )
+            )
+        );
     }
 
 
@@ -878,68 +942,6 @@ class Pwyw
             <?php
             $PWYWListTable->display();
         }
-    }
-
-    // -------------------------------------------------------------------------
-    // PubNub handling
-    // -------------------------------------------------------------------------
-
-    /**
-     * Initialize the PubNub Admin view.
-     *
-     * @return void
-     */
-    public function pubNubSettings()
-    {
-        if (!current_user_can('manage_options')) {
-            wp_die('You do not have permission to access this page.');
-        }
-
-        if ($_POST['submit']) {
-            $this->pubNubPublish();
-            $published = true;
-        }
-
-        $data = array(
-            'published' => isset($published) ? true : false
-        );
-
-        echo Pwyw_View::make('admin-pubnub', $data);
-    }
-
-    public function pubNubPublish()
-    {
-        $pubnub = new Pubnub_Pubnub(
-            self::PUBNUB_PUBLISH_KEY,
-            self::PUBNUB_SUBSCRIBE_KEY
-        );
-
-        $data = $this->pwyw_get_bundle_info();
-
-        // Create a streamlined array of top contributors
-        $contributors = array();
-        foreach ($data['top'] as $contributor) {
-            $array = array(
-                'name' => $contributor->display_name,
-                'amount' => $contributor ->amount
-            );
-            $contributors[] = $array;
-        }
-
-        $pubnub->publish(
-            array(
-                'channel' => self::PUBNUB_CHANNEL,
-                'message' => array(
-                    'contributors'  => $contributors,
-                    'minAmount'     => $data['min_amount'],
-                    'totalSales'    => $data['payment_info']->total_sales,
-                    'averagePrice'  => $data['payment_info']->avg_price,
-                    'totalPayments' => $data['payment_info']->total_payments,
-                    'server'        => php_uname('n'),
-                    'server_time'   => date('Y-m-d H:i:s')
-                )
-            )
-        );
     }
 }
 

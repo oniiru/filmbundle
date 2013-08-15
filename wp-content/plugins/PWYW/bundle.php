@@ -160,27 +160,47 @@ jQuery(document).ready(function($) {
                   <?php endif;?>
                    </div>
                 <?php endforeach;?>
-
               </div>
-              <div class="PWYWmemberships">
 
-                <h4>Above/Below Average Memberships:</h4>
+              <div class="PWYWmemberships">
+                <?php
+                // Get all available products
+                $args = array(
+                  'post_type' => 'download',
+                  'posts_per_page' => -1,
+                  'post_status' => 'any'
+                );
+                $products = get_posts($args);
+                ?>
+                <h4>Easy Digital Download Product Integration:</h4>
                 <div class="belowmembership">
-                  <p>Below Average Memberships:</p>
-                  <select name="belowaverage" >
-                    <?php $sel_lev = isset($pwyw_data['bundle'])?$pwyw_data['bundle']->belowaverage: '' ?>
-                    <?php foreach ($pwyw_data['levels'] as $level) : ?>
-                      <option <?php if ($sel_lev  == $level->id) echo "selected='selected'";?> value="<?php echo $level->id?>"><?php echo $level->name?></option>
-                    <?php endforeach; ?>
+                  <p>Below Average Product:</p>
+                  <select name='belowaverage'>
+                    <option value='0'>-- Select Product --</option>
+                    <?php
+                    foreach ($products as $product) {
+                      $current = isset($pwyw_data['bundle'])?$pwyw_data['bundle']->belowaverage: '';
+                      $selected = selected($current, $product->ID, false);
+                      echo "<option value='{$product->ID}' {$selected}>";
+                      echo $product->post_title;
+                      echo "</option>";
+                    }
+                    ?>
                   </select>
                 </div>
                 <div class="abovemembership">
-                  <p>Above Average Memberships:</p>
-                  <select name="aboveaverage">
-                    <?php $sel_lev = isset($pwyw_data['bundle'])?$pwyw_data['bundle']->aboveaverage: '' ?>
-                    <?php foreach ($pwyw_data['levels'] as $level) : ?>
-                      <option <?php if ($sel_lev  == $level->id) echo "selected='selected'";?> value="<?php echo $level->id?>"><?php echo $level->name?></option>
-                    <?php endforeach; ?>
+                  <p>Above Average Product:</p>
+                  <select name='aboveaverage'>
+                    <option value='0'>-- Select Product --</option>
+                    <?php
+                    foreach ($products as $product) {
+                      $current = isset($pwyw_data['bundle'])?$pwyw_data['bundle']->aboveaverage: '';
+                      $selected = selected($current, $product->ID, false);
+                      echo "<option value='{$product->ID}' {$selected}>";
+                      echo $product->post_title;
+                      echo "</option>";
+                    }
+                    ?>
                   </select>
                 </div>
               </div>
