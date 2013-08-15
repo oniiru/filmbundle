@@ -319,12 +319,13 @@ jQuery(document).ready(function($) {
                     <input type="hidden" name="is_twitter" value=""/>
                     <input type="hidden" name="_ajax_nonce" value="<?php echo $nonce ?>"/>
                     <input type="hidden" name="bid" value="<?php echo $pwyw_data['bundle']->id?>"/>
-
+<!--
         <div class="content2">
             <div class="step2">
                 <a href="#" class="btn btn-large btn-success"> Checkout </a>
             </div>
         </div>
+-->        
     </div>
 
 </form>
@@ -332,15 +333,8 @@ jQuery(document).ready(function($) {
 
 
 
-
-
-
-
-
-<p></p>
 <form method='post' action='/checkout/'>
     <input type='submit' value='Checkout NEW!' />
-    <input type="hidden" name="download_id" value="306">
+    <input type="hidden" name="download_id" value="0">
     <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart">
-
 </form>

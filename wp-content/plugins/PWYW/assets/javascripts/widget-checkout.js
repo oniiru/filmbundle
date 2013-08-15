@@ -77,6 +77,7 @@ jQuery(document).ready(function($) {
         }
 
         handleAlerts(new_amount);
+        setEddProduct(new_amount);
     });
 
     // Only allow numbers in the custom price field
@@ -94,6 +95,24 @@ jQuery(document).ready(function($) {
         updateSliders('linked3', 'percent', new_amount, bundle_checkout_amount);
         handleAlerts(new_amount);
     });
+
+    // EDD Product
+    // -------------------------------------------------------------------------
+
+    /**
+     * Set the EDD product to use, based on current price and average.
+     */
+    function setEddProduct(amount)
+    {
+        var average = parseFloat(avg_price);
+        var price = parseFloat(amount)
+
+        if (price > average) {
+            $('[name="download_id"]').val(edd_above_average);
+        } else {
+            $('[name="download_id"]').val(edd_below_average);
+        }
+    }
 
 
     // Sliders
@@ -237,6 +256,7 @@ jQuery(document).ready(function($) {
     var new_amount = $('.pwyw-amount button').first().val();
     new_amount = Math.floor(new_amount);
     updateSliders('linked3', 'percent', new_amount, bundle_checkout_amount);
+    setEddProduct(new_amount);
 
     // Handle the dive deeper buttons
     $('.dive-deeper').click(function() {
