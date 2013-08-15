@@ -211,6 +211,27 @@
             <?php } ?>
         </li>
 
+
+        <!-- ===================================================================
+        || Create account
+        ==================================================================== -->
+        <?php if (!is_user_logged_in()) { ?>
+        <li>
+            <p>Create your account</p>
+            <p>
+                <input name='email' type='text' placeholder='Email' 
+                    style='width: 300px; margin: 0 20px 0 0;' />
+                <input name='password' type='password' placeholder='Password'
+                    style='width: 300px; margin: 0;' />
+            </p>
+        </li>
+        <?php } ?>
+
+
+        <!-- ===================================================================
+        || Checkout Button
+        ==================================================================== -->
+
         <li>
             Checkout and claim your films!
         </li>
@@ -326,6 +347,24 @@ jQuery(document).ready(function($) {
 
 
 
+
+<p>
+    <!--dynamic-cached-content-->
+    <form id="edd_purchase_306" class="edd_download_purchase_form" method="post">
+
+        
+        
+        <div class="edd_purchase_submit_wrapper">
+            <input type="submit" class="edd-add-to-cart edd-no-js button blue edd-submit" name="edd_purchase_download" value="&#036;50.00&nbsp;&ndash;&nbsp;Purchase" data-action="edd_add_to_cart" data-download-id="306" data-variable-price=no data-price-mode=single /><a href="http://filmbundle.dev/checkout/" class="edd_go_to_checkout button blue edd-submit" style="display:none;">Checkout</a>
+                    </div><!--end .edd_purchase_submit_wrapper-->
+
+        <input type="hidden" name="download_id" value="306">
+                    <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart">
+        
+        
+    </form><!--end #edd_purchase_306-->
+    <!--/dynamic-cached-content-->
+</p>
 
 
 
