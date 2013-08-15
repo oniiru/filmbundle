@@ -3,6 +3,8 @@
     var bundle = <?php echo json_encode($bundle); ?>;
     var min_amount;
     var avg_price;
+    var edd_above_average = <?php echo $bundle['bundle']->aboveaverage; ?>;
+    var edd_below_average = <?php echo $bundle['bundle']->belowaverage; ?>;
 
     if (bundle.payment_info == null) {
        min_amount = 0;
