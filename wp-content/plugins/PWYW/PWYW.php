@@ -44,7 +44,7 @@ class Pwyw
     {
         global $wpdb;
         register_deactivation_hook(__FILE__, array(&$this, 'pwyw_uninstall'));
-        
+
         //$wpdb->query("UPDATE `wp_pwyw_customers` SET `alias` = 'Anonymous' WHERE `alias` = 'Annonymous'");
 
         add_action('admin_menu', array(&$this, 'PWYW_menu_pages'));
@@ -65,27 +65,12 @@ class Pwyw
         Pwyw_Films::instance();
         Pwyw_Widgets::getInstance();
 
-        // edd hook test
-        // add_action('edd_add_to_cart', array(&$this, 'test'), 5);
-        add_filter('edd_get_download_price', array(&$this, 'test'));
-
         // Check if database needs upgrading
         if (is_admin()){
             Pwyw_Database::upgrade();
         }
     }
 
-    public function test($price)
-    {
-        return $price;
-        // var_dump($price);
-        return 80;
-        var_dump($id);
-       // var_dump($id);
-       // var_dump($options);
-       // file_put_contents('c:\filename.txt', print_r($data, true));
-       die; 
-    }
 
     /**
      * PSR-0 compliant autoloader to load classes as needed.
@@ -418,7 +403,7 @@ class Pwyw
                         $('.delete').click(function(){
                             return confirm('Are you sure you want to delete the bundle?');
                         });
-                    });                
+                    });
                 </script>
                 ";
 
@@ -433,7 +418,7 @@ class Pwyw
     function get_all_payment_info()
     {
         global $wpdb;
-                    
+
         $sql = "SELECT pi.`id` pid,c.`id` cid,c.`title`,pi.`sum` payment,c.`parent`,pa.`allocate_percent`
                     FROM {$this->payment_info} pi
                     LEFT JOIN {$this->price_allocation} pa ON pi.`id` = pa.`payment_id`
