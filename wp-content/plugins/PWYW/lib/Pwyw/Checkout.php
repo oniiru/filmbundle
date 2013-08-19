@@ -23,5 +23,20 @@ class Pwyw_Checkout
     /** Custom constructor */
     private function construct()
     {
+        $this->checkout();
+    }
+
+    /**
+     * Handles checkout and integrated with EDD:
+     */
+    public function checkout()
+    {
+        // If no bundle has been posted for checkout, return
+        if (!$_POST['bundle_checkout']) {
+            return;
+        }
+
+        var_dump('We have a checkout...');
+        die;
     }
 }
