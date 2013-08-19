@@ -64,6 +64,7 @@ class Pwyw
         Pwyw_Charities::instance();
         Pwyw_Films::instance();
         Pwyw_Widgets::getInstance();
+        Pwyw_Checkout::getInstance();
 
         // Check if database needs upgrading
         if (is_admin()){
