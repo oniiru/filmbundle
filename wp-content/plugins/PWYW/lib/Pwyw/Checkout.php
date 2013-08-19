@@ -36,6 +36,8 @@ class Pwyw_Checkout
             return;
         }
 
+        var_dump($_POST);
+
         var_dump('We have a checkout...');
         die;
     }

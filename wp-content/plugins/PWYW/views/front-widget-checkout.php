@@ -40,7 +40,7 @@
         </div>
 
         <hr />
-        
+
         <!-- ===================================================================
         || List of Top Contributors
         ==================================================================== -->
@@ -95,6 +95,7 @@
     <h2>Purchase the Bundle</h2>
     <p>Complete the purchase below and these amazing films are all yours!</p>
 
+    <form method='post' action=''>
     <ol>
         <!-- ===================================================================
         || Amount buttons
@@ -106,16 +107,16 @@
                     var bundle_checkout_amount = 100;
                 </script>
                 <div class="pwyw-amount btn-group" data-toggle="buttons-radio">
-                    <button  value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn btn-info active">$<?=$bundle['bundle']->suggested_val_1; ?></button>
-                    <button  value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_2; ?></button>
-                    <button value="<?=$bundle['bundle']->suggested_val_3; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_3; ?></button>
-                    <button id="custom_price" value="<?=$bundle['bundle']->pwyw_val; ?>" class=" btn btn-info">Custom</button>
+                    <button type="button" value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn btn-info active">$<?=$bundle['bundle']->suggested_val_1; ?></button>
+                    <button type="button" value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_2; ?></button>
+                    <button type="button" value="<?=$bundle['bundle']->suggested_val_3; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_3; ?></button>
+                    <button type="button" id="custom_price" value="<?=$bundle['bundle']->pwyw_val; ?>" class=" btn btn-info">Custom</button>
                 </div>
 
                 <div class="input-prepend customshow">
                     <span class="add-on">$</span>
-                    <input class="custompricefield currenciesOnly" 
-                           value="<?=$bundle['bundle']->pwyw_val; ?>" 
+                    <input class="custompricefield currenciesOnly"
+                           value="<?=$bundle['bundle']->pwyw_val; ?>"
                            type="text"
                     />
                 </div>
@@ -140,7 +141,7 @@
                 <div class="nozero alert alert-error" style="display:none">
                     We're all about paying what you want, but we've got to draw the line somewhere. Please pay at least $0.01. :)
                 </div>
-            </div> 
+            </div>
         </li>
 
 
@@ -164,7 +165,8 @@
 
                     <div class="input-prepend">
                         <span class="add-on">$</span>
-                        <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="text" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
+                        <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_amount' name="categoriesAmount[<?php echo $key ?>]" type="text" value="" class="amount">
+                        <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="hidden" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
                     </div>
 
                     <?php if ($key !=3) {
@@ -197,11 +199,18 @@
 
                                 <div class="input-prepend">
                                     <span class="add-on">$</span>
-                                    <input 
+                                    <input
+                                        id="<?php echo $smalltitle ?>_<?= $key_s ?>_amount"
+                                        name="categoriesAmount[<?php echo $key_s ?>]"
+                                        class="<?php echo $smalltitle ?>_amount"
+                                        type="text"
+                                        value=""
+                                    />
+                                    <input
                                         id="<?php echo $smalltitle ?>_<?= $key_s ?>_inp"
-                                        name="categories[<?php echo $key_s ?>]" 
-                                        class="<?php echo $smalltitle ?>_percent" 
-                                        type="text" 
+                                        name="categories[<?php echo $key_s ?>]"
+                                        class="<?php echo $smalltitle ?>_percent"
+                                        type="hidden"
                                         value="<?= $sub['info']['val'] ?>"
                                     />
                                 </div>
@@ -221,7 +230,7 @@
         <li>
             <p>Create your account</p>
             <p>
-                <input name='email' type='text' placeholder='Email' 
+                <input name='email' type='text' placeholder='Email'
                     style='width: 300px; margin: 0 20px 0 0;' />
                 <input name='password' type='password' placeholder='Password'
                     style='width: 300px; margin: 0;' />
@@ -235,18 +244,53 @@
         ==================================================================== -->
 
         <li>
-            Checkout and claim your films!
+            <p>
+                Checkout and claim your films!
+            </p>
+
+
+
+            <button name='bundle_checkout' type='Submit' value='checkout' class='btn btn-large btn-info'>Checkout</button>
+            <input type="hidden" name="download_id" value="0">
+            <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart">
         </li>
     </ol>
+    </form>
 </div>
 
+<h3>Custom EDD checkout testing</h3>
+<?php
+// includes/cart/functions.php
+edd_empty_cart();
+edd_add_to_cart(312);
+$t = edd_get_cart_contents();
+
+$x = edd_get_cart_subtotal();
+$y = edd_get_cart_total();
+var_dump($x);
+var_dump($y);
+add_filter('edd_get_cart_total', 'fbtest');
+function fbtest($total)
+{
+    return 30;
+    return $total;
+}
+
+$x = edd_get_cart_subtotal();
+$y = edd_get_cart_total();
+var_dump($x);
+var_dump($y);
 
 
+// Create a post array with necessery data
+$_POST['edd-gateway'] = 'paypal';
+$_POST['edd_email'] = 'artstorm@gmail.com';
+$_POST['edd_first'] = 'johan';
 
+// includes/process-purchase.php
+// edd_process_purchase_form();
 
-
-
-
+?>
 
 
 
@@ -266,10 +310,10 @@ $nonce2 = wp_create_nonce('pwyw_ajax');
 jQuery(document).ready(function($) {
     var pwyw_data = {};
     var main_cat = [];
-    var alias; 
-    var user_alias,twitter_alias; 
+    var alias;
+    var user_alias,twitter_alias;
 
-    
+
 
 /*
     $('.btn-success').click(function(){
@@ -277,15 +321,15 @@ jQuery(document).ready(function($) {
         twit_alias = $('input[placeholder="twitterhandle"]').val();
 
         var is_twitter = 0;
-        
+
         if(twit_alias!=''){
             alias = twit_alias;
             is_twitter = 1
         }else if(user_alias!=''){
             alias = user_alias;
         }
-        
-        
+
+
         $('input[name="alias"]').val(alias);
         $('input[name="is_twitter"]').val(is_twitter);
 
@@ -293,7 +337,7 @@ jQuery(document).ready(function($) {
           if(!btn.length||$(btn).attr('id') == 'custom_price'){
               c_price = $('input.custompricefield').val();
           }else{
-             c_price = $(btn).val(); 
+             c_price = $(btn).val();
           }
 
           $('input[name="c_price"]').val(c_price);
@@ -301,9 +345,9 @@ jQuery(document).ready(function($) {
           if(c_price >= 0.01){
               check = true;
           }
-            
+
           $('#bundle_checkout').submit();
-          return false;  
+          return false;
     });
 */
 
@@ -325,7 +369,7 @@ jQuery(document).ready(function($) {
                 <a href="#" class="btn btn-large btn-success"> Checkout </a>
             </div>
         </div>
--->        
+-->
     </div>
 
 </form>
@@ -333,8 +377,3 @@ jQuery(document).ready(function($) {
 
 
 
-<form method='post' action='/checkout/'>
-    <input type='submit' value='Checkout NEW!' />
-    <input type="hidden" name="download_id" value="0">
-    <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart">
-</form>

@@ -67,8 +67,7 @@ jQuery(document).ready(function($) {
     // -------------------------------------------------------------------------
     $('.pwyw-amount button').click(function() {
 
-        var new_amount = $(this).val();
-        updateSliders('linked3', 'percent', new_amount, bundle_checkout_amount);
+        total_amount = $(this).val();
 
         if ($(this).attr('id') == 'custom_price') {
             $('.customshow').fadeIn('fast');
@@ -76,8 +75,9 @@ jQuery(document).ready(function($) {
             $('.customshow').fadeOut('fast');
         }
 
-        handleAlerts(new_amount);
-        setEddProduct(new_amount);
+        updateSliders();
+        handleAlerts(total_amount);
+        setEddProduct(total_amount);
     });
 
     // Only allow numbers in the custom price field
@@ -90,10 +90,9 @@ jQuery(document).ready(function($) {
 
     // Update the value in the custom price button, and sliders
     $('.pwyw-checkout .custompricefield').change(function() {
-        var new_amount = $(this).val();
-        $('.pwyw-amount button#custom_price').val(new_amount);
-        updateSliders('linked3', 'percent', new_amount, bundle_checkout_amount);
-        handleAlerts(new_amount);
+        total_amount = $(this).val();
+        $('.pwyw-amount button#custom_price').val(total_amount);
+        handleAlerts(total_amount);
     });
 
     // EDD Product
@@ -117,62 +116,14 @@ jQuery(document).ready(function($) {
 
     // Sliders
     // -------------------------------------------------------------------------
-    var init_sliders = true;
-    function updateSliders(slider_class, input_class, new_amount, old_amount)
+    function updateSliders()
     {
-        // Convert to a number, as linkedsliders gets problem otherwise
-        new_amount = Math.floor(new_amount);
-
-        // Get rid of the current sliders, so we can calc new options
-        $('div.'+slider_class).linkedSliders('destroy');
-
-        $('.'+input_class).each(function(){
-            // Recalc the values
-            var id = $(this).attr('id').match(/(.+)_inp/)[1];
-            var slider = $('#slider_'+id);
-
-            // Old values percentage of old amount
-            var old_value = $(this).val();
-            var percentage = old_value / old_amount;
-
-            // New value based on new amount and the percentage
-            var new_value = percentage * new_amount;
-            slider.attr('value', new_value);
-
-            // Update eventual subsliders
-            if (init_sliders) {
-                old_value = 100;
-                init_sliders = false;
-            }
-            if ($(this).attr('id') == 'filmmakers_inp') {
-                updateSliders(
-                    'sub_filmmakers',
-                    'filmmakers_percent',
-                    new_value,
-                    old_value
-                );
-            }
-            if ($(this).attr('id') == 'charities_inp') {
-                updateSliders(
-                    'sub_charities',
-                    'charities_percent',
-                    new_value,
-                    old_value
-                );
-            }
-        });
-
-        // If it's the main sliders, updated the checkout amount
-        if (slider_class == 'linked3') {
-            bundle_checkout_amount = new_amount;
-        }
-
-        // Recreate the sliders with the new settings
-        setSliderHandlers(slider_class, input_class, new_amount);
+        $('.percent').change();
+        $('.charities_percent').change();
+        $('.filmmakers_percent').change();
     }
 
-
-    function setSliderHandlers(slider_class, input_class, max_val)
+    function setSliderHandlers(slider_class, input_class, amount_class)
     {
         var default_val = 0;
         $('.'+input_class).val(0);
@@ -180,56 +131,69 @@ jQuery(document).ready(function($) {
         $("."+slider_class ).slider(
             { animate: false },
             { min: 0 },
-            { max: max_val },
+            { max: 100 },
             {change: function(event, ui) {
                 var id = $(this).attr('id').match(/slider_(.+)/)[1];
-                $('#'+id+'_inp').val($(this).slider('value'));
 
-                var old_value = $('#'+id+'_inp').val();
-                var new_value = $(this).slider('value');
+                // Get correct total amount depending on slider level
+                var total = total_amount;
+                if ($(this).hasClass('sub_charities')) {
+                    total = $('#charities_amount').val();
+                }
+                if ($(this).hasClass('sub_filmmakers')) {
+                    total = $('#filmmakers_amount').val();
+                }
+
+                // Get/Calc the values to use
+                var percentage = $(this).slider('value');
+                var amount = (percentage / 100) * total;
+                amount = Math.round(amount * 100) / 100;
+
+                // Update input fields
+                $('#'+id+'_inp').val(percentage);
+                $('#'+id+'_amount').val(amount);
+
+                // Refresh subsliders if needed
                 if (id == 'filmmakers') {
-                    updateSliders(
-                        'sub_filmmakers',
-                        'filmmakers_percent',
-                        new_value,
-                        old_value
-                    );
+                    $('.filmmakers_percent').change();
                 }
                 if (id == 'charities') {
-                    updateSliders(
-                        'sub_charities',
-                        'charities_percent',
-                        new_value,
-                        old_value
-                    );
+                    $('.charities_percent').change();
                 }
             }},
             {slide: function(event, ui) {
                 var id = $(this).attr('id').match(/slider_(.+)/)[1];
-                $('#'+id+'_inp').val($(this).slider('value'));
 
-                var old_value = $('#'+id+'_inp').val();
-                var new_value = $(this).slider('value');
+                // Get correct total amount depending on slider level
+                var total = total_amount;
+                if ($(this).hasClass('sub_charities')) {
+                    total = $('#charities_amount').val();
+                }
+                if ($(this).hasClass('sub_filmmakers')) {
+                    total = $('#filmmakers_amount').val();
+                }
+
+                // Get/Calc the values to use
+                var percentage = $(this).slider('value');
+                var amount = (percentage / 100) * total;
+                amount = Math.round(amount * 100) / 100;
+
+                // Update input fields
+                $('#'+id+'_inp').val(percentage);
+                $('#'+id+'_amount').val(amount);
+
+                // Refresh subsliders if needed
                 if (id == 'filmmakers') {
-                    updateSliders(
-                        'sub_filmmakers',
-                        'filmmakers_percent',
-                        new_value,
-                        old_value
-                    );
+                    $('.filmmakers_percent').change();
                 }
                 if (id == 'charities') {
-                    updateSliders(
-                        'sub_charities',
-                        'charities_percent',
-                        new_value,
-                        old_value
-                    );
+                    $('.charities_percent').change();
                 }
-            }
-        });
+            }}
+        );
 
-        $('.'+input_class).each(function(){
+        // Handle manual changes in the percentage field
+        $('.'+input_class).each(function() {
             var id = $(this).attr('id').match(/(.+)_inp/)[1];
             var slider = $('#slider_'+id);
 
@@ -239,24 +203,40 @@ jQuery(document).ready(function($) {
             }else{
                 $(this).val(default_val);
             }
-
-            $(this).change(function(){
+            $(this).change(function() {
                 slider.slider("value" , $(this).val());
+
+            })
+        });
+
+        // Handle manual changes in the amount field
+        $('.'+amount_class).each(function() {
+            var id = $(this).attr('id').match(/(.+)_amount/)[1];
+            var slider = $('#slider_'+id);
+
+            $(this).change(function() {
+                var amount = $(this).val();
+                var percentage = (amount / total_amount) * 100;
+
+                slider.slider('value' ,percentage);
             })
         });
 
         $('div.'+slider_class).linkedSliders({
-            total: max_val,  // The total for all the linked sliders
-            policy: 'next'   // Adjustment policy: 'next', 'prev', 'first', 'last', 'all'
+            total: 100,     // The total for all the linked sliders
+            policy: 'next'  // Adjustment policy: 'next', 'prev', 'first', 'last', 'all'
         });
 
     }
 
     // Set initial amount
-    var new_amount = $('.pwyw-amount button').first().val();
-    new_amount = Math.floor(new_amount);
-    updateSliders('linked3', 'percent', new_amount, bundle_checkout_amount);
-    setEddProduct(new_amount);
+    var total_amount = $('.pwyw-amount button').first().val();
+    total_amount = Math.floor(total_amount);
+
+    setSliderHandlers('linked3', 'percent', 'amount');
+    setSliderHandlers('sub_charities', 'charities_percent', 'charities_amount');
+    setSliderHandlers('sub_filmmakers', 'filmmakers_percent', 'filmmakers_amount');
+    setEddProduct(total_amount);
 
     // Handle the dive deeper buttons
     $('.dive-deeper').click(function() {
@@ -285,7 +265,7 @@ jQuery(document).ready(function($) {
         if(typeof(bundle.top)!='undefined'){
             top_count = bundle.top.length;
         }
-   
+
         if ((top_count==10&&amount>min_amount)||(top_count<10&&amount>=0.01)) {
             $('.leaderboardinput:hidden').fadeIn('slow');
             if(amount>avg_price){
