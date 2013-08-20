@@ -90,9 +90,12 @@ jQuery(document).ready(function($) {
 
     // Update the value in the custom price button, and sliders
     $('.pwyw-checkout .custompricefield').change(function() {
-        total_amount = $(this).val();
+        total_amount = parseFloat($(this).val()).toFixed(2);
         $('.pwyw-amount button#custom_price').val(total_amount);
+        $('.pwyw-checkout .custompricefield').val(total_amount);
+        updateSliders();
         handleAlerts(total_amount);
+        setEddProduct(total_amount);
     });
 
     // EDD Product
