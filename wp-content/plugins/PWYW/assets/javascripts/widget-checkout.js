@@ -253,6 +253,9 @@ jQuery(document).ready(function($) {
         html: true
     });
 
+    // Remove slider handles from the tab index
+    $('.pwyw-checkout-slider a.ui-slider-handle').attr('tabindex', '-1');
+
 
     // Keyboard handling
     // -------------------------------------------------------------------------

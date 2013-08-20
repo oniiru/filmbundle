@@ -163,7 +163,7 @@
                     <div class="input-prepend">
                         <span class="add-on">$</span>
                         <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_amount' name="categoriesAmount[<?php echo $key ?>]" type="text" value="" class="amount numeric-only">
-                        <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="hidden" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
+                        <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="hidden" value="<?php echo $cat_obj['info']['val'] ?>" class="percent" tabindex="-1">
                     </div>
 
                     <?php if ($key !=3) {
@@ -209,6 +209,7 @@
                                         class="<?php echo $smalltitle ?>_percent"
                                         type="hidden"
                                         value="<?= $sub['info']['val'] ?>"
+                                        tabindex="-1"
                                     />
                                 </div>
                             </div>
