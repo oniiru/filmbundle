@@ -80,14 +80,6 @@ jQuery(document).ready(function($) {
         setEddProduct(total_amount);
     });
 
-    // Only allow numbers in the custom price field
-    $('.pwyw-checkout .custompricefield').keypress(function(e) {
-        var charCode = (e.which) ? e.which : e.keyCode;
-        if (charCode > 31 && (charCode < 46 || charCode > 57)) {
-            return false;
-        }
-    });
-
     // Update the value in the custom price button, and sliders
     $('.pwyw-checkout .custompricefield').change(function() {
         total_amount = parseFloat($(this).val()).toFixed(2);
@@ -218,7 +210,8 @@ jQuery(document).ready(function($) {
             var slider = $('#slider_'+id);
 
             $(this).change(function() {
-                var amount = $(this).val();
+                var amount = parseFloat($(this).val()).toFixed(2);
+                $(this).val(amount);
                 var percentage = (amount / total_amount) * 100;
 
                 slider.slider('value' ,percentage);
@@ -256,11 +249,21 @@ jQuery(document).ready(function($) {
     // -------------------------------------------------------------------------
 
     /**
-     * Prevent enter/return key to submit the form
+     * Prevent enter/return key to submit the form.
      */
     $(window).keydown(function(event) {
         if (event.keyCode == 13) {
             event.preventDefault();
+            return false;
+        }
+    });
+
+    /**
+     * Allow only numbers and dot in the numeric fields.
+     */
+    $('.pwyw-checkout .numeric-only').keypress(function(e) {
+        var charCode = (e.which) ? e.which : e.keyCode;
+        if (charCode > 31 && (charCode < 46 || charCode > 57)) {
             return false;
         }
     });
