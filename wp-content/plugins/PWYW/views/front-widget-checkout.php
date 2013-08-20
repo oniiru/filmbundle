@@ -260,9 +260,8 @@
 
             <button name='bundle_checkout' type='Submit' value='checkout' class='btn btn-large btn-info'>Checkout</button>
 
-            <input type="hidden" name="total_amount" value="<?php echo $bundle['bundle']->suggested_val_1; ?>" />
             <input type="hidden" name="download_id" value="0" />
-            <input type="hidden" name="edd_action" class="edd_action_input" value="add_to_cart" />
+            <input type="hidden" name="total_amount" value="<?php echo $bundle['bundle']->suggested_val_1; ?>" />
         </li>
     </ol>
     </form>
