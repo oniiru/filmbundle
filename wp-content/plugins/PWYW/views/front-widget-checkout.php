@@ -100,7 +100,7 @@
     || Handle checkout errors
     ======================================================================== -->
     <?php if (isset($_POST['pwyw-checkout-error'])) { ?>
-        <div class="alert alert-error">
+        <div id="pwyw-checkout-error" class="alert alert-error">
             <strong>Checkout Error!</strong><br/>
             <?php echo $_POST['pwyw-checkout-error']; ?>
         </div>
