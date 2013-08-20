@@ -95,7 +95,7 @@
     <h2>Purchase the Bundle</h2>
     <p>Complete the purchase below and these amazing films are all yours!</p>
 
-    <form method='post' action=''>
+    <form id='bundle-checkout-form' method='post' action=''>
     <ol>
         <!-- ===================================================================
         || Amount buttons

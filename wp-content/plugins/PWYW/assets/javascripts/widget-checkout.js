@@ -4,6 +4,9 @@ jQuery(document).ready(function($) {
     var pubnub_subscribe_key = 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe';
     var pubnub_channel       = 'filmbundle';
 
+    /** Hold the easing method to use for animations */
+    var easing = 'easeInOutSine';
+
 
     // Hide elements that can be revealed later
     // -------------------------------------------------------------------------
@@ -280,6 +283,27 @@ jQuery(document).ready(function($) {
         var charCode = (e.which) ? e.which : e.keyCode;
         if (charCode > 31 && (charCode < 46 || charCode > 57)) {
             return false;
+        }
+    });
+
+
+    // Validate on Submit
+    // -------------------------------------------------------------------------
+
+    /**
+     * Validate form before accepting a submit
+     */
+    $('#bundle-checkout-form').submit(function() {
+        var amount = $('[name="total_amount"]').val();
+        if (parseFloat(amount) == 0) {
+            $('html, body').animate({
+                scrollTop: $('.pwyw-checkout').offset().top - 80
+            }, 'slow', easing, function() {
+                $('.custompricefield').focus();
+            });
+            return false;
+        } else {
+            return true;
         }
     });
 
