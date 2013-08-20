@@ -128,10 +128,10 @@
                     <b>You Rock!</b> This amount makes you one of the top contributors. Enter your
                     <div class="input-prepend">
                         <span class="add-on">@</span>
-                        <input placeholder="twitterhandle" type="text" style="width: 200px;">
+                        <input name="twitterhandle" placeholder="twitterhandle" type="text" style="width: 200px;">
                     </div>
                     or any<br/>
-                    <input placeholder="username" type="text" style="width: 200px;">
+                    <input name="username" placeholder="username" type="text" style="width: 200px;">
                     to be added on our top contributor board.
                 </div>
 
@@ -246,8 +246,6 @@
                 Checkout and claim your films!
             </p>
 
-
-
             <button name='bundle_checkout' type='Submit' value='checkout' class='btn btn-large btn-info'>Checkout</button>
 
             <input type="hidden" name="total_amount" value="<?php echo $bundle['bundle']->suggested_val_1; ?>" />
@@ -257,123 +255,3 @@
     </ol>
     </form>
 </div>
-
-<h3>Custom EDD checkout testing</h3>
-<?php
-// includes/cart/functions.php
-edd_empty_cart();
-edd_add_to_cart(312);
-$t = edd_get_cart_contents();
-
-$x = edd_get_cart_subtotal();
-$y = edd_get_cart_total();
-var_dump($x);
-var_dump($y);
-add_filter('edd_get_cart_total', 'fbtest');
-function fbtest($total)
-{
-    return 30;
-    return $total;
-}
-
-$x = edd_get_cart_subtotal();
-$y = edd_get_cart_total();
-var_dump($x);
-var_dump($y);
-
-
-// Create a post array with necessery data
-$_POST['edd-gateway'] = 'paypal';
-$_POST['edd_email'] = 'artstorm@gmail.com';
-$_POST['edd_first'] = 'johan';
-
-// includes/process-purchase.php
-// edd_process_purchase_form();
-
-?>
-
-
-
-
-
-
-
-
-<?php
-$pwyw = Pwyw::getInstance();
-$pwyw_data = $pwyw->pwyw_get_bundle_info();
-$nonce = wp_create_nonce('pwyw_bundle_checkout');
-$nonce2 = wp_create_nonce('pwyw_ajax');
-?>
-
-<script type='text/javascript'>
-jQuery(document).ready(function($) {
-    var pwyw_data = {};
-    var main_cat = [];
-    var alias;
-    var user_alias,twitter_alias;
-
-
-
-/*
-    $('.btn-success').click(function(){
-        user_alias = $('input[placeholder="username"]').val();
-        twit_alias = $('input[placeholder="twitterhandle"]').val();
-
-        var is_twitter = 0;
-
-        if(twit_alias!=''){
-            alias = twit_alias;
-            is_twitter = 1
-        }else if(user_alias!=''){
-            alias = user_alias;
-        }
-
-
-        $('input[name="alias"]').val(alias);
-        $('input[name="is_twitter"]').val(is_twitter);
-
-          var btn = $('.buttonslidegroup').find('button.active');
-          if(!btn.length||$(btn).attr('id') == 'custom_price'){
-              c_price = $('input.custompricefield').val();
-          }else{
-             c_price = $(btn).val();
-          }
-
-          $('input[name="c_price"]').val(c_price);
-
-          if(c_price >= 0.01){
-              check = true;
-          }
-
-          $('#bundle_checkout').submit();
-          return false;
-    });
-*/
-
-});
-</script>
-
-<div class="container">
-    <div class="bodyhome">
-        <form id="bundle_checkout" method="POST" action="<?php echo $pwyw->plugin_url ?>bundle_checkout.php">
-                    <input type="hidden" name="c_price" value=""/>
-                    <input type="hidden" name="alias" value=""/>
-                    <input type="hidden" name="action" value="checkout"/>
-                    <input type="hidden" name="is_twitter" value=""/>
-                    <input type="hidden" name="_ajax_nonce" value="<?php echo $nonce ?>"/>
-                    <input type="hidden" name="bid" value="<?php echo $pwyw_data['bundle']->id?>"/>
-<!--
-        <div class="content2">
-            <div class="step2">
-                <a href="#" class="btn btn-large btn-success"> Checkout </a>
-            </div>
-        </div>
--->
-    </div>
-
-</form>
-
-
-
-
