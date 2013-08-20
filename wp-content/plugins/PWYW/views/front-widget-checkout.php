@@ -225,7 +225,7 @@
         || Create account
         ==================================================================== -->
         <?php if (!is_user_logged_in()) { ?>
-        <li>
+        <li id='pwyw-create-account'>
             <p>Create your account</p>
             <p>
                 <input name='email' type='text' placeholder='Email'

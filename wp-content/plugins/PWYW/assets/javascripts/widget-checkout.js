@@ -295,6 +295,8 @@ jQuery(document).ready(function($) {
      */
     $('#bundle-checkout-form').submit(function() {
         var amount = $('[name="total_amount"]').val();
+
+        // Check so we don't have 0 amount
         if (parseFloat(amount) == 0) {
             $('html, body').animate({
                 scrollTop: $('.pwyw-checkout').offset().top - 80
@@ -302,9 +304,28 @@ jQuery(document).ready(function($) {
                 $('.custompricefield').focus();
             });
             return false;
-        } else {
-            return true;
         }
+
+        // See if we have create account fields.
+        if ($('[name="email"]').length > 0) {
+            // We have, so make sure they are not empty
+            var email = $('[name="email"]').val();
+            var password = $('[name="password"]').val();
+
+            if (email=='' || password=='') {
+                $('html, body').animate({
+                    scrollTop: $('#pwyw-create-account').offset().top - 80
+                }, 'slow', easing, function() {
+                    if (email=='') {
+                        $('[name="email"]').focus();
+                    } else {
+                        $('[name="password"]').focus();
+                    }
+                });
+                return false;
+            }
+        }
+        return true;
     });
 
 
