@@ -112,7 +112,7 @@
 
                 <div class="input-prepend customshow">
                     <span class="add-on">$</span>
-                    <input class="custompricefield currenciesOnly"
+                    <input class="custompricefield numeric-only"
                            value="<?=$bundle['bundle']->pwyw_val; ?>"
                            type="text"
                     />
@@ -162,7 +162,7 @@
 
                     <div class="input-prepend">
                         <span class="add-on">$</span>
-                        <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_amount' name="categoriesAmount[<?php echo $key ?>]" type="text" value="" class="amount">
+                        <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_amount' name="categoriesAmount[<?php echo $key ?>]" type="text" value="" class="amount numeric-only">
                         <input id='<?php echo strtolower($cat_obj['info']['title']) ?>_inp' name="categories[<?php echo $key ?>]" type="hidden" value="<?php echo $cat_obj['info']['val'] ?>" class="percent">
                     </div>
 
@@ -199,7 +199,7 @@
                                     <input
                                         id="<?php echo $smalltitle ?>_<?= $key_s ?>_amount"
                                         name="categoriesAmount[<?php echo $key_s ?>]"
-                                        class="<?php echo $smalltitle ?>_amount"
+                                        class="<?php echo $smalltitle ?>_amount numeric-only"
                                         type="text"
                                         value=""
                                     />
