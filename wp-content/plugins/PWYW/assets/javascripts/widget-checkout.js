@@ -147,7 +147,7 @@ jQuery(document).ready(function($) {
                 // Get/Calc the values to use
                 var percentage = $(this).slider('value');
                 var amount = (percentage / 100) * total;
-                amount = Math.round(amount * 100) / 100;
+                amount = parseFloat(Math.round(amount * 100) / 100).toFixed(2);
 
                 // Update input fields
                 $('#'+id+'_inp').val(percentage);
@@ -176,7 +176,7 @@ jQuery(document).ready(function($) {
                 // Get/Calc the values to use
                 var percentage = $(this).slider('value');
                 var amount = (percentage / 100) * total;
-                amount = Math.round(amount * 100) / 100;
+                amount = parseFloat(Math.round(amount * 100) / 100).toFixed(2);
 
                 // Update input fields
                 $('#'+id+'_inp').val(percentage);
