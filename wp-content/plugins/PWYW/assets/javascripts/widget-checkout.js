@@ -249,6 +249,20 @@ jQuery(document).ready(function($) {
     });
 
 
+    // Keyboard handling
+    // -------------------------------------------------------------------------
+
+    /**
+     * Prevent enter/return key to submit the form
+     */
+    $(window).keydown(function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
+
     // Alerts
     // -------------------------------------------------------------------------
     function handleAlerts(amount)
