@@ -23,7 +23,7 @@ class Pwyw_Checkout
     /** Custom constructor */
     private function construct()
     {
-        $this->checkout();
+        add_action('init', array(&$this, 'checkout'));
     }
 
     /**
@@ -80,59 +80,40 @@ class Pwyw_Checkout
             return;
         }
 
-        // We have our user, so let's populate the $_POST array.
+        // Do some final, just in case validation.
+        if (!isset($_POST['edd-gateway'])) {
+            $_POST['pwyw-checkout-error'] = 'Payment method not selected.';
+            return;
+        }
+        if (!isset($_POST['download_id'])) {
+            $_POST['pwyw-checkout-error'] = 'No product selected.';
+            return;
+        }
+
+        // We have our user, so let's populate the $_POST array for EDD.
         $current_user = wp_get_current_user();
         $_POST['edd_email'] = $current_user->user_email;
         $_POST['edd_first'] = $current_user->display_name;
 
 
+        /** Start the checkout process */
+        // Empty the cart, just in case
+        edd_empty_cart();
 
+        // Add the relevant product to the cart
+        edd_add_to_cart($_POST['download_id']);
 
-        var_dump($_POST);
+        // Create a filter to adjust the amount for the checkout
+        add_filter('edd_cart_item_price',
+            function($price) { return $_POST['total_amount']; }
+        );
 
-        var_dump('We have a checkout...');
-        die;
+        // And go to the gateway!
+        edd_process_purchase_form();
     }
 }
 
 /*
-
-// includes/cart/functions.php
-edd_empty_cart();
-edd_add_to_cart(312);
-$t = edd_get_cart_contents();
-
-$x = edd_get_cart_subtotal();
-$y = edd_get_cart_total();
-var_dump($x);
-var_dump($y);
-add_filter('edd_get_cart_total', 'fbtest');
-function fbtest($total)
-{
-    return 30;
-    return $total;
-}
-
-$x = edd_get_cart_subtotal();
-$y = edd_get_cart_total();
-var_dump($x);
-var_dump($y);
-
-
-// Create a post array with necessery data
-$_POST['edd-gateway'] = 'paypal';
-$_POST['edd_email'] = 'artstorm@gmail.com';
-$_POST['edd_first'] = 'johan';
-
-// includes/process-purchase.php
-// edd_process_purchase_form();
-
-
-
-
-
-
-
 
 
 
