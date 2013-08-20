@@ -212,8 +212,17 @@ jQuery(document).ready(function($) {
             $(this).change(function() {
                 var amount = parseFloat($(this).val()).toFixed(2);
                 $(this).val(amount);
-                var percentage = (amount / total_amount) * 100;
 
+                // Get correct total amount depending on slider level
+                var total = total_amount;
+                if ($(this).hasClass('charities_amount')) {
+                    total = $('#charities_amount').val();
+                }
+                if ($(this).hasClass('filmmakers_amount')) {
+                    total = $('#filmmakers_amount').val();
+                }
+
+                var percentage = (amount / total) * 100;
                 slider.slider('value' ,percentage);
             })
         });
