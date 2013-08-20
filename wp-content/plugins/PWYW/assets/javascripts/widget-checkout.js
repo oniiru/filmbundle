@@ -78,6 +78,7 @@ jQuery(document).ready(function($) {
         updateSliders();
         handleAlerts(total_amount);
         setEddProduct(total_amount);
+        $('[name="total_amount"]').val(total_amount);
     });
 
     // Update the value in the custom price button, and sliders
@@ -88,7 +89,9 @@ jQuery(document).ready(function($) {
         updateSliders();
         handleAlerts(total_amount);
         setEddProduct(total_amount);
+        $('[name="total_amount"]').val(total_amount);
     });
+
 
     // EDD Product
     // -------------------------------------------------------------------------
