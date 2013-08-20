@@ -371,6 +371,17 @@ jQuery(document).ready(function($) {
         }
     }
 
+    /**
+     * Form submit alert. Scroll to alert box, if form submission fails.
+     */
+    if ($('#pwyw-checkout-error').length > 0) {
+        $('html, body').animate({
+            scrollTop: $('.pwyw-checkout').offset().top - 80
+        }, 'slow', easing);
+    }
+
+
+
     // Format a number with grouped thousands
     //
     // +   original by: Jonas Raoni Soares Silva (http://www.jsfromhell.com)
