@@ -95,6 +95,18 @@
     <h2>Purchase the Bundle</h2>
     <p>Complete the purchase below and these amazing films are all yours!</p>
 
+
+    <!-- =======================================================================
+    || Handle checkout errors
+    ======================================================================== -->
+    <?php if (isset($_POST['pwyw-checkout-error'])) { ?>
+        <div class="alert alert-error">
+            <strong>Checkout Error!</strong><br/>
+            <?php echo $_POST['pwyw-checkout-error']; ?>
+        </div>
+    <?php } ?>
+
+
     <form id='bundle-checkout-form' method='post' action=''>
     <ol>
         <!-- ===================================================================
