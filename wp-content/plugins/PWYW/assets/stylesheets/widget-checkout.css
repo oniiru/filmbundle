@@ -74,10 +74,8 @@
 }
 
 
-
-
 /** ----------------------------------------------------------------------------
- *  CHEECKOUT SECTION
+ *  CHECKOUT SECTION
  * -------------------------------------------------------------------------- */
 .pwyw-checkout {
     margin: 0 auto;
@@ -200,4 +198,27 @@
     display: block;
     border: 0;
     background-position: 0 0;
+}
+
+
+/**
+ * Payment Gateways */
+ .pwyw-select-payment {
+    margin-bottom: 24px;
+
+ }
+.pwyw-gateways {
+    margin-top: 4px;
+    width: 200px;
+    float: left;
+}
+.pwyw-gateways label {
+    margin-bottom: 4px;
+}
+.pwyw-gateways input {
+    margin-top: -4px;
+    min-width: 40px;
+}
+.edd-payment-icons {
+    float: left;
 }

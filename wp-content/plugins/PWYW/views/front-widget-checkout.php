@@ -257,21 +257,28 @@
             <p>
                 Checkout and claim your films!
             </p>
-            <?php
-            do_action('edd_payment_mode_before_gateways');
-            // List available gateways
-            $gateways = edd_get_enabled_payment_gateways();
-            foreach ($gateways as $gateway_id => $gateway) {
-                $checked = checked($gateway_id, edd_get_default_gateway(), false);
 
-                echo '<label for="edd-gateway-'.$gateway_id.'" class="edd-gateway-option" id="edd-gateway-option-' . esc_attr( $gateway_id ) . '">';
-                echo '<input type="radio" name="edd-gateway" class="edd-gateway" id="edd-gateway-' . esc_attr( $gateway_id ) . '" value="' . esc_attr( $gateway_id ) . '"' . $checked . '>' . esc_html( $gateway['checkout_label'] ) . '</option>';
-                echo '</label>';
-            }
-            ?>
+            <div class='pwyw-select-payment pwyw-clearfix'>
+                <div class='pwyw-gateways'>
+                <?php
+                // List available gateways
+                $gateways = edd_get_enabled_payment_gateways();
+                foreach ($gateways as $gateway_id => $gateway) {
+                    $checked = checked($gateway_id, edd_get_default_gateway(), false);
+                    echo '<label for="edd-gateway-'.$gateway_id.'" class="edd-gateway-option" id="edd-gateway-option-'.$gateway_id.'">';
+                    echo '<input type="radio" name="edd-gateway" class="edd-gateway" id="edd-gateway-'.$gateway_id.'" value="'.$gateway_id.'"'.$checked.'>'.$gateway['checkout_label'].'</option>';
+                    echo '</label>';
+                }
+                ?>
+                </div>
+
+                <?php
+                    // Let's display the payment icons
+                    edd_show_payment_icons();
+                ?>
+            </div>
 
             <button name='bundle_checkout' type='Submit' value='checkout' class='btn btn-large btn-info'>Checkout</button>
-
             <input type="hidden" name="download_id" value="0" />
             <input type="hidden" name="total_amount" value="<?php echo $bundle['bundle']->suggested_val_1; ?>" />
         </li>
