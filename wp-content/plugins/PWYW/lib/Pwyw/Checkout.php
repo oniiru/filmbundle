@@ -24,6 +24,7 @@ class Pwyw_Checkout
     private function construct()
     {
         add_action('init', array(&$this, 'checkout'));
+        add_action('edd_insert_payment', array(&$this, 'savePwywMeta'), 10, 2);
     }
 
     /**
@@ -111,86 +112,51 @@ class Pwyw_Checkout
         // And go to the gateway!
         edd_process_purchase_form();
     }
-}
-
-/*
 
 
+    /**
+     * Store PWYW data.
+     *
+     * Called when recording the payment as pending, before sending the customer
+     * to the gateway. Here we store all the data relating to the purchase as
+     * meta data in the database, so it can be safely retrieved when the order
+     * is completed and paid.
+     *
+     * @param integer $payment
+     * @param array $payment_data
+     * @return void
+     */
+    public function savePwywMeta($payment, $payment_data)
+    {
+        $data = array();
 
-$pwyw = Pwyw::getInstance();
-$pwyw_data = $pwyw->pwyw_get_bundle_info();
-$nonce = wp_create_nonce('pwyw_bundle_checkout');
-$nonce2 = wp_create_nonce('pwyw_ajax');
-?>
+        // Store user twitter/alias information
+        $data['is_twitter_alias'] = null;
+        $data['pwyw_user_alias'] = null;
 
-<script type='text/javascript'>
-jQuery(document).ready(function($) {
-    var pwyw_data = {};
-    var main_cat = [];
-    var alias;
-    var user_alias,twitter_alias;
-
-*/
-
-/*
-    $('.btn-success').click(function(){
-        user_alias = $('input[placeholder="username"]').val();
-        twit_alias = $('input[placeholder="twitterhandle"]').val();
-
-        var is_twitter = 0;
-
-        if(twit_alias!=''){
-            alias = twit_alias;
-            is_twitter = 1
-        }else if(user_alias!=''){
-            alias = user_alias;
+        $is_twitter = 0;
+        if ($_POST['twitterhandle'] != '') {
+            $alias = $_POST['twitterhandle'];
+            $is_twitter = 1;
+        } elseif ($_POST['username'] != '') {
+            $alias = $_POST['username'];
         }
 
+        if (isset($alias) and strlen($alias) < 200) {
+            $data['is_twitter_alias'] = $is_twitter;
+            $data['pwyw_user_alias'] = strip_tags(trim($alias));
+        }
 
-        $('input[name="alias"]').val(alias);
-        $('input[name="is_twitter"]').val(is_twitter);
+        // Store the Bundle Daata
+        $bid = (int) $_POST['bid'];
+        $data['pwyw_bundle'][$bid]['categories'] = $_POST['categories'];
+        $data['pwyw_bundle'][$bid]['user'] = get_current_user_id();
+        $data['pwyw_bundle'][$bid]['avg_price'] = $_POST['average_price'];
+        $data['pwyw_bundle'][$bid]['bundle_level'] = $_POST['download_id'];
+        $data['pwyw_bundle_price'] = (float) $_POST['total_amount'];
 
-          var btn = $('.buttonslidegroup').find('button.active');
-          if(!btn.length||$(btn).attr('id') == 'custom_price'){
-              c_price = $('input.custompricefield').val();
-          }else{
-             c_price = $(btn).val();
-          }
+        // Store the meta data
+        update_post_meta($payment, '_edd_pwyw_data', $data);
+    }
 
-          $('input[name="c_price"]').val(c_price);
-
-          if(c_price >= 0.01){
-              check = true;
-          }
-
-          $('#bundle_checkout').submit();
-          return false;
-    });
-*/
-
-/*
-});
-</script>
-
-<div class="container">
-    <div class="bodyhome">
-        <form id="bundle_checkout" method="POST" action="<?php echo $pwyw->plugin_url ?>bundle_checkout.php">
-                    <input type="hidden" name="c_price" value=""/>
-                    <input type="hidden" name="alias" value=""/>
-                    <input type="hidden" name="action" value="checkout"/>
-                    <input type="hidden" name="is_twitter" value=""/>
-                    <input type="hidden" name="_ajax_nonce" value="<?php echo $nonce ?>"/>
-                    <input type="hidden" name="bid" value="<?php echo $pwyw_data['bundle']->id?>"/>
-<!--
-        <div class="content2">
-            <div class="step2">
-                <a href="#" class="btn btn-large btn-success"> Checkout </a>
-            </div>
-        </div>
--->
-    </div>
-
-</form>
-
-*/
-
+}
