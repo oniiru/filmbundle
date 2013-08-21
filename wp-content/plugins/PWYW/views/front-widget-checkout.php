@@ -281,6 +281,7 @@
             <button name='bundle_checkout' type='Submit' value='checkout' class='btn btn-large btn-info'>Checkout</button>
             <input type="hidden" name="download_id" value="0" />
             <input type="hidden" name="bid" value="<?php echo $bundle['bundle']->id; ?>" />
+            <input type="hidden" name="average_price" value="0" />
             <input type="hidden" name="total_amount" value="<?php echo $bundle['bundle']->suggested_val_1; ?>" />
         </li>
     </ol>

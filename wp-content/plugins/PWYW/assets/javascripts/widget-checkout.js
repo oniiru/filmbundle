@@ -62,6 +62,9 @@ jQuery(document).ready(function($) {
                     contributors[i]
                 );
             }
+
+            // Update form fields
+            $('[name="average_price"]').val(parseFloat(m.averagePrice).toFixed(2));
         }
     });
 
@@ -261,6 +264,9 @@ jQuery(document).ready(function($) {
 
     // Remove slider handles from the tab index
     $('.pwyw-checkout-slider a.ui-slider-handle').attr('tabindex', '-1');
+
+    // Set initial average price
+    $('[name="average_price"]').val(parseFloat(avg_price).toFixed(2));
 
 
     // Keyboard handling
