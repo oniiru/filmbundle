@@ -23,6 +23,9 @@ class Pwyw_Checkout
     /** Custom constructor */
     private function construct()
     {
+        // $this->addPayment(375);
+
+
         add_action('init', array(&$this, 'checkout'));
         add_action('edd_insert_payment', array(&$this, 'savePwywMeta'), 10, 2);
     }
@@ -73,12 +76,8 @@ class Pwyw_Checkout
                 $_POST['pwyw-checkout-error'] = $user->get_error_message();
                 return;
             }
-        }
-
-        // If we still don't have a user, let's exit
-        if (!is_user_logged_in()) {
-            $_POST['pwyw-checkout-error'] = 'You need to login before checkout.';
-            return;
+        } else {
+            $user = wp_get_current_user();
         }
 
         // Do some final, just in case validation.
@@ -92,9 +91,8 @@ class Pwyw_Checkout
         }
 
         // We have our user, so let's populate the $_POST array for EDD.
-        $current_user = wp_get_current_user();
-        $_POST['edd_email'] = $current_user->user_email;
-        $_POST['edd_first'] = $current_user->display_name;
+        $_POST['edd_email'] = $user->user_email;
+        $_POST['edd_first'] = $user->display_name;
 
 
         /** Start the checkout process */
@@ -158,5 +156,9 @@ class Pwyw_Checkout
         // Store the meta data
         update_post_meta($payment, '_edd_pwyw_data', $data);
     }
+
+
+
+
 
 }
