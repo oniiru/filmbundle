@@ -48,7 +48,6 @@ class Pwyw
         //$wpdb->query("UPDATE `wp_pwyw_customers` SET `alias` = 'Anonymous' WHERE `alias` = 'Annonymous'");
 
         add_action('admin_menu', array(&$this, 'PWYW_menu_pages'));
-        add_action('pmpro_added_order', array(&$this, 'pwyw_add_payment'));
 
         $this->plugin_url = trailingslashit(WP_PLUGIN_URL . '/' . dirname(plugin_basename(__FILE__)));
         $this->plugin_name = plugin_basename(__FILE__);
@@ -838,59 +837,6 @@ class Pwyw
         );
         wp_redirect($url);
         exit;
-    }
-
-    function pwyw_add_payment($order)
-    {
-        global $wpdb;
-        require_once( ABSPATH . 'wp-content/plugins/PWYW/Pubnub.php' );
-        $pubnub = new Pubnub('pub-055f1968-8c42-4146-80b1-195d34e6c4c5', 'sub-5f5a6c30-278a-11e2-964e-034399c6c504');
-
-        if ($order->status == 'success') {
-
-
-            $sql = "SELECT `id` FROM {$this->users} WHERE `cid`=%d";
-            $user = $wpdb->query($wpdb->prepare($sql, $order->user_id));
-
-            if (!$user) {
-                if (isset($_SESSION['pwyw_user_alias']) && !empty($_SESSION['pwyw_user_alias'])) {
-                    if (!empty($_SESSION['is_twitter_alias'])) {
-                        $wpdb->query($wpdb->prepare("INSERT INTO {$this->users} (cid,alias,is_twitter) VALUES (%d,%s,1) ", $order->user_id, $_SESSION['pwyw_user_alias']));
-                    } else {
-                        $wpdb->query($wpdb->prepare("INSERT INTO {$this->users} (cid,alias) VALUES (%d,%s) ", $order->user_id, $_SESSION['pwyw_user_alias']));
-                    }
-                } else {
-                    $wpdb->query($wpdb->prepare("INSERT INTO {$this->users} (cid) VALUES (%d) ", $order->user_id));
-                }
-            } else {
-                if (isset($_SESSION['pwyw_user_alias']) && !empty($_SESSION['pwyw_user_alias'])) {
-                    if (!empty($_SESSION['is_twitter_alias'])) {
-                        $wpdb->query($wpdb->prepare("UPDATE {$this->users} SET alias = %s,is_twitter=1 WHERE `cid`= {$order->user_id}", $_SESSION['pwyw_user_alias']));
-                    } else {
-                        $wpdb->query($wpdb->prepare("UPDATE {$this->users} SET alias = %s,is_twitter=0 WHERE `cid`= {$order->user_id}", $_SESSION['pwyw_user_alias']));
-                    }
-                }
-            }
-
-            foreach ($_SESSION['pwyw_bundle'] as $key => $data) {
-//                $pubnub->publish(array(
-//                    'channel' => 'my_test_channel',
-//                    'message' => $this->pwyw_get_bundle_info($key)
-//                ));
-                $res = $wpdb->query($wpdb->prepare("INSERT INTO {$this->payment_info} (cid,order_id,sum,average_price,bundle,bundle_level)
-                                        VALUES (%d,%d,%f,%f,%d,%d) ", $order->user_id, $order->id, $order->InitialPayment, $data['avg_price'], $key, $data['bundle_level']));
-                $payment_id = $wpdb->insert_id;
-
-                if ($res) {
-                    foreach ($_SESSION['pwyw_bundle'][$key]['categories'] as $id => $val) {
-                        $wpdb->query($wpdb->prepare("INSERT INTO {$this->price_allocation} (payment_id,cat_id,bundle,allocate_percent)
-                                        VALUES (%d,%d,%d,%d) ", $payment_id, $id, $key, $val));
-                    }
-                }
-            }
-        }
-
-        $_SESSION['pwyw_bundle'] = '';
     }
 
     function pwyw_customers()
