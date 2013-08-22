@@ -23,8 +23,7 @@ class Pwyw_Checkout
     /** Custom constructor */
     private function construct()
     {
-        // $this->addPayment(375);
-
+        // $this->addPayment(376);
 
         add_action('init', array(&$this, 'checkout'));
         add_action('edd_insert_payment', array(&$this, 'savePwywMeta'), 10, 2);
@@ -75,6 +74,9 @@ class Pwyw_Checkout
             if (is_wp_error($user)) {
                 $_POST['pwyw-checkout-error'] = $user->get_error_message();
                 return;
+            } else {
+                // Make WordPress aware of the new user being logged in.
+                wp_set_current_user($user->ID);
             }
         } else {
             $user = wp_get_current_user();
@@ -156,8 +158,6 @@ class Pwyw_Checkout
         // Store the meta data
         update_post_meta($payment, '_edd_pwyw_data', $data);
     }
-
-
 
 
 
