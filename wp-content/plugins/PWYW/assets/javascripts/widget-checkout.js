@@ -268,6 +268,9 @@ jQuery(document).ready(function($) {
     // Set initial average price
     $('[name="average_price"]').val(parseFloat(avg_price).toFixed(2));
 
+    // Initial amount, might be eligable to have an alert displayed.
+    handleAlerts(total_amount);
+
 
     // Keyboard handling
     // -------------------------------------------------------------------------
