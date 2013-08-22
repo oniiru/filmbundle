@@ -23,10 +23,9 @@ class Pwyw_Checkout
     /** Custom constructor */
     private function construct()
     {
-        // $this->addPayment(376);
-
         add_action('init', array(&$this, 'checkout'));
         add_action('edd_insert_payment', array(&$this, 'savePwywMeta'), 10, 2);
+        add_action('edd_complete_purchase', array(&$this, 'addPayment'));
     }
 
     /**
@@ -160,5 +159,91 @@ class Pwyw_Checkout
     }
 
 
+    /**
+     * Adds the Payment to the PWYW customer table and payment info table.
+     *
+     * Called when the payment is marked as complete, either automatically
+     * by the payment gateway, or manually by an administrator.
+     *
+     * @param integer $payment_id
+     */
+    public function addPayment($payment_id)
+    {
+        // Get the meta data and the user id for the payment
+        $meta = get_post_meta($payment_id, '_edd_pwyw_data', true);
+        $user_id = edd_get_payment_user_id($payment_id);
 
+        global $wpdb;
+        // Look up the WP user in the PWYW customers table
+        $users = $wpdb->prefix.'pwyw_customers';
+        $sql = "SELECT `id` FROM {$users} WHERE `cid`=%d";
+        $user = $wpdb->query(
+            $wpdb->prepare($sql, $user_id)
+        );
+
+        // If the wp user has no PWYW customer create one. Else update existing.
+        if (!$user) {
+            $wpdb->query(
+                $wpdb->prepare(
+                    "INSERT INTO {$users} (cid, alias, is_twitter)
+                     VALUES (%d, %s, %d)",
+                    $user_id,
+                    $meta['pwyw_user_alias'],
+                    $meta['is_twitter_alias']
+                )
+            );
+        } else {
+            if (isset($meta['pwyw_user_alias'])
+                && !empty($meta['pwyw_user_alias'])
+            ) {
+                $wpdb->query(
+                    $wpdb->prepare(
+                        "UPDATE {$users}
+                        SET alias = %s,is_twitter=%d
+                        WHERE `cid`= {$user_id}",
+                        $meta['pwyw_user_alias'],
+                        $meta['is_twitter_alias']
+                    )
+                );
+            }
+        }
+
+        // Add the payment to the payment info and allocation tables
+        $payment_info = $wpdb->prefix.'pwyw_payment_info';
+        $price_allocation = $wpdb->prefix.'pwyw_price_allocation';
+        foreach ($meta['pwyw_bundle'] as $key => $data) {
+            $res = $wpdb->query(
+                $wpdb->prepare(
+                    "INSERT INTO {$payment_info} (cid,order_id,sum,average_price,bundle,bundle_level)
+                     VALUES (%d,%d,%f,%f,%d,%d)",
+                    $user_id,
+                    $payment_id,
+                    $meta['pwyw_bundle_price'],
+                    $data['avg_price'],
+                    $key,
+                    $data['bundle_level']
+                )
+            );
+            $payment_info_id = $wpdb->insert_id;
+
+            if ($res) {
+                foreach ($meta['pwyw_bundle'][$key]['categories'] as $id => $val) {
+                    $wpdb->query(
+                        $wpdb->prepare(
+                            "INSERT INTO {$price_allocation} (payment_id,cat_id,bundle,allocate_percent)
+                             VALUES (%d,%d,%d,%d) ",
+                            $payment_info_id,
+                            $id,
+                            $key,
+                            $val
+                        )
+                    );
+                }
+            }
+        }
+
+        // And now, let's update the PubNub channel with the latest information.
+        $pwyw = Pwyw::getInstance();
+        $pwyw->pubNubPublish();
+    }
 }
