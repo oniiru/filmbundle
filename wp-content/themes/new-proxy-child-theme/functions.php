@@ -412,7 +412,8 @@ function blockusers_init() {
         exit;
     }
 }
-
+include_once 'metaboxes/setup.php';
+include_once 'metaboxes/full-spec.php';
 
 
 ?>

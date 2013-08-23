@@ -14,12 +14,21 @@
   <?php wp_head(); ?>
 
   <?php stag_head(); ?>
+  <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/video-js.css" rel="stylesheet">
+  <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/video-js-resolutions.css" rel="stylesheet">
+
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/socialcss/zocial.css">
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.js'></script>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/zclip.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.backstretch.min.js'></script>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/video.js"></script>
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/video-js-resolutions.js"></script>
 
+<script>
+
+  videojs.options.flash.swf = "<?php echo get_stylesheet_directory_uri(); ?>/assets/video-js.swf";
+</script>
 
 <?php if (is_front_page()) { ?>
 <style type='text/css'>

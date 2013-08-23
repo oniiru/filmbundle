@@ -72,6 +72,19 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 	font-family: 'museo700';
 	
 }
+
+#filmbackground {
+	background-attachment:fixed;
+	background-size:cover;
+	padding:50px;
+	
+	
+}
+
+
+
+
+
 .topbanner-inner a:hover {
 	text-decoration:none;
 }
