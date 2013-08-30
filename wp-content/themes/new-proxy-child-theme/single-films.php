@@ -8,8 +8,8 @@ global $full_mb;
 $videometa = $full_mb->the_meta(); 
 ?>
 <div style="background-image:url('<?php echo $videometa['backgroundimage']?>')" id="filmbackground">
-	
-	<video id="example_video_1" class="video-js vjs-default-skin"
+	<div class="bg-trans">
+	<video id="thevideo" class="video-js vjs-default-skin"
 	  controls preload="auto" autoplay width="640" height="264"
 	  poster="http://video-js.zencoder.com/oceans-clip.png"
 	  data-setup='{}'>
@@ -19,7 +19,9 @@ $videometa = $full_mb->the_meta();
 	
 	 
 	</video>
-
+	</div>
 </div>
-
+<div class="undervidstripe">
+hello
+</div>
 <?php get_footer(); ?>
