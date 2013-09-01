@@ -74,13 +74,52 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 }
 
 #thevideo {
-margin:auto;	
+margin:auto;
+box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);	
 
+}
+
+.vjs-poster {
+	box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);	
+	
+}
+
+
+.vjs-default-skin .vjs-big-play-button {
+display: block;
+z-index: 2;
+position: absolute;
+top: 50% !important;
+left: 50% !important;
+margin: -40px 0 0 -60px !important;
+text-align: center;
+vertical-align: center;
+cursor: pointer!important;
+border: .2em solid #fff;
+opacity: .95;
+-webkit-border-radius: 25px;
+-moz-border-radius: 25px;
+border-radius: 25px;
+background: #454545;
+background: -moz-linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
+background: -webkit-gradient(linear,0% 0,0% 100%,color-stop(0%,#454545),color-stop(50%,#232323),color-stop(50%,#161616),color-stop(100%,#3f3f3f));
+background: -webkit-linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
+background: -o-linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
+background: -ms-linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#454545',endColorstr='#3f3f3f',GradientType=0);
+background: linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
+-webkit-box-shadow: 4px 4px 8px #000;
+-moz-box-shadow: 4px 4px 8px #000;
+box-shadow: 4px 4px 8px #000;
+}
+.video-holder {
+	max-width:950px;
+	margin:auto;
 }
 .undervidstripe {
 height:50px;
 width:100%;
-background: #ddd;
+background: #1f2329;
 margin-bottom:100px;
 }
 .bg-trans {

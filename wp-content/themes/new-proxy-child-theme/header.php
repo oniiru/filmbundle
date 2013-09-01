@@ -15,7 +15,6 @@
 
   <?php stag_head(); ?>
   <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/video-js.css" rel="stylesheet">
-  <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/video-js-resolutions.css" rel="stylesheet">
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/socialcss/zocial.css">
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.js'></script>
@@ -23,7 +22,6 @@
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/zclip.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.backstretch.min.js'></script>
 <script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/video.js"></script>
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/video-js-resolutions.js"></script>
 
 <script>
 

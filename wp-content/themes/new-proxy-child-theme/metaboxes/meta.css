@@ -15,3 +15,18 @@
  
 .my_meta_control h4
 { color:#999; font-size:1em; margin:15px 6px; text-transform:uppercase; }
+
+.wpa_group-extra-feature {
+	border:1px solid white;
+	background:#ddd;
+	padding:5px;
+	margin-bottom:10px;
+}
+
+.mediafield-nn2 {
+	width:92% !important;
+}
+
+.mediafield-nn3 {
+	width:30% !important;
+}

@@ -1,8 +1,5 @@
 <div class="my_meta_control">
- 
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-	Cras orci lorem, bibendum in pharetra ac, luctus ut mauris.</p>
- 
+	
 	<label>Full Embed</label>
  
 	<p>
