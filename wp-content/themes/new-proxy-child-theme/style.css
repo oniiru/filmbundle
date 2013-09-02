@@ -6,8 +6,9 @@ Template:       proxy
 
 (optional values you can add: Theme URI, Author URI, Version)
 */
-
 @import url("../proxy/style.css");
+html {overflow-x:inherit;}
+
 @font-face {
     font-family: 'museo300';
     src: url('assets/fonts/museosans-300-webfont.eot');
@@ -79,11 +80,6 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);
 
 }
 
-.vjs-poster {
-	box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);	
-	
-}
-
 
 .vjs-default-skin .vjs-big-play-button {
 display: block;
@@ -93,7 +89,7 @@ top: 50% !important;
 left: 50% !important;
 margin: -40px 0 0 -60px !important;
 text-align: center;
-vertical-align: center;
+vertical-align: middle;
 cursor: pointer!important;
 border: .2em solid #fff;
 opacity: .95;
@@ -117,10 +113,15 @@ box-shadow: 4px 4px 8px #000;
 	margin:auto;
 }
 .undervidstripe {
-height:50px;
 width:100%;
 background: #1f2329;
-margin-bottom:100px;
+text-align:center;
+color:white;
+padding:15px;
+}
+
+.undervidstripe h2 {
+	color:white;
 }
 .bg-trans {
 width:100%;
@@ -134,9 +135,12 @@ padding:50px
 
 }
 
+.theextras {
+	max-width:1210px;
+	margin:auto;
+	padding:20px;
 
-
-
+}
 
 .topbanner-inner a:hover {
 	text-decoration:none;
@@ -147,6 +151,13 @@ padding:50px
 	height:280px;
 	width:100%;
 	
+}
+
+.anextra {
+	width:200px;
+	height:250px;
+	display:inline-block;
+	margin:15px;
 }
 
 .filmmakerclass h2 {
@@ -238,7 +249,6 @@ margin:auto;
 	padding: 5px;
 	line-height: 1.2em;
 	position: relative;
-	behavior: url(PIE.php);
 	font-size: 14px;
 	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
 	position: relative;
@@ -248,7 +258,7 @@ margin:auto;
 }
 #login p.message, #login p.error, #register p.message, #register p.error{
 	text-align:center;
-	background:rgb(139, 0, 0);;
+	background:rgb(139, 0, 0);
 }
 
 #login .lp p.message, .loginformtitle {
@@ -1332,7 +1342,8 @@ div#container {
        min-height: 100%;
        height: auto !important;
        height: 100%;
-       margin: 0px 0px -76px 0px;
+	   padding-bottom:80px;
+	   margin-bottom:-80px;
  }
  
   #wrapper{
@@ -1363,6 +1374,46 @@ a.hiddenanchor{
 }
 /** The wrapper that will contain our two forms **/
 
+
+.iosSlider {
+	width: 100%;
+	height: 300px;
+}
+
+.iosSlider .slider {
+	width: 100%;
+	height: 100%;
+}
+
+.iosSlider .slider .item {
+	float: left;
+	width: 50%;
+}
+
+.iosSlider .slider .item img {
+	width: 100%;
+	height: auto;
+}
+
+.prev {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	background: #000;
+	z-index: 10;
+}
+
+.next {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	background: green;
+	z-index: 10;
+}
+
+.unselectable {
+	opacity: 0.2;
+}
 #loginbody #wrapper, #loginbody #wrapper2{
 	width: 670px;
 	right: 0px;
@@ -1439,7 +1490,7 @@ margin-top:7px !important;}
 	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7);
 	   -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7);
 	        box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7);
-	-webkit-box-shadow: 5px;
+	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 		 border-radius: 5px;
 }
