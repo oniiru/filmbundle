@@ -48,7 +48,12 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 #header {
 	padding:15px 0;
 }
-
+.footer {
+	background-color:#2b2b2b;
+}
+#header {
+	background-color:#2b2b2b;
+}
 .topbanner-inner h1 {
 	font-family: 'museo300';
 	text-shadow:1px 1px 1px #474747;
@@ -114,7 +119,7 @@ box-shadow: 4px 4px 8px #000;
 }
 .undervidstripe {
 width:100%;
-background: #1f2329;
+background: #2b2b2b;
 text-align:center;
 color:white;
 padding:15px;
