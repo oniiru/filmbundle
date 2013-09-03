@@ -25,5 +25,42 @@
 		<p>
 			<input type="text" name="<?php $metabox->the_name('title'); ?>" value="<?php $metabox->the_value('title'); ?>"/>
 		</p>
+		<label>Below Average</label><br/>
+	
+		<?php $mb->the_field('belowavg'); ?>
+		<select name="<?php $mb->the_name(); ?>">
+			<?php  // Get all available products
+	                $args = array(
+	                  'post_type' => 'download',
+	                  'posts_per_page' => -1,
+	                  'post_status' => 'any'
+	                );
+	                $products = get_posts($args);
+					?>
+
+			<?php foreach ($products as $product): ?>
+			<option value="<?php echo $product->ID; ?>"<?php $mb->the_select_state($product->ID); ?>><?php echo $product->post_title; ?></option>
+					<?php endforeach; ?>
+		</select>
+		
+
+				<label>Above Average</label><br/>
+		<?php $mb->the_field('aboveavg'); ?>
+		<select name="<?php $mb->the_name(); ?>">
+			<?php  // Get all available products
+	                $args = array(
+	                  'post_type' => 'download',
+	                  'posts_per_page' => -1,
+	                  'post_status' => 'any'
+	                );
+	                $products = get_posts($args);
+					?>
+
+			<?php foreach ($products as $product): ?>
+			<option value="<?php echo $product->ID; ?>"<?php $mb->the_select_state($product->ID); ?>><?php echo $product->post_title; ?></option>
+				<?php endforeach; ?>
+		</select>
+		
+	
 		
 	</div>

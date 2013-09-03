@@ -9,7 +9,15 @@ $videometa = $full_mb->the_meta();
 ?>
 <div style="background-image:url('<?php echo $videometa['backgroundimage']?>')" id="filmbackground">
 	<div class="bg-trans">
+		
 		<div class="video-holder">
+			<?php global $user_ID; 
+			$abovebelow = array (
+			"below" => $videometa['belowavg'],
+			"above" => $videometa['aboveavg'],
+			);
+				if(edd_has_user_purchased( $user_ID, $abovebelow )) {
+				?>
 	<video id="thevideo" class="video-js vjs-default-skin"
 	  controls preload="auto"
 	  poster="http://video-js.zencoder.com/oceans-clip.png"
@@ -18,7 +26,22 @@ $videometa = $full_mb->the_meta();
       <source src="http://player.vimeo.com/external/72915570.hd.mp4?s=0be98efecfe889d1c2c167bc74af8f1c" type='video/mp4' data-res="SD">
 	  
 	</video>
+	<?php
+	} else {
+	 ?>
+ 	<video id="thevideo" class="video-js vjs-default-skin"
+ 	  controls preload="auto"
+ 	  
+ 	  data-setup='{}'>
+       <source src="http://player.vimeo.com/external/72915570.hd.mp4?s=0be98efecfe889d1c2c167bc74af8f1c" type='video/mp4' data-res="HD" data-default="true">
+       <source src="http://player.vimeo.com/external/72915570.hd.mp4?s=0be98efecfe889d1c2c167bc74af8f1c" type='video/mp4' data-res="SD">
+	  
+ 	</video>
+	 
+	 
+	 <?php }?>
 </div>
+
 	</div>
 </div>
 
@@ -43,6 +66,7 @@ $videometa = $full_mb->the_meta();
 	
  
 	 <?php
+	 if(edd_has_user_purchased( $user_ID, $videometa['aboveavg'] )) {
  foreach ($extrasmeta['extra-feature'] as $extrasindiv)
  { 
 	 $extraembed = $extrasindiv['extra_embed']; 
@@ -61,7 +85,35 @@ $videometa = $full_mb->the_meta();
  </a>
  </div>
 	 <?php
- }?> 
+ } } else {
+	 foreach ($extrasmeta['extra-feature'] as $extrasindiv)
+	 { 
+		 $extraembed = $extrasindiv['extra_embed']; 
+		 $extratitle = $extrasindiv['extra_title']; 
+		 $extrabg = $extrasindiv['backgroundimage']; 
+		 $extraruntime = $extrasindiv['run_time']; 
+		 ?>
+	
+		<div class = 'item'>
+   		 <a class="lockpopup" href="#small-dialog">
+			
+		 <div style="<?php if($extrabg == '') { echo 'background-image:green'; } else {echo 'background-image:url('.$extrabg.')';}; ?>" class="anextra">
+			 <div class="lockeditem">
+				 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/lock.png">
+			 <div class="iteminfo">
+				 <p><?php echo $extratitle ;?> <span><?php echo $extraruntime ;?> </span></p>
+			 </div>
+		 </div>
+		 </div>
+	 </a>
+	 </div>
+	 
+	 <div id="small-dialog" class="white-popup mfp-hide">
+	        <h1>This content is locked.</h1>
+	        <p>These special features are only available to folks who have paid more than average at the time of checkout. If you missed out, our next version of FilmBundle will include the ability to earn special features by sharing with friends. Stay tuned!</p>
+	      </div>
+ 
+<?php }; }?> 
 	</div>
 	
 </div><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/nav-arrow-right.png" class="next">
@@ -137,9 +189,12 @@ $videometa = $full_mb->the_meta();
              mainClass: 'mfp-fade',
              removalDelay: 160,
              preloader: false,
-
              fixedContentPos: false
            });
+		   jQuery('.lockpopup').magnificPopup({
+		     type:'inline',
+		     midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+		   });
          });
 </script>
 <?php get_footer(); ?>
