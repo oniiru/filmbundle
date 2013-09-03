@@ -21,28 +21,13 @@ $videometa = $full_mb->the_meta();
 </div>
 	</div>
 </div>
-<div class="theextras">
 
-<div class = 'iosSlider'>
 
-	<div class = 'slider'>
-
-		<div class = 'item'>
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/MYSTERY.png" width="300" height="302" alt="MYSTERY">
-		</div>
-		<div class = 'item'>
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/MYSTERY.png" width="300" height="302" alt="MYSTERY">
-		</div>
-		<div class = 'item'>
-			<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/MYSTERY.png" width="300" height="302" alt="MYSTERY">
-		</div>
+		
 	 
-	</div>
+	
 
-</div>
-</div>
-<div class = 'next'></div>
-<div class = 'prev unselectable'></div>
+
  <?php 
  $extrasmeta = $extras_mb->the_meta(); 
  
@@ -51,6 +36,11 @@ $videometa = $full_mb->the_meta();
 		 <h2>Special Features </h2>
 	 </div>
 	 <div class="theextras">
+
+	 <div class = 'iosSlider'>
+
+	 	<div class = 'slider'>
+	
  
 	 <?php
  foreach ($extrasmeta['extra-feature'] as $extrasindiv)
@@ -60,17 +50,36 @@ $videometa = $full_mb->the_meta();
 	 $extrabg = $extrasindiv['backgroundimage']; 
 	 $extraruntime = $extrasindiv['run_time']; 
 	 ?>
-	 <div style="<?php if($extrabg == '') { echo 'background:green'; } else {echo 'background:black';}; ?>" class="anextra">
-		 hello
+	
+	<div class = 'item'>
+		 <a class="extrapopup" href="<?php echo $extraembed ; ?>">
+	 <div style="<?php if($extrabg == '') { echo 'background-image:green'; } else {echo 'background-image:url('.$extrabg.')';}; ?>" class="anextra">
+		 <div class="iteminfo">
+			 <p><?php echo $extratitle ;?> <span><?php echo $extraruntime ;?> </span></p>
+		 </div>
 	 </div>
+ </a>
+ </div>
 	 <?php
  }?> 
- 
- </div>
+	</div>
+	
+</div><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/nav-arrow-right.png" class="next">
+
+<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/nav-arrow-left.png" class="prev unselectable">
+</div>
+
  	<?php
 }
  ?>
+ <div class="undervidstripe">
+  <h2>What do you think? </h2>
+ </div>
+ <div class="thecomments">
+ <?php echo do_shortcode('[fbcomments count="off" width="900px"]'); ?>
+ </div>
 </div>
+
 <script type="text/javascript">
   // Once the video is ready
   _V_("thevideo").ready(function(){
@@ -94,9 +103,8 @@ $videometa = $full_mb->the_meta();
 		jQuery('.iosSlider').iosSlider({
 			snapToChildren: true,
 			desktopClickDrag: true,
-			keyboardControls: true,
-			onSliderLoaded: sliderTest,
-			onSlideStart: sliderTest,
+			keyboardControls: false,
+			onSliderLoaded: slideComplete,
 			onSlideComplete: slideComplete,
 			navNextSelector: jQuery('.next'),
 		    navPrevSelector: jQuery('.prev'),
@@ -104,12 +112,7 @@ $videometa = $full_mb->the_meta();
 		
 	});
 	
-	function sliderTest(args) {
-		try {
-			console.log(args);
-		} catch(err) {
-		}
-	}
+	
 	
 	function slideComplete(args) {
 		
@@ -121,11 +124,22 @@ $videometa = $full_mb->the_meta();
 	
 	    } else if(args.currentSliderOffset == args.data.sliderMax) {
 	
-	        jQuery('.next').addClass('unselectable');
-	
+	        jQuery('.next').addClass('unselectable');	
 	    }
-	
+	if(jQuery('.anextra').length < 5) {
+			 jQuery('.next, .prev').addClass('unselectable');	
+			}
 	}
-  
+         jQuery(document).ready(function() {
+           jQuery('.extrapopup').magnificPopup({
+             disableOn: 700,
+             type: 'iframe',
+             mainClass: 'mfp-fade',
+             removalDelay: 160,
+             preloader: false,
+
+             fixedContentPos: false
+           });
+         });
 </script>
 <?php get_footer(); ?>

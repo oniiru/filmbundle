@@ -134,14 +134,60 @@ padding:50px
 	background-size:cover;
 
 }
+.thecomments iframe, .thecomments span, .fb-comments {
+	width:100% !important;
+}
 
+.thecomments h3 {
+	display:none;
+}
 .theextras {
-	max-width:1210px;
+	max-width:1105px;
 	margin:auto;
-	padding:20px;
+	padding:20px 35px;
+	overflow: hidden;
+	margin-bottom: -60px;
 
 }
 
+.iteminfo {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	background: rgba(0,0,0,.3);
+	width: 100%;
+	padding: 10px;
+	color: white;
+	text-align: left;
+	
+	}
+
+	.iteminfo p {
+		float:left;
+		width:100%;
+		font-family: "open sans", sans-serif;
+		font-weight:300;
+	}
+	
+	.iteminfo p span {
+		float:right;
+		font-size:13px;
+	}
+
+	.iteminfo p span:before {
+		content:url('assets//img/clock.png');
+		margin-right: 3px;
+		top: 3px;
+		position: relative;
+		
+	}
+.thecomments {
+	max-width:1140px;
+	margin:auto;
+	padding:20px 35px;
+	margin-bottom:50px;
+	padding-top:30px;
+}
 .topbanner-inner a:hover {
 	text-decoration:none;
 }
@@ -154,10 +200,10 @@ padding:50px
 }
 
 .anextra {
-	width:200px;
-	height:250px;
+	width:100%;
+	height:100%;
 	display:inline-block;
-	margin:15px;
+	position:relative;
 }
 
 .filmmakerclass h2 {
@@ -1377,7 +1423,7 @@ a.hiddenanchor{
 
 .iosSlider {
 	width: 100%;
-	height: 300px;
+	height: 195px;
 }
 
 .iosSlider .slider {
@@ -1387,33 +1433,35 @@ a.hiddenanchor{
 
 .iosSlider .slider .item {
 	float: left;
-	width: 50%;
-}
-
-.iosSlider .slider .item img {
-	width: 100%;
-	height: auto;
+	width:325px;
+	text-align:center;
+	height:180px;
+	margin:10px;
 }
 
 .prev {
 	position: relative;
-	width: 40px;
-	height: 40px;
 	background: #000;
 	z-index: 10;
+	float:left;
+	bottom: 130px;
+	left: -30px;
 }
 
 .next {
 	position: relative;
-	width: 40px;
-	height: 40px;
 	background: green;
 	z-index: 10;
+	float:right;
+	bottom: 130px;
+	right: -30px;
 }
 
 .unselectable {
-	opacity: 0.2;
+	display:none;
 }
+
+
 #loginbody #wrapper, #loginbody #wrapper2{
 	width: 670px;
 	right: 0px;

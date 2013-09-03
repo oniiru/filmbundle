@@ -22,7 +22,7 @@
 		<p><input style="display:inline-block; width:500px" type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/></p>
 		
 			<?php $mb->the_field('backgroundimage'); ?>
-			    <?php $wpalchemy_media_access->setGroupName('nn3')->setInsertButtonLabel('Insert'); ?>
+			    <?php $wpalchemy_media_access->setGroupName('img-n'. $mb->get_the_index())->setInsertButtonLabel('Insert'); ?>
 	
 			    <p>
 					<label>Background Image</label>
