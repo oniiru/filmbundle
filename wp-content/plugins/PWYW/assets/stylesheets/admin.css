@@ -1,0 +1,424 @@
+.bluerevbox {
+    margin:0 auto;
+    width:500px;
+    background:#a9f2ff;
+    border-radius:5px;
+    box-shadow: inset 0 0 20px #2d9bae;
+    padding:10px;
+    text-align:center;
+    margin-top:30px;
+
+}
+
+.bluerevbox h2 {
+    font-size:2.5em;
+    line-height: 0.4em;
+    margin:13px 0;
+}
+
+.bluerevbox h4 {
+    font-size:1.3em;
+    margin:5px 0;
+}
+
+.statsbox {
+    width:840px;
+    margin: 20px auto;
+    overflow:hidden;
+    padding-bottom:20px;
+
+
+}
+
+.totalsbox {
+    float:left;
+    width:400px;
+    border-radius:5px;
+    border:1px solid lightgrey;
+    background:#fff;
+    min-height: 100px;
+}
+
+
+.totalsbox li {
+    font-size:16px;
+    margin-top:10px;
+    margin-left:5px;
+    font-weight:bold
+
+}
+
+.totalsbox li span{float:right;margin-right:10px;}
+
+
+.totalsbox li ul li {
+    margin-left:25px;
+    border-bottom:1px dotted darkgrey;
+    font-weight:normal;
+
+}
+
+.leadersbox {
+    float:right;
+    width:400px;
+    border-radius:5px;
+    border:1px solid lightgrey;
+    background:#fff;
+    min-height:100px;
+}
+
+.leadersbox li {
+    font-size:16px;
+    margin-top:10px;
+    margin-left:5px;
+    border-bottom:1px dotted darkgrey;
+}
+
+.leadersbox li span{float:right;margin-right:10px;}
+
+.bundlesettings {
+    width:100%;
+    border-radius:5px;
+    background:#fff;
+    border:1px solid lightgrey;
+    overflow:hidden;
+}
+
+.suggestedvalues {
+    overflow:hidden;
+    margin:0 20px;
+    font-size:16px;
+
+}
+
+.bundletitleinput,
+.bundledescriptioninput,
+.bundlebgimageinput,
+.bundleendtimeinput
+{
+    margin:0 20px;
+    font-size:16px;
+}
+
+.bundledescriptioninput textarea,
+.bundlebgimageinput input,
+.bundletitleinput input,
+.bundleendtimeinput input {
+    width:300px;
+    border-radius:5px;
+    border: 1px solid darkgrey;
+    margin-left:20px;
+}
+.indivvalues {
+    float:left;
+    margin-left:20px;
+}
+
+.indivvalues input {
+    width:75px;
+    border:1px solid darkgrey;
+    border-radius:5px;
+    padding:5px;
+}
+
+
+.indivvalues input:focus { 
+    background:#fff6d6;border: 1px solid #ECB286;box-shadow:0 0 4px darkgrey}
+
+.bundlecategories {
+    overflow:hidden;
+    margin:0 20px;
+    font-size:16px;
+}
+
+.bundlecategories span {
+    margin-left:285px;
+}
+
+.indivcategory {
+    margin-left:20px;
+    overflow:hidden;
+    font-size:20px;
+    width:100%;
+    float:left;
+}
+
+.indivcategory p{
+    vertical-align:middle;
+    float:left;
+
+}
+
+.indivcategoryslider {
+    float:right;
+    overflow:hidden;
+    margin-right:200px;
+}
+
+.indivcategoryslider input,.indivsubcategoryslider input{
+    width:50px;
+    border-radius:5px;
+    border:1px solid darkgrey;
+    float:right;
+    margin-left:10px;
+    font-size:16px;
+    margin-top:15px;
+}
+
+
+
+.PWYWmemberships {
+    overflow:hidden;
+    margin:0 20px 20px;
+    font-size:16px;
+}
+
+.belowmembership, .abovemembership {
+    float:left;
+
+}
+.PWYWmemberships p{
+    margin-left:20px;
+    margin-bottom:5px;
+}
+
+
+.PWYWmemberships select {
+    width:215px;
+    margin-left:20px;
+}
+
+
+.savebundle {
+    margin:20px;
+    width:83px;
+}
+
+.activatebutton {
+    float:left;
+    margin:20px;
+}
+
+.indivsubcategory {
+    margin-left:40px;
+/*    padding-right: 330px;*/
+    width:100%;
+    float:left;
+}
+
+.activatediv {
+
+    font-size: 16px;
+    color: purple;
+    margin-top: 20px;
+    float: left;
+}
+
+span.deletebundle {
+    color:red;
+    font-size:14px;
+    margin:23px;
+    float:right;
+    cursor:pointer
+}
+.ui-slider
+{
+    float: left  !important;
+    position: relative !important;
+    width: 250px !important;
+    height: 10px !important;
+    background: #6b6b6b !important;
+    margin: 22px !important;
+    border-radius: 1000px !important;
+    box-shadow:inset 0px 2px 10px black !important;
+}
+
+.ui-slider .ui-slider-handle
+{
+    position: absolute !important;
+    top:-7px !important;
+    z-index: 2 !important;
+    width: 24px !important;
+    height: 24px !important;
+    cursor: default !important;
+    background: url('../../img/metal-slider.png') !important;
+    margin-left: -12px !important;
+    border:none !important;
+}
+.ui-slider a {outline:none !important;}
+
+.ui-slider .ui-slider-range
+{
+    position: absolute !important;
+    z-index: 1 !important;
+    font-size: .7em !important;
+    display: block !important;
+    border: 0 !important;
+    background-position: 0 0 !important;
+}
+
+.ui-widget-header {background:white !important;}
+
+.pwyw_sub_title{
+    margin-bottom:5px;
+    margin-top:15px;
+    float:left;
+    font-size:15px;
+}
+
+.linked4{
+     margin-left: 30px !important;
+}
+
+.indivsubcategoryslider input{
+    float:left;
+}
+
+.del_sub{
+    float: left; margin-top: 14px;cursor:pointer;margin-left:10px;
+}
+
+.add_sub_link{
+    font-size:13px;
+}
+
+.yes_{
+    margin-left:35px;
+}
+
+.payd .totalsbox{
+    width:200px;
+    display:none;
+}
+
+.payd .totalsbox li span{
+    float:none;
+    margin-left:5px;
+}
+
+.payd .totalsbox li{
+    font-size:12px;
+    border:0 none !important;
+    margin-top:0;
+}
+
+/**
+ * jQuery.popover example stylesheet.
+ * By Davey IJzermans
+ * http://daveyyzermans.nl
+ *
+ * License: public domain
+ */
+
+.popover {
+	position: absolute;
+	top: 0; left: 0;
+	max-height: 240px;
+	width: 220px;
+	display: none;
+	-webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+}
+.popover.wider {
+	width: 340px;
+}
+.popover.large {
+	width: 470px;
+	max-height: 350px;
+}
+.popover .arrow, .popover .top-arrow {
+	position: absolute;
+	top: 0; left: 50%;
+	margin: -10px 0 0 -3px;
+	width: 0; height: 0;
+	border-top: 5px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #121212;
+}
+.popover .bottom-arrow {
+	top: 100%; left: 50%;
+	margin: 0 0 0 -3px;
+	border-top: 5px solid #121212;
+	border-bottom: 5px solid transparent;
+}
+.popover .left-arrow {
+	top: 50%; left: -10px;
+	margin: -3px 0 0;
+	border-right: 5px solid #121212;
+	border-bottom: 5px solid transparent;
+}
+.popover .right-arrow {
+	top: 50%; left: 100%;
+	margin: -3px 0 0;
+	border-left: 5px solid #121212;
+	border-bottom: 5px solid transparent;
+}
+.popover .wrap {
+	background: white;
+	border: 1px solid #121212;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.popover .title {
+	background: #121212 url('../../img/popover_gradient.png') repeat-x;
+	color: white;
+	font-size: 1.3em;
+	text-align: center;
+	padding: 8px 0 0 0;
+	height: 27px;
+}
+.popover .content {
+	padding: 15px;
+        padding-top:0px;
+	max-height: 175px;
+	overflow: auto;
+	line-height: 1.3em;
+	font-size: 0.9em;
+}
+
+.popover .subs{
+    margin-left:20px;
+    margin-top:5px;
+}
+
+.allocate_price{
+    color:red;
+}
+
+.second_column{
+    text-align:right
+}
+
+.popover.large .content {
+	max-height: 285px;
+}
+
+.payment_amount{
+    cursor:pointer
+}
+
+.active_bundle{
+    color:red;
+}
+
+
+/** ----------------------------------------------------------------------------
+ * Widget Admin
+ * -------------------------------------------------------------------------- */
+
+div[id*="pwyw"] .widget-top{
+    background: #d5f2c7 !important;
+    border-color: #c2deb4 !important;
+    box-shadow: inset 0 1px 0 white !important;
+    -webkit-box-shadow: inset 0 1px 0 white !important;
+    -moz-box-shadow: inset 0 1px 0 white !important;
+    -ms-box-shadow: inset 0 1px 0 white !important;
+    -o-box-shadow: inset 0 1px 0 white !important;
+    background: -moz-linear-gradient(top,  #f1ffeb 0%, #d5f2c7 100%) !important;
+    background: -webkit-linear-gradient(top, #f1ffeb 0%,#d5f2c7 100%) !important;
+    background: linear-gradient(to bottom, #f1ffeb 0%,#d5f2c7 100%) !important;
+    border-bottom: 1px solid #a5bf97 !important;
+    margin-top: 0px;
+}

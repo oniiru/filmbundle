@@ -3,27 +3,51 @@
   Plugin Name: PWYW
   Plugin URI: http://www.filmbundle.com
   Description: Plugin to allow users to pay what they want.
-  Version: 0.1
-  Author: OniWorks
-  Author URI: http://www.oniworks.com
+  Version: 0.2
+  Author: Filmbundle
+  Author URI: http://www.filmbundle.com
  */
 
-//init code
-//add_action('admin_init', 'PWYW_init1');
+/** Load all of the necessary class files for the plugin */
+spl_autoload_register('Pwyw::autoload');
 
-class pwyw {
+class Pwyw
+{
+    /** Holds the plugin instance */
+    protected static $instance;
 
-    public function __construct() {
+    /** Define plugin constants */
+    const FILE = __FILE__;
+
+    /** Define PubNub setup */
+    const PUBNUB_SUBSCRIBE_KEY = 'sub-c-ef114922-f1ea-11e2-b383-02ee2ddab7fe';
+    const PUBNUB_PUBLISH_KEY   = 'pub-c-3f69d611-264c-477e-a751-48ebc60048fe';
+    const PUBNUB_CHANNEL       = 'filmbundle';
+
+    /** Singleton class */
+    public static function getInstance()
+    {
+        if (!self::$instance) {
+            self::$instance = new self();
+            self::$instance->construct();
+        }
+        return self::$instance;
+    }
+
+    /** Singleton constructor */
+    private function __construct()
+    {
+    }
+
+    /** Custom constructor */
+    private function construct()
+    {
         global $wpdb;
-        register_activation_hook(__FILE__, array(&$this, 'pwyw_install'));
         register_deactivation_hook(__FILE__, array(&$this, 'pwyw_uninstall'));
-        
+
         //$wpdb->query("UPDATE `wp_pwyw_customers` SET `alias` = 'Anonymous' WHERE `alias` = 'Annonymous'");
 
-        add_action("init", array(&$this, "PWYW_init"));
         add_action('admin_menu', array(&$this, 'PWYW_menu_pages'));
-        add_action('pmpro_added_order', array(&$this, 'pwyw_add_payment'));
-        add_action('wp_ajax_pwyw_bundle_update', array(&$this, 'pwyw_bundle_update'));
 
         $this->plugin_url = trailingslashit(WP_PLUGIN_URL . '/' . dirname(plugin_basename(__FILE__)));
         $this->plugin_name = plugin_basename(__FILE__);
@@ -33,14 +57,135 @@ class pwyw {
         $this->payment_info = $wpdb->prefix . "pwyw_payment_info";
         $this->price_allocation = $wpdb->prefix . "pwyw_price_allocation";
         $this->users = $wpdb->prefix . "pwyw_customers";
+
+        // Boot up constructing classes
+        Pwyw_Admin::instance();
+        Pwyw_Charities::instance();
+        Pwyw_Films::instance();
+        Pwyw_Widgets::getInstance();
+        Pwyw_Checkout::getInstance();
+
+        // Check if database needs upgrading
+        if (is_admin()){
+            Pwyw_Database::upgrade();
+        }
     }
 
-    function pwyw_install() {
+
+    /**
+     * PSR-0 compliant autoloader to load classes as needed.
+     *
+     * @param  string  $classname  The name of the class
+     * @return null    Return early if the class name does not start with the
+     *                 correct prefix
+     */
+    public static function autoload($className)
+    {
+        if (!
+           ('Pwyw' === mb_substr($className, 0, strlen('Pwyw')) ||
+            'Pubnub' === mb_substr($className, 0, strlen('Pubnub'))
+        )) {
+            return;
+        }
+        $className = ltrim($className, '\\');
+        $fileName  = '';
+        $namespace = '';
+        if ($lastNsPos = strrpos($className, '\\')) {
+            $namespace = substr($className, 0, $lastNsPos);
+            $className = substr($className, $lastNsPos + 1);
+            $fileName  = str_replace('\\', DIRECTORY_SEPARATOR, $namespace);
+            $fileName .= DIRECTORY_SEPARATOR;
+        }
+        $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
+        require 'lib'.DIRECTORY_SEPARATOR.$fileName;
+    }
+
+
+    // -------------------------------------------------------------------------
+    // PubNub handling
+    // -------------------------------------------------------------------------
+
+    /**
+     * Initialize the PubNub Admin view.
+     *
+     * @return void
+     */
+    public function pubNubSettings()
+    {
+        if (!current_user_can('manage_options')) {
+            wp_die('You do not have permission to access this page.');
+        }
+
+        if ($_POST['submit']) {
+            $this->pubNubPublish();
+            $published = true;
+        }
+
+        $data = array(
+            'published' => isset($published) ? true : false
+        );
+
+        echo Pwyw_View::make('admin-pubnub', $data);
+    }
+
+    public function pubNubPublish()
+    {
+        $pubnub = new Pubnub_Pubnub(
+            self::PUBNUB_PUBLISH_KEY,
+            self::PUBNUB_SUBSCRIBE_KEY
+        );
+
+        $data = $this->pwyw_get_bundle_info();
+
+        // Create a streamlined array of top contributors
+        $contributors = array();
+        foreach ($data['top'] as $contributor) {
+            $array = array(
+                'name' => $contributor->display_name,
+                'amount' => $contributor ->amount
+            );
+            $contributors[] = $array;
+        }
+
+        $pubnub->publish(
+            array(
+                'channel' => self::PUBNUB_CHANNEL,
+                'message' => array(
+                    'contributors'  => $contributors,
+                    'minAmount'     => $data['min_amount'],
+                    'totalSales'    => $data['payment_info']->total_sales,
+                    'averagePrice'  => $data['payment_info']->avg_price,
+                    'totalPayments' => $data['payment_info']->total_payments,
+                    'server'        => php_uname('n'),
+                    'server_time'   => date('Y-m-d H:i:s')
+                )
+            )
+        );
+    }
+
+
+    // -------------------------------------------------------------------------
+    // Original PWYW code from v0.1
+    // -------------------------------------------------------------------------
+
+    /**
+     * When the plugin is activated.
+     */
+    public static function install()
+    {
         global $wpdb;
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
-        if ($wpdb->get_var("SHOW TABLES LIKE '{$this->bundles}'") != $this->bundles) {
-            $sql = "CREATE TABLE " . $this->bundles . " (
+        $bundles = $wpdb->prefix . "pwyw_bundles";
+        $categories = $wpdb->prefix . "pwyw_categories";
+        $bundle_categories = $wpdb->prefix . "pwyw_bundle_categories";
+        $payment_info = $wpdb->prefix . "pwyw_payment_info";
+        $price_allocation = $wpdb->prefix . "pwyw_price_allocation";
+        $users = $wpdb->prefix . "pwyw_customers";
+
+
+        if ($wpdb->get_var("SHOW TABLES LIKE '{$bundles}'") != $bundles) {
+            $sql = "CREATE TABLE " . $bundles . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `title` varchar(255) NOT NULL ,
              `suggested_val_1` float(10,2),
@@ -57,8 +202,8 @@ class pwyw {
 
             dbDelta($sql);
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->payment_info}'") != $this->payment_info) {
-                $sql = "CREATE TABLE " . $this->payment_info . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$payment_info}'") != $payment_info) {
+                $sql = "CREATE TABLE " . $payment_info . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `cid` mediumint(9) ,
              `order_id` mediumint(9),
@@ -73,8 +218,8 @@ class pwyw {
                 dbDelta($sql);
             }
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->users}'") != $this->users) {
-                $sql = "CREATE TABLE " . $this->users . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$users}'") != $users) {
+                $sql = "CREATE TABLE " . $users . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `cid` mediumint(9) ,
              `is_twitter` smallint(1) DEFAULT 0,
@@ -85,8 +230,8 @@ class pwyw {
                 dbDelta($sql);
             }
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->price_allocation}'") != $this->price_allocation) {
-                $sql = "CREATE TABLE " . $this->price_allocation . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$price_allocation}'") != $price_allocation) {
+                $sql = "CREATE TABLE " . $price_allocation . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `payment_id` mediumint(9) ,
              `cat_id` mediumint(9),
@@ -98,8 +243,8 @@ class pwyw {
                 dbDelta($sql);
             }
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->categories}'") != $this->categories) {
-                $sql = "CREATE TABLE " . $this->categories . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$categories}'") != $categories) {
+                $sql = "CREATE TABLE " . $categories . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `title` varchar(255) NOT NULL ,
              `parent` mediumint(3)DEFAULT 0,
@@ -109,23 +254,23 @@ class pwyw {
 
                 dbDelta($sql);
 
-                $wpdb->insert($this->categories, array('title' => 'Filmmakers',
+                $wpdb->insert($categories, array('title' => 'Filmmakers',
                     'parent' => 0,
                     'order' => 1));
 
-                $wpdb->insert($this->categories, array('title' => 'Charities',
+                $wpdb->insert($categories, array('title' => 'Charities',
                     'parent' => 0,
                     'order' => 2));
 
-                $wpdb->insert($this->categories, array('title' => 'Bundle',
+                $wpdb->insert($categories, array('title' => 'Bundle',
                     'parent' => 0,
                     'order' => 3));
             }
 
 
 
-            if ($wpdb->get_var("SHOW TABLES LIKE '{$this->bundle_categories}'") != $this->bundle_categories) {
-                $sql = "CREATE TABLE " . $this->bundle_categories . " (
+            if ($wpdb->get_var("SHOW TABLES LIKE '{$bundle_categories}'") != $bundle_categories) {
+                $sql = "CREATE TABLE " . $bundle_categories . " (
              `id` mediumint(9) NOT NULL AUTO_INCREMENT,
              `cat_id` mediumint(9) ,
              `bundle_id` mediumint(9),
@@ -136,9 +281,13 @@ class pwyw {
                 dbDelta($sql);
             }
         }
+
+        // Install tables
+        Pwyw_Database::createTables();
     }
 
-    function pwyw_uninstall() {
+    function pwyw_uninstall()
+    {
         global $wpdb;
 
         $sql = "DROP TABLE " . $this->bundles . "";
@@ -158,45 +307,118 @@ class pwyw {
 
         $sql = "DROP TABLE " . $this->users . "";
         $k = $wpdb->query($sql);
+
+        // Uninstall tables
+        Pwyw_Database::dropTables();
     }
 
-    function PWYW_init() {
-
-        if (is_admin()) {
-            wp_enqueue_style('dashboard');
-            wp_enqueue_script('dashboard');
-            wp_enqueue_script('PWYW_admin', plugins_url('/js/jquery.js', __FILE__), array(), "screen");
-            wp_enqueue_script('PWYW_admin2', plugins_url('/js/jquery.ui.js', __FILE__), array(), "screen");
-            wp_enqueue_script('PWYW_admin4', plugins_url('/js/jquery.linkedsliders.js', __FILE__), array(), "screen");
-            wp_enqueue_script('popover', plugins_url('/js/jquery.popover-1.1.2.js', __FILE__), array(), "screen");
-            wp_enqueue_style('PWYW_admin', plugins_url('/pwyw.css', __FILE__), array(), "screen");
-        }
-    }
-
-    function PWYW_menu_pages() {
+    public function PWYW_menu_pages()
+    {
         // Add the top-level admin menu
         $page_title = 'PWYW Settings';
         $menu_title = 'PWYW';
         $capability = 'manage_options';
         $menu_slug = 'PWYW-settings';
 
-        add_menu_page($page_title, $menu_title, $capability, $menu_slug, array(&$this, 'pwyw_settings'));
+        add_menu_page(
+            $page_title,
+            $menu_title,
+            $capability,
+            $menu_slug,
+            array(&$this, 'pwyw_settings')
+        );
 
         // Add submenu page with same slug as parent to ensure no duplicates
         $sub_menu_title = 'PWYW Settings';
-        add_submenu_page($menu_slug, $page_title, $sub_menu_title, $capability, $menu_slug, array(&$this, 'pwyw_settings'));
+        add_submenu_page(
+            $menu_slug,
+            $page_title,
+            $sub_menu_title,
+            $capability,
+            $menu_slug,
+            array(&$this, 'pwyw_settings')
+        );
 
         // Now add the submenu page for Help
         $submenu_page_title = 'Customers';
         $submenu_title = 'Customers';
         $submenu_slug = 'PWYW-customers';
         $submenu_function = 'pwyw_customers';
-        add_submenu_page($menu_slug, $submenu_page_title, $submenu_title, $capability, $submenu_slug, array(&$this, $submenu_function));
+
+        add_submenu_page(
+            $menu_slug,
+            $submenu_page_title,
+            $submenu_title,
+            $capability,
+            $submenu_slug,
+            array(&$this, $submenu_function)
+        );
+
+        // Let's add a page for some manual PubNub control
+        add_submenu_page(
+            $menu_slug,
+            'PubNub',
+            'PubNub',
+            $capability,
+            'PWYW-pubnub',
+            array(&$this, 'pubNubSettings')
+        );
     }
 
-    function get_all_payment_info() {
+    function pwyw_settings()
+    {
+
+        if (!current_user_can('manage_options')) {
+            wp_die('You do not have sufficient permissions to access this page.');
+        } else {
+            if (isset($_REQUEST['action'])) {
+                switch ($_REQUEST['action']) {
+                    case 'view':
+                        $this->pwyw_view_bundle($_REQUEST['bundle']);
+                        break;
+                    case 'delete':
+                        $this->pwyw_delete_bundle($_REQUEST['bundle']);
+                        break;
+                    case 'new':
+                        $this->pwyw_new_bundle();
+                        break;
+                    // These two are now handled from the admin class.
+                    // case 'edit':
+                    //     $this->pwyw_edit_bundle();
+                    //     break;
+                    // case 'create':
+                    //     $this->pwyw_create_bundle();
+                    //     break;
+                }
+            } else {
+                screen_icon('options-general');
+                ?>
+                <h2><?php echo get_admin_page_title(); ?></h2>
+                <a href="<?php echo sprintf('?page=%s&action=%s', $_REQUEST['page'], 'new'); ?>" class="add-new-h2">Add New Bundle </a>
+                <?php
+                require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
+                echo "
+                <script type='text/javascript'>
+                    jQuery(document).ready(function($) {
+                        $('.delete').click(function(){
+                            return confirm('Are you sure you want to delete the bundle?');
+                        });
+                    });
+                </script>
+                ";
+
+                $PWYWListTable = new PWYW_Bundles_List_Table();
+
+                $PWYWListTable->prepare_items();
+                $PWYWListTable->display();
+            }
+        }
+    }
+
+    function get_all_payment_info()
+    {
         global $wpdb;
-                    
+
         $sql = "SELECT pi.`id` pid,c.`id` cid,c.`title`,pi.`sum` payment,c.`parent`,pa.`allocate_percent`
                     FROM {$this->payment_info} pi
                     LEFT JOIN {$this->price_allocation} pa ON pi.`id` = pa.`payment_id`
@@ -224,7 +446,8 @@ class pwyw {
         return $pwyw_category;
     }
 
-    function pwyw_get_bundle_info($bid = '') {
+    function pwyw_get_bundle_info($bid = '')
+    {
         global $wpdb;
 
         if (!empty($bid)) {
@@ -300,17 +523,36 @@ class pwyw {
 
             $amount_q = "(SELECT SUM(`sum`) FROM  {$this->payment_info} WHERE cid = cu.`ID` AND `bundle` = {$pwyw_bundle->id})";
 
-            $pwyw_top_contr = $wpdb->get_results("SELECT DISTINCT p.`cid`,cu.`display_name`,{$amount_q} amount,u.`alias`,u.`is_twitter`  FROM `wp_users` cu
-                                                        RIGHT JOIN {$this->payment_info} p ON cu.`ID` = p.`cid`
-                                                        LEFT JOIN {$this->users} u ON cu.`ID` = u.`cid`
-                                                        WHERE p.`bundle` = {$pwyw_bundle->id}
-                                                        GROUP BY p.`cid`
-                                                        ORDER BY amount DESC LIMIT 10");
+            /**
+             * Database table structure for customers / payments / orders
+             *
+             * payment_info: the main table. an entry here is used as-is. cid
+             *               column is a foreign key for wp_users (hardcoded
+             *               it seems).
+             * customers:    if an entry exists in this column, it overrides the
+             *               displayname provided by wp_users. This is optional
+             *               but are probably created on each new user (will
+             *               look more into that during the order process).
+             *               cid column is a foreign key for wp_users.
+             */
+            $pwyw_top_contr = $wpdb->get_results(
+                "SELECT DISTINCT p.`cid`,cu.`display_name`,{$amount_q} amount,u.`alias`,u.`is_twitter`
+                 FROM `wp_users` cu
+                 RIGHT JOIN {$this->payment_info} p ON cu.`ID` = p.`cid`
+                 LEFT JOIN {$this->users} u ON cu.`ID` = u.`cid`
+                 WHERE p.`bundle` = {$pwyw_bundle->id}
+                 GROUP BY p.`cid`
+                 ORDER BY amount DESC LIMIT 10"
+            );
 
             foreach ($pwyw_top_contr as $top) {
                 if (!empty($top->alias)) {
                     if ($top->is_twitter) {
-                        $top->display_name = sprintf('<a target="_blank" href="http://twitter.com/%s">@%s</a>', $top->alias, $top->alias);
+                        $top->display_name = sprintf(
+                            '<a target="_blank" href="%s">@%s</a>',
+                            'http://twitter.com/'.$top->alias,
+                            $top->alias
+                        );
                     } else {
                         $top->display_name = $top->alias;
                     }
@@ -409,7 +651,8 @@ class pwyw {
         return $data;
     }
 
-    function pwyw_edit_bundle() {
+    function pwyw_edit_bundle()
+    {
         global $wpdb;
 
         if (isset($_REQUEST['activate'])) {
@@ -419,11 +662,19 @@ class pwyw {
         } else {
             $pwyw_bundle_active = 0;
         }
+
+        // Save the associated films and charities
+        Pwyw_Films::save($_REQUEST['bundle']);
+        Pwyw_Charities::save($_REQUEST['bundle']);
+
         $wpdb->query(
                 $wpdb->prepare(
                         "
                     UPDATE {$this->bundles}
                         SET title = %s,
+                            description = %s,
+                            bg_image = %s,
+                            end_time = %s,
                             suggested_val_1 = %f,
                             suggested_val_2 = %f,
                             suggested_val_3 = %f,
@@ -432,7 +683,7 @@ class pwyw {
                             aboveaverage = %d,
                             activated = %d
                         WHERE id = %d
-                     ", $_REQUEST['title'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active, $_REQUEST['bundle']
+                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['bg_image'], $_REQUEST['end_time'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active, $_REQUEST['bundle']
                 )
         );
 
@@ -470,20 +721,19 @@ class pwyw {
             }
         }
 
-        screen_icon('options-general');
-        ?>
-        <h2><?php echo get_admin_page_title(); ?></h2>
-        <a href="<?php echo sprintf('?page=%s&action=%s', $_REQUEST['page'], 'new'); ?>" class="add-new-h2">Add New Bundle </a>
-        <?php
-        require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
-
-        $PWYWListTable = new PWYW_Bundles_List_Table();
-
-        $PWYWListTable->prepare_items();
-        $PWYWListTable->display();
+        // Return to the view bundle
+        $url = admin_url(
+            sprintf(
+                'admin.php?page=PWYW-settings&action=view&bundle=%s',
+                $_REQUEST['bundle']
+            )
+        );
+        wp_redirect($url);
+        exit;
     }
 
-    function pwyw_view_bundle($id) {
+    function pwyw_view_bundle($id)
+    {
 
         $pwyw_data = $this->pwyw_get_bundle_info($id);
 
@@ -492,9 +742,15 @@ class pwyw {
         require_once( ABSPATH . 'wp-content/plugins/PWYW/bundle.php' );
     }
 
-    function pwyw_delete_bundle($id) {
+    function pwyw_delete_bundle($id)
+    {
         global $wpdb;
         $wpdb->query($wpdb->prepare("DELETE FROM {$this->bundles} WHERE id = %d", $id));
+
+        // Delete films and charities
+        Pwyw_Films::delete($id);
+        Pwyw_Charities::delete($id);
+
         require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
         screen_icon('options-general');
         ?>
@@ -506,7 +762,8 @@ class pwyw {
         $PWYWListTable->display();
     }
 
-    function pwyw_new_bundle() {
+    function pwyw_new_bundle()
+    {
         global $wpdb;
 
         $pwyw_levels = $wpdb->get_results("SELECT l.`id`,l.`name` FROM {$wpdb->pmpro_membership_levels} l");
@@ -529,7 +786,8 @@ class pwyw {
         require_once( ABSPATH . 'wp-content/plugins/PWYW/bundle.php' );
     }
 
-    function pwyw_create_bundle() {
+    function pwyw_create_bundle()
+    {
         global $wpdb;
 
         if (isset($_REQUEST['activate'])) {
@@ -540,13 +798,17 @@ class pwyw {
             $pwyw_bundle_active = 0;
         }
         $wpdb->query(
-                $wpdb->prepare("INSERT INTO {$this->bundles} (title,suggested_val_1,suggested_val_2,suggested_val_3,pwyw_val,belowaverage,aboveaverage,activated)
-                          VALUES (%s,%f,%f,%f,%f,%d,%d,%d)
-                     ", $_REQUEST['title'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active
+                $wpdb->prepare("INSERT INTO {$this->bundles} (title,description,bg_image,end_time,suggested_val_1,suggested_val_2,suggested_val_3,pwyw_val,belowaverage,aboveaverage,activated)
+                          VALUES (%s,%s,%s,%s,%f,%f,%f,%f,%d,%d,%d)
+                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['bg_image'], $_REQUEST['end_time'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active
                 )
         );
 
         $bundle_id = $wpdb->insert_id;
+
+        // Save the associated films and charities
+        Pwyw_Films::save($bundle_id);
+        Pwyw_Charities::save($bundle_id);
 
         if ($bundle_id) {
             foreach ($_REQUEST['parent_category_val'] as $key => $val) {
@@ -565,126 +827,20 @@ class pwyw {
                 }
             }
         }
-        //   die;
-        screen_icon('options-general');
-        ?>
-        <h2><?php echo get_admin_page_title(); ?></h2>
-        <a href="<?php echo sprintf('?page=%s&action=%s', $_REQUEST['page'], 'new'); ?>" class="add-new-h2">Add New Bundle </a>
-        <?php
-        require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
 
-        $PWYWListTable = new PWYW_Bundles_List_Table();
-
-        $PWYWListTable->prepare_items();
-        $PWYWListTable->display();
+        // Return to the view bundle
+        $url = admin_url(
+            sprintf(
+                'admin.php?page=PWYW-settings&action=view&bundle=%s',
+                $bundle_id
+            )
+        );
+        wp_redirect($url);
+        exit;
     }
 
-    function pwyw_settings() {
-
-        if (!current_user_can('manage_options')) {
-            wp_die('You do not have sufficient permissions to access this page.');
-        } else {
-            if (isset($_REQUEST['action'])) {
-                switch ($_REQUEST['action']) {
-                    case 'view':
-                        $this->pwyw_view_bundle($_REQUEST['bundle']);
-                        break;
-                    case 'delete':
-                        $this->pwyw_delete_bundle($_REQUEST['bundle']);
-                        break;
-                    case 'edit':
-                        $this->pwyw_edit_bundle();
-                        break;
-                    case 'new':
-                        $this->pwyw_new_bundle();
-                        break;
-                    case 'create':
-                        $this->pwyw_create_bundle();
-                        break;
-                }
-            } else {
-                screen_icon('options-general');
-                ?>
-                <h2><?php echo get_admin_page_title(); ?></h2>
-                <a href="<?php echo sprintf('?page=%s&action=%s', $_REQUEST['page'], 'new'); ?>" class="add-new-h2">Add New Bundle </a>
-                <?php
-                require_once( ABSPATH . 'wp-content/plugins/PWYW/bundles.php' );
-
-                $PWYWListTable = new PWYW_Bundles_List_Table();
-
-                $PWYWListTable->prepare_items();
-                $PWYWListTable->display();
-            }
-        }
-    }
-
-    function pwyw_add_payment($order) {
-        global $wpdb;
-        require_once( ABSPATH . 'wp-content/plugins/PWYW/Pubnub.php' );
-        $pubnub = new Pubnub('pub-055f1968-8c42-4146-80b1-195d34e6c4c5', 'sub-5f5a6c30-278a-11e2-964e-034399c6c504');
-
-        if ($order->status == 'success') {
-
-
-            $sql = "SELECT `id` FROM {$this->users} WHERE `cid`=%d";
-            $user = $wpdb->query($wpdb->prepare($sql, $order->user_id));
-
-            if (!$user) {
-                if (isset($_SESSION['pwyw_user_alias']) && !empty($_SESSION['pwyw_user_alias'])) {
-                    if (!empty($_SESSION['is_twitter_alias'])) {
-                        $wpdb->query($wpdb->prepare("INSERT INTO {$this->users} (cid,alias,is_twitter) VALUES (%d,%s,1) ", $order->user_id, $_SESSION['pwyw_user_alias']));
-                    } else {
-                        $wpdb->query($wpdb->prepare("INSERT INTO {$this->users} (cid,alias) VALUES (%d,%s) ", $order->user_id, $_SESSION['pwyw_user_alias']));
-                    }
-                } else {
-                    $wpdb->query($wpdb->prepare("INSERT INTO {$this->users} (cid) VALUES (%d) ", $order->user_id));
-                }
-            } else {
-                if (isset($_SESSION['pwyw_user_alias']) && !empty($_SESSION['pwyw_user_alias'])) {
-                    if (!empty($_SESSION['is_twitter_alias'])) {
-                        $wpdb->query($wpdb->prepare("UPDATE {$this->users} SET alias = %s,is_twitter=1 WHERE `cid`= {$order->user_id}", $_SESSION['pwyw_user_alias']));
-                    } else {
-                        $wpdb->query($wpdb->prepare("UPDATE {$this->users} SET alias = %s,is_twitter=0 WHERE `cid`= {$order->user_id}", $_SESSION['pwyw_user_alias']));
-                    }
-                }
-            }
-
-            foreach ($_SESSION['pwyw_bundle'] as $key => $data) {
-//                $pubnub->publish(array(
-//                    'channel' => 'my_test_channel',
-//                    'message' => $this->pwyw_get_bundle_info($key)
-//                ));
-                $res = $wpdb->query($wpdb->prepare("INSERT INTO {$this->payment_info} (cid,order_id,sum,average_price,bundle,bundle_level)
-                                        VALUES (%d,%d,%f,%f,%d,%d) ", $order->user_id, $order->id, $order->InitialPayment, $data['avg_price'], $key, $data['bundle_level']));
-                $payment_id = $wpdb->insert_id;
-
-                if ($res) {
-                    foreach ($_SESSION['pwyw_bundle'][$key]['categories'] as $id => $val) {
-                        $wpdb->query($wpdb->prepare("INSERT INTO {$this->price_allocation} (payment_id,cat_id,bundle,allocate_percent)
-                                        VALUES (%d,%d,%d,%d) ", $payment_id, $id, $key, $val));
-                    }
-                }
-            }
-        }
-
-        $_SESSION['pwyw_bundle'] = '';
-    }
-
-    function pwyw_bundle_update() {
-        if (check_ajax_referer('pwyw_ajax')) {
-            if (isset($_REQUEST['bid']) && (int) $_REQUEST['bid'] > 0) {
-
-                $pwyw_info = $this->pwyw_get_bundle_info($bid);
-                if (!empty($pwyw_info)) {
-                    echo json_encode($pwyw_info);
-                    exit;
-                }
-            }
-        }
-        echo 'ERROR';
-    }
-
-    function pwyw_customers() {
+    function pwyw_customers()
+    {
         if (!current_user_can('manage_options')) {
             wp_die('You do not have sufficient permissions to access this page.');
         } else {
@@ -692,15 +848,14 @@ class pwyw {
             ?>
             <h2><?php echo get_admin_page_title(); ?></h2>
 
-
             <?php
             require_once( ABSPATH . 'wp-content/plugins/PWYW/customers.php' );
             $PWYWListTable = new PWYW_Customer_List_Table();
             $PWYWListTable->prepare_items();
             $PWYWListTable->payments = $this->get_all_payment_info();
             ?>
-            <script type="text/javascript">
-                $(function(){
+            <script type="text/javascript" >
+                jQuery(document).ready(function($) {
                     $('.payment_amount').live('click',function(){
 
                         var content = $(this).parents('td').find('.totalsbox').html();
@@ -720,9 +875,8 @@ class pwyw {
             $PWYWListTable->display();
         }
     }
-
 }
 
-global $pwyw_obj;
-$pwyw_obj = new pwyw();
-?>
+// Go!
+add_action('plugins_loaded', array('Pwyw', 'getInstance'));
+register_activation_hook(__FILE__, array('Pwyw', 'install'));
