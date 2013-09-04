@@ -41,7 +41,45 @@ $videometa = $full_mb->the_meta();
 	 
 	 <?php }?>
 </div>
-
+<div class="filminfo">
+	<h1><?php echo $videometa['title']; ?> </h1>
+	<div class="tabbable tabs-left">
+	              <ul class="nav nav-tabs">
+	                <li class="active"><a href="#lA" data-toggle="tab">The Info</a></li>
+	                <li><a href="#lB" data-toggle="tab">From the FilmMaker</a></li>
+	                <li><a href="#lC" data-toggle="tab">Credits</a></li>
+	              </ul>
+	              <div class="tab-content">
+	                <div class="tab-pane active" id="lA">
+						<?php echo $videometa['synopsis']; ?>
+						<span><?php echo $videometa['runtime'].' Min.  &nbsp;• &nbsp; Genre(s): '.$videometa['genres'].' &nbsp;• &nbsp;Rated: '.$videometa['rating'] ?></spam>
+	                </div>
+	                <div class="tab-pane" id="lB">
+	        			<img src="<?php echo $videometa['filmmakerimg'] ?>">
+						<div class="fromfilmmaker"><?php echo $videometa['note'] ?>
+							<span>- <?php echo $videometa['filmmakername'] ?></span>
+						</div>
+						
+						
+						
+	                </div>
+	                <div class="tab-pane" id="lC">
+					   <?php foreach ($videometa['credits'] as $credit)
+					    { 
+					   	 $creditname = $credit['creditname']; 
+					   	 $creditjob = $credit['creditjob']; 
+					   	
+					   	 ?>
+						 <div class="acredit">
+							 <p><?php echo $creditname; ?></p>
+							 <span><?php echo $creditjob; ?></span>
+						 </div>
+						 <?php }?>
+	                </div>
+	              </div>
+	            </div> <!-- /tabbable -->
+	
+</div>
 	</div>
 </div>
 

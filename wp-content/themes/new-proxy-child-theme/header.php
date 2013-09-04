@@ -115,6 +115,8 @@ jQuery(document).ready(function($) {
       <div class="header-inner clearfix">
 
         <!-- BEGIN #logo -->
+		<img class="homelogo littlelogo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/whitehmmm.png">
+		
         <div id="logo">
           <?php
 
