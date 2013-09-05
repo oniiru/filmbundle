@@ -20,6 +20,18 @@ html {overflow-x:inherit;}
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'fontawesome';
+    src: url('assets/fonts/fontawesome-webfont.eot');
+    src: url('assets/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/fontawesome-webfont.woff') format('woff'),
+         url('assets/fonts/fontawesome.ttf') format('truetype'),
+         url('assets/fonts/fontawesome.svg#museo_sans300') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 @font-face {
     font-family: 'museo500';
     src: url('assets/fonts/museosans_500-webfont.eot');
@@ -54,7 +66,6 @@ html {overflow-x:inherit;}
 	width: 50px;
 	}
 	
-	
 input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea { background: #f8f8f8; width: 100%; padding: 15px 20px 15px 10px; font-size: 14px; border: 1px solid rgb(180, 180, 180); -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
 
 #header {
@@ -87,7 +98,39 @@ margin-right:0px;
 	background-color: rgba(0, 136, 204, 0.78);
 	
 }
-
+.playbutton {
+	font-family: 'fontawesome';
+	font-size: 125px;
+	color: rgba(0, 136, 204, 0.53);
+	display: inline-block;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	
+	}
+	.playbutton:hover{
+		color: rgba(0, 136, 204, 1);
+		
+	}
+	
+	.playbutton span {
+		margin-left: 25px;
+		position: absolute;
+		bottom: 0px;
+		line-height: 1.2em;
+	}
+	
+	.playbutton h3 {
+		position: absolute;
+		right: 0;
+		top: 30px;
+		font-size: 50px;
+		color: white;
+		background: rgba(0,0,0,.5);
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 .tab-pane {
 	overflow:hidden;
 }
@@ -164,14 +207,46 @@ margin-right: 50px;
 	text-transform: uppercase;
 	font-weight: bold;
 }
-.filminfo h1 {
+
+.tab-pane .filmmakerconnect span {
+	top:0px;
+	margin-left:0px;
+	
+}
+.filmmakerconnect iframe {
+	vertical-align:middle;
+}
+.filmmakerconnect p {
+	display:inline-block;
+	margin-left:0px;
+
+}
+.filmmakerconnect {
+	text-align: right;
+	margin-top: 25px;
+	margin-left: 0px;
+	margin-right: 50px;
+	}
+	
+	
+
+h1.filmtitl {
 	color: white;
-	margin-left: 20px;
+	margin:auto;
 	font-size: 30px;
 	text-align: right;
 	margin-bottom:30px;
+	max-width:920px;
+	margin-top:10px;
+	
 	
 }
+.filmtrigger, .trailertrigger {
+	cursor:pointer;
+}
+#video_container { position: relative;background-size:cover;background-repeat:no-repeat; padding-top: 30px; height: 0; overflow: hidden; } #video_container iframe, #video_container object, #video_container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+Read more: Responsive Video Embed – How to add Responsive YouTube and Vimeo videos to your website. http://cyberdesigncraft.com/responsive-video-embed/
 #header {
 	background-color:#2b2b2b;
 }
@@ -206,37 +281,11 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);
 
 }
 
-
-.vjs-default-skin .vjs-big-play-button {
-display: block;
-z-index: 2;
-position: absolute;
-top: 50% !important;
-left: 50% !important;
-margin: -40px 0 0 -60px !important;
-text-align: center;
-vertical-align: middle;
-cursor: pointer!important;
-border: .2em solid #fff;
-opacity: .95;
--webkit-border-radius: 25px;
--moz-border-radius: 25px;
-border-radius: 25px;
-background: #454545;
-background: -moz-linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
-background: -webkit-gradient(linear,0% 0,0% 100%,color-stop(0%,#454545),color-stop(50%,#232323),color-stop(50%,#161616),color-stop(100%,#3f3f3f));
-background: -webkit-linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
-background: -o-linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
-background: -ms-linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#454545',endColorstr='#3f3f3f',GradientType=0);
-background: linear-gradient(top,#454545 0,#232323 50%,#161616 50%,#3f3f3f 100%);
--webkit-box-shadow: 4px 4px 8px #000;
--moz-box-shadow: 4px 4px 8px #000;
-box-shadow: 4px 4px 8px #000;
-}
 .video-holder {
-	max-width:950px;
+	max-width:920px;
 	margin:auto;
+	box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);
+	position:relative;
 }
 .undervidstripe {
 width:100%;
@@ -307,12 +356,20 @@ padding:50px
 		position: relative;
 		
 	}
+	
+	#backToTop {
+	background-color:transparent;	
+	}
 .thecomments {
 	max-width:1140px;
 	margin:auto;
 	padding:20px 35px;
 	margin-bottom:50px;
 	padding-top:30px;
+	text-align:center;
+}
+.thecomments img.whatthink {
+margin-left: 47px;
 }
 .topbanner-inner a:hover {
 	text-decoration:none;
@@ -2105,10 +2162,13 @@ text-align: right;
 		font-size:27px;
 		margin-right:5%;
 	}
-	.bg-trans {padding:0px;}
+	.bg-trans {padding:0 0 50px 0;}
 	#backToTop {display:none;}
 	h1#bigone span{
 		display:none;
+	}
+	.filminfo {
+		padding:10px;
 	}
 	h1#bigone{
 		max-width: 384px;
@@ -2161,6 +2221,9 @@ width: 47.917%;
 #blog .featured-post {
 margin-bottom: 85px;
 }
+h1.filmtitl {
+	font-size:22px;
+	margin-right:5px;
 }
 
 @media screen and (max-width: 700px) {
@@ -2169,6 +2232,33 @@ margin-bottom: 85px;
 	margin: 0 0 0 1.5%;
 	vertical-align: top;
 	width: 47.917%;
+}
+
+.playbutton {
+	font-size:90px;
+}
+.playbutton h3 {
+	font-size:40px;
+}
+.tab-content {
+	width:100%;
+	display:block;
+}
+.tabs-left > .nav-tabs {display: block;
+width: auto;
+float: right;
+border-right: none;
+border-bottom: 1px solid white;
+padding-bottom: 5px;
+padding-right:0px;
+}.tabs-left > .nav-tabs > li, .tabs-right > .nav-tabs > li { float:left;}
+.tab-pane p {
+	margin-left:5px;}
+	.tab-pane span {
+		margin-left:5px;
+	}
+	.tab-pane img {
+	margin-left: 5px;
 }
 }
 @media screen and (max-width: 680px) {
@@ -2325,6 +2415,13 @@ margin-bottom: 85px;
 		width: 250px;
 		padding-left: 50px;	
 	}
+	.playbutton h3 {font-size:30px;}
+	.mfp-close {
+		top: 10px !important;
+	}
+	.mfp-iframe-holder .mfp-close {
+	top:-40px !important;	
+	}
 }
 @media screen and (max-width: 500px) {
 	#login .alreadymember,
@@ -2386,9 +2483,10 @@ margin:0px !important; }
 .footer .social-links {
 	margin-top:0px;
 }
-#loginbody div#container {
+ div#container {
 
- margin: 0px 0px -66px 0px;
+ margin-bottom:-66px;
+ padding-bottom:66px;
 
  }
 }
@@ -2470,5 +2568,16 @@ p.second-sub {
 #mobile-primary-nav-wrap {
 	margin-top:60px;
 }
-
+.tab-pane img {
+display:none;
+}
+.fromfilmmaker p {
+padding-left: 0px;
+}
+.tab-pane span {
+	margin-top:10px;
+}
+.acredit {
+width: 49%;
+}
 }

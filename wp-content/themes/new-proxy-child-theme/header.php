@@ -14,7 +14,6 @@
   <?php wp_head(); ?>
 
   <?php stag_head(); ?>
-  <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/video-js.css" rel="stylesheet">
   <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/popup.css" rel="stylesheet">
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/socialcss/zocial.css">
@@ -24,15 +23,7 @@
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.backstretch.min.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.easing-1.3.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.iosslider.min.js'></script>
-
-<script src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/video.js"></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/popup.js'></script>
-
-
-<script>
-
-  videojs.options.flash.swf = "<?php echo get_stylesheet_directory_uri(); ?>/assets/video-js.swf";
-</script>
 
 <?php if (is_front_page()) { ?>
 <style type='text/css'>

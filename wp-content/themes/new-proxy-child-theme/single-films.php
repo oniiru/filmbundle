@@ -16,37 +16,28 @@ $videometa = $full_mb->the_meta();
 			"below" => $videometa['belowavg'],
 			"above" => $videometa['aboveavg'],
 			);
-				if(edd_has_user_purchased( $user_ID, $abovebelow )) {
+				if(((edd_has_user_purchased( $user_ID, $abovebelow )) && ($videometa['abvaccessonly'] == '')) || ((edd_has_user_purchased( $user_ID, $videometa['aboveavg'] )) && ($videometa['abvaccessonly'] == 'above')))  {
 				?>
-	<video id="thevideo" class="video-js vjs-default-skin"
-	  controls preload="auto"
-	  poster="http://video-js.zencoder.com/oceans-clip.png"
-	  data-setup='{}'>
-      <source src="http://player.vimeo.com/external/72915570.hd.mp4?s=0be98efecfe889d1c2c167bc74af8f1c" type='video/mp4' data-res="HD" data-default="true">
-      <source src="http://player.vimeo.com/external/72915570.hd.mp4?s=0be98efecfe889d1c2c167bc74af8f1c" type='video/mp4' data-res="SD">
-	  
-	</video>
+				<div class="playbutton filmtrigger"><span>&#xf01d;</span></div>
+				
+	<div style="padding-bottom:<?php echo $videometa['aspect']?>; background-image: url('<?php echo $videometa['fullimage']?>')"id="video_container">	
+	</div>
 	<?php
 	} else {
 	 ?>
- 	<video id="thevideo" class="video-js vjs-default-skin"
- 	  controls preload="auto"
- 	  
- 	  data-setup='{}'>
-       <source src="http://player.vimeo.com/external/72915570.hd.mp4?s=0be98efecfe889d1c2c167bc74af8f1c" type='video/mp4' data-res="HD" data-default="true">
-       <source src="http://player.vimeo.com/external/72915570.hd.mp4?s=0be98efecfe889d1c2c167bc74af8f1c" type='video/mp4' data-res="SD">
-	  
- 	</video>
+<div class="playbutton trailertrigger"><span>&#xf01d;</span><h3>Trailer</h3></div>
+ <div style="padding-bottom:<?php echo $videometa['aspect']?>; background-image: url('<?php echo $videometa['trailerimage']?>')" id="video_container"></div>
 	 
 	 
 	 <?php }?>
 </div>
+<h1 class="filmtitl"><?php echo $videometa['title']; ?> </h1>
+
 <div class="filminfo">
-	<h1><?php echo $videometa['title']; ?> </h1>
 	<div class="tabbable tabs-left">
 	              <ul class="nav nav-tabs">
-	                <li class="active"><a href="#lA" data-toggle="tab">The Info</a></li>
-	                <li><a href="#lB" data-toggle="tab">From the FilmMaker</a></li>
+	                <li class="active"><a href="#lA" data-toggle="tab">Info</a></li>
+	                <li><a href="#lB" data-toggle="tab">FilmMaker</a></li>
 	                <li><a href="#lC" data-toggle="tab">Credits</a></li>
 	              </ul>
 	              <div class="tab-content">
@@ -57,9 +48,17 @@ $videometa = $full_mb->the_meta();
 	                <div class="tab-pane" id="lB">
 	        			<img src="<?php echo $videometa['filmmakerimg'] ?>">
 						<div class="fromfilmmaker"><?php echo $videometa['note'] ?>
-							<span>- <?php echo $videometa['filmmakername'] ?></span>
+							<span class="makername">- <?php echo $videometa['filmmakername']?></span>
 						</div>
-						
+						<div class="filmmakerconnect">
+							<?php if ($videometa['filmmakertwit'] != '') { ?>
+							<a href="https://twitter.com/<?php echo $videometa['filmmakertwit'] ?>" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @FilmBundle</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+							<?php }
+							if ($videometa['filmmakerface'] != '') {
+							?>
+<div class="fb-follow" data-href="https://www.facebook.com/<?php echo $videometa['filmmakerface'] ?>" data-width="75" data-layout="button_count" data-show-faces="true"></div>	<?php }?>					
+						</div>	
 						
 						
 	                </div>
@@ -101,7 +100,7 @@ $videometa = $full_mb->the_meta();
 	 <div class = 'iosSlider'>
 
 	 	<div class = 'slider'>
-	
+			
  
 	 <?php
 	 if(edd_has_user_purchased( $user_ID, $videometa['aboveavg'] )) {
@@ -147,7 +146,7 @@ $videometa = $full_mb->the_meta();
 	 </div>
 	 
 	 <div id="small-dialog" class="white-popup mfp-hide">
-	        <h1>This content is locked.</h1>
+	        <h3 style="margin-bottom:10px">This content is locked.</h3>
 	        <p>These special features are only available to folks who have paid more than average at the time of checkout. If you missed out, our next version of FilmBundle will include the ability to earn special features by sharing with friends. Stay tuned!</p>
 	      </div>
  
@@ -162,31 +161,15 @@ $videometa = $full_mb->the_meta();
  	<?php
 }
  ?>
- <div class="undervidstripe">
-  <h2>What do you think? </h2>
- </div>
  <div class="thecomments">
+	 <img class="whatthink" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/lovebundle.png">
+	 
  <?php echo do_shortcode('[fbcomments count="off" width="900px"]'); ?>
  </div>
 </div>
 
 <script type="text/javascript">
-  // Once the video is ready
-  _V_("thevideo").ready(function(){
-
-    var myPlayer = this;    // Store the video object
-    var aspectRatio = 264/640; // Make up an aspect ratio
-
-    function resizeVideoJS(){
-      // Get the parent element's actual width
-      var width = document.getElementById('thevideo').parentElement.offsetWidth;
-      // Set width to fill parent element, Set height
-      myPlayer.width(width).height( width * aspectRatio );
-    }
-
-    resizeVideoJS(); // Initialize the function
-    window.onresize = resizeVideoJS; // Call the function on resize
-  });
+ 
   
 	jQuery(document).ready(function() {
 		
@@ -222,7 +205,6 @@ $videometa = $full_mb->the_meta();
 	}
          jQuery(document).ready(function() {
            jQuery('.extrapopup').magnificPopup({
-             disableOn: 700,
              type: 'iframe',
              mainClass: 'mfp-fade',
              removalDelay: 160,
@@ -234,5 +216,17 @@ $videometa = $full_mb->the_meta();
 		     midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
 		   });
          });
+		 jQuery('.filmtrigger').click(function(e) {
+			  jQuery(this).remove();
+		     e.preventDefault();
+		   jQuery('#video_container').html('<iframe src="http://player.vimeo.com/video/<?php echo $videometa['fullembed'];?>?title=1&amp;byline=1&amp;portrait=1&amp;autoplay=true" frameborder="0"></iframe>');
+		 });
+		 jQuery('.trailertrigger').click(function(e) {
+			  jQuery(this).remove();
+		     e.preventDefault();
+		   jQuery('#video_container').html('<iframe src="http://player.vimeo.com/video/<?php echo $videometa['trailerembed']?>?title=1&amp;byline=1&amp;portrait=1&amp;autoplay=true"  frameborder="0"></iframe>');
+		 });
+
+		 
 </script>
 <?php get_footer(); ?>

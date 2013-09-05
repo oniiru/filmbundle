@@ -10,8 +10,30 @@
 	<p>
 		<input type="text" name="<?php $metabox->the_name('trailerembed'); ?>" value="<?php $metabox->the_value('trailerembed'); ?>"/>
 	</p>
+		
+	<?php $mb->the_field('abvaccessonly'); ?>
+	<input type="checkbox" name="<?php $mb->the_name(); ?>" value="above"<?php $mb->the_checkbox_state('above'); ?>/> Only available to above average purchases?<br/>
+	
 	<?php global $wpalchemy_media_access; ?>
 	
+	<?php $mb->the_field('fullimage'); ?>
+	    <?php $wpalchemy_media_access->setGroupName('nn4')->setInsertButtonLabel('Insert'); ?>
+	
+	    <p>
+			<label>Full Embed Image</label>
+	        <?php echo $wpalchemy_media_access->getField(array('name' => $mb->get_the_name(), 'value' => $mb->get_the_value())); ?>
+	        <?php echo $wpalchemy_media_access->getButton(); ?>
+	    </p>
+		
+		<?php $mb->the_field('trailerimage'); ?>
+	    <?php $wpalchemy_media_access->setGroupName('nn5')->setInsertButtonLabel('Insert'); ?>
+	
+	    <p>
+			<label>Trailer Embed Image</label>
+	        <?php echo $wpalchemy_media_access->getField(array('name' => $mb->get_the_name(), 'value' => $mb->get_the_value())); ?>
+	        <?php echo $wpalchemy_media_access->getButton(); ?>
+	    </p>
+		
 	<?php $mb->the_field('backgroundimage'); ?>
 	    <?php $wpalchemy_media_access->setGroupName('nn2')->setInsertButtonLabel('Insert'); ?>
 	
@@ -66,6 +88,19 @@
 			<p>
 				<input type="text" name="<?php $metabox->the_name('filmmakername'); ?>" value="<?php $metabox->the_value('filmmakername'); ?>"/>
 			</p>
+		
+			
+			<label>Twitter</label>
+ 
+			<p>
+				<input type="text" name="<?php $metabox->the_name('filmmakertwit'); ?>" value="<?php $metabox->the_value('filmmakertwit'); ?>"/>
+			</p>
+			
+			<label>Facebook</label>
+ 
+			<p>
+				<input type="text" name="<?php $metabox->the_name('filmmakerface'); ?>" value="<?php $metabox->the_value('filmmakerface'); ?>"/>
+			</p>
 			
 		 	<label>The credits</label>
 			<?php while($mb->have_fields_and_multi('credits')): ?>
@@ -107,7 +142,19 @@
 			// ]]>
 			</script>
 			
-			
+			<label>Aspect Ratio</label><br/>
+	
+					<?php $mb->the_field('aspect'); ?>
+					<select name="<?php $mb->the_name(); ?>">
+		
+						<option value="56.25%"<?php $mb->the_select_state('56.25%'); ?>>16:9</option>
+						<option value="75%"<?php $mb->the_select_state('75%'); ?>>4:3</option>
+						<option value="54.05%"<?php $mb->the_select_state('54.05%'); ?>>1.85:1</option>
+						<option value="41.84%"<?php $mb->the_select_state('41.84%'); ?>>2.39:1</option>
+						
+						
+						
+					</select>
 			
 		
 		<label>Below Average</label><br/>

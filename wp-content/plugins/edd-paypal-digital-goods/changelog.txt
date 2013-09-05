@@ -1,0 +1,38 @@
+#### 1.1.5: 2013-06-07
+
+* Fix: Order totals sometimes didn't match due to taxes not being a separate item
+
+#### 1.1.4: 2013-03-07
+
+* Fix: Item names had encoded HTML entities in the PayPal notification emails
+* Fix: The item ID was set to the word "discount" instead of the actual item's ID
+
+#### 1.1.3: 2013-02-22
+
+* Fix: An error prevented checkout when order total is $0.00 (due to discounts)
+* Tweak: Refractor up the plugin into a few class files for organization
+
+#### 1.1.2: 2013-02-12
+
+* Fix: PayPal was not seeing the shop's currency
+
+#### 1.1.1: 2013-01-28
+
+* Fix: Use edd_get_cart_total() when calculating totals for PayPal
+* Fix: Undefined index $html if PayPal isn't setup yet
+
+#### 1.1.0: 2013-01-14
+
+* Fix: Did not apply discounts or taxes correctly to orders
+* Tweak: Better jQuery checkout, doesn't show the PayPal button anymore
+* Tweak: Update payment status to failed when something goes wrong
+* Tweak: Better error messages when PayPal goes wrong
+
+#### 1.0.1: 2012-12-30
+
+* New: Save the PayPal transaction ID as a payment note to new orders
+* Fix: License updater wouldn't respect 'hide this notice'
+
+#### 1.0.0: 2012-12-29
+
+* Initial release
