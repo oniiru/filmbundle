@@ -13,7 +13,34 @@
 		
 	<?php $mb->the_field('abvaccessonly'); ?>
 	<input type="checkbox" name="<?php $mb->the_name(); ?>" value="above"<?php $mb->the_checkbox_state('above'); ?>/> Only available to above average purchases?<br/>
+	<?php $mb->the_field('tipster'); ?>
+	<input type="checkbox" name="<?php $mb->the_name(); ?>" value="yes"<?php $mb->the_checkbox_state('yes'); ?>/> Enable Tipping?<br/>
+	<label> Tip product </label>
+	<br>
+	<?php $mb->the_field('tipprod'); ?>
+	<select name="<?php $mb->the_name(); ?>">
+		<?php  // Get all available products
+                $args = array(
+                  'post_type' => 'download',
+                  'posts_per_page' => -1,
+                  'post_status' => 'any'
+                );
+                $products = get_posts($args);
+				?>
+
+		<?php foreach ($products as $product): ?>
+		<option value="<?php echo $product->ID; ?>"<?php $mb->the_select_state($product->ID); ?>><?php echo $product->post_title; ?></option>
+				<?php endforeach; ?>
+	</select>
 	
+	<label>When should the Tip bar show?</label>
+ 
+	<p>
+		<input type="text" placeholder="hr." style="width:75px;display:inline-block;" name="<?php $metabox->the_name('tiphr'); ?>" value="<?php $metabox->the_value('tiphr'); ?>"/>
+		<input type="text" placeholder="min." style="width:75px;display:inline-block;" name="<?php $metabox->the_name('tipmin'); ?>" value="<?php $metabox->the_value('tipmin'); ?>"/>
+		<input type="text" placeholder="sec." style="width:75px;display:inline-block;" name="<?php $metabox->the_name('tipsec'); ?>" value="<?php $metabox->the_value('tipsec'); ?>"/>
+		
+	</p>
 	<?php global $wpalchemy_media_access; ?>
 	
 	<?php $mb->the_field('fullimage'); ?>

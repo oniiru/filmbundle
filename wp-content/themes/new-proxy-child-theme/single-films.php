@@ -18,9 +18,40 @@ $videometa = $full_mb->the_meta();
 			);
 				if(((edd_has_user_purchased( $user_ID, $abovebelow )) && ($videometa['abvaccessonly'] == '')) || ((edd_has_user_purchased( $user_ID, $videometa['aboveavg'] )) && ($videometa['abvaccessonly'] == 'above')))  {
 				?>
+				 <?php if($videometa['tipster'] == 'yes') { 
+					 $tiptime = ($videometa['tiphr'] * 3600) + ($videometa['tipmin'] * 60) + ($videometa['tipsec']);
+					 ?>
+					 <div class="tipshare">
+						 <div class="tiptime">
+							 <div class="tiptimetext">
+							 <h3> Amazing huh? Feel like giving the filmmaker a tip?</h3>
+							 <p> 100% goes to the makers of this film. Any amount would sure be appreciated. :-)</p>
+						 </div>
+						 <form>
+							 <ol>
+						 <p class="flatinputprepend">$</p>
+						 <input class="flatinput" type="text">
+					     <button name='' type='Submit' value='checkout' class='tipbutton'>Tip away!</button>
+					 </ol>
+					</form>
+						 </div>
+						 <p class="soctext">or help out by letting your friends know!</p>
+	  	               <div class="social_share <?php echo $title_top_class ;?>">
+	  	                   <?php
+	  	                       // Setup share urls
+	  	                       $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode(get_the_title())."&amp;p[summary]=".urlencode(get_the_excerpt())."&amp;p[url]=".get_permalink();
+	  	                       $twitter_share = "https://twitter.com/share?url=".get_permalink()."&amp;text=".urlencode("This is awesome - ".get_the_title());
+	  	                   ?>
+	  	                   <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
+
+	  	                   <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
+	  	               </div>
+					 </div>
+					 <?php } ?>
 				<div class="playbutton filmtrigger"><span>&#xf01d;</span></div>
 				
 	<div style="padding-bottom:<?php echo $videometa['aspect']?>; background-image: url('<?php echo $videometa['fullimage']?>')"id="video_container">	
+		
 	</div>
 	<?php
 	} else {
@@ -31,8 +62,20 @@ $videometa = $full_mb->the_meta();
 	 
 	 <?php }?>
 </div>
-<h1 class="filmtitl"><?php echo $videometa['title']; ?> </h1>
+<div class="filmtitl">
+<div class="social_share socialsmaller<?php echo $title_top_class ;?>">
+    <?php
+        // Setup share urls
+        $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode(get_the_title())."&amp;p[summary]=".urlencode(get_the_excerpt())."&amp;p[url]=".get_permalink();
+        $twitter_share = "https://twitter.com/share?url=".get_permalink()."&amp;text=".urlencode("This is awesome - ".get_the_title());
+    ?>
+    <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share</a>
 
+    <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Tweet</a>
+</div>
+
+<h1><?php echo $videometa['title']; ?> </h1>
+</div>
 <div class="filminfo">
 	<div class="tabbable tabs-left">
 	              <ul class="nav nav-tabs">
@@ -161,6 +204,23 @@ $videometa = $full_mb->the_meta();
  	<?php
 }
  ?>
+ 
+ <?php if(($videometa['tipster'] == 'yes') && (((edd_has_user_purchased( $user_ID, $abovebelow )) && ($videometa['abvaccessonly'] == '')) || ((edd_has_user_purchased( $user_ID, $videometa['aboveavg'] )) && ($videometa['abvaccessonly'] == 'above')))){ ?>
+	 
+	 <div class="tipster">
+		 <div class="tipstertext">
+		 <h3> Like what you see? Tip the Filmmaker!</h3>
+		 <p> (All tips received go straight to the filmmaker.) </p>
+	 </div>
+	 <form>
+		 <ol>
+	 <p class="flatinputprepend">$</p>
+	 <input class="flatinput" type="text">
+     <button name='' type='Submit' value='checkout' class='tipbutton'>Tip away!</button>
+ </ol>
+</form>
+	 </div>
+	 <?php } ?>
  <div class="thecomments">
 	 <img class="whatthink" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/lovebundle.png">
 	 
@@ -219,14 +279,48 @@ $videometa = $full_mb->the_meta();
 		 jQuery('.filmtrigger').click(function(e) {
 			  jQuery(this).remove();
 		     e.preventDefault();
-		   jQuery('#video_container').html('<iframe src="http://player.vimeo.com/video/<?php echo $videometa['fullembed'];?>?title=1&amp;byline=1&amp;portrait=1&amp;autoplay=true" frameborder="0"></iframe>');
-		 });
+		   jQuery('#video_container').html('<iframe id="full" src="http://player.vimeo.com/video/<?php echo $videometa['fullembed'];?>?title=1&amp;byline=1&amp;portrait=1&amp;api=1&amp;player_id=full&amp;autoplay=true" frameborder="0"></iframe>');
+		 <?php if($videometa['tipster'] == 'yes') { ?>
+		   //vimeo tip stuff
+		   
+		   
+		   var iframe = jQuery('#full')[0],
+		       player = $f(iframe),
+		       status = jQuery('.status');
+
+		   // When the player is ready, add listeners for pause, finish, and playProgress
+		   player.addEvent('ready', function() {
+			   
+			   player.addEvent('playProgress', function(data) {
+				if(data.seconds >= <?php echo $tiptime ?>) {
+					
+					if(!jQuery('.tipshare').is(":visible")) {
+						jQuery('.tipshare').slideDown();
+						
+					}
+				}
+					
+					else if(data.seconds < <?php echo $tiptime ?>) {
+					if(jQuery('.tipshare').is(":visible")) {
+						jQuery('.tipshare').slideUp();
+						
+					}
+					
+							}   
+			   
+			   });
+		   });
+	  
+		 //end vimeo tip stuff
+		 <?php } ?>
+		 }); 
 		 jQuery('.trailertrigger').click(function(e) {
 			  jQuery(this).remove();
 		     e.preventDefault();
-		   jQuery('#video_container').html('<iframe src="http://player.vimeo.com/video/<?php echo $videometa['trailerembed']?>?title=1&amp;byline=1&amp;portrait=1&amp;autoplay=true"  frameborder="0"></iframe>');
+		   jQuery('#video_container').html('<iframe id="trailer" src="http://player.vimeo.com/video/<?php echo $videometa['trailerembed']?>?title=1&amp;byline=1&amp;api=1&amp;portrait=1&amp;player_id=trailer&amp;autoplay=true"  frameborder="0"></iframe>');
 		 });
-
 		 
+		 
+		
 </script>
 <?php get_footer(); ?>

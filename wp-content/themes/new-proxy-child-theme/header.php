@@ -24,6 +24,8 @@
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.easing-1.3.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.iosslider.min.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/popup.js'></script>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/froogaloop.js'></script>
+
 
 <?php if (is_front_page()) { ?>
 <style type='text/css'>
@@ -78,7 +80,7 @@ jQuery(document).ready(function($) {
       </div>
       <div class="socialModalVerticalOffset">
           <div class="socialModalBox">
-            <div class="widget_title"><a id="closeModal">Close</a></div>
+            <div class="widget_title"><a id="closeModal">X</a></div>
             <div class="socialModalContent">
               <div class="socialModalContentInner">
                 <span class="socialModalThanks">Thanks for Sharing!</span>
