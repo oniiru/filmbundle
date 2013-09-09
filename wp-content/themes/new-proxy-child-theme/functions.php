@@ -22,7 +22,7 @@ class FilmBundle_ThemeFunctions
         wp_enqueue_script(
             'filmbundle-social',
             get_stylesheet_directory_uri().'/assets/js/social.js',
-            array('jquery'), 
+            array('jquery'),
             self::VERSION,
             true
         );
@@ -90,7 +90,7 @@ if(!function_exists('stag_sidebar_init')){
       'after_title' => '</h2>',
       'description' => __('Only include widgets whose name starts with Homepage:', 'stag')
     ));
-	  
+
       register_sidebar(array(
         'name' => __('Bundle Widgets', 'stag'),
         'id' => 'sidebar-bundle',
@@ -160,7 +160,7 @@ function stag_enqueue_scripts(){
     wp_enqueue_script('flexslider', get_template_directory_uri().'/assets/js/jquery.flexslider-min.js', array('jquery'), '', true);
     wp_enqueue_style('flexslider', get_template_directory_uri().'/assets/css/flexslider.css');
 
-    wp_enqueue_style('style', get_stylesheet_directory_uri().'/style.css');
+    wp_enqueue_style('style', get_stylesheet_directory_uri().'/style.css', array(), '1.0');
     wp_enqueue_style('fonts', get_stylesheet_directory_uri().'/assets/fonts/fonts.css');
     wp_enqueue_style('user-style', get_template_directory_uri().'/assets/css/user-styles.php');
 

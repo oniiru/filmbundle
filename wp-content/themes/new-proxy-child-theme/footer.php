@@ -7,7 +7,7 @@
       <!-- BEGIN .footer -->
       <footer class="footer" role="contentinfo">
         <?php stag_footer_start(); ?>
-		
+
 
         <div class="inner-section">
 
@@ -61,6 +61,6 @@
 
   <?php wp_footer(); ?>
   <?php stag_body_end(); ?>
-  
+
   </body>
 </html>

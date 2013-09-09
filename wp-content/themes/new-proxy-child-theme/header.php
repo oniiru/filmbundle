@@ -93,14 +93,10 @@ jQuery(document).ready(function($) {
       </div>
   </div>
   <!-- End: The modal dialog for additional social features -->
- 
-  <?php stag_body_start(); ?>
 
-
-  <?php stag_header_before(); ?>
-
-  <!-- BEGIN #header -->
-  <header id="header" role="banner">
+<?php stag_body_start(); ?>
+<?php stag_header_before(); ?>
+<header id="header" role="banner">
 
     <?php stag_header_start(); ?>
 
@@ -108,8 +104,8 @@ jQuery(document).ready(function($) {
       <div class="header-inner clearfix">
 
         <!-- BEGIN #logo -->
-		<img class="homelogo littlelogo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/whitehmmm.png">
-		
+    <img class="homelogo littlelogo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/whitehmmm.png">
+
         <div id="logo">
           <?php
 
@@ -126,12 +122,12 @@ jQuery(document).ready(function($) {
         </div>
 
         <!-- BEGIN #primary-nav -->
-  		  <div class="littlesocial">
-    		<div class="fb-like" style="margin-right:20px;" data-href="http://facebook.com/filmbundle" data-send="false" data-layout="button_count" data-width="10" data-show-faces="false"></div>
-    		<div style="position:relative;display:inline-block"><a href="https://twitter.com/FilmBundle" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @FilmBundle</a>
-    		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    	</div>
-  </div>
+        <div class="littlesocial">
+        <div class="fb-like" style="margin-right:20px;" data-href="http://facebook.com/filmbundle" data-send="false" data-layout="button_count" data-width="10" data-show-faces="false"></div>
+        <div style="position:relative;display:inline-block"><a href="https://twitter.com/FilmBundle" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @FilmBundle</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </div>
+        </div>
         <nav id="navigation" role="navigation">
           <?php
             if(has_nav_menu('primary-menu')){
@@ -142,21 +138,21 @@ jQuery(document).ready(function($) {
                 'container_class' => 'primary-menu',
                 ));
             }
-		
+
           ?>
-		 
+
           <!-- END #primary-nav -->
         </nav>
-		
+
         <!-- END .header-inner -->
       </div>
 
     <?php stag_header_end(); ?>
 
-    <!-- END .header -->
-  </header>
 
-  <?php stag_header_after(); ?>
+</header>
+
+<?php stag_header_after(); ?>
 
   <!-- BEGIN #container -->
   <div id="container">

@@ -1,6 +1,6 @@
 /*
 Theme Name:     New-Proxy-Child-Theme
-Description:    
+Description:
 Author:         developer
 Template:       proxy
 
@@ -65,12 +65,17 @@ html {overflow-x:inherit;}
 	padding: 2px;
 	width: 50px;
 	}
-	
+
 input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea { background: #f8f8f8; width: 100%; padding: 15px 20px 15px 10px; font-size: 14px; border: 1px solid rgb(180, 180, 180); -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
 
 #header {
 	padding:15px 0;
 }
+
+#container {
+	padding-top: 80px;
+}
+
 .filminfo {
 	max-width:900px;
 	margin:auto;
@@ -84,7 +89,7 @@ border-right: 1px solid white;
 margin-right:0px;
 
 }
-.tabs-left > .nav-tabs .active > a, .tabs-left > .nav-tabs .active > a:hover, .tabs-left > .nav-tabs .active > a:focus, .tabs-left > .nav-tabs > li > a	
+.tabs-left > .nav-tabs .active > a, .tabs-left > .nav-tabs .active > a:hover, .tabs-left > .nav-tabs .active > a:focus, .tabs-left > .nav-tabs > li > a
  {
 	border:none !important;
 	border-radius:0px !important;
@@ -96,7 +101,7 @@ margin-right:0px;
 }
 .tabs-left > .nav-tabs .active > a {
 	background-color: rgba(0, 136, 204, 0.78);
-	
+
 }
 .playbutton {
 	font-family: 'fontawesome';
@@ -107,20 +112,20 @@ margin-right:0px;
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	
+
 	}
 	.playbutton:hover{
 		color: rgba(0, 136, 204, 1);
-		
+
 	}
-	
+
 	.playbutton span {
 		margin-left: 25px;
 		position: absolute;
 		bottom: 0px;
 		line-height: 1.2em;
 	}
-	
+
 	.playbutton h3 {
 		position: absolute;
 		right: 0;
@@ -211,7 +216,7 @@ margin-right: 50px;
 .tab-pane .filmmakerconnect span {
 	top:0px;
 	margin-left:0px;
-	
+
 }
 .filmmakerconnect iframe {
 	vertical-align:middle;
@@ -265,7 +270,7 @@ p.soctext {
 	position:absolute;
 	top:0;
 	z-index:10	;
-	margin:auto;	
+	margin:auto;
 	text-align: center;
 	color:#fff;
 	width:100%;
@@ -275,7 +280,7 @@ p.soctext {
 .tiptime {
 	top:0;
 	z-index:10	;
-	margin:auto;	
+	margin:auto;
 	background-color: #29B873;
 	padding: 10px;
 	text-align: center;
@@ -288,7 +293,7 @@ p.soctext {
 	color: #fff;
 	font-size: 18px;
 	line-height: 1em;
-	
+
 }
 .filmmakerconnect {
 	text-align: right;
@@ -300,7 +305,7 @@ p.soctext {
 		display:inline-block;
 		margin-right:50px;
 		text-align:left;}
-		
+
 		.tiptimetext {
 			display:inline-block;
 			margin-right:50px;
@@ -308,9 +313,9 @@ p.soctext {
 			.tiptime button.tipbutton {
 			padding: 9px;
 		}
-		
+
 		.tiptime .flatinputprepend {
-		padding:4px 10px;	
+		padding:4px 10px;
 		}
 
 		.flatinputprepend {
@@ -325,9 +330,9 @@ p.soctext {
 			font-size: 20px;
 			line-height: 0px;
 			border: 1px solid white;
-			
+
 			}
-			
+
 			.tiptime form {
 				display: inline-block;
 				position: relative;
@@ -338,7 +343,7 @@ p.soctext {
 				border-radius: 2px;
 				padding: 13px;
 				background: #F00864 !important;
-			
+
 			}
 			.tipster form{
 				display: inline-block;
@@ -358,13 +363,13 @@ p.soctext {
 		background: transparent;
 		border: 1px solid white;
 		color: white;
-		
+
 	}
-	
+
 	.tiptime input.flatinput {
 		height:33px;
 	}
-	
+
 	input.flatinput:focus {
 		border: 1px solid white;
 	}
@@ -373,7 +378,7 @@ p.soctext {
 		font-size:20px;
 	}
 	.tipster {
-		margin:auto;	
+		margin:auto;
 		max-width:950px;
 		background-color: #29B873;
 		padding: 30px;
@@ -386,14 +391,14 @@ p.soctext {
 		max-width:920px;
 		margin-top:10px;
 		margin:auto;
-		
+
 	}
-	
+
 	.filmtitl .zocial {
 		padding:8px 15px;
 		font: 13px/1 "Lucida Grande", Tahoma, sans-serif;
 	}
-	
+
 	.filmtitl .zocial:before {
 		padding:0px;
 	}
@@ -403,9 +408,9 @@ p.soctext {
 display:inline-block;
 	margin-top:10px;
 	margin-bottom:30px;
-	
-	
-	
+
+
+
 }
 .filmtrigger, .trailertrigger {
 	cursor:pointer;
@@ -437,12 +442,12 @@ display:inline-block;
 	border-radius:4px;
 	color:white;
 	font-family: 'museo700';
-	
+
 }
 
 #thevideo {
 margin:auto;
-box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);	
+box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);
 
 }
 
@@ -499,7 +504,7 @@ padding:50px
 	padding: 10px;
 	color: white;
 	text-align: left;
-	
+
 	}
 
 	.iteminfo p {
@@ -508,7 +513,7 @@ padding:50px
 		font-family: "open sans", sans-serif;
 		font-weight:300;
 	}
-	
+
 	.iteminfo p span {
 		float:right;
 		font-size:13px;
@@ -519,11 +524,11 @@ padding:50px
 		margin-right: 3px;
 		top: 3px;
 		position: relative;
-		
+
 	}
-	
+
 	#backToTop {
-	background-color:transparent;	
+	background-color:transparent;
 	}
 .thecomments {
 	max-width:1140px;
@@ -544,7 +549,7 @@ margin-left: 47px;
 	background-size:cover;
 	height:280px;
 	width:100%;
-	
+
 }
 
 .anextra {
@@ -558,26 +563,26 @@ margin-left: 47px;
 	font-size:30px;
 	font-family: 'museo500';
 	margin-bottom:0px;
-	
+
 }
 .filmmakerclass h4 {
 	font-size: 16px;
 	font-family: 'museo500';
 	margin-top: 5px;
-	
+
 }
 .filmmakerclass h5 {
 	font-size: 16px;
 	font-family: 'museo500';
 	text-transform:uppercase;
 	margin-bottom: 5px;
-	
+
 }
 .filmmakerclass p, .filmmakerclass li {
 	font-size: 14px;
 	font-family: 'museo300';
 
-	
+
 }
 .hentry {
 	padding-bottom:100px;
@@ -607,8 +612,8 @@ margin-left: 47px;
 	font-family: 'museo500';
 	font-size:20px;
 	vertical-align:middle;
-	
-	
+
+
 }
 .filmmakersbanner a:hover {
 	text-decoration:none;
@@ -658,7 +663,7 @@ margin:auto;
 #login .lp p.message, .loginformtitle {
 	background: rgb(129, 129, 129);
 	text-align:left;
-	
+
 }
 #register .loginbox, .threepoints {
 	margin-top:20px;
@@ -739,7 +744,7 @@ margin-left: 10px;
 	width:100%;
 	text-align:center;
 	margin-top:-25px;
-	
+
 }
 
 #shared {
@@ -796,7 +801,7 @@ margin-left: 10px;
 }
 
 /**
- * Adding responsiveness to the little social buttons in the header 
+ * Adding responsiveness to the little social buttons in the header
  */
 @media screen and (max-width: 992px) {
 	.littlesocial {
@@ -808,7 +813,7 @@ margin-left: 10px;
 	#mobile-nav {
 		top:15px !important;
 	}
-	
+
 }
 @media screen and (max-width: 420px) {
 	.littlesocial {
@@ -822,7 +827,7 @@ margin-left: 10px;
 	.fb_edge_widget_with_comment {
 		margin-right:3px !important;
 	}
-	
+
 	#mobile-nav {
 		top: 25px !important;
 		right: 31px;
@@ -911,7 +916,7 @@ h3#myModalLabel, h3#myModal2Label, h3#myModal3Label {
 
 .gform_wrapper input[type=text], .gform_wrapper input[type=url], .gform_wrapper input[type=email], .gform_wrapper input[type=tel], .gform_wrapper input[type=number], .gform_wrapper input[type=password] {
 	padding:15px 10px !important
-	
+
 }
 .gform_wrapper textarea {
 	padding:5px 10px !important;
@@ -929,14 +934,14 @@ h3#myModalLabel, h3#myModal2Label, h3#myModal3Label {
 .gform_footer {
 	margin-top:0px !important;
 	padding:0px !important;
-	
+
 }
 
 .topshelf {
 	background-image: url('assets/img/shelf.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	background-position: center bottom; 
+	background-position: center bottom;
 	position: relative;
 	height: 75px;
 	margin: auto;
@@ -949,7 +954,7 @@ li a:hover {
 }
 
 #csp3-form {
-	
+
 	width: 515px;
 
 }
@@ -1022,7 +1027,7 @@ margin-top:0px;
 	padding: 15px 0px 0px;
 	font-size:24px;
 	margin-bottom:0px !important;
-	
+
 }
 
 .bigstatsbox {
@@ -1047,7 +1052,7 @@ color: #1c93c5;
 .tranlink {
 	margin-top:5px;
 	padding:5px !important;
-	margin-bottom:5px; 
+	margin-bottom:5px;
 	width:352px;
 }
 .tranlink2 {
@@ -1108,7 +1113,7 @@ p.shared-sub-title {
 	font-weight: 700;
 	line-height: 1.6em;
 	font-size: 18px;
-	
+
 }
 
 .second-sub {
@@ -1149,7 +1154,7 @@ ul.tml-action-links li {
 }
 
 /* CSS reset */
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
 	margin:0;
 	padding:0;
 }
@@ -1158,7 +1163,7 @@ table {
 	border-collapse:collapse;
 	border-spacing:0;
 }
-fieldset,img { 
+fieldset,img {
 	border:0;
 }
 address,caption,cite,code,dfn,th,var {
@@ -1310,7 +1315,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1334,7 +1339,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1358,7 +1363,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1382,7 +1387,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1406,7 +1411,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1443,7 +1448,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1467,7 +1472,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1491,7 +1496,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1515,7 +1520,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1539,7 +1544,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1576,7 +1581,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1600,7 +1605,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1624,7 +1629,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1648,7 +1653,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1672,7 +1677,7 @@ a{
 
 	}
 
-	
+
 
 	100% {
 
@@ -1695,7 +1700,7 @@ a{
 	 font-family: "Trebuchet MS","Myriad Pro",Arial,sans-serif;
 }
 
-/** fonts used for the icons **/ 
+/** fonts used for the icons **/
 @font-face {
     font-family: 'FontomasCustomRegular';
     src: url('fonts/fontomas-webfont.eot');
@@ -1720,7 +1725,7 @@ a{
 
 #loginbody {
 	background:url(assets/img/loginbg.jpg) 50% 50% fixed no-repeat;
-	    -moz-background-size: cover; /* Firefox 3.6 */ 
+	    -moz-background-size: cover; /* Firefox 3.6 */
 	    background-size: cover; /* Chrome, Firefox 4.0+, Safari 4.1+, Opera 10+ and IE9 */
 		overflow-y:auto;
 		height:100%;
@@ -1739,7 +1744,7 @@ div#container {
 	   padding-bottom:80px;
 	   margin-bottom:-80px;
  }
- 
+
   #wrapper{
  	min-height: 475px;
  }
@@ -1752,7 +1757,7 @@ div#container {
     min-width:100%;
     z-index:-2;
 }
- 
+
 #fallbackpattern {
     background: url(../img/pattern-ie7.png);
     position:fixed;
@@ -1823,15 +1828,15 @@ a.hiddenanchor{
 }
 
 /* placeholder */
-::-webkit-input-placeholder  { 
-	color: rgb(190, 188, 188); 
+::-webkit-input-placeholder  {
+	color: rgb(190, 188, 188);
 	font-style: italic;
 }
 input:-moz-placeholder,
-textarea:-moz-placeholder{ 
+textarea:-moz-placeholder{
 	color: rgb(190, 188, 188);
 	font-style: italic;
-} 
+}
 
 .entry-content {
 	font-size:18px;
@@ -1850,7 +1855,7 @@ h1.logintitle {
 	color:white;
 	font-family: 'Amatic SC', sans-serif;
 	font-size:35px;
-	
+
 }
 
 .loginsubtitle {
@@ -1860,13 +1865,13 @@ h1.logintitle {
 	font-size:35px;
 	width:100%;
 	text-align:center;
-	
-	
+
+
 }
 .smallerlogo {
 float:left;
 margin-top: 7px;
-margin-left: 10px;	
+margin-left: 10px;
 }
 .to_register {
 	float:right;
@@ -1875,11 +1880,11 @@ font-size:12px !important;
 margin-top:7px !important;}
 
 /** Styling both forms **/
-#register, 
+#register,
 #login{
 	position: absolute;
 	top: 0px;
-	width: 90%;	
+	width: 90%;
 	padding: 0px 0% 10px 0%;
 	margin: 0 0 35px 0;
 	background: rgb(247, 247, 247);
@@ -1893,7 +1898,7 @@ margin-top:7px !important;}
 
 #register {width:95%;}
 
-#wrapper #register{	
+#wrapper #register{
 	z-index: 21;
 	opacity: 0;
 }
@@ -1956,8 +1961,8 @@ p.loginformtitle {
 	font-family: 'Open Sans', sans-serif;
 	font-weight:600;
 	text-transform:uppercase;
-	
-	
+
+
 }
 
 #toregister:target ~ #wrapper #register,
@@ -1997,7 +2002,7 @@ p.loginformtitle {
 	-o-animation-delay: .1s;
 	-ms-animation-delay: .1s;
 	animation-delay: .1s;
-}	
+}
 
 #tologin:target ~ #wrapper2 #register, #toregister:target ~ #wrapper2 #login
 {
@@ -2010,7 +2015,7 @@ p.loginformtitle {
 
 #wrapper2 #register{
 	z-index: 22;
- 
+
 }
 #wrapper2 #login{
 	z-index: 21;
@@ -2022,19 +2027,19 @@ p.loginformtitle {
 	-webkit-animation-duration: 0.5s;
 	-webkit-animation-timing-function: ease;
 	-webkit-animation-fill-mode: both;
-	
+
 	-moz-animation-duration: 0.5s;
 	-moz-animation-timing-function: ease;
 	-moz-animation-fill-mode: both;
-	
+
 	-o-animation-duration: 0.5s;
 	-o-animation-timing-function: ease;
 	-o-animation-fill-mode: both;
-	
+
 	-ms-animation-duration: 0.5s;
 	-ms-animation-timing-function: ease;
 	-ms-animation-fill-mode: both;
-	
+
 	animation-duration: 0.5s;
 	animation-timing-function: ease;
 	animation-fill-mode: both;
@@ -2054,7 +2059,7 @@ p.loginformtitle {
 .lt8 #wrapper h1{
 	color: #066A75;
 }
-.lt8 #register{	
+.lt8 #register{
 	display: none;
 }
 .lt8 p.change_link,
@@ -2077,7 +2082,7 @@ p.loginformtitle {
 background-position: -278px 35px;
 }.aboutus figure .inner-bg.user-experience { background-position: -554px 35px; }
 .aboutus figure .inner-bg.branding { background-position: -862px 35px; }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) { 
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
 	.aboutus figure { background: url(assets/img/bg-service-box-dark@2x.png) no-repeat transparent center center; background-size: 136px 147px; }
   .aboutus figure .inner-bg { background-image: url(assets/img/sprite-service-box-dark@2x.png) !important; background-size: 966px 75px; }
 }
@@ -2154,14 +2159,14 @@ text-align: right;
 		font-family: "proximanova", sans-serif;
 		text-align:center;
 		color:#3c3c3c;
-	
+
 	}
 	.socialModalThanks {
 		display: block;
 		font-size: 38px;
 		text-align: center;
 		font-weight:900;
-	
+
 	}
 	.socialModalTell {
 		display: block;
@@ -2179,7 +2184,7 @@ text-align: right;
 		width: 130px;
 		height: 56px;
 		padding-top: 19px;
-	
+
 	}
 	.socialModalDisable {
 		display: block;
@@ -2200,7 +2205,7 @@ text-align: right;
 	}
 	.socialsmaller .twitter {
 		margin-right:0px;
-		
+
 	}
 /* add a scroll bar to stop page from jerking around */
 .modal-open.page-overflow .page-container,
@@ -2228,7 +2233,7 @@ text-align: right;
 
 .modal {
 	position: absolute;
-	
+
 }
 
 .zclipbtn {
@@ -2273,13 +2278,13 @@ text-align: right;
 		margin-bottom: 16px;
 		width: 300px;
 	}
-	
+
 }
 @media screen and (max-width: 1025px) {
 	.littlelogo {
 		position:absolute !important;
 	}
-	
+
 }
 
 
@@ -2304,11 +2309,11 @@ text-align: right;
 	p.shared-sub-title {
 		font-size:16px;
 	}
-	
+
 	#suggest a {
 		font-size:24px;
 	}
-	
+
 }
 @media screen and (max-width: 850px) {
 	.about-us-right p img {display:none !important;}
@@ -2325,11 +2330,11 @@ text-align: right;
 		display:block;
 		text-align:center;
 	}
-	
+
 	.tipster form {
 		top:10px;
 	}
-	
+
 	.bg-trans {padding:0 0 50px 0;}
 	#backToTop {display:none;}
 	h1#bigone span{
@@ -2350,15 +2355,15 @@ text-align: right;
 }
 p.second-sub {
 	margin-bottom: 60px;
-	
+
 }
 .about-us-right {
-	
+
 width:600px !important;
 text-align:left;
 }
 .about-us-left {
-	
+
 	display:none;
 }
 #about .entry-content {text-align:center;}
@@ -2442,13 +2447,13 @@ padding-right:0px;
 	#wrapper2, #wrapper {
 		min-height:875px !important;
 	}
-	
+
 	h1.logintitle {
 		margin-right:0px;
 		font-size:26px;
 		margin-top:10px;
 	}
-	
+
 	#suggest a {font-size:18px;padding:15px 20px ;}
 	#login,
 	#register {
@@ -2466,7 +2471,7 @@ padding-right:0px;
 		width: 240px;
 		margin: 0 auto 16px auto;
 	}
-	#login .socialloginstuff span:before, 
+	#login .socialloginstuff span:before,
 	#login .socialloginstuff span:after {
 		display: inline-block;
 		width: 3.5em;
@@ -2511,7 +2516,7 @@ padding-right:0px;
 		padding-top: 14px;
 		margin: 20px auto;
 	}
-	
+
 	#seedprod_title_desc {
 		display:none;
 	}
@@ -2527,11 +2532,11 @@ padding-right:0px;
 		display:none;
 	}
 	.about-us-right p img {display:none !important;}
-	
+
 	#loginbody .header-inner {
 		text-align:center;
 	}
-	
+
 	#loginbody #logo {
 		float:none;
 	}
@@ -2578,17 +2583,17 @@ padding-right:0px;
 		margin: 0 auto 10px auto;
 	}
 	.about-us-left {
-	
+
 		display:block;
 		width: 250px;
-		padding-left: 50px;	
+		padding-left: 50px;
 	}
 	.playbutton h3 {font-size:30px;}
 	.mfp-close {
 		top: 10px !important;
 	}
 	.mfp-iframe-holder .mfp-close {
-	top:-40px !important;	
+	top:-40px !important;
 	}
 	.thecomments img.whatthink {
 	margin-left: auto;
@@ -2625,11 +2630,11 @@ padding-right:0px;
 	.about-us-right h2 {
 		font-size:32px
 	}
-	
+
 }
 
-@media only screen and (max-width: 480px) { 
-    #loginbody .footer .copyright { 
+@media only screen and (max-width: 480px) {
+    #loginbody .footer .copyright {
 		    text-align: right;
 		    padding-right: 0px;
 		    padding-bottom: 0px;
@@ -2658,6 +2663,7 @@ margin:0px !important; }
 
  margin-bottom:-66px;
  padding-bottom:66px;
+ padding-top: 80px;
 
  }
 }
@@ -2673,7 +2679,7 @@ margin:0px !important; }
 	.statsright {
 		width: 200px;
 	}
-	
+
 	.about-us-right h2 {
 		font-size:27px
 	}
@@ -2690,7 +2696,7 @@ margin:0px !important; }
 		font-size:10px;
 	}
 	.about-us-right h2 {margin-bottom:0px !important}
-	
+
 	.footer .copyright {
 		font-size:9px;
 		float:right;
@@ -2699,17 +2705,17 @@ margin:0px !important; }
 	}
 }
 
-@media only screen and (max-width: 420px) { 
-	
+@media only screen and (max-width: 420px) {
+
 	h1#bigone {
 		font-size:29px;
 	}
-	
+
 	p.shared-sub-title {font-size:13px;
 	}
-	
-	.about-us-right h3 {font-size:16px;}	
-	.about-us-right h2 {font-size:21px;margin-bottom:7px;}	
+
+	.about-us-right h3 {font-size:16px;}
+	.about-us-right h2 {font-size:21px;margin-bottom:7px;}
 	h3#myModal3Label {
 		font-size:35px;
 	}
@@ -2718,7 +2724,7 @@ margin:0px !important; }
 	    margin-top: -1px;
 	    padding: 14px 6px;
 	    background-color: white
-	
+
 }
 .bigstatsbox {
 	width:90% !important;
