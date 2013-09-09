@@ -1,5 +1,18 @@
 <div class="my_meta_control">
 	
+	<label> Which Bundle is this a part of? </label>
+	<br>
+	<?php $mb->the_field('thisbundle'); ?>
+	<select name="<?php $mb->the_name(); ?>">
+	<?php	global $wpdb;
+		$bundles = $wpdb->get_results("SELECT * FROM wp_pwyw_bundles
+	;");
+	foreach($bundles as $bundle):
+		?>
+		<option value="<?php echo $bundle->id; ?>"<?php $mb->the_select_state($bundle->id); ?>><?php echo $bundle->title; ?></option>
+				<?php endforeach; ?>
+	</select>
+	
 	<label>Full Embed</label>
  
 	<p>
@@ -41,7 +54,33 @@
 		<input type="text" placeholder="sec." style="width:75px;display:inline-block;" name="<?php $metabox->the_name('tipsec'); ?>" value="<?php $metabox->the_value('tipsec'); ?>"/>
 		
 	</p>
+	
+	<label>Twitter Message</label>
+ 
+	<p>
+		<input type="text" name="<?php $metabox->the_name('twitmsg'); ?>" value="<?php $metabox->the_value('twitmsg'); ?>"/>
+	</p>
+	<label>Facebook Title</label>
+ 
+	<p>
+		<input type="text" name="<?php $metabox->the_name('facetitle'); ?>" value="<?php $metabox->the_value('facetitle'); ?>"/>
+	</p>
+	<label>Facebook Message</label>
+ 
+	<p>
+		<input type="text" name="<?php $metabox->the_name('facemsg'); ?>" value="<?php $metabox->the_value('facemsg'); ?>"/>
+	</p>
 	<?php global $wpalchemy_media_access; ?>
+	
+	<?php $mb->the_field('faceimg'); ?>
+	    <?php $wpalchemy_media_access->setGroupName('nn8')->setInsertButtonLabel('Insert'); ?>
+	
+	    <p>
+			<label>Facebook Image</label>
+	        <?php echo $wpalchemy_media_access->getField(array('name' => $mb->get_the_name(), 'value' => $mb->get_the_value())); ?>
+	        <?php echo $wpalchemy_media_access->getButton(); ?>
+	    </p>
+	
 	
 	<?php $mb->the_field('fullimage'); ?>
 	    <?php $wpalchemy_media_access->setGroupName('nn4')->setInsertButtonLabel('Insert'); ?>

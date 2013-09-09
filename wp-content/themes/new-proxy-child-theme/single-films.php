@@ -37,11 +37,38 @@ $videometa = $full_mb->the_meta();
 						 </div>
 						 <p class="soctext">or help out by letting your friends know!</p>
 	  	               <div class="social_share <?php echo $title_top_class ;?>">
-	  	                   <?php
-	  	                       // Setup share urls
-	  	                       $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode(get_the_title())."&amp;p[summary]=".urlencode(get_the_excerpt())."&amp;p[url]=".get_permalink();
-	  	                       $twitter_share = "https://twitter.com/share?url=".get_permalink()."&amp;text=".urlencode("This is awesome - ".get_the_title());
-	  	                   ?>
+					       <?php
+					           if (is_user_logged_in()) {
+					               // Get relevant info for current user
+					               $user = wp_get_current_user();
+					               $email = $user->user_email;
+
+					               // Retrieve the user from the subscriber DB
+					               global $wpdb;
+					               $tablename = $wpdb->prefix . SEED_CSP3_TABLENAME;
+					               $sql = "SELECT * FROM $tablename WHERE email = %s;";
+					               $safe_sql = $wpdb->prepare($sql, $email);
+					               $result = $wpdb->get_row($safe_sql);
+
+					               if ($result) {
+					                   // Calc referrer url
+					                   $ref = $result->id+1000;
+					   				$urlnoslash = rtrim(get_permalink(),'/');
+					                   $referrer_url = $urlnoslash . '?ref='.base_convert($ref, 10, 36);
+					               };
+					   			$sharingiscaring = $referrer_url;
+		
+					   		}
+					   		else {
+					   			$sharingiscaring = get_permalink();
+		
+					   		}
+					           // Setup share urls
+					           $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode($videometa['facetitle'])."&amp;p[summary]=".urlencode($videometa['facemsg'])."&amp;p[images][0]=".$videometa['faceimg']."&amp;p[url]=".$sharingiscaring;
+					           $twitter_share = "https://twitter.com/share?url=".$sharingiscaring."&amp;text=".urlencode($videometa['twitmsg'].' - '.$sharingiscaring);
+					         
+					       ?>
+	  	                 
 	  	                   <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share on Facebook</a>
 
 	  	                   <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Share on Twitter</a>
@@ -65,9 +92,34 @@ $videometa = $full_mb->the_meta();
 <div class="filmtitl">
 <div class="social_share socialsmaller<?php echo $title_top_class ;?>">
     <?php
+        if (is_user_logged_in()) {
+            // Get relevant info for current user
+            $user = wp_get_current_user();
+            $email = $user->user_email;
+
+            // Retrieve the user from the subscriber DB
+            global $wpdb;
+            $tablename = $wpdb->prefix . SEED_CSP3_TABLENAME;
+            $sql = "SELECT * FROM $tablename WHERE email = %s;";
+            $safe_sql = $wpdb->prepare($sql, $email);
+            $result = $wpdb->get_row($safe_sql);
+
+            if ($result) {
+                // Calc referrer url
+                $ref = $result->id+1000;
+				$urlnoslash = rtrim(get_permalink(),'/');
+                $referrer_url = $urlnoslash . '?ref='.base_convert($ref, 10, 36);
+            };
+			$sharingiscaring = $referrer_url;
+
+		}
+		else {
+			$sharingiscaring = get_permalink();
+
+		}
         // Setup share urls
-        $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode(get_the_title())."&amp;p[summary]=".urlencode(get_the_excerpt())."&amp;p[url]=".get_permalink();
-        $twitter_share = "https://twitter.com/share?url=".get_permalink()."&amp;text=".urlencode("This is awesome - ".get_the_title());
+        $facebook_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode($videometa['facetitle'])."&amp;p[summary]=".urlencode($videometa['facemsg'])."&amp;p[images][0]=".$videometa['faceimg']."&amp;p[url]=".$sharingiscaring;
+        $twitter_share = "https://twitter.com/share?url=".$sharingiscaring."&amp;text=".urlencode($videometa['twitmsg'].' - '.$sharingiscaring);
     ?>
     <a class="zocial facebook" href="<?php echo $facebook_share; ?>" onclick="return !handleSocialWin('<?php echo $facebook_share; ?>', 'Facebook');" target="_blank">Share</a>
 
@@ -76,6 +128,42 @@ $videometa = $full_mb->the_meta();
 
 <h1><?php echo $videometa['title']; ?> </h1>
 </div>
+<?php
+global $wpdb;
+$linkedbundle = $videometa['thisbundle'];
+$bundles = $wpdb->get_results("SELECT * FROM wp_pwyw_bundles WHERE id = $linkedbundle;", ARRAY_A);
+$activebundle = $bundles['0']['activated'];
+$abovebelow = array (
+"below" => $videometa['belowavg'],
+"above" => $videometa['aboveavg'],
+);
+
+if(((edd_has_user_purchased( $user_ID, $abovebelow )) && ($videometa['abvaccessonly'] == '')) || ((edd_has_user_purchased( $user_ID, $videometa['aboveavg'] )) && ($videometa['abvaccessonly'] == 'above')))  {}
+else {
+if($activebundle == 1) {
+?>
+<div class="thepitch">
+	<h4>This is the bundle from <?php echo $bundles['0']['title'] ?></h4>
+	<p>This is CRRAAAAZYYYY</p>
+	<a href="http://filmbundle.com"> lets do this thing! </a>
+</div>
+
+
+<?php }
+
+elseif($activebundle == 0) { ?>
+	
+	<div class="thepitch">
+		<h4>This is the bundle from <?php echo $bundles['0']['title'] ?></h4>
+		<p>This is CRRAAAAZYYYY</p>
+		<a href="http://filmbundle.com"> lets do this thing! </a>
+	</div>
+	Bundle has past, buy something else
+
+
+<?php } 
+
+}?>
 <div class="filminfo">
 	<div class="tabbable tabs-left">
 	              <ul class="nav nav-tabs">
@@ -280,7 +368,7 @@ $videometa = $full_mb->the_meta();
 			  jQuery(this).remove();
 		     e.preventDefault();
 		   jQuery('#video_container').html('<iframe id="full" src="http://player.vimeo.com/video/<?php echo $videometa['fullembed'];?>?title=1&amp;byline=1&amp;portrait=1&amp;api=1&amp;player_id=full&amp;autoplay=true" frameborder="0"></iframe>');
-		 <?php if($videometa['tipster'] == 'yes') { ?>
+		<?php if(($videometa['tipster'] == 'yes') && (((edd_has_user_purchased( $user_ID, $abovebelow )) && ($videometa['abvaccessonly'] == '')) || ((edd_has_user_purchased( $user_ID, $videometa['aboveavg'] )) && ($videometa['abvaccessonly'] == 'above')))){ ?>
 		   //vimeo tip stuff
 		   
 		   
@@ -292,13 +380,13 @@ $videometa = $full_mb->the_meta();
 		   player.addEvent('ready', function() {
 			   
 			   player.addEvent('playProgress', function(data) {
-				if(data.seconds >= <?php echo $tiptime ?>) {
+					if(data.seconds >= <?php echo $tiptime ?>) {
 					
-					if(!jQuery('.tipshare').is(":visible")) {
+						if(!jQuery('.tipshare').is(":visible")) {
 						jQuery('.tipshare').slideDown();
 						
+						}
 					}
-				}
 					
 					else if(data.seconds < <?php echo $tiptime ?>) {
 					if(jQuery('.tipshare').is(":visible")) {
