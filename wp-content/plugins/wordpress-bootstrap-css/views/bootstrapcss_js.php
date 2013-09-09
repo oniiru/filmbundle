@@ -8,7 +8,6 @@
 			if ( jQuery( '#<?php echo $worpit_var_prefix; ?>option_twitter' ).is( ':checked' ) === false ) {
 				jQuery( '#TwitterBootstrapJavascriptLibraryOptions' ).hide();
 				jQuery( '#ExtraTwitterBootstrapOptions' ).hide();
-				jQuery( '#span_<?php echo $worpit_var_prefix; ?>inc_responsive_css' ).hide();
 			}
 			
 			/**
@@ -102,15 +101,13 @@
 		var sValue = jQuery( this ).val();
 
 		/* Show/Hide Bootstrap Javascript section on Twitter CSS selection */
-		if ( sValue == 'twitter' ) {
+		if ( sValue == 'twitter' || sValue == 'twitter-legacy' ) {
 			jQuery( '#TwitterBootstrapJavascriptLibraryOptions' ).slideDown( 150 );
 			jQuery( '#ExtraTwitterBootstrapOptions' ).slideDown( 150 );
-			jQuery( '#span_<?php echo $worpit_var_prefix; ?>inc_responsive_css' ).slideDown( 150 );
 			
 			/**
 			 * Handle specific twitter versions.
 			 */
-			jQuery( '#span_<?php echo $worpit_var_prefix; ?>inc_responsive_css' ).slideDown( 150 );
 			jQuery( '#controlAllJavascriptLibraries' ).removeClass( 'hidden' );
 			
 			/**
@@ -141,7 +138,6 @@
 		else {
 			jQuery( '#TwitterBootstrapJavascriptLibraryOptions' ).slideUp( 150 );
 			jQuery( '#ExtraTwitterBootstrapOptions' ).slideUp( 150 );
-			jQuery( '#span_<?php echo $worpit_var_prefix; ?>inc_responsive_css' ).slideUp( 150 );
 		}
 
 		jQuery( '#desc_block .desc' ).addClass( 'hidden' );

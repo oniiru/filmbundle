@@ -8,7 +8,7 @@
 				<p>Please help <u>spread the word</u> or check out what else we do ...</p>
 	  		</div>
 	  		<div class="span4">
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://icwp.io/r" data-text="I use the #WordPress Twitter Bootstrap plugin to make my site look awesome with #bootstrap!" data-via="Worpit" data-size="large">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://icwp.io/r" data-text="I use the #WordPress Twitter Bootstrap plugin to make my site look awesome the easy way!" data-via="iControlWP" data-size="large">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	  		</div>
 	  	</div>
 		<div class="row">

@@ -1,9 +1,6 @@
-<div id="sidebar">
+<div id="sidebar" style="display:none">
   
-        <div id="sidebar-name">
-          <span class="sidebar-name-wrap"><?php bloginfo('name'); ?></span>
-        </div><!-- #sidebar-name -->
-        
+      
         
         <div id="sidebar-inner">
    
@@ -21,7 +18,17 @@
                     			} else {?>            			
                     			<?php }?>
                     			</div><!-- .logo-image -->
-                        <div class="logo-name"><h1><a href="<?php print get_home_url(); ?>"><?php bloginfo('name'); ?></a></h1></div><!-- .logo-name -->
+				                <div id="search">
+          
+				                  	  <form id="search-form"  action="<?php print get_site_url(); ?>/" method="get">
+				                  			<input placeholder="search..." type="text" id="search-field" name="s" value="<?php  if (is_search()) {esc_attr_e($s);} ?>" onFocus="this.value=''" />
+				          		        </form>
+          
+				                </div><!-- #search -->
+        
+				                <div class="clear"></div>
+								
+                        <div class="logo-name"><h2><a href="<?php print get_home_url(); ?>">Home</a></h2></div><!-- .logo-name -->
                         <div class="tagline"><?php bloginfo('description'); ?></div><!-- .tagline -->
                         <div class="clear"></div>
 
@@ -52,20 +59,9 @@
                 
                 <div class="clear"></div>
 
-                <div id="search">
-          
-                  	  <form id="search-form"  action="<?php print get_site_url(); ?>/" method="get">
-                  			<input type="text" id="search-field" name="s" value="<?php  if (is_search()) {esc_attr_e($s);} else {echo ('Search');} ?>" onFocus="this.value=''" />
-          			        <input type="submit" id="search-button" value="" />
-          		        </form>
-          
-                </div><!-- #search -->
-        
-                <div class="clear"></div>
                 
-                <div id="sidebar-credit">
-                  <p><a href="http://onepagelove.com/themes/clutterless" target="_blank">Clutterless WordPress Theme</a> <span class="by">by</span> <a href="http://onepagelove.com" target="_blank">One Page Love</a></p>
-                </div><!-- #sidebar-credit -->
+                
+           
 
 
                 <div class="clear"></div>

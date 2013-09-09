@@ -14,11 +14,17 @@
   <?php wp_head(); ?>
 
   <?php stag_head(); ?>
+  <link href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/popup.css" rel="stylesheet">
+
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/socialcss/zocial.css">
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/modernizr.js'></script>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/zclip.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.backstretch.min.js'></script>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.easing-1.3.js'></script>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.iosslider.min.js'></script>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/popup.js'></script>
+<script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/froogaloop.js'></script>
 
 
 <?php if (is_front_page()) { ?>
@@ -74,11 +80,11 @@ jQuery(document).ready(function($) {
       </div>
       <div class="socialModalVerticalOffset">
           <div class="socialModalBox">
-            <div class="widget_title"><a id="closeModal">Close</a></div>
+            <div class="widget_title"><a id="closeModal">X</a></div>
             <div class="socialModalContent">
               <div class="socialModalContentInner">
                 <span class="socialModalThanks">Thanks for Sharing!</span>
-                <span class="socialModalTell">Now tell your friends on Facebook that you like Filmbundle!</span>
+                <span class="socialModalTell">Don't forget to like us on Facebook to get updates on bundles and exclusive content!</span>
             <div class="fb-like" data-href="https://www.facebook.com/filmbundle" data-layout="button_count" data-show-faces="false"></div>
           </div>
           <span class="socialModalDisable">Already like us? <a id="disableModal">Don't show this again</a></span>
@@ -102,6 +108,8 @@ jQuery(document).ready(function($) {
       <div class="header-inner clearfix">
 
         <!-- BEGIN #logo -->
+		<img class="homelogo littlelogo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/whitehmmm.png">
+		
         <div id="logo">
           <?php
 

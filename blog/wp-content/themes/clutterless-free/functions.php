@@ -24,43 +24,6 @@ global $content_width;
 if ( ! isset( $content_width ) ) $content_width = 600;
 
 // -------------------------------------------------------------
-// 01. AJAX Loading Archive Posts
-// -------------------------------------------------------------
-
-function clutterless_pbd_alp_init() {
- 	global $wp_query;
-
- 	// Add code to index pages.
- 	if( !is_singular() ) {	
- 		// Queue JS and CSS
- 		wp_enqueue_script(
- 			'pbd-alp-load-posts',
- 			get_template_directory_uri().'/js/load-posts.js',
- 			array('jquery'),
- 			'1.0',
- 			true
- 		);
-
- 		// What page are we on? And what is the pages limit?
- 		$max = $wp_query->max_num_pages;
- 		$paged = ( get_query_var('paged') > 1 ) ? get_query_var('paged') : 1;
-
- 		// Add some parameters for the JS.
- 		wp_localize_script(
- 			'pbd-alp-load-posts',
- 			'pbd_alp',
- 			array(
- 				'startPage' => $paged,
- 				'maxPages' => $max,
- 				'nextLink' => next_posts($max, false)
- 			)
- 		);
- 	}
- }
-
- add_action('template_redirect', 'clutterless_pbd_alp_init');
-
-// -------------------------------------------------------------
 // 02. Set number of archive & search results
 // -------------------------------------------------------------
 
@@ -194,18 +157,19 @@ add_action('wp_enqueue_scripts', 'clutterless_enqueue_scripts');
 function clutterless_enqueue_scripts(){
 	// Clutterless Stylesheet	
 	wp_enqueue_style( 'clutterless', get_stylesheet_uri(), array(), CLUTTERLESS_THEME_VERSION );
+	$fontscss = get_stylesheet_directory_uri() . '/fonts/fonts.css';
 	
 
 	// Clutterless Google Fonts
 	wp_enqueue_style('google-webfonts-nc', 'http://fonts.googleapis.com/css?family=News+Cycle:400');
 	wp_enqueue_style('google-webfonts-mw', 'http://fonts.googleapis.com/css?family=Merriweather:700');
 	wp_enqueue_style('google-webfonts-os', 'http://fonts.googleapis.com/css?family=Open+Sans');
+	wp_enqueue_style('fontsalright', $fontscss);
 	
 	
 	// Clutterless Scripts
 	$url = get_stylesheet_directory_uri() . '/js/';
-	wp_enqueue_script( 'hash-change', "{$url}jquery.ba-hashchange.min.js", array('jquery'), '', true);
-	wp_enqueue_script( 'ajax-theme', "{$url}ajax.js", array( 'hash-change' ), '', true);
+	
 	
 	// Add your scripts below
 	
@@ -240,3 +204,122 @@ function clutterless_favicon(){
 
 require_once('wp-updates-theme.php');
 new WPUpdatesThemeUpdater( 'http://wp-updates.com/api/1/theme', 223, basename(get_template_directory()) );
+
+add_theme_support( 'post-thumbnails' ); 
+register_nav_menus( array(
+	'header' => 'simple header nav',
+	'leftthing' => 'Leftthing Nav',
+	'slideout' => 'slideout nav'
+) );
+
+class FilmBundleBlog_ThemeFunctions
+	{
+	    const VERSION = '1.0';
+	    private static $instance = false;
+
+	    public static function getInstance()
+	    {
+	        if (!self::$instance) {
+	            self::$instance = new self();
+	        }
+	        return self::$instance;
+	    }
+
+	    private function __construct()
+	    {
+	        add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
+	        add_shortcode('vimeo', array(&$this,'shortcodeVimeo'));
+	        add_shortcode('youtube', array(&$this,'shortcodeYouTube'));
+	    }
+
+	    public function scripts()
+	    {
+	        wp_enqueue_script(
+	            'filmbundle-social',
+	            get_stylesheet_directory_uri().'/js/social.js',
+	            array('jquery'), 
+	            self::VERSION,
+	            true
+	        );
+	    }
+
+	    // -------------------------------------------------------------------------
+	    // Shortcodes
+	    // -------------------------------------------------------------------------
+	    public function shortcodeVimeo($atts)
+	    {
+	        extract(
+	            shortcode_atts(
+	                array(
+	                    'id' => '',
+	                ),
+	                $atts
+	            )
+	        );
+	        $embed = "<iframe src=\"http://player.vimeo.com/video/{$id}?";
+	        $embed .= "api=1&";
+	        $embed .= "title=0&byline=0&portrait=0\" width=\"500\" height=\"281\"";
+	        $embed .= "frameborder=\"0\"";
+	        $embed .= "webkitAllowFullScreen mozallowfullscreen allowFullScreen>";
+	        $embed .= "</iframe>";
+	        return $embed;
+	    }
+
+	    public function shortcodeYouTube($atts)
+	    {
+	        extract(
+	            shortcode_atts(
+	                array(
+	                    'id' => '',
+	                ),
+	                $atts
+	            )
+	        );
+
+	        $embed = "
+	            <div id=\"player_{$id}\" class=\"fit post_video_wrapper\"></div>
+	            <script>
+	                // Hides the player, until responsiveness is activated.
+	                jQuery('#player_{$id}').hide();
+
+	                // Setup a variable to keep track of initialization, to avoid
+	                // infinite responsive loops
+	                if (typeof yt_player_ready === 'undefined') {
+	                    var yt_player_ready = [];
+	                }
+	                yt_player_ready['{$id}'] = false;
+
+	                // Load the IFrame Player API code asynchronously.
+	                var tag = document.createElement('script');
+
+	                tag.src = \"https://www.youtube.com/iframe_api\";
+	                var firstScriptTag = document.getElementsByTagName('script')[0];
+	                firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+	                // Create the iframe after the API code is downloaded.
+	                var player_{$id};
+	                function onYouTubeIframeAPIReady() {
+	                    player_{$id} = new YT.Player('player_{$id}', {
+	                        height: '315',
+	                        width: '500',
+	                        videoId: '{$id}',
+	                        events: {
+	                            'onReady': onYTPlayerReady,
+	                            'onStateChange': onYTPlayerStateChange
+	                        }
+	                    });
+	                }
+	            </script>
+	        ";
+	        return $embed;
+	    }
+	}
+
+	$fb_theme = FilmBundleBlog_ThemeFunctions::getInstance();
+
+	include_once 'metaboxes/setup.php';
+
+	include_once 'metaboxes/select-spec.php';
+
+	/* eof */
+	add_filter( 'pre_user_description', 'wp_filter_post_kses' );

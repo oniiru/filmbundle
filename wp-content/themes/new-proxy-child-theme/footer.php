@@ -61,5 +61,6 @@
 
   <?php wp_footer(); ?>
   <?php stag_body_end(); ?>
+  
   </body>
 </html>

@@ -6,14 +6,625 @@ Template:       proxy
 
 (optional values you can add: Theme URI, Author URI, Version)
 */
-
 @import url("../proxy/style.css");
+html {overflow-x:inherit;}
 
+@font-face {
+    font-family: 'museo300';
+    src: url('assets/fonts/museosans-300-webfont.eot');
+    src: url('assets/fonts/museosans-300-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/museosans-300-webfont.woff') format('woff'),
+         url('assets/fonts/museosans-300-webfont.ttf') format('truetype'),
+         url('assets/fonts/museosans-300-webfont.svg#museo_sans300') format('svg');
+    font-weight: normal;
+    font-style: normal;
 
+}
+
+@font-face {
+    font-family: 'fontawesome';
+    src: url('assets/fonts/fontawesome-webfont.eot');
+    src: url('assets/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/fontawesome-webfont.woff') format('woff'),
+         url('assets/fonts/fontawesome.ttf') format('truetype'),
+         url('assets/fonts/fontawesome.svg#museo_sans300') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'museo500';
+    src: url('assets/fonts/museosans_500-webfont.eot');
+    src: url('assets/fonts/museosans_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/museosans_500-webfont.woff') format('woff'),
+         url('assets/fonts/museosans_500-webfont.ttf') format('truetype'),
+         url('assets/fonts/museosans_500-webfont.svg#museo_sans500') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'museo700';
+    src: url('assets/fonts/museosans_700-webfont.eot');
+    src: url('assets/fonts/museosans_700-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/fonts/museosans_700-webfont.woff') format('woff'),
+         url('assets/fonts/museosans_700-webfont.ttf') format('truetype'),
+         url('assets/fonts/museosans_700-webfont.svg#museo_sans700') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+.littlelogo {
+	position: fixed;
+	z-index: 1000;
+	cursor: pointer;
+}
+.homelogo {
+	border-radius: 90px !important;
+	border: 2px solid white;
+	padding: 2px;
+	width: 50px;
+	}
+	
 input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea { background: #f8f8f8; width: 100%; padding: 15px 20px 15px 10px; font-size: 14px; border: 1px solid rgb(180, 180, 180); -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
 
 #header {
 	padding:15px 0;
+}
+.filminfo {
+	max-width:900px;
+	margin:auto;
+	margin-top:10px;
+}
+
+.tabs-left > .nav-tabs {
+float: left;
+padding-right: 19px;
+border-right: 1px solid white;
+margin-right:0px;
+
+}
+.tabs-left > .nav-tabs .active > a, .tabs-left > .nav-tabs .active > a:hover, .tabs-left > .nav-tabs .active > a:focus, .tabs-left > .nav-tabs > li > a	
+ {
+	border:none !important;
+	border-radius:0px !important;
+	-webkit-border-radius: 0px !important;
+	color: white;
+	cursor: pointer;
+	font-family: 'Novecentowide-Bold', sans-serif;
+	font-size:13px;
+}
+.tabs-left > .nav-tabs .active > a {
+	background-color: rgba(0, 136, 204, 0.78);
+	
+}
+.playbutton {
+	font-family: 'fontawesome';
+	font-size: 125px;
+	color: rgba(0, 136, 204, 0.53);
+	display: inline-block;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	
+	}
+	.playbutton:hover{
+		color: rgba(0, 136, 204, 1);
+		
+	}
+	
+	.playbutton span {
+		margin-left: 25px;
+		position: absolute;
+		bottom: 0px;
+		line-height: 1.2em;
+	}
+	
+	.playbutton h3 {
+		position: absolute;
+		right: 0;
+		top: 30px;
+		font-size: 50px;
+		color: white;
+		background: rgba(0,0,0,.5);
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+.tab-pane {
+	overflow:hidden;
+}
+ul.nav-tabs {
+	width:193px;
+}
+.nav > li > a:hover, .nav > li > a:focus  {
+	background-color: rgba(0,0,0,.6);
+}
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto !important;
+  max-width: 500px;
+  margin: 20px auto;
+  position: static !important;
+  -webkit-transform: initial !important;
+}
+
+.footer {
+	background-color:#2b2b2b;
+}
+
+.lockeditem {
+	width:100%;
+	height:100%;
+	background:rgba(28, 147, 197, 0.7);
+	position:relative;
+}
+
+.lockeditem img {
+	position:absolute;
+	right:10px;
+	top:10px;
+}
+
+.tab-pane p{
+	color: white;
+	margin-bottom: 10px;
+	font-family: 'museo500', sans-serif;
+	line-height: 1.2em;
+	margin-left: 30px;
+}
+
+.acredit {
+	width:32%;
+	display:inline-block;
+	margin-bottom:10px;
+}
+.acredit p {
+	margin-bottom:0px;
+}
+.tab-pane img{
+	margin-left:30px;
+	height:114px;
+	float:left;
+}
+.fromfilmmaker p {
+	padding-left:100px;
+}
+.fromfilmmaker span {
+float: right;
+margin-right: 50px;
+}
+.tab-pane span {
+	color: rgb(240, 240, 240);
+	top: -5px;
+	font-family: 'proximanova', sans-serif;
+	line-height: 1.2em;
+	margin-left: 30px;
+	font-size: 12px;
+	position: relative;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.tab-pane .filmmakerconnect span {
+	top:0px;
+	margin-left:0px;
+	
+}
+.filmmakerconnect iframe {
+	vertical-align:middle;
+}
+.filmmakerconnect p {
+	display:inline-block;
+	margin-left:0px;
+
+}
+.zocial, a.zocial {
+color: #fff;
+cursor: pointer;
+display: inline-block;
+font: 14px/1 "Lucida Grande", Tahoma, sans-serif;
+padding: 12px 20px 12px 10px;
+text-align: center;
+text-decoration: none;
+text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+white-space: nowrap;
+-moz-user-select: none;
+-webkit-user-select: none;
+user-select: none;
+position: relative;
+border-radius: 2px;
+margin-left: 5px;
+margin-right: 5px;
+}
+
+.zocial:before {
+content: "";
+float: left;
+font: 120%/.9 zocial;
+font-style: normal;
+font-weight: normal;
+margin: 0 .5em 0 0;
+padding: 0 0.5em;
+text-align: center;
+text-decoration: none;
+text-transform: none;
+-moz-font-smoothing: antialiased;
+-webkit-font-smoothing: antialiased;
+font-smoothing: antialiased;
+}
+p.soctext {
+	font-family: museo500;
+	margin: 10px;
+	font-size: 18px;
+}
+.tipshare {
+	display:none;
+	position:absolute;
+	top:0;
+	z-index:10	;
+	margin:auto;	
+	text-align: center;
+	color:#fff;
+	width:100%;
+	background: rgba(0,0,0,.5);
+	padding-bottom: 13px;
+}
+.tiptime {
+	top:0;
+	z-index:10	;
+	margin:auto;	
+	background-color: #29B873;
+	padding: 10px;
+	text-align: center;
+	color:#fff;
+	width:100%;
+	padding-top:12px;
+}
+
+.tiptimetext h3 {
+	color: #fff;
+	font-size: 18px;
+	line-height: 1em;
+	
+}
+.filmmakerconnect {
+	text-align: right;
+	margin-top: 25px;
+	margin-left: 0px;
+	margin-right: 50px;
+	}
+	.tipstertext {
+		display:inline-block;
+		margin-right:50px;
+		text-align:left;}
+		
+		.tiptimetext {
+			display:inline-block;
+			margin-right:50px;
+			text-align:left;}
+			.tiptime button.tipbutton {
+			padding: 9px;
+		}
+		
+		.tiptime .flatinputprepend {
+		padding:4px 10px;	
+		}
+
+		.flatinputprepend {
+			display: inline;
+			padding: 8px 10px 9px;
+			color: white;
+			border-radius: 2px 0 0 2px;
+			vertical-align: middle;
+			position: relative;
+			right: -5px;
+			font-family: museo300;
+			font-size: 20px;
+			line-height: 0px;
+			border: 1px solid white;
+			
+			}
+			
+			.tiptime form {
+				display: inline-block;
+				position: relative;
+				vertical-align:top;
+				top:2px;
+			}
+			button.tipbutton {
+				border-radius: 2px;
+				padding: 13px;
+				background: #F00864 !important;
+			
+			}
+			.tipster form{
+				display: inline-block;
+				position: relative;
+				top: -13px;			}
+	input.flatinput {
+		display: inline;
+		width: 85px	;
+		height: 42px;
+		border-radius: 0 2px 2px 0;
+		vertical-align: middle;
+		margin-bottom: 0px;
+		min-width: 0px;
+		font-family: 'museo500', sans-serif;
+		font-size: 18px;
+		padding-right: 10px;
+		background: transparent;
+		border: 1px solid white;
+		color: white;
+		
+	}
+	
+	.tiptime input.flatinput {
+		height:33px;
+	}
+	
+	input.flatinput:focus {
+		border: 1px solid white;
+	}
+	.tipstertext h3 {
+		color:#fff;
+		font-size:20px;
+	}
+	.tipster {
+		margin:auto;	
+		max-width:950px;
+		background-color: #29B873;
+		padding: 30px;
+		text-align: center;
+		color:#fff;
+		padding-bottom:20px;
+	}
+	.filmtitl {
+		margin-bottom:30px;
+		max-width:920px;
+		margin-top:10px;
+		margin:auto;
+		
+	}
+	
+	.filmtitl .zocial {
+		padding:8px 15px;
+		font: 13px/1 "Lucida Grande", Tahoma, sans-serif;
+	}
+	
+	.filmtitl .zocial:before {
+		padding:0px;
+	}
+.filmtitl h1{
+	color: white;
+	font-size: 30px;
+display:inline-block;
+	margin-top:10px;
+	margin-bottom:30px;
+	
+	
+	
+}
+.filmtrigger, .trailertrigger {
+	cursor:pointer;
+}
+#video_container { position: relative;background-size:cover;background-repeat:no-repeat; padding-top: 30px; height: 0; overflow: hidden; } #video_container iframe, #video_container object, #video_container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+#header {
+	background-color:#2b2b2b;
+}
+.topbanner-inner h1 {
+	font-family: 'museo300';
+	text-shadow:1px 1px 1px #474747;
+	font-size:37px;
+	padding-top:130px;
+	color:white;
+	width:1030px;
+}
+
+.topbanner-inner h3 {
+	font-family: 'museo700';
+	font-size:18px;
+	color:white;
+	width:1030px;
+	padding-top: 7px;
+	margin-bottom: 30px;
+}
+.topbanner-inner a {
+	background:#1c93c5 !important;
+	border-radius:4px;
+	color:white;
+	font-family: 'museo700';
+	
+}
+
+#thevideo {
+margin:auto;
+box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);	
+
+}
+
+.video-holder {
+	max-width:920px;
+	margin:auto;
+	box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);
+	position:relative;
+}
+.undervidstripe {
+width:100%;
+background: #2b2b2b;
+text-align:center;
+color:white;
+padding:15px;
+}
+
+.undervidstripe h2 {
+	color:white;
+}
+.bg-trans {
+width:100%;
+height:100%;
+background: rgba(0,0,0,.6);
+padding:50px
+}
+#filmbackground {
+	background-attachment:fixed;
+	background-size:cover;
+
+}
+.thecomments iframe, .thecomments span, .fb-comments {
+	width:100% !important;
+}
+
+.thecomments h3 {
+	display:none;
+}
+.theextras {
+	max-width:1105px;
+	margin:auto;
+	padding:20px 35px;
+	overflow: hidden;
+	margin-bottom: -60px;
+
+}
+
+.iteminfo {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	background: rgba(0,0,0,.3);
+	width: 100%;
+	padding: 10px;
+	color: white;
+	text-align: left;
+	
+	}
+
+	.iteminfo p {
+		float:left;
+		width:100%;
+		font-family: "open sans", sans-serif;
+		font-weight:300;
+	}
+	
+	.iteminfo p span {
+		float:right;
+		font-size:13px;
+	}
+
+	.iteminfo p span:before {
+		content:url('assets//img/clock.png');
+		margin-right: 3px;
+		top: 3px;
+		position: relative;
+		
+	}
+	
+	#backToTop {
+	background-color:transparent;	
+	}
+.thecomments {
+	max-width:1140px;
+	margin:auto;
+	padding:20px 35px;
+	margin-bottom:50px;
+	padding-top:30px;
+	text-align:center;
+}
+.thecomments img.whatthink {
+margin-left: 47px;
+}
+.topbanner-inner a:hover {
+	text-decoration:none;
+}
+
+.topbanner {
+	background-size:cover;
+	height:280px;
+	width:100%;
+	
+}
+
+.anextra {
+	width:100%;
+	height:100%;
+	display:inline-block;
+	position:relative;
+}
+
+.filmmakerclass h2 {
+	font-size:30px;
+	font-family: 'museo500';
+	margin-bottom:0px;
+	
+}
+.filmmakerclass h4 {
+	font-size: 16px;
+	font-family: 'museo500';
+	margin-top: 5px;
+	
+}
+.filmmakerclass h5 {
+	font-size: 16px;
+	font-family: 'museo500';
+	text-transform:uppercase;
+	margin-bottom: 5px;
+	
+}
+.filmmakerclass p, .filmmakerclass li {
+	font-size: 14px;
+	font-family: 'museo300';
+
+	
+}
+.hentry {
+	padding-bottom:100px;
+}
+.filmmakersbanner {
+	text-align:center;
+	width:100%;
+	background:#585858;
+	height:75px;
+	margin-bottom:76px;
+	padding-top:17px;
+}
+
+.filmmakersbanner h3 {
+	display:inline-block;
+	color:white;
+	font-family: 'museo300';
+	font-size:30px;
+	vertical-align: middle;
+	margin-right: 30px;
+}
+
+.filmmakersbanner a {
+	background:#1c93c5 !important;
+	border-radius:4px;
+	color:white;
+	font-family: 'museo500';
+	font-size:20px;
+	vertical-align:middle;
+	
+	
+}
+.filmmakersbanner a:hover {
+	text-decoration:none;
+}
+article {
+	max-width: 1210px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin:auto;
+	margin-bottom:30px;
+}
+.topbanner-inner {
+	max-width: 1210px;
+padding-left: 20px;
+padding-right: 20px;
+margin:auto;
 }
 #services .service-title { text-align:center;}
 
@@ -32,7 +643,6 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 	padding: 5px;
 	line-height: 1.2em;
 	position: relative;
-	behavior: url(PIE.php);
 	font-size: 14px;
 	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
 	position: relative;
@@ -42,7 +652,7 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 }
 #login p.message, #login p.error, #register p.message, #register p.error{
 	text-align:center;
-	background:rgb(139, 0, 0);;
+	background:rgb(139, 0, 0);
 }
 
 #login .lp p.message, .loginformtitle {
@@ -404,7 +1014,7 @@ margin-top:0px;
 
 #logo {
 	height:50px;
-	
+	margin-left:55px;
 }
 
 .registerheader {
@@ -1126,7 +1736,8 @@ div#container {
        min-height: 100%;
        height: auto !important;
        height: 100%;
-       margin: 0px 0px -76px 0px;
+	   padding-bottom:80px;
+	   margin-bottom:-80px;
  }
  
   #wrapper{
@@ -1156,6 +1767,48 @@ a.hiddenanchor{
 	display: none;
 }
 /** The wrapper that will contain our two forms **/
+
+
+.iosSlider {
+	width: 100%;
+	height: 195px;
+}
+
+.iosSlider .slider {
+	width: 100%;
+	height: 100%;
+}
+
+.iosSlider .slider .item {
+	float: left;
+	width:325px;
+	text-align:center;
+	height:180px;
+	margin:10px;
+}
+
+.prev {
+	position: relative;
+	background: #000;
+	z-index: 10;
+	float:left;
+	bottom: 130px;
+	left: -30px;
+}
+
+.next {
+	position: relative;
+	background: green;
+	z-index: 10;
+	float:right;
+	bottom: 130px;
+	right: -30px;
+}
+
+.unselectable {
+	display:none;
+}
+
 
 #loginbody #wrapper, #loginbody #wrapper2{
 	width: 670px;
@@ -1233,7 +1886,7 @@ margin-top:7px !important;}
 	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7);
 	   -moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7);
 	        box-shadow: 0pt 2px 5px rgba(105, 108, 109,  0.7);
-	-webkit-box-shadow: 5px;
+	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 		 border-radius: 5px;
 }
@@ -1439,121 +2092,116 @@ float: left;
  */
 
 .widget_title {
-padding: 5px 20px;
-background: #eee url(assets/img/g_light_top.png) repeat-x;
-border-bottom: 1px solid #dedede;
+padding: 5px 10px;
+background: #fff;
 margin: 0;
--webkit-border-top-left-radius: 4px;
--webkit-border-top-right-radius: 4px;
--moz-border-radius-topleft: 4px;
--moz-border-radius-topright: 4px;
-border-top-left-radius: 4px;
-border-top-right-radius: 4px;
 font-weight: 300;
 line-height: inherit;
 color: #333;
 font-size: 18px;
 text-align: right;
 }
-
 .socialModalWrap {
-    display: none;
-    z-index: 40001;
-}
-.socialModalOverlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: .5;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-    filter: alpha(opacity=50);
-    z-index: 40001;
-}
+	    display: none;
+	    z-index: 40001;
+	}
+	.socialModalOverlay {
+	    position: fixed;
+	    width: 100%;
+	    height: 100%;
+	    background-color: black;
+	    opacity: .5;
+	    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	    filter: alpha(opacity=50);
+	    z-index: 40001;
+	}
+	.socialModalVerticalOffset {
+	    position: fixed;
+	    top: 0;
+	    width: 100%;
+	    z-index: 40002;
+	}
+	.socialModalBox {
+	    max-width: 500px;
+	    position: relative;
+	    margin: 0 auto;
 
-.closeit {
-	float: right;
-	margin-top: 5px;
-	padding: 14px;
-	background-color: white !important;
-	color: grey;
-	font-size: 30px;
-}
-.socialModalVerticalOffset {
-    position: fixed;
-    top: 0;
-    z-index: 40002;
-	margin:10px;
-}
-.socialModalBox {
-    max-width: 500px;
-    position: relative;
-    margin: 0 auto;
-
-    background: none;
-    padding: 0;
-}
-.socialModalClose {
-	background-color: #333;
-	padding: 6px;
-	text-align: right;
-	border-bottom: 1px solid black;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-}
-.socialModalClose a {
-	cursor: pointer;
-	color: white;
-}
-.socialModalContent {
-	background-color: white;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
-.socialModalContentInner {
-	padding: 20px;
-	border-radius: 3px;
-	text-align:center;
-}
-.socialModalThanks {
-	display: block;
-	font-size: 24px;
-	text-align: center;
-}
-.socialModalTell {
-	display: block;
-	margin-bottom: 24px;
-	text-align: center;
-}
-.socialModalBox .fb-like {
-	display: inline-block;
-	background: rgb(81, 153, 184);
-	vertical-align: middle;
-	padding: 26px 20px 20px;
-	border-radius: 3px;
-	text-align: center;
-	width: 150px;
-	border: 1px solid rgba(0, 0, 0, 0.3);
-	box-shadow: inset 0 5px 5px rgba(0, 0, 0, 0.15),0 1px 0 rgba(255, 255, 255, 0.1);
+	    background: none;
+	    padding: 0;
+	}
+	.socialModalClose {
+		background-color: #333;
+		padding: 6px;
+		text-align: right;
+		border-bottom: 1px solid black;
+	    border-top-right-radius: 4px;
+	    border-top-left-radius: 4px;
+	}
+	#closeModal {
+		font-family: "proxima", sans-serif;
+		color: #8A8A8A;
+	}
+	.socialModalClose a {
+		cursor: pointer;
+		color: white;
+	}
+	.socialModalContent {
+		padding: 20px;
+		background-color: white;
+		padding-bottom: 10px;
+	}
+	.socialModalContentInner {
+		font-family: "proximanova", sans-serif;
+		text-align:center;
+		color:#3c3c3c;
 	
-}
+	}
+	.socialModalThanks {
+		display: block;
+		font-size: 38px;
+		text-align: center;
+		font-weight:900;
+	
+	}
+	.socialModalTell {
+		display: block;
+		margin-bottom: 24px;
+		text-align: center;
+		font-size: 15px;
+		font-family: "museo500", sans-serif;
+	}
+	.socialModalBox .fb-like {
+		display: inline-block;
+		background: #fff;
+		vertical-align: middle;
+		background-image: url('assets/img/circlegreen.png');
+		background-size: cover;
+		width: 130px;
+		height: 56px;
+		padding-top: 19px;
+	
+	}
+	.socialModalDisable {
+		display: block;
+		padding: 30px 0 0 0;
+		text-align: center;
+		font-size: 12px;
+	}
+	.socialModalDisable a {
+		cursor: pointer;
+	}
 
-.socialModalDisable {
-	display: block;
-	padding: 10px 0 0 0;
-	text-align: center;
-	font-size: 12px;
-}
-.socialModalDisable a {
-	cursor: pointer;
-}
-
-
-.modal-open {
-	overflow: hidden;
-}
-
-
+	.socialsmaller {
+		display: inline-block;
+		vertical-align: middle;
+		margin-bottom: 30px;
+		margin-top: 10px;
+		float:right;
+	}
+	.socialsmaller .twitter {
+		margin-right:0px;
+		
+	}
 /* add a scroll bar to stop page from jerking around */
 .modal-open.page-overflow .page-container,
 .modal-open.page-overflow .page-container .navbar-fixed-top,
@@ -1562,12 +2210,6 @@ text-align: right;
 	overflow-y: scroll;
 }
 
-@media (max-width: 979px) {
-	.modal-open.page-overflow .page-container .navbar-fixed-top,
-	.modal-open.page-overflow .page-container .navbar-fixed-bottom  {
-		overflow-y: visible;
-	}
-}
 
 
 .modal-scrollable {
@@ -1633,6 +2275,20 @@ text-align: right;
 	}
 	
 }
+@media screen and (max-width: 1025px) {
+	.littlelogo {
+		position:absolute !important;
+	}
+	
+}
+
+
+@media (max-width: 979px) {
+	.modal-open.page-overflow .page-container .navbar-fixed-top,
+	.modal-open.page-overflow .page-container .navbar-fixed-bottom  {
+		overflow-y: visible;
+	}
+}
 @media screen and (max-width: 900px) {
 	#seedprod_title_link {
 		display: block;
@@ -1664,10 +2320,23 @@ text-align: right;
 		font-size:27px;
 		margin-right:5%;
 	}
+	.tipstertext {
+		margin-right:0px;
+		display:block;
+		text-align:center;
+	}
 	
+	.tipster form {
+		top:10px;
+	}
+	
+	.bg-trans {padding:0 0 50px 0;}
 	#backToTop {display:none;}
 	h1#bigone span{
 		display:none;
+	}
+	.filminfo {
+		padding:10px;
 	}
 	h1#bigone{
 		max-width: 384px;
@@ -1696,77 +2365,70 @@ text-align:left;
 .about-us-right p img {display:inline-block !important}
 
 }
-@media screen and (max-width: 600px) {
-	.tranlink {
-		display: none;
-		margin: 0;
-		padding: 0;
-		height: 0;
-	}
-	h1.logintitle {
-		display:none;
-	}
-	.about-us-right p img {display:none !important;}
-	
-	#loginbody .header-inner {
-		text-align:center;
-	}
-	
-	#loginbody #logo {
-		float:none;
-	}
-	.statsleft {
-		width: 200px;
-		height: 90px;
-		text-align: center;
-		margin: 0;
-		padding: 0;
-	}
-	a.zocial {
-		display: block !important;
-		margin: 0 auto 10px auto !important;
-	}
-	.statstitle p {
-		font-size: 75%;
-	}
-	.tranlink2 {
-		width: 275px;
-	}
-	#seedprod_stats_text {
-		font-size: 75%;
-	}
-	.statsright {
-		width: 300px;
-		padding: 0;
-	}
-}
 
 
-/**
- * Makes the suggest section responsive
- */
-@media screen and (max-width: 550px) {
-	#suggest-section h2 {
-		font-size: 40px;
-		line-height: 40px;
-		margin-bottom: 16px;
-	}
-	#suggest-section .btn {
-		font-size: 16px;
-		width: 220px;
-		margin: 0 auto 10px auto;
-	}
-	.about-us-left {
-	
-		display:block;
-		width: 250px;
-		padding-left: 50px;	
-	}
-}
 
 /**
  * Make the register / login forms responsive
  */
+
+
+@media only screen and (max-width: 768px) {
+#loginbody .footer .copyright {
+display: inline-block;
+text-align: right;
+padding: 0 !important;
+width: 47.917%;
+}
+.footer .copyright {
+display: inline-block;
+text-align: right;
+padding: 20px 0px !important;
+width: 47.917%;
+}
+#blog .featured-post {
+margin-bottom: 85px;
+}
+.filmtitl h1 {
+	font-size:22px;
+	margin-right:5px;
+}
+
+@media screen and (max-width: 700px) {
+ .footer .grids [class*="grid-"] {
+	display: inline-block;
+	margin: 0 0 0 1.5%;
+	vertical-align: top;
+	width: 47.917%;
+}
+
+.playbutton {
+	font-size:90px;
+}
+.playbutton h3 {
+	font-size:40px;
+}
+.tab-content {
+	width:100%;
+	display:block;
+}
+.tabs-left > .nav-tabs {display: block;
+width: auto;
+float: right;
+border-right: none;
+border-bottom: 1px solid white;
+padding-bottom: 5px;
+padding-right:0px;
+}.tabs-left > .nav-tabs > li, .tabs-right > .nav-tabs > li { float:left;}
+.tab-pane p {
+	margin-left:5px;}
+	.tab-pane span {
+		margin-left:5px;
+	}
+	.tab-pane img {
+	margin-left: 5px;
+}
+}
 @media screen and (max-width: 680px) {
 	#loginbody #wrapper,
 	#loginbody #wrapper2 {
@@ -1854,7 +2516,84 @@ text-align:left;
 		display:none;
 	}
 }
+@media screen and (max-width: 600px) {
+	.tranlink {
+		display: none;
+		margin: 0;
+		padding: 0;
+		height: 0;
+	}
+	h1.logintitle {
+		display:none;
+	}
+	.about-us-right p img {display:none !important;}
+	
+	#loginbody .header-inner {
+		text-align:center;
+	}
+	
+	#loginbody #logo {
+		float:none;
+	}
+	.statsleft {
+		width: 200px;
+		height: 90px;
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	a.zocial {
+		display: block !important;
+		margin: 0 auto 10px auto !important;
+	}
+	.statstitle p {
+		font-size: 75%;
+	}
+	.tranlink2 {
+		width: 275px;
+	}
+	#seedprod_stats_text {
+		font-size: 75%;
+	}
+	.statsright {
+		width: 300px;
+		padding: 0;
+	}
+}
 
+
+
+/**
+ * Makes the suggest section responsive
+ */
+@media screen and (max-width: 550px) {
+	#suggest-section h2 {
+		font-size: 40px;
+		line-height: 40px;
+		margin-bottom: 16px;
+	}
+	#suggest-section .btn {
+		font-size: 16px;
+		width: 220px;
+		margin: 0 auto 10px auto;
+	}
+	.about-us-left {
+	
+		display:block;
+		width: 250px;
+		padding-left: 50px;	
+	}
+	.playbutton h3 {font-size:30px;}
+	.mfp-close {
+		top: 10px !important;
+	}
+	.mfp-iframe-holder .mfp-close {
+	top:-40px !important;	
+	}
+	.thecomments img.whatthink {
+	margin-left: auto;
+	}
+}
 @media screen and (max-width: 500px) {
 	#login .alreadymember,
 	#register .alreadymember {
@@ -1889,35 +2628,6 @@ text-align:left;
 	
 }
 
-
-
-@media only screen and (max-width: 768px) {
-#loginbody .footer .copyright {
-display: inline-block;
-text-align: right;
-padding: 0 !important;
-width: 47.917%;
-}
-.footer .copyright {
-display: inline-block;
-text-align: right;
-padding: 20px 0px !important;
-width: 47.917%;
-}
-#blog .featured-post {
-margin-bottom: 85px;
-}
-}
-
-@media screen and (max-width: 700px) {
- .footer .grids [class*="grid-"] {
-	display: inline-block;
-	margin: 0 0 0 1.5%;
-	vertical-align: top;
-	width: 47.917%;
-}
-}
-
 @media only screen and (max-width: 480px) { 
     #loginbody .footer .copyright { 
 		    text-align: right;
@@ -1944,9 +2654,10 @@ margin:0px !important; }
 .footer .social-links {
 	margin-top:0px;
 }
-#loginbody div#container {
+ div#container {
 
- margin: 0px 0px -66px 0px;
+ margin-bottom:-66px;
+ padding-bottom:66px;
 
  }
 }
@@ -2028,5 +2739,16 @@ p.second-sub {
 #mobile-primary-nav-wrap {
 	margin-top:60px;
 }
-
+.tab-pane img {
+display:none;
+}
+.fromfilmmaker p {
+padding-left: 0px;
+}
+.tab-pane span {
+	margin-top:10px;
+}
+.acredit {
+width: 49%;
+}
 }

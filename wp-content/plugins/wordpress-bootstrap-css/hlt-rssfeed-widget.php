@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (c) 2013 Worpit <support@worpit.com>
+ * Copyright (c) 2013 iControlWP <support@icontrolwp.com>
  * All rights reserved.
  * 
  * "WordPress Twitter Bootstrap CSS" is distributed under the GNU General Public License, Version 2,
@@ -30,8 +30,8 @@ class HLT_DashboardRssWidget {
 	public function __construct() {
 		$this->m_aFeeds = array();
 		
-		$this->addFeed( 'hlt', 'http://www.hostliketoast.com/feed/' );
-		$this->addFeed( 'worpit', 'http://feeds.feedburner.com/worpit/' );
+		$this->addFeed( 'hlt', 'http://feeds.feedburner.com/hostliketoast/' );
+		$this->addFeed( 'icontrolwp', 'http://feeds.feedburner.com/icontrolwp/' );
 		
 		add_action( 'wp_dashboard_setup', array( $this, 'addNewsWidget' ) );
 	}
@@ -45,7 +45,7 @@ class HLT_DashboardRssWidget {
 	}
 
 	public function addNewsWidget() {
-		add_meta_box( 'hlt_news_widget', __( 'The Worpit Blog', 'hlt-wordpress-bootstrap-css' ), array( $this, 'renderNewsWidget' ), 'dashboard', 'normal', 'low' );
+		add_meta_box( 'hlt_news_widget', __( 'The iControlWP Blog', 'hlt-wordpress-bootstrap-css' ), array( $this, 'renderNewsWidget' ), 'dashboard', 'normal', 'low' );
 	}
 
 	public function renderNewsWidget() {
@@ -59,7 +59,7 @@ class HLT_DashboardRssWidget {
 			$aItems = $oRss->get_items( 0, $nMaxItems );
 		}
 		
-		$oRss = fetch_feed( $this->m_aFeeds['worpit'] );
+		$oRss = fetch_feed( $this->m_aFeeds['icontrolwp'] );
 		
 		if ( !is_wp_error( $oRss ) ) {
 			$nMaxItems = $oRss->get_item_quantity( 3 );
@@ -102,7 +102,7 @@ class HLT_DashboardRssWidget {
 			}
 		}
 		else {
-			$sRssWidget .= '<li><a href="'.$this->m_aFeeds['worpit'].'">'.__('Check out The Worpit Blog', 'hlt-wordpress-bootstrap-css').'</a></li>';
+			$sRssWidget .= '<li><a href="'.$this->m_aFeeds['icontrolwp'].'">'.__('Check out The iControlWP Blog', 'hlt-wordpress-bootstrap-css').'</a></li>';
 		}
 
 		$sRssWidget .= '</ul>';

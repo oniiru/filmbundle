@@ -90,6 +90,16 @@ if(!function_exists('stag_sidebar_init')){
       'after_title' => '</h2>',
       'description' => __('Only include widgets whose name starts with Homepage:', 'stag')
     ));
+	  
+      register_sidebar(array(
+        'name' => __('Bundle Widgets', 'stag'),
+        'id' => 'sidebar-bundle',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h2 class="main-title">',
+        'after_title' => '</h2>',
+        'description' => __('Bundle Widgets', 'stag')
+      ));
 
     register_sidebar(array(
       'name' => __('Services Widgets', 'stag'),
@@ -402,7 +412,8 @@ function blockusers_init() {
         exit;
     }
 }
-
+include_once 'metaboxes/setup.php';
+include_once 'metaboxes/full-spec.php';
 
 
 ?>

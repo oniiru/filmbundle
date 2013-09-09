@@ -95,6 +95,7 @@ function getPluginOptionSpan( $inaOption, $iSpanSize, $insVarPrefix = '' ) {
 		$sAdditionalClass = '';
 		$sTextInput = '';
 		$sChecked = '';
+		$sHelpSection = '';
 		
 		if ( $mOptionType === 'checkbox' ) {
 			
@@ -182,7 +183,7 @@ function getPluginOptionSpan( $inaOption, $iSpanSize, $insVarPrefix = '' ) {
 			
 			$sHelpSection = '
 					<div class="help_section">
-						<span class="label label-less-name">@'.str_replace( HLT_BootstrapLess::$LESS_PREFIX, '', $sOptionKey ).'</span>
+						<span class="label label-less-name">@'.str_replace( HLT_BootstrapLess::LessOptionsPrefix, '', $sOptionKey ).'</span>
 						'.$sToggleTextInput.'
 						<span class="label label-less-name">'.$sOptionDefault.'</span>
 					</div>';

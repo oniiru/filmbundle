@@ -22,8 +22,8 @@
  *
  */
 
-include_once( dirname(__FILE__).WORPIT_DS.'worpit_options_helper.php' );
-include_once( dirname(__FILE__).WORPIT_DS.'widgets'.WORPIT_DS.'bootstrapcss_widgets.php' );
+include_once( dirname(__FILE__).ICWP_DS.'worpit_options_helper.php' );
+include_once( dirname(__FILE__).ICWP_DS.'widgets'.ICWP_DS.'bootstrapcss_widgets.php' );
 
 ?>
 <div class="wrap">
@@ -138,7 +138,7 @@ include_once( dirname(__FILE__).WORPIT_DS.'widgets'.WORPIT_DS.'bootstrapcss_widg
 					printAllPluginOptionsForm( $worpit_aAllOptions, $worpit_var_prefix, 2 );
 				?>
 				<div class="form-actions">
-					<input type="hidden" name="worpit_plugin_form_submit" value="Y" />
+					<input type="hidden" name="icwp_plugin_form_submit" value="Y" />
 					<button type="submit" class="btn btn-primary" name="submit" <?php echo ($worpit_compiler_enabled ? '':' disabled'); ?>><?php _hlt_e( 'Compile CSS'); ?></button>
 					<button type="submit" class="btn btn-danger" name="submit_reset" <?php echo ($worpit_compiler_enabled ? '':' disabled'); ?>><?php _hlt_e( 'Reset Defaults' ); ?></button>
 					<button type="submit" class="btn btn-warning" name="submit_preserve" <?php echo ($worpit_compiler_enabled ? '':' disabled'); ?>><?php _hlt_e( 'Compile CSS (preserve customizations)'); ?></button>

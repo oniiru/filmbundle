@@ -1,6 +1,6 @@
 <?php
-	include_once( dirname(__FILE__).WORPIT_DS.'worpit_options_helper.php' );
-	include_once( dirname(__FILE__).WORPIT_DS.'widgets/bootstrapcss_widgets.php' );
+	include_once( dirname(__FILE__).ICWP_DS.'worpit_options_helper.php' );
+	include_once( dirname(__FILE__).ICWP_DS.'widgets'.ICWP_DS.'bootstrapcss_widgets.php' );
 	
 	$iWidthColumnOne = 8;
 ?>
@@ -63,22 +63,6 @@
 									</div>
 								</div>
 							</div>
-	
-							<div id="IncludeResponsiveCss" class="control-group">
-								<label class="control-label" for="hlt-option-incresponsivecss"><?php _hlt_e('Responsive CSS'); ?><br/><span class="label"><?php _hlt_e( 'Default: Off' ); ?></span></label>
-								<div class="controls">
-									<div class="option_section <?php if ( $hlt_option_inc_responsive_css == 'Y' ): ?>selected_item<?php endif; ?>" id="section-hlt-option-incresponsivecss">
-										<label class="checkbox">
-											<input type="checkbox" name="hlt_bootstrap_option_inc_responsive_css" value="Y" id="hlt-option-incresponsivecss" <?php if ( $hlt_option_inc_responsive_css == 'Y' ): ?>checked="checked"<?php endif; ?> />
-											<?php _hlt_e( 'Also include the Bootstrap Responsive CSS file.' ); ?>
-										</label>
-										<p class="help-block">
-											<?php _hlt_e( "Alone, this doesn't make your WordPress site 'responsive'." ); ?>
-										</p>
-									</div>
-								</div>
-							</div>
-	
 							<div class="control-group">
 								<label class="control-label" for="hlt-option-customcss"><?php _hlt_e( 'Custom Reset CSS' ); ?><br/><span class="label"><?php _hlt_e( 'Default: Off' ); ?></span></label>
 								<div class="controls">

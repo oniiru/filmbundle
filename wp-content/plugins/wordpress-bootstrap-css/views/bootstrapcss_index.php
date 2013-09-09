@@ -1,6 +1,6 @@
 <?php
-include_once( dirname(__FILE__).WORPIT_DS.'worpit_options_helper.php' );
-include_once( dirname(__FILE__).WORPIT_DS.'widgets'.WORPIT_DS.'bootstrapcss_widgets.php' );
+include_once( dirname(__FILE__).ICWP_DS.'worpit_options_helper.php' );
+include_once( dirname(__FILE__).ICWP_DS.'widgets'.ICWP_DS.'bootstrapcss_widgets.php' );
 ?>
 <div class="wrap">
 	<div class="bootstrap-wpadmin">
@@ -20,7 +20,7 @@ include_once( dirname(__FILE__).WORPIT_DS.'widgets'.WORPIT_DS.'bootstrapcss_widg
 				?>
 				<div class="form-actions">
 					<input type="hidden" name="<?php echo $worpit_var_prefix; ?>all_options_input" value="<?php echo $worpit_all_options_input; ?>" />
-					<input type="hidden" name="worpit_plugin_form_submit" value="Y" />
+					<input type="hidden" name="icwp_plugin_form_submit" value="Y" />
 					<button type="submit" class="btn btn-primary" name="submit"><?php _hlt_e( 'Save All Settings'); ?></button>
 					</div>
 				</form>
