@@ -43,7 +43,7 @@ class Pwyw
     private function construct()
     {
         global $wpdb;
-        register_deactivation_hook(__FILE__, array(&$this, 'pwyw_uninstall'));
+        register_uninstall_hook(__FILE__, array(__CLASS__, 'uninstall'));
 
         //$wpdb->query("UPDATE `wp_pwyw_customers` SET `alias` = 'Anonymous' WHERE `alias` = 'Annonymous'");
 
@@ -286,7 +286,10 @@ class Pwyw
         Pwyw_Database::createTables();
     }
 
-    function pwyw_uninstall()
+    /**
+     * Fired when the plugin is uninstalled.
+     */
+    public function uninstall()
     {
         global $wpdb;
 
