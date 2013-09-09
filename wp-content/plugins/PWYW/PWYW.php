@@ -45,8 +45,6 @@ class Pwyw
         global $wpdb;
         register_uninstall_hook(__FILE__, array(__CLASS__, 'uninstall'));
 
-        //$wpdb->query("UPDATE `wp_pwyw_customers` SET `alias` = 'Anonymous' WHERE `alias` = 'Annonymous'");
-
         add_action('admin_menu', array(&$this, 'PWYW_menu_pages'));
 
         $this->plugin_url = trailingslashit(WP_PLUGIN_URL . '/' . dirname(plugin_basename(__FILE__)));
@@ -559,6 +557,9 @@ class Pwyw
                     } else {
                         $top->display_name = $top->alias;
                     }
+                } else {
+                    // No alias/twitter submitted, set the user to anonymous
+                    $top->display_name = 'Anonymous';
                 }
                 if (!isset($min_amount)) {
                     $min_amount = $top->amount;
