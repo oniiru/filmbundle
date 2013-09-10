@@ -37,6 +37,20 @@ class Pwyw_Checkout
         if (!$_POST['bundle_checkout']) {
             return;
         }
+        $vars = get_defined_vars();
+        global $wp_filter;
+        global $wp_action;
+
+        $obj = $this->findEddPaypalDigitalGoodsObject();
+        var_dump($obj);
+        // var_dump($obj->show_paypal_button());
+
+        // var_dump($wp_action);
+
+        // var_dump($vars);
+        // var_dump($GLOBALS['wp_filter']);
+        // var_dump($_POST);
+        die;
 
         /* We have a checkout, let's validate and set up the data */
         // Must have an amount
@@ -245,5 +259,29 @@ class Pwyw_Checkout
         // And now, let's update the PubNub channel with the latest information.
         $pwyw = Pwyw::getInstance();
         $pwyw->pubNubPublish();
+    }
+
+
+    // -------------------------------------------------------------------------
+    // Hacks
+    // -------------------------------------------------------------------------
+
+    /**
+     * Find the EDD PayPal Digital Goods object, so we can access it.
+     *
+     * Parse the registered actions in WordPress, as the plugin has no hooks
+     * into it, or assigns itself to a variable (as it should). So we do this
+     * hack to trace it down.
+     *
+     * @return object
+     */
+    private function findEddPaypalDigitalGoodsObject()
+    {
+        global $wp_filter;
+        $arr = $wp_filter['wp_ajax_paypal_digital'];
+        $key1 = key($arr);
+        $key2 = key($arr[$key1]);
+
+        return $arr[$key1][$key2]['function'][0];
     }
 }
