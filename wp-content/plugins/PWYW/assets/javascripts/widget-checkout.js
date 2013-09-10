@@ -344,6 +344,7 @@ jQuery(document).ready(function($) {
         if ($('input[name=edd-gateway]').val() == 'paypal_digital') {
             e.preventDefault();
             $('[name=bundle_checkout]').html('Processing...');
+            $('[name=bundle_checkout]').prop('disabled', true);
 
             $.post(
                 edd_ppdigital.ajaxurl,
