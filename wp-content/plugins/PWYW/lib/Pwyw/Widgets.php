@@ -39,6 +39,10 @@ class Pwyw_Widgets
      */
     public function scripts()
     {
+        if (!is_home()) {
+            return;
+        }
+
         wp_enqueue_style(
             'pwyw-widget-bundle',
             plugins_url('/assets/stylesheets/widget-bundle.css', Pwyw::FILE),
@@ -65,7 +69,7 @@ class Pwyw_Widgets
         wp_register_script(
             'pubnub',
             'http://cdn.pubnub.com/pubnub-3.5.3.min.js',
-            array(), 
+            array(),
             '3.5.3',
             true
         );
@@ -73,11 +77,11 @@ class Pwyw_Widgets
         wp_register_script(
             'linked-sliders',
             plugins_url('/assets/javascripts/jquery.linkedsliders.js', Pwyw::FILE),
-            array('jquery', 'jquery-ui-core', 'jquery-ui-slider'), 
+            array('jquery', 'jquery-ui-core', 'jquery-ui-slider'),
             '1.1.0',
             true
         );
-        
+
         wp_enqueue_script(
             'pwyw-widget-checkout',
             plugins_url('/assets/javascripts/widget-checkout.js', Pwyw::FILE),
