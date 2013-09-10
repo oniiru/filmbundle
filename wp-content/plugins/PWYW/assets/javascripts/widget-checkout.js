@@ -338,6 +338,28 @@ jQuery(document).ready(function($) {
     });
 
 
+    // PayPal Digital Good Handling
+    // -------------------------------------------------------------------------
+    $('#bundle-checkout-form').submit(function(e) {
+        if ($('input[name=edd-gateway]').val() == 'paypal_digital') {
+            e.preventDefault();
+            $('[name=bundle_checkout]').html('Processing...');
+
+            $.post(
+                edd_ppdigital.ajaxurl,
+                { action: 'paypal_digital' },
+                function(data) {
+                    $('#paypal_digital_holder').remove();
+                    $('#bundle-checkout-form').after(
+                        '<div id="paypal_digital_holder">'+data+'</div>'
+                    );
+                    $('#paypal-submit')[0].click();
+                }
+            );
+        }
+    });
+
+
     // Alerts
     // -------------------------------------------------------------------------
     function handleAlerts(amount)
