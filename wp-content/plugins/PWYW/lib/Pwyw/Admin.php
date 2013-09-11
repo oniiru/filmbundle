@@ -52,6 +52,19 @@ class Pwyw_Admin
             array(),
             $version
         );
+
+        // Unregister WordPress postbox script, and register our own if we
+        // are on the plugin admin.
+        $screen = get_current_screen();
+        if ($screen->id == 'toplevel_page_PWYW-settings') {
+            wp_deregister_script('postbox');
+            wp_enqueue_script(
+                'pwyw-postbox',
+                plugins_url('/assets/javascripts/pwyw-postbox.js', Pwyw::FILE),
+                array(),
+                $version
+            );
+        }
     }
 
     /**
