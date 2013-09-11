@@ -23,9 +23,9 @@ class Pwyw_Checkout
     /** Custom constructor */
     private function construct()
     {
-        // add_action('init', array(&$this, 'checkout'));
-        // add_action('edd_insert_payment', array(&$this, 'savePwywMeta'), 10, 2);
-        // add_action('edd_complete_purchase', array(&$this, 'addPayment'));
+        add_action('init', array(&$this, 'checkout'));
+        add_action('edd_insert_payment', array(&$this, 'savePwywMeta'), 10, 2);
+        add_action('edd_complete_purchase', array(&$this, 'addPayment'));
     }
 
     /**
@@ -34,7 +34,7 @@ class Pwyw_Checkout
     public function checkout()
     {
         // If no bundle has been posted for checkout, return
-        if (!$_POST['bundle_checkout']) {
+        if (!$_POST['bundleCheckout']) {
             return;
         }
 
@@ -107,19 +107,6 @@ class Pwyw_Checkout
         add_filter('edd_cart_item_price',
             function($price) { return $_POST['total_amount']; }
         );
-
-        die;
-
-
-        // $obj = $this->findEddPaypalDigitalGoodsObject();
-        // $purchase_details = $obj->create_purchase_details();
-        // $paypal_purchase = $obj->create_purchase( $purchase_details );
-        // var_dump($purchase_details);
-        // var_dump($paypal_purchase->get_checkout_url());
-        // $url = $paypal_purchase->get_checkout_url();
-        // var_dump($url);
-        // var_dump($obj->show_paypal_button());
-        // die;
 
         // And go to the gateway!
         edd_process_purchase_form();
