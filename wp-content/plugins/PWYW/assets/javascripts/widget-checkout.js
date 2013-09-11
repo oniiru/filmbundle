@@ -354,7 +354,11 @@ jQuery(document).ready(function($) {
 
                 $.post(
                     edd_ppdigital.ajaxurl,
-                    { action: 'paypal_digital' },
+                    {
+                        action: 'pwyw_ppdg',
+                        download_id: $('[name="download_id"]').val(),
+                        total_amount: $('[name="total_amount"]').val()
+                    },
                     function(data) {
                         if ( data !== '1' ) {
                             allowSubmit = false;
