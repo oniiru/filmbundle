@@ -7,6 +7,7 @@ class Pwyw_Film
     /** Holds the data for the film instance */
     public $id = null;
     public $bundle_id = null;
+    public $sort = 0;
     public $title;
     public $image;
     public $rating;
@@ -25,7 +26,8 @@ class Pwyw_Film
     public $curator_image;
     public $curator_name;
     public $user_reviews;
-	 public $linkedpage;
+    public $linkedpage;
+    public $meta;
 
     public function __construct($id = 0)
     {
@@ -60,10 +62,11 @@ class Pwyw_Film
 
         // We found the film, let's populate the object
         $this->bundle_id       = $film->bundle_id;
+        $this->sort            = $film->sort;
         $this->title           = $film->title;
         $this->image           = $film->image;
         $this->rating          = $film->rating;
-		 $this->linkedpage         = $film->linkedpage;
+        $this->linkedpage      = $film->linkedpage;
         $this->embed           = $film->embed;
         $this->logline         = $film->logline;
         $this->genre           = $film->genre;
@@ -79,6 +82,7 @@ class Pwyw_Film
         $this->curator_image   = $film->curator_image;
         $this->curator_name    = $film->curator_name;
         $this->user_reviews    = $film->user_reviews;
+        $this->meta            = $film->meta;
         return true;
     }
 
@@ -93,10 +97,11 @@ class Pwyw_Film
 
         $data =  array(
             'bundle_id'       => $this->bundle_id,
+            'sort'            => $this->sort,
             'title'           => $this->title,
             'image'           => $this->image,
             'rating'          => $this->rating,
-			'linkedpage'          => $this->linkedpage,
+			'linkedpage'      => $this->linkedpage,
             'embed'           => $this->embed,
             'logline'         => $this->logline,
             'genre'           => $this->genre,
@@ -112,6 +117,7 @@ class Pwyw_Film
             'curator_image'   => $this->curator_image,
             'curator_name'    => $this->curator_name,
             'user_reviews'    => $this->user_reviews,
+            'meta'            => $this->meta
         );
 
         if ($this->id == null) {
@@ -136,10 +142,11 @@ class Pwyw_Film
      */
     public static function create(
         $bundle_id,
+        $sort,
         $title,
         $image,
         $rating,
-		 $linkedpage,
+        $linkedpage,
         $embed,
         $logline,
         $genre,
@@ -154,14 +161,16 @@ class Pwyw_Film
         $curator_note,
         $curator_image,
         $curator_name,
-        $user_reviews
+        $user_reviews,
+        $meta
     ) {
         $film = new Pwyw_Film;
         $film->bundle_id       = $bundle_id;
+        $film->sort            = $sort;
         $film->title           = $title;
         $film->image           = $image;
         $film->rating          = $rating;
-		$film->linkedpage          = $linkedpage;
+		$film->linkedpage      = $linkedpage;
         $film->embed           = $embed;
         $film->logline         = $logline;
         $film->genre           = $genre;
@@ -174,6 +183,7 @@ class Pwyw_Film
         $film->filmmaker_image = $filmmaker_image;
         $film->filmmaker_name  = $filmmaker_name;
         $film->user_reviews    = $user_reviews;
+        $film->meta            = $meta;
         return $film;
     }
 
