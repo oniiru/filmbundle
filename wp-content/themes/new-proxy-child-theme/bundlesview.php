@@ -62,7 +62,7 @@ foreach ($bundles as $bundle)
  </div>
  <div class="bundleslider">
 
- <div class = 'iosSlider iosSlider-<?php echo $bundleid?>'>
+ <div class = 'iosSliderfilm iosSlider-<?php echo $bundleid?>'>
 
  	<div class = 'slider'>
 		
@@ -83,33 +83,32 @@ foreach ($bundles as $bundle)
    ?>
 
    
-<div class = 'item item-<?php echo $bundleid?>'>
+<div class = 'filmitem item-<?php echo $bundleid?>'>
+	<?php if ($film['linkedpage'] != '') {?>
 	<a href="<?php echo $film['linkedpage'] ?>">
- <div class="anextra">
-	 <div class="iteminfo">
-		 <img style="height:50px" src="<?php echo $film['image'] ?>">
+		<?php }?>
+  <div class="anextrafilm" style="<?php if($film['image'] == '') { echo 'background-image:green'; } else {echo 'background-image:url('.$film['image'].')';}; ?>">		  </div>
+<div class="iteminfo">
 		 <p><?php echo $film['rating'] ?></p>
 		 <p><?php echo $film['logline'] ?></p>
-		 
-	 </div>
- </div>
+<?php if ($film['linkedpage'] != '') {?>
 </a>
- 
+<?php }?>
+</div>
 </div>
 <?php }
 else { ?>
-	<div class = 'item item-<?php echo $bundleid?>'>
-		<div class="lockeditem">
-		 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/lock.png">
-			
-	 <div class="anextra">
+	<div class = 'filmitem item-<?php echo $bundleid?>'>
+	 <div class="anextrafilm" style="<?php if($film['image'] == '') { echo 'background-image:green'; } else {echo 'background-image:url('.$film['image'].')';}; ?>">
+ 		<div class="lockeditemfilm">
+ 		 <img class="lock" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/lock.png">
+	 </div>
+ </div>
 		 <div class="iteminfo">
-			 <img style="height:50px" src="<?php echo $film['image'] ?>">
 			 <p><?php echo $film['rating'] ?></p>
 			 <p><?php echo $film['logline'] ?></p>
 		 
-		 </div>
-	 </div>
+		 
  </div>
 	</div>
 	
