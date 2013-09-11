@@ -38,7 +38,7 @@ class Pwyw_Films
         $review->film_id     = '';
         $review->review      = '';
         $review->linkedpage      = '';
-		
+
         $review->author      = '';
         $review->publication = '';
         $review->image       = '';
@@ -86,6 +86,7 @@ class Pwyw_Films
         $film = new stdClass;
         $film->id              = '';
         $film->bundle_id       = '';
+        $film->sort            = 0;
         $film->title           = '';
         $film->image           = '';
         $film->rating          = 'above';
@@ -105,6 +106,7 @@ class Pwyw_Films
         $film->curator_image   = '';
         $film->curator_name    = '';
         $film->user_reviews    = 0;
+        $film->meta            = '';
 
         // Create a new film view to send to the front
         $data = array(
@@ -135,11 +137,12 @@ class Pwyw_Films
                 }
                 $obj = Pwyw_Film::create(
                     $bundle_id,
+                    $film['sort'],
                     $film['title'],
                     $film['image'],
                     $film['rating'],
                     $film['linkedpage'],
-					
+
                     $film['embed'],
                     $film['logline'],
                     $film['genre'],
@@ -154,7 +157,8 @@ class Pwyw_Films
                     $film['curator_note'],
                     $film['curator_image'],
                     $film['curator_name'],
-                    isset($film['user_reviews']) ? 1 : 0
+                    isset($film['user_reviews']) ? 1 : 0,
+                    serialized($film['meta'])
                 );
                 $obj->save();
             } else {
@@ -164,11 +168,12 @@ class Pwyw_Films
                 }
                 $obj = new Pwyw_Film($film['id']);
                 $obj->bundle_id       = $bundle_id;
+                $obj->sort            = $film['sort'];
                 $obj->title           = $film['title'];
                 $obj->image           = $film['image'];
                 $obj->rating          = $film['rating'];
                 $obj->linkedpage          = $film['linkedpage'];
-				
+
                 $obj->embed           = $film['embed'];
                 $obj->logline         = $film['logline'];
                 $obj->genre           = $film['genre'];
@@ -184,6 +189,7 @@ class Pwyw_Films
                 $obj->curator_image   = $film['curator_image'];
                 $obj->curator_name    = $film['curator_name'];
                 $obj->user_reviews    = isset($film['user_reviews']) ? 1 : 0;
+                $obj->meta            = serialize($film['meta']);
                 $obj->save();
             }
 
