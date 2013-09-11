@@ -23,6 +23,7 @@ class Pwyw_Checkout
     /** Custom constructor */
     private function construct()
     {
+        add_action('init', array('Pwyw_PpdgIpn', 'check_paypal_return'));
         add_action('init', array(&$this, 'checkout'));
         add_action('edd_insert_payment', array(&$this, 'savePwywMeta'), 10, 2);
         add_action('edd_complete_purchase', array(&$this, 'addPayment'));
