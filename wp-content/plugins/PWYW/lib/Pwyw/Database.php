@@ -50,7 +50,7 @@ class Pwyw_Database
             image VARCHAR(255) NOT NULL,
             rating VARCHAR(255) NOT NULL,
         linkedpage VARCHAR(255) NOT NULL,
-			
+
             embed TEXT NOT NULL,
             logline TEXT NOT NULL,
             genre VARCHAR(255) NOT NULL,
@@ -143,6 +143,11 @@ class Pwyw_Database
             self::migrateTo15();
             update_option(self::OPTION_KEY, '1.5');
         }
+
+        if (version_compare('1.6', $version, '>')) {
+            self::migrateTo16();
+            update_option(self::OPTION_KEY, '1.6');
+        }
     }
 
     /**
@@ -226,6 +231,21 @@ class Pwyw_Database
         $sql =
             "ALTER TABLE {$table}
                 ADD COLUMN end_time DATETIME AFTER bg_image
+            ;";
+        $wpdb->query($sql);
+    }
+
+    public static function migrateTo16()
+    {
+        global $wpdb;
+        $prefix = $wpdb->prefix.'pwyw_';
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        $table = $prefix.self::FILMS;
+
+        $sql =
+            "ALTER TABLE {$table}
+                ADD COLUMN sort INT DEFAULT 0 AFTER bundle_id,
+                ADD COLUMN meta TEXT NOT NULL
             ;";
         $wpdb->query($sql);
     }
