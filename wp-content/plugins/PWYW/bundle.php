@@ -14,9 +14,7 @@ jQuery(document).ready(function($) {
 <h2>Bundle Settings</h2>
 <div class="postbox-container" style="width: 980px">
       <div class="metabox-holder">
-        <div class="meta-box-sortables">
           <div class="postbox" id="first">
-            <div class="handlediv" title="Click to toggle"><br /></div>
             <h3 class="hndle"><span><?php echo isset($pwyw_data['bundle']->title)?$pwyw_data['bundle']->title:'';?></span></h3>
             <div class="inside">
               <div class="bluerevbox">
@@ -39,7 +37,7 @@ jQuery(document).ready(function($) {
                         break;
                       case 3:
                         $ctitle = 'FilmBundle';
-                        break; 
+                        break;
                     }
                     ?>
                     <li><?php echo $ctitle ?>: <span>$<?php echo isset($cat_obj['info']['payment'])?number_format($cat_obj['info']['payment'],2):'0.00' ?></span>
@@ -51,7 +49,7 @@ jQuery(document).ready(function($) {
                       </ul>
                       <?php endif; ?>
                     </li>
-                        
+
                     <?php endforeach;?>
                   </ul>
                 </div>
@@ -123,7 +121,7 @@ jQuery(document).ready(function($) {
                   $main = $cat['info'];
 
                   $id =  strtolower(preg_replace('/\s*/', '', $main['title']));
-  
+
                   $id_slider = 'slider_' . $id;
                   $class_slider = $id.'_percent';
                   $ids[] = $id;
@@ -136,7 +134,7 @@ jQuery(document).ready(function($) {
                     <div id="<?php echo $id_slider ?>"  class="selector linked3" value="<?php echo $main['val'];?>" ></div>
                     <input type="text" class="main_cat" name="parent_category_val[<?php echo $key ?>]" value="<?php echo $main['val'];?>" />
                   </div>
-               
+
                 <?php if(isset($cat['sub'])):
                     foreach($cat['sub'] as $key_sub=>$child): ?>
                    <input type="hidden" value="0" name="del_sub[<?php echo $key_sub ?>]" class="delete_sub"  id="del_sub_<?php echo $key_sub ?>"/>
@@ -148,9 +146,9 @@ jQuery(document).ready(function($) {
                           <input class ="pwyw_sub <?php echo $id_slider?>_inp" type="text"  name="pwyw_sub_val[<?php echo $key ?>][<?php echo $key_sub ?>]" value="<?php echo $child_c['val'];?>" />
                         </div>
                         <img class ="del_sub" alt="Delete" src="<?php echo plugins_url('/PWYW/img/images.jpg')?>" />
-                         
+
                         </div>
-     
+
                   <?php endforeach; ?>
                 <?php endif; ?>
                 <?php if($key!=3):?>
@@ -226,7 +224,6 @@ echo Pwyw_View::make('charities', $data);
         </form>
       </div>
     </div>
-  </div>
 </div>
 
 
@@ -235,11 +232,11 @@ echo Pwyw_View::make('charities', $data);
 jQuery(document).ready(function($) {
     var min=0;
     var max=100;
-    
+
     function setSliderHandlers(slider_class,input_class,parent_class,_new){
       var default_val = 0;
       $('.'+input_class).val(0);
-      
+
 
       $( "."+slider_class ).slider(
       { animate: true },
@@ -251,7 +248,7 @@ jQuery(document).ready(function($) {
       {slide: function(event, ui) {
           $(this).parent('div.'+parent_class).find('input.'+input_class).val($(this).slider('value'));
         }});
-      
+
       if(_new){
         var el = $('.'+input_class).last();
         var slider = el.parent('div.'+parent_class).find('div.'+slider_class);
@@ -276,19 +273,19 @@ jQuery(document).ready(function($) {
               })
             })
       }
-      
 
-      
+
+
       $('div.'+slider_class).linkedSliders({
         total: 100,  // The total for all the linked sliders
         policy: 'next' // Adjustment policy: 'next', 'prev', 'first', 'last', 'all'
       });
-      
+
     }
 
 
-    
-    
+
+
     $(function() {
       setSliderHandlers('linked3','main_cat','indivcategoryslider',false);
       $('.pwyw_sub').each(function(){
@@ -297,15 +294,15 @@ jQuery(document).ready(function($) {
         var input_class = parent.find('div.linked3').attr('id')+'_inp';
         setSliderHandlers(class_sub,input_class,'indivsubcategoryslider');
       })
-      
+
       $('.add_sub_link').click(function(){
-        
+
         var parent =  $(this).parent().parent('div.indivcategory');
         var class_sub = parent.find('div.linked3').attr('id')+'_lib';
         var cat_id = parent.attr('id').match(/cat_(.+)/)[1];
 
         var input_class = parent.find('div.linked3').attr('id')+'_inp';
-        
+
         var sub_cat = '<div class="indivsubcategory">';
         sub_cat += '<input class="pwyw_sub_title" type="text" name="pwyw_new_sub_name['+cat_id+'][]" value="">';
         sub_cat += '<div class="indivsubcategoryslider">';
@@ -314,13 +311,13 @@ jQuery(document).ready(function($) {
         sub_cat += '</div>';
         sub_cat += '<img class ="del_sub" alt="Delete" src="<?php echo plugins_url('/PWYW/img/images.jpg')?>" />';
         sub_cat += '</div>';
-        
+
         $(this).parent().parent('div.indivcategory').find('div.add_sub').before(sub_cat);
         $('.'+class_sub).linkedSliders('destroy');
         setSliderHandlers(class_sub,input_class,'indivsubcategoryslider',true);
         return false;
       })
-      
+
       $('.del_sub').live('click',function(){
         if(typeof($(this).parent().attr('id'))!='undefined'){
            var id = $(this).parent().attr('id').match(/sub_cat_(\d+)/)[1];
@@ -335,19 +332,19 @@ jQuery(document).ready(function($) {
           total: 100,  // The total for all the linked sliders
           policy: 'next' // Adjustment policy: 'next', 'prev', 'first', 'last', 'all'
         });
-        
+
       })
-      
+
        <?php if(isset($pwyw_del)): ?>
-        $('.deletebundle').click(function(){                        
+        $('.deletebundle').click(function(){
           if (confirm("Are you sure you want to delete the bundle?")) {
             location.href = "<?php echo $pwyw_del?>";
-            return false;                        
+            return false;
           }
         })
        <?php endif; ?>
 
-      
+
     });
 });
 
