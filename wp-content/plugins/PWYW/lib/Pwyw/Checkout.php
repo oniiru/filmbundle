@@ -23,10 +23,14 @@ class Pwyw_Checkout
     /** Custom constructor */
     private function construct()
     {
-        add_action('init', array('Pwyw_PpdgIpn', 'check_paypal_return'));
         add_action('init', array(&$this, 'checkout'));
         add_action('edd_insert_payment', array(&$this, 'savePwywMeta'), 10, 2);
         add_action('edd_complete_purchase', array(&$this, 'addPayment'));
+
+        // Register actions that replaces PayPal Digital Goods' actions
+        add_action('init', array('Pwyw_PpdgIpn', 'check_paypal_return'));
+        add_action('wp_ajax_pwyw_ppdg', array(&$this, 'handlePpdg'));
+        add_action('wp_ajax_nopriv_pwyw_ppdg', array(&$this, 'handlePpdg'));
     }
 
     /**
@@ -246,6 +250,58 @@ class Pwyw_Checkout
         // And now, let's update the PubNub channel with the latest information.
         $pwyw = Pwyw::getInstance();
         $pwyw->pubNubPublish();
+    }
+
+
+    // -------------------------------------------------------------------------
+    // Helpers
+    // -------------------------------------------------------------------------
+
+    /**
+     * Forces the cart to be set to a specific product and a specific price.
+     *
+     * @return void
+     */
+    private function setCart()
+    {
+        // Empty the cart, just in case
+        edd_empty_cart();
+
+        // Add the relevant product to the cart
+        edd_add_to_cart($_POST['download_id']);
+
+        // Create a filter to adjust the amount for the checkout
+        add_filter('edd_cart_item_price',
+            function($price) { return $_POST['total_amount']; }
+        );
+    }
+
+
+    // -------------------------------------------------------------------------
+    // Ajax
+    // -------------------------------------------------------------------------
+
+    /**
+     * Handle creation of the PayPal Digital Goods link via Ajax call.
+     *
+     * Replaces edd-paypal-digital-goods.php -> show_paypal_button() with
+     * the additional functionality of setting cart and amount on the fly.
+     *
+     * @return void
+     */
+    public function handlePpdg()
+    {
+        // First, let's set the cart
+        $this->setCart();
+
+        if ( !edd_get_errors() ) {
+            $obj = $this->findEddPaypalDigitalGoodsObject();
+            $purchase_details = $obj->create_purchase_details();
+            $html = $obj->print_paypal_button($purchase_details);
+            echo $html;
+        }
+
+        die;
     }
 
 
