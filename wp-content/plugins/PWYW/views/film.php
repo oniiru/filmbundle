@@ -60,7 +60,7 @@ jQuery(document).ready(function($) {
   var review_data = {
       action: 'pwyw_add_review',
       array_id: <?php echo $array_id; ?>,
-      id: <?php echo count($reviews); ?> 
+      id: <?php echo count($reviews); ?>
   };
 
   function addReview() {
@@ -85,7 +85,7 @@ jQuery(document).ready(function($) {
   var feature_data = {
       action: 'pwyw_add_feature',
       array_id: <?php echo $array_id; ?>,
-      id: <?php echo count($features); ?> 
+      id: <?php echo count($features); ?>
   };
 
   function addFeature() {
@@ -98,12 +98,18 @@ jQuery(document).ready(function($) {
 });
 </script>
 
-<div class="postbox" id="film_<?php echo $array_id; ?>" style="background: #fff">
+<?php
+  $film->meta = unserialize($film->meta);
+  $closed = ($film->meta['postboxState'] == 'closed') ? 'closed' : '';
+?>
+<div class="postbox <?php echo $closed; ?>" id="film_<?php echo $array_id; ?>" style="background: #fff">
   <div class="handlediv" title="Click to toggle"><br /></div>
   <h3 class="hndle"><span>(no title set)</span></h3>
   <div class="inside">
     <input name="films[<?php echo $array_id; ?>][id]" type="hidden" value="<?php echo $film->id; ?>" />
     <input name="films[<?php echo $array_id; ?>][deleted]" type="hidden" value="" />
+    <input name="films[<?php echo $array_id; ?>][sort]" id="film_sort_<?php echo $array_id; ?>" type="hidden" value="0" />
+    <input name="films[<?php echo $array_id; ?>][meta][postboxState]" id="film_postboxstate_<?php echo $array_id; ?>" type="hidden" value="open" />
     <p>
       <input name="films[<?php echo $array_id; ?>][image]" id="film_image_<?php echo $array_id; ?>" type="text" value="<?php echo $film->image; ?>" class="regular-text" style="width:600px;" placeholder="Image" />
       <a class="button-secondary" id="film_image_button_<?php echo $array_id; ?>" title="Media Image Library">Media Image Library</a>
@@ -119,7 +125,7 @@ jQuery(document).ready(function($) {
         <option value="below" <?php selected($film->rating, 'below', true); ?>>Below</option>
       </select>
     </p>
-	
+
     <p>
       <label for="films[<?php echo $array_id; ?>][linkedpage]">Film Page</label>
       <select name="films[<?php echo $array_id; ?>][linkedpage]" id="films[<?php echo $array_id; ?>][linkedpage]" style="width: 200px; margin-left: 20px;">
@@ -133,17 +139,17 @@ jQuery(document).ready(function($) {
 	foreach( $filmposts as $fp )
 	    { 	$filmtitlenew = esc_html( $fp->post_title );
 			$filmpermnew = get_permalink( $fp );
-			
-			
+
+
 ?>
-			
+
 	        <option value="<?php echo $filmpermnew; ?>" <?php selected($film->linkedpage, $filmpermnew, true); ?>><?php echo $filmtitlenew ?></option>
 		  	<?php 	};
-		  	?>	
+		  	?>
 
       </select>
-			
-  
+
+
     </p>
 
     <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0;" />
