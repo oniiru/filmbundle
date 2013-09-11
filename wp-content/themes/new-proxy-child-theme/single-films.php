@@ -11,6 +11,41 @@ $videometa = $full_mb->the_meta();
 	<div class="bg-trans">
 		
 		<div class="video-holder">
+		 <?php
+		 global $wpdb;
+		 $linkedbundle = $videometa['thisbundle'];
+		 $bundles = $wpdb->get_results("SELECT * FROM wp_pwyw_bundles WHERE id = $linkedbundle;", ARRAY_A);
+		 $activebundle = $bundles['0']['activated'];
+		 if($activebundle == '1') {
+		 ?>
+				 <div class="buybundle">
+					
+					 <h3> Get this film as part of our <?php echo $bundles['0']['title'] ?> Bundle before time runs out!  </h3>
+					 <div class="buttoncount">
+					 <a href="http://filmbundle.com" class="button"> Take a look </a>
+						 
+						 <div class='pwyw-countdown'>    <div class='remaining'>Time Remaining</div>
+
+    <?php
+        $atts = array(
+            't'           => $bundles['0']['end_time'],
+            'days'        => 'd',
+            'hours'       => 'h',
+            'minutes'     => 'm',
+            'seconds'     => 's',
+            'omitweeks'   => 'true',
+			'omitseconds'   => 'true',
+            'style'       => 'pwyw',
+            'jsplacement' => 'inline'
+        );
+        echo tminuscountdown($atts);
+    ?>
+</div>
+</div>
+</div>
+<?php };?>
+				 
+				 		
 			<?php global $user_ID; 
 			$abovebelow = array (
 			"below" => $videometa['belowavg'],
@@ -21,6 +56,9 @@ $videometa = $full_mb->the_meta();
 				 <?php if($videometa['tipster'] == 'yes') { 
 					 $tiptime = ($videometa['tiphr'] * 3600) + ($videometa['tipmin'] * 60) + ($videometa['tipsec']);
 					 ?>
+				
+	
+					 
 					 <div class="tipshare">
 						 <div class="tiptime">
 							 <div class="tiptimetext">
@@ -90,6 +128,8 @@ $videometa = $full_mb->the_meta();
 	 <?php }?>
 </div>
 <div class="filmtitl">
+	<h1><?php echo $videometa['title']; ?> </h1>
+	
 <div class="social_share socialsmaller<?php echo $title_top_class ;?>">
     <?php
         if (is_user_logged_in()) {
@@ -126,7 +166,6 @@ $videometa = $full_mb->the_meta();
     <a class="zocial twitter" href="<?php echo $twitter_share; ?>" onclick="return !handleSocialWin('<?php echo $twitter_share; ?>', 'Twitter');" target="_blank">Tweet</a>
 </div>
 
-<h1><?php echo $videometa['title']; ?> </h1>
 </div>
 <?php
 global $wpdb;
@@ -143,9 +182,30 @@ else {
 if($activebundle == 1) {
 ?>
 <div class="thepitch">
-	<h4>This is the bundle from <?php echo $bundles['0']['title'] ?></h4>
-	<p>This is CRRAAAAZYYYY</p>
-	<a href="http://filmbundle.com"> lets do this thing! </a>
+	<h4>Watch this film now as part of our <?php echo $bundles['0']['title'] ?> Bundle!</h4>
+	<p><?php echo $videometa['pitchsub']?></p>
+	<div class="buttoncount">
+		
+	<a href="http://filmbundle.com" class="button"> Check it out </a>
+	<div class="fixr">
+    <div class='pwyw-countdown'>
+        <div class='remaining'>Time Remaining</div>
+        <?php
+            $atts = array(
+                't'           => $bundles['0']['end_time'],
+                'days'        => 'd',
+                'hours'       => 'h',
+                'minutes'     => 'm',
+                'seconds'     => 's',
+                'omitweeks'   => 'true',
+				'omitseconds'   => 'true',
+                'style'       => 'pwyw',
+                'jsplacement' => 'inline'
+            );
+            echo tminuscountdown($atts);
+        ?>
+    </div></div>
+</div>
 </div>
 
 
@@ -153,13 +213,14 @@ if($activebundle == 1) {
 
 elseif($activebundle == 0) { ?>
 	
-	<div class="thepitch">
-		<h4>This is the bundle from <?php echo $bundles['0']['title'] ?></h4>
-		<p>This is CRRAAAAZYYYY</p>
-		<a href="http://filmbundle.com"> lets do this thing! </a>
+	<div class="thepitch mailchimp">
+		<h4>The <?php echo $bundles['0']['title'] ?>  Bundle is now over. </h4>
+		<p>Enter your email below to be the first to hear about upcoming bundles.</p>
+	 <div class="chimpform">
+	 	<?php mailchimpSF_signup_form(); ?>
+	 </div>
 	</div>
-	Bundle has past, buy something else
-
+	
 
 <?php } 
 
@@ -174,7 +235,7 @@ elseif($activebundle == 0) { ?>
 	              <div class="tab-content">
 	                <div class="tab-pane active" id="lA">
 						<?php echo $videometa['synopsis']; ?>
-						<span><?php echo $videometa['runtime'].' Min.  &nbsp;• &nbsp; Genre(s): '.$videometa['genres'].' &nbsp;• &nbsp;Rated: '.$videometa['rating'] ?></spam>
+						<span><?php echo $videometa['runtime'].' Min.  &nbsp;• &nbsp; Genre(s): '.$videometa['genres'].' &nbsp;• &nbsp;Rated: '.$videometa['rating'] ?></span>
 	                </div>
 	                <div class="tab-pane" id="lB">
 	        			<img src="<?php echo $videometa['filmmakerimg'] ?>">
@@ -402,10 +463,52 @@ elseif($activebundle == 0) { ?>
 		 //end vimeo tip stuff
 		 <?php } ?>
 		 }); 
+		 
+		 
 		 jQuery('.trailertrigger').click(function(e) {
 			  jQuery(this).remove();
 		     e.preventDefault();
 		   jQuery('#video_container').html('<iframe id="trailer" src="http://player.vimeo.com/video/<?php echo $videometa['trailerembed']?>?title=1&amp;byline=1&amp;api=1&amp;portrait=1&amp;player_id=trailer&amp;autoplay=true"  frameborder="0"></iframe>');
+		   
+   		<?php if(!edd_has_user_purchased( $user_ID, $abovebelow)) { ?>
+   		   //vimeo tip stuff
+		   
+		   
+   		   var iframe = jQuery('#trailer')[0],
+   		       player = $f(iframe),
+   		       status = jQuery('.status');
+
+   		   // When the player is ready, add listeners for pause, finish, and playProgress
+   		   player.addEvent('ready', function() {
+			   
+   			   player.addEvent('pause', function(data) {
+					
+   						if(!jQuery('.buybundle').is(":visible")) {
+   						jQuery('.buybundle').slideDown();
+						
+   						}
+   					});
+	    			   player.addEvent('finish', function(data) {
+					
+	    						if(!jQuery('.buybundle').is(":visible")) {
+	    						jQuery('.buybundle').slideDown();
+						
+	    						}
+	    					});
+	 	    			   player.addEvent('play', function(data) {
+					
+	 	    						if(jQuery('.buybundle').is(":visible")) {
+	 	    						jQuery('.buybundle').slideUp();
+						
+	 	    						}
+	 	    					});
+	    			  
+   		   });
+	  
+   		 //end vimeo tip stuff
+   		 <?php } ?>
+		   
+		   
 		 });
 		 
 		 

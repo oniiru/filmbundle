@@ -49,6 +49,8 @@ class Pwyw_Database
             title VARCHAR(255) NOT NULL,
             image VARCHAR(255) NOT NULL,
             rating VARCHAR(255) NOT NULL,
+        linkedpage VARCHAR(255) NOT NULL,
+			
             embed TEXT NOT NULL,
             logline TEXT NOT NULL,
             genre VARCHAR(255) NOT NULL,

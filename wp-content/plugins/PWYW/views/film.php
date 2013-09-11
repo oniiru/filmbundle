@@ -119,6 +119,32 @@ jQuery(document).ready(function($) {
         <option value="below" <?php selected($film->rating, 'below', true); ?>>Below</option>
       </select>
     </p>
+	
+    <p>
+      <label for="films[<?php echo $array_id; ?>][linkedpage]">Film Page</label>
+      <select name="films[<?php echo $array_id; ?>][linkedpage]" id="films[<?php echo $array_id; ?>][linkedpage]" style="width: 200px; margin-left: 20px;">
+		  
+		  <?php  $filmposts = get_posts(
+        array(
+            'post_type'  => 'films',
+            'numberposts' => -1
+        )
+    );
+	foreach( $filmposts as $fp )
+	    { 	$filmtitlenew = esc_html( $fp->post_title );
+			$filmpermnew = get_permalink( $fp );
+			
+			
+?>
+			
+	        <option value="<?php echo $filmpermnew; ?>" <?php selected($film->linkedpage, $filmpermnew, true); ?>><?php echo $filmtitlenew ?></option>
+		  	<?php 	};
+		  	?>	
+
+      </select>
+			
+  
+    </p>
 
     <hr style="border: none; border-bottom: 1px dashed #dfdfdf; margin: 24px 0 20px 0;" />
     <h2>Overview</h2>
