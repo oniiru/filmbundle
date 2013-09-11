@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
     <p>
       <label for="films[<?php echo $array_id; ?>][linkedpage]">Film Page</label>
       <select name="films[<?php echo $array_id; ?>][linkedpage]" id="films[<?php echo $array_id; ?>][linkedpage]" style="width: 200px; margin-left: 20px;">
-		  
+		  <option value="" <?php selected($film->linkedpage, '', true); ?>>Select a film...</option>
 		  <?php  $filmposts = get_posts(
         array(
             'post_type'  => 'films',
