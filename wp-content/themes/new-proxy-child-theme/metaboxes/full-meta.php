@@ -23,6 +23,12 @@
 	<p>
 		<input type="text" name="<?php $metabox->the_name('trailerembed'); ?>" value="<?php $metabox->the_value('trailerembed'); ?>"/>
 	</p>
+	
+	<label>Pitch Subtext</label>
+ 
+	<p>
+		<input type="text" name="<?php $metabox->the_name('pitchsub'); ?>" value="<?php $metabox->the_value('pitchsub'); ?>"/>
+	</p>
 		
 	<?php $mb->the_field('abvaccessonly'); ?>
 	<input type="checkbox" name="<?php $mb->the_name(); ?>" value="above"<?php $mb->the_checkbox_state('above'); ?>/> Only available to above average purchases?<br/>

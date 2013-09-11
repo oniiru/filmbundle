@@ -37,6 +37,8 @@ class Pwyw_Films
         $review->id          = '';
         $review->film_id     = '';
         $review->review      = '';
+        $review->linkedpage      = '';
+		
         $review->author      = '';
         $review->publication = '';
         $review->image       = '';
@@ -87,6 +89,7 @@ class Pwyw_Films
         $film->title           = '';
         $film->image           = '';
         $film->rating          = 'above';
+        $film->linkedpage      = '';
         $film->embed           = '';
         $film->logline         = '';
         $film->genre           = '';
@@ -135,6 +138,8 @@ class Pwyw_Films
                     $film['title'],
                     $film['image'],
                     $film['rating'],
+                    $film['linkedpage'],
+					
                     $film['embed'],
                     $film['logline'],
                     $film['genre'],
@@ -162,6 +167,8 @@ class Pwyw_Films
                 $obj->title           = $film['title'];
                 $obj->image           = $film['image'];
                 $obj->rating          = $film['rating'];
+                $obj->linkedpage          = $film['linkedpage'];
+				
                 $obj->embed           = $film['embed'];
                 $obj->logline         = $film['logline'];
                 $obj->genre           = $film['genre'];

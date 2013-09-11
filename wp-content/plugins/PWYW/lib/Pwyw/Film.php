@@ -25,6 +25,7 @@ class Pwyw_Film
     public $curator_image;
     public $curator_name;
     public $user_reviews;
+	 public $linkedpage;
 
     public function __construct($id = 0)
     {
@@ -62,6 +63,7 @@ class Pwyw_Film
         $this->title           = $film->title;
         $this->image           = $film->image;
         $this->rating          = $film->rating;
+		 $this->linkedpage         = $film->linkedpage;
         $this->embed           = $film->embed;
         $this->logline         = $film->logline;
         $this->genre           = $film->genre;
@@ -94,6 +96,7 @@ class Pwyw_Film
             'title'           => $this->title,
             'image'           => $this->image,
             'rating'          => $this->rating,
+			'linkedpage'          => $this->linkedpage,
             'embed'           => $this->embed,
             'logline'         => $this->logline,
             'genre'           => $this->genre,
@@ -136,6 +139,7 @@ class Pwyw_Film
         $title,
         $image,
         $rating,
+		 $linkedpage,
         $embed,
         $logline,
         $genre,
@@ -157,6 +161,7 @@ class Pwyw_Film
         $film->title           = $title;
         $film->image           = $image;
         $film->rating          = $rating;
+		$film->linkedpage          = $linkedpage;
         $film->embed           = $embed;
         $film->logline         = $logline;
         $film->genre           = $genre;

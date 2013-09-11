@@ -65,7 +65,113 @@ html {overflow-x:inherit;}
 	padding: 2px;
 	width: 50px;
 	}
+	.thepitch .pwyw-seconds_dash{
+		display:none;
+	}
+	.thepitch {
+		background: rgba(7, 80, 99, 0.72);
+		color: white;
+		text-align: center;
+		padding: 30px;
+		padding-bottom: 15px;
+		max-width: 700px;
+		margin: auto;
+		margin-top:30px;
+	}
+	
+	.mailchimp.thepitch {
+		padding-bottom:30px;
+	}
+	.buttoncount {
+		margin-top:15px;
+	}
+	.thepitch h4 {
+		color:white;
+		font-size:20px;
+		line-height:1em;
+	}
+	
+	.thepitch .pwyw-countdown .remaining, .buybundle .pwyw-countdown .remaining {
+	font-size:13px;	
+	margin-right:5px;
+	}
+	.thepitch .pwyw-dash .pwyw-dash_title, .buybundle .pwyw-dash .pwyw-dash_title {
+	    float: right;
+	    font-size: 15px;
+	    color: #fff;
+	    position: relative;
+	    vertical-align: bottom;
+	    top: 7px;
+	}
+	.thepitch .pwyw-digit, .buybundle .pwyw-digit{
+    float: left;
+    font-size: 25px;
+    line-height: 1em;
+    font-weight: bold;
+}
+	.thepitch a {
+		display:inline-block !important;
+	}
+	
+	.thepitch a:hover {
+		text-decoration:none !important;
+	}
+	.thepitch .pwyw-countdown, .buybundle .pwyw-countdown {
+margin-left: 50px;
+display: inline-block;
+width: inherit;
+height: inherit;
+background-color: transparent;
+color: #fff;
+text-align: right;
+padding: 0px;vertical-align: top;
 
+}
+
+.mc_merge_var label {
+	display:none;
+}
+	#mc_signup_form .mc_input {
+	height: 40px;
+	max-width: 300px;
+	border-radius: 0px;
+	font-size: 19px;
+	font-weight: 800;
+	padding-left: 10px;
+	margin-bottom: 0px !important;
+	border: none;
+	margin-top: 5px;
+}
+
+
+	#mc_signup_submit {
+		border-radius: 0px;
+		margin: 5px 0px 0px !important;
+		padding: 12px 15px;
+		border: none;
+		vertical-align: middle;
+		color: white;
+		min-width:0px;
+	
+	}
+
+	.mc_signup_submit {
+		vertical-align: top;
+		display:inline-block;
+		
+	
+	}
+	.mc_merge_var {
+		display:inline-block;
+	}
+	#mc_signup_form {
+	padding: 6px 30px	;
+	border-width: 0px;
+	border-style: none;
+	border-color: transparent;
+	color: #000;
+	background-color: transparent
+	}
 input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea { background: #f8f8f8; width: 100%; padding: 15px 20px 15px 10px; font-size: 14px; border: 1px solid rgb(180, 180, 180); -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
 
 #header {
@@ -77,9 +183,11 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 }
 
 .filminfo {
-	max-width:900px;
-	margin:auto;
-	margin-top:10px;
+	max-width: 900px;
+	margin: auto;
+	margin-top: 25px;
+	margin-bottom: 35px;
+
 }
 
 .tabs-left > .nav-tabs {
@@ -122,7 +230,7 @@ margin-right:0px;
 	.playbutton span {
 		margin-left: 25px;
 		position: absolute;
-		bottom: 0px;
+		bottom: 50px;
 		line-height: 1.2em;
 	}
 
@@ -179,6 +287,7 @@ ul.nav-tabs {
 	font-family: 'museo500', sans-serif;
 	line-height: 1.2em;
 	margin-left: 30px;
+	font-size:16px;
 }
 
 .acredit {
@@ -265,10 +374,10 @@ p.soctext {
 	margin: 10px;
 	font-size: 18px;
 }
-.tipshare {
+.tipshare, .buybundle {
 	display:none;
 	position:absolute;
-	top:0;
+	top:50px;
 	z-index:10	;
 	margin:auto;
 	text-align: center;
@@ -276,6 +385,31 @@ p.soctext {
 	width:100%;
 	background: rgba(0,0,0,.5);
 	padding-bottom: 13px;
+}
+.buybundle .pwyw-dashboard {
+text-align: center;
+overflow: hidden;
+display: inline-block;
+float:none;
+
+}
+.buybundle .pwyw-countdown {
+margin-left: 50px;
+width:200px;
+}
+.buybundle {
+	top:50px;
+	padding:30px;
+	padding-bottom:10px;
+	background:rgba(0, 0, 0, 0.88)
+}
+
+a.button {
+	display:inline-block;
+	
+}
+a.button:hover {
+	text-decoration:none !important;
 }
 .tiptime {
 	top:0;
@@ -289,7 +423,7 @@ p.soctext {
 	padding-top:12px;
 }
 
-.tiptimetext h3 {
+.tiptimetext h3, .buybundle h3 {
 	color: #fff;
 	font-size: 18px;
 	line-height: 1em;
@@ -387,7 +521,7 @@ p.soctext {
 		padding-bottom:20px;
 	}
 	.filmtitl {
-		margin-bottom:30px;
+		margin-bottom:0px;
 		max-width:920px;
 		margin-top:10px;
 		margin:auto;
@@ -407,7 +541,8 @@ p.soctext {
 	font-size: 30px;
 display:inline-block;
 	margin-top:10px;
-	margin-bottom:30px;
+	margin-bottom:0px;
+	margin-right:30px;
 
 
 
@@ -456,6 +591,7 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);
 	margin:auto;
 	box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);
 	position:relative;
+	padding-top:50px;
 }
 .undervidstripe {
 width:100%;
@@ -464,7 +600,12 @@ text-align:center;
 color:white;
 padding:15px;
 }
+.fixr {
+display: inline-block;
+vertical-align: top;
 
+
+}
 .undervidstripe h2 {
 	color:white;
 }
@@ -472,7 +613,6 @@ padding:15px;
 width:100%;
 height:100%;
 background: rgba(0,0,0,.6);
-padding:50px
 }
 #filmbackground {
 	background-attachment:fixed;
@@ -494,7 +634,13 @@ padding:50px
 	margin-bottom: -60px;
 
 }
-
+.bundleslider {
+	max-width:1105px;
+	margin:auto;
+	padding:20px 35px;
+	overflow: hidden;
+	
+}
 .iteminfo {
 	position: absolute;
 	left: 0px;
@@ -2199,7 +2345,6 @@ text-align: right;
 	.socialsmaller {
 		display: inline-block;
 		vertical-align: middle;
-		margin-bottom: 30px;
 		margin-top: 10px;
 		float:right;
 	}
@@ -2293,6 +2438,27 @@ text-align: right;
 	.modal-open.page-overflow .page-container .navbar-fixed-bottom  {
 		overflow-y: visible;
 	}
+	.video-holder {
+		padding-top:0px;
+	}
+	.filmtitle {
+		padding:0px 5px;
+	}
+	.filminfo {
+		padding:0px 5px;
+	}
+	.playbutton span {
+		bottom:0px;
+	}
+	.socialsmaller {
+		float: none;
+		margin-top: 10px;
+		vertical-align: top;
+		
+	}
+	.tipshare {
+		top:0px;
+	}
 }
 @media screen and (max-width: 900px) {
 	#seedprod_title_link {
@@ -2317,8 +2483,12 @@ text-align: right;
 }
 @media screen and (max-width: 850px) {
 	.about-us-right p img {display:none !important;}
-
-
+	.tiptimetext {
+		margin-right:0px;
+	}
+	.tiptime form {
+		display:block;
+	}
 }
 @media screen and (max-width: 800px) {
 	h1.logintitle {
@@ -2334,8 +2504,7 @@ text-align: right;
 	.tipster form {
 		top:10px;
 	}
-
-	.bg-trans {padding:0 0 50px 0;}
+	
 	#backToTop {display:none;}
 	h1#bigone span{
 		display:none;
@@ -2396,9 +2565,11 @@ margin-bottom: 85px;
 }
 .filmtitl h1 {
 	font-size:22px;
-	margin-right:5px;
 }
-
+.socialsmaller {
+	margin-top:5px;
+}
+}
 @media screen and (max-width: 700px) {
  .footer .grids [class*="grid-"] {
 	display: inline-block;
@@ -2406,7 +2577,9 @@ margin-bottom: 85px;
 	vertical-align: top;
 	width: 47.917%;
 }
-
+.socialsmaller {
+	display:none;
+}
 .playbutton {
 	font-size:90px;
 }
@@ -2443,6 +2616,11 @@ padding-right:0px;
 	}
 	.about-us-right {
 		width:80% !important;
+	}
+	
+	.thepitch p {
+		line-height: 1em;
+		margin-top: 10px;
 	}
 	#wrapper2, #wrapper {
 		min-height:875px !important;
@@ -2531,6 +2709,23 @@ padding-right:0px;
 	h1.logintitle {
 		display:none;
 	}
+	.buybundle h4 {
+		font-size:14px;
+	}
+	
+	.buybundle .buttoncount {
+margin-top: 8px;
+}
+	.buybundle a {
+		font-size: 12px;
+		padding: 10px 25px;
+	}
+	.buybundle {
+		padding:10px;
+	}
+	.buybundle .pwyw-countdown {
+		display:none;
+	}
 	.about-us-right p img {display:none !important;}
 
 	#loginbody .header-inner {
@@ -2547,9 +2742,16 @@ padding-right:0px;
 		margin: 0;
 		padding: 0;
 	}
-	a.zocial {
-		display: block !important;
-		margin: 0 auto 10px auto !important;
+	
+	.mailchimp.thepitch h4 {
+		font-size:16px;}
+
+.mailchimp.thepitch p {
+	font-size:14px;
+}	
+	.socialsmaller a.zocial {
+		display:inline-block !important;
+		margin-left:5px !important;
 	}
 	.statstitle p {
 		font-size: 75%;
@@ -2564,7 +2766,24 @@ padding-right:0px;
 		width: 300px;
 		padding: 0;
 	}
+	p.soctext {
+		display:none;
+	}
+	.tiptime {
+		margin-bottom:5px;
+	}
+	.tipshare {
+		padding-bottom:5px;
+	}
+	.tiptimetext p {
+		display:none;
+	}
+	.tiptimetext h3{
+		font-size:16px;
+		margin-bottom:5px;
+	}
 }
+
 
 
 
@@ -2597,6 +2816,12 @@ padding-right:0px;
 	}
 	.thecomments img.whatthink {
 	margin-left: auto;
+	}
+	
+	.tiptimetext h3{
+		font-size:14px;
+		text-align:center;
+		
 	}
 }
 @media screen and (max-width: 500px) {
@@ -2651,7 +2876,10 @@ padding-right:0px;
 .rawr {
 	margin-bottom:0px !important;
 }
-
+.zocial, a.zocial {
+	font: 12px/1 "Lucida Grande", Tahoma, sans-serif;
+	padding: 8px 10px 8px 5px;
+}
 
  .footer .grids [class*="grid-"] {
 	display: inline;
@@ -2659,12 +2887,29 @@ margin:0px !important; }
 .footer .social-links {
 	margin-top:0px;
 }
+
+.buttonfixer {
+	width:100%;
+}
  div#container {
 
  margin-bottom:-66px;
  padding-bottom:66px;
  padding-top: 80px;
 
+ }
+ 
+ .thepitch .pwyw-countdown {
+	 margin-left:0px;
+	 
+ }
+ .thepitch .pwyw-countdown .remaining{
+	 margin-right: 0px;
+	 text-align:center;
+	 margin-top:15px;
+ }
+ .thepitch .fixr {
+	 display:block;
  }
 }
 
