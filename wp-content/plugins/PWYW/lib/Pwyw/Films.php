@@ -158,7 +158,7 @@ class Pwyw_Films
                     $film['curator_image'],
                     $film['curator_name'],
                     isset($film['user_reviews']) ? 1 : 0,
-                    serialized($film['meta'])
+                    serialize($film['meta'])
                 );
                 $obj->save();
             } else {

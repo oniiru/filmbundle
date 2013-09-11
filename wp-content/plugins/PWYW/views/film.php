@@ -101,6 +101,7 @@ jQuery(document).ready(function($) {
 <?php
   $film->meta = unserialize($film->meta);
   $closed = ($film->meta['postboxState'] == 'closed') ? 'closed' : '';
+  $postboxstate = $closed ? 'closed' : 'open';
 ?>
 <div class="postbox <?php echo $closed; ?>" id="film_<?php echo $array_id; ?>" style="background: #fff">
   <div class="handlediv" title="Click to toggle"><br /></div>
@@ -108,8 +109,8 @@ jQuery(document).ready(function($) {
   <div class="inside">
     <input name="films[<?php echo $array_id; ?>][id]" type="hidden" value="<?php echo $film->id; ?>" />
     <input name="films[<?php echo $array_id; ?>][deleted]" type="hidden" value="" />
-    <input name="films[<?php echo $array_id; ?>][sort]" id="film_sort_<?php echo $array_id; ?>" type="hidden" value="0" />
-    <input name="films[<?php echo $array_id; ?>][meta][postboxState]" id="film_postboxstate_<?php echo $array_id; ?>" type="hidden" value="open" />
+    <input name="films[<?php echo $array_id; ?>][sort]" id="film_<?php echo $array_id; ?>_sort" type="hidden" value="0" />
+    <input name="films[<?php echo $array_id; ?>][meta][postboxState]" id="film_<?php echo $array_id; ?>_postboxstate" type="hidden" value="<?php echo $postboxstate; ?>" />
     <p>
       <input name="films[<?php echo $array_id; ?>][image]" id="film_image_<?php echo $array_id; ?>" type="text" value="<?php echo $film->image; ?>" class="regular-text" style="width:600px;" placeholder="Image" />
       <a class="button-secondary" id="film_image_button_<?php echo $array_id; ?>" title="Media Image Library">Media Image Library</a>
