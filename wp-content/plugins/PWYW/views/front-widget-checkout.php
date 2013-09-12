@@ -278,7 +278,7 @@
                 ?>
             </div>
 
-            <button name='bundle_checkout' type='Submit' value='checkout' class='btn btn-large btn-info'>Checkout</button>
+            <button name='bundle_checkout' type='submit' value='checkout' class='btn btn-large btn-info'>Checkout</button>
             <input type="hidden" name="bundleCheckout" value="1" />
             <input type="hidden" name="download_id" value="0" />
             <input type="hidden" name="bid" value="<?php echo $bundle['bundle']->id; ?>" />
