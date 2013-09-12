@@ -56,7 +56,8 @@ class Pwyw_Bundles
         // Now let's collect all movies associated with the bundle
         $table = $prefix.Pwyw_Database::FILMS;
         $sql = "SELECT * FROM {$table}
-                WHERE bundle_id = {$bundle->id}";
+                WHERE bundle_id = {$bundle->id}
+                ORDER BY sort asc";
 
         $films = $wpdb->get_results($sql, OBJECT);
 

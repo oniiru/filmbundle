@@ -276,7 +276,7 @@ class Pwyw_Films
         $table = $prefix.Pwyw_Database::FILMS;
         $sql = "SELECT * FROM {$table}
                 WHERE bundle_id = {$bundle_id}
-                ORDER BY title ASC";
+                ORDER BY sort ASC";
 
         return $wpdb->get_results($sql, OBJECT);
     }
