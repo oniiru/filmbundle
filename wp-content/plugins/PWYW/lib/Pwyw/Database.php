@@ -35,6 +35,8 @@ class Pwyw_Database
             bundle_id INT NOT NULL,
             title VARCHAR(255) NOT NULL,
             image VARCHAR(255) NOT NULL,
+      	  	altimage VARCHAR(255) NOT NULL,
+			
             embed TEXT NOT NULL,
             description TEXT NOT NULL,
             PRIMARY KEY id (id)

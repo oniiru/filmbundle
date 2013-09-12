@@ -65,6 +65,7 @@ class Pwyw_Film
         $this->sort            = $film->sort;
         $this->title           = $film->title;
         $this->image           = $film->image;
+        $this->altimage           = $film->altimage;
         $this->rating          = $film->rating;
         $this->linkedpage      = $film->linkedpage;
         $this->embed           = $film->embed;
@@ -100,6 +101,8 @@ class Pwyw_Film
             'sort'            => $this->sort,
             'title'           => $this->title,
             'image'           => $this->image,
+            'altimage'           => $this->altimage,
+			
             'rating'          => $this->rating,
 			'linkedpage'      => $this->linkedpage,
             'embed'           => $this->embed,
@@ -145,6 +148,7 @@ class Pwyw_Film
         $sort,
         $title,
         $image,
+		$altimage,
         $rating,
         $linkedpage,
         $embed,
@@ -169,6 +173,8 @@ class Pwyw_Film
         $film->sort            = $sort;
         $film->title           = $title;
         $film->image           = $image;
+        $film->altimage           = $altimage;
+		
         $film->rating          = $rating;
 		$film->linkedpage      = $linkedpage;
         $film->embed           = $embed;
