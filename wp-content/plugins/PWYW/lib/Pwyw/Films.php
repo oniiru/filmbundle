@@ -86,7 +86,7 @@ class Pwyw_Films
         $film = new stdClass;
         $film->id              = '';
         $film->bundle_id       = '';
-        $film->sort            = 0;
+        $film->sort            = '';
         $film->title           = '';
         $film->image           = '';
         $film->rating          = 'above';

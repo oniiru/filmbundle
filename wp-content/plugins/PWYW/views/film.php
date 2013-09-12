@@ -109,7 +109,7 @@ jQuery(document).ready(function($) {
   <div class="inside">
     <input name="films[<?php echo $array_id; ?>][id]" type="hidden" value="<?php echo $film->id; ?>" />
     <input name="films[<?php echo $array_id; ?>][deleted]" type="hidden" value="" />
-    <input name="films[<?php echo $array_id; ?>][sort]" id="film_<?php echo $array_id; ?>_sort" type="hidden" value="0" />
+    <input name="films[<?php echo $array_id; ?>][sort]" id="film_<?php echo $array_id; ?>_sort" type="hidden" value="<?php echo $array_id; ?>" />
     <input name="films[<?php echo $array_id; ?>][meta][postboxState]" id="film_<?php echo $array_id; ?>_postboxstate" type="hidden" value="<?php echo $postboxstate; ?>" />
     <p>
       <input name="films[<?php echo $array_id; ?>][image]" id="film_image_<?php echo $array_id; ?>" type="text" value="<?php echo $film->image; ?>" class="regular-text" style="width:600px;" placeholder="Image" />
