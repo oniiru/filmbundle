@@ -342,7 +342,7 @@ jQuery(document).ready(function($) {
     // -------------------------------------------------------------------------
     var allowSubmit = false;
     $('#bundle-checkout-form').submit(function(e) {
-        if ($('input[name=edd-gateway]').val() == 'paypal_digital') {
+        if ($('input[name=edd-gateway]:checked').val() == 'paypal_digital') {
 
             if ( !allowSubmit ) {
                 e.preventDefault();
