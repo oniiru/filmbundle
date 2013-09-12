@@ -18,16 +18,16 @@ class Pwyw_PpdgIpn extends EDD_PPDG_PayPal_Ipn
     {
         // Cancel payment
         if ( isset( $_GET['paypal_digital'] ) && $_GET['paypal_digital'] == 'cancel' ) {
-            EDD_PPDG_PayPal_IPN::load_block_ui();
+            wp_print_scripts( 'jquery' );
 
             ?><script>
-            jQuery(function() {
-                var form = top.document.forms["bundle-checkout-form"];
-                var input = jQuery('<input type="hidden" name="paypal_digital">').val('<?php echo $_GET["paypal_digital"]; ?>');
-
-                jQuery(form).append(input);
-                jQuery(form).submit();
-            })
+                jQuery(function() {
+                    var blocker = top.document.getElementById("PPDGFrame");
+                    var button = top.document.getElementsByName('bundle_checkout')[0];
+                    jQuery(blocker).remove();
+                    jQuery(button).html('Checkout');
+                    jQuery(button).prop('disabled', false);
+                });
             </script><?php
 
             exit;
