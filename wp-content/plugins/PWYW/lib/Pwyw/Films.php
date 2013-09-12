@@ -89,6 +89,8 @@ class Pwyw_Films
         $film->sort            = '';
         $film->title           = '';
         $film->image           = '';
+        $film->altimage           = '';
+		
         $film->rating          = 'above';
         $film->linkedpage      = '';
         $film->embed           = '';
@@ -140,6 +142,8 @@ class Pwyw_Films
                     $film['sort'],
                     $film['title'],
                     $film['image'],
+                    $film['altimage'],
+					
                     $film['rating'],
                     $film['linkedpage'],
 
@@ -171,6 +175,8 @@ class Pwyw_Films
                 $obj->sort            = $film['sort'];
                 $obj->title           = $film['title'];
                 $obj->image           = $film['image'];
+                $obj->altimage           = $film['altimage'];
+				
                 $obj->rating          = $film['rating'];
                 $obj->linkedpage          = $film['linkedpage'];
 

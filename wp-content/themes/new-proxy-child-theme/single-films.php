@@ -345,9 +345,10 @@ elseif($activebundle == 0) { ?>
 <?php }; }?> 
 	</div>
 	
-</div><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/nav-arrow-right.png" class="next">
+</div>
+<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slider-right-arrow.png" class="next">
+<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/slider-left-arrow.png" class="prev unselectable">
 
-<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/nav-arrow-left.png" class="prev unselectable">
 </div>
 
  	<?php
@@ -386,7 +387,7 @@ elseif($activebundle == 0) { ?>
 			snapToChildren: true,
 			desktopClickDrag: true,
 			keyboardControls: false,
-			onSliderLoaded: slideComplete,
+			onSliderLoaded: slideComplete2,
 			onSlideComplete: slideComplete,
 			navNextSelector: jQuery('.next'),
 		    navPrevSelector: jQuery('.prev'),
@@ -412,6 +413,30 @@ elseif($activebundle == 0) { ?>
 			 jQuery('.next, .prev').addClass('unselectable');	
 			}
 	}
+	
+	
+	function slideComplete2(args) {
+		
+		jQuery('.next, .prev').removeClass('unselectable');
+
+	    if(args.currentSlideNumber == 1) {
+	
+	        jQuery('.prev').addClass('unselectable');
+	
+	    } else if(args.currentSliderOffset == args.data.sliderMax) {
+	
+	        jQuery('.next').addClass('unselectable');	
+	    }
+	if(jQuery('.anextra').length < 5) {
+			 jQuery('.next, .prev').addClass('unselectable');	
+			}
+			jQuery('.item').show();
+			
+	}
+	
+	
+	
+	
          jQuery(document).ready(function() {
            jQuery('.extrapopup').magnificPopup({
              type: 'iframe',
@@ -425,6 +450,8 @@ elseif($activebundle == 0) { ?>
 		     midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
 		   });
          });
+		 
+		 
 		 jQuery('.filmtrigger').click(function(e) {
 			  jQuery(this).remove();
 		     e.preventDefault();

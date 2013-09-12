@@ -415,5 +415,13 @@ function blockusers_init() {
 include_once 'metaboxes/setup.php';
 include_once 'metaboxes/full-spec.php';
 
+add_action ('template_redirect', 'my_redirect', 1 );
+function my_redirect() {
+	 if (!is_user_logged_in() && is_page('watch')) {
+        wp_redirect(site_url());
+        die();
+    }
+}
+
 
 ?>

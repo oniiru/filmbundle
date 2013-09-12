@@ -54,6 +54,116 @@ html {overflow-x:inherit;}
     font-style: normal;
 
 }
+
+.pwyw-dash {
+	float:left;
+	margin:0px 4px;
+}
+
+
+.iosSliderwide {
+	width: 100%;
+	
+	/* this height ends up being your maximum height, 
+	 * if you want it to scale forever, set it to 
+	 * a very high number */
+	height: 300px;
+}
+
+.iosSliderwide .slider {
+	width: 100%;
+	height: 100%;
+}
+
+.iosSliderwide .slider .item {
+	float: left;
+	
+	width: 100%;
+}
+
+.iosSliderwide .slider .item img {
+	width: 100%;
+	height: auto;
+}
+
+/* controls */
+.prevContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100px;
+	padding: 0 0 19.5% 0;
+	z-index: 10;
+}
+
+.prevContainer .theprev {
+	position: absolute;
+	top: 120px;
+	right: 0;
+
+}
+
+.nextContainer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100px;
+	
+	padding: 0 0 19.5% 0;
+	z-index: 10;
+}
+
+.nextContainer .thenext {
+	position: absolute;
+	top: 120px;
+	left: 0;
+}
+
+.selectorsBlock {
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+	height: 5%;
+	text-align: center;
+}
+
+.selectorsBlock .selectors {
+	position: relative;
+	top: 0;
+	left: 0;
+	height: 100%;
+	display: inline-block;
+	margin: auto;
+}
+
+.selectorsBlock .selectors .item {
+	position: relative;
+	top: 0;
+	left: 0;
+	float: left;
+	width: 9px;
+	height: 60%;
+	margin: 0 0 0 10px;
+	border-radius: 90px;
+	border: 1px solid #464646;
+}
+
+.selectorsBlock .selectors .selected {
+	background: #464646;
+}
+
+.selectorsBlock .selectors .first {
+	margin-left: 0;
+}
+
+
+
+
+
+
+
+
+
 .littlelogo {
 	position: fixed;
 	z-index: 1000;
@@ -185,8 +295,8 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 .filminfo {
 	max-width: 900px;
 	margin: auto;
-	margin-top: 25px;
-	margin-bottom: 35px;
+	margin-top: 50px;
+	margin-bottom: 40px;
 
 }
 
@@ -268,6 +378,40 @@ ul.nav-tabs {
 	background-color:#2b2b2b;
 }
 
+.filmaltimage {
+	width:100%;
+	height:150px;
+	background-size:cover;
+}
+
+.filminformation {
+	width:100%;
+	height:100%;
+	background:#f8f8f8;
+	position:relative;
+	border:1px solid #ddd;
+	display:none;
+}
+.filminformation h3 {
+	font-size:22px;
+	margin-top:50px;
+	padding:10px;
+	line-height:1.1em;
+}
+
+.filminformation p {
+	font-size:16px;
+	padding:0 10px;
+	line-height:1.3em;
+	font-family:'museo300', sans-serif;
+}
+
+p.rungen {
+	font-family:'museo700', sans-serif;
+	font-size:13px;
+	line-height:1.2em;
+	margin:0px;
+}
 .lockeditem {
 	width:100%;
 	height:100%;
@@ -393,7 +537,6 @@ p.soctext {
 .tipshare, .buybundle {
 	display:none;
 	position:absolute;
-	top:50px;
 	z-index:10	;
 	margin:auto;
 	text-align: center;
@@ -535,6 +678,8 @@ a.button:hover {
 		text-align: center;
 		color:#fff;
 		padding-bottom:20px;
+		box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.61);
+		
 	}
 	.filmtitl {
 		margin-bottom:0px;
@@ -607,7 +752,6 @@ box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);
 	margin:auto;
 	box-shadow: 0 0 40px 0 rgba(0,0,0,0.75);
 	position:relative;
-	padding-top:50px;
 }
 .undervidstripe {
 width:100%;
@@ -622,13 +766,25 @@ vertical-align: top;
 
 
 }
+
+.item {
+	display:none;
+}
 .undervidstripe h2 {
 	color:white;
+}
+
+.yourbundles h2 {
+	font-family: 'museo300', sans-serif;
+	font-size: 27px;
+	text-transform: uppercase;
+	color:rgb(104, 104, 104);
 }
 .bg-trans {
 width:100%;
 height:100%;
 background: rgba(0,0,0,.6);
+padding-top:50px;
 }
 #filmbackground {
 	background-attachment:fixed;
@@ -647,21 +803,76 @@ background: rgba(0,0,0,.6);
 	margin:auto;
 	padding:20px 35px;
 	overflow: hidden;
-	margin-bottom: -60px;
+	margin-top: 15px;
 
+}
+
+.nopurchases {
+	max-width:1000px;
+	margin:auto;
+	padding:10px;
+	text-align:center;
+}
+.nextprev {
+	height:76px;
+	margin-top:-50px;
 }
 .bundleslider {
 	max-width:1105px;
 	margin:auto;
-	padding:20px 35px;
 	overflow: hidden;
+	padding: 0px 35px 20px;
 	margin-bottom:-76px;
+}
+.bundletitle {
+	max-width: 1106px;
+	margin: auto;
+	margin-top: 30px;
+	padding-left: 44px;
 	
 }
 
-.bundleslider .next, .bundleslider .prev {
-	bottom:275px;
+.bundletitle h2 {
+	font-family: 'museo300', sans-serif;
+	font-size: 24px;
+	color: #777777;
+	text-transform: uppercase;
 }
+
+.bundleslider .prev {
+	bottom:245px;
+}
+
+.bundleslider .next {
+	bottom:220px;
+}
+
+.thefilmstuff {
+	position: relative;
+	width: 100%;
+	color: black;
+	text-align: left;
+}
+
+.thefilmstuff p {
+	width: 100%;
+	font-family: "museo700", sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.thefilmstuff p span {
+	float:right;
+	font-size:13px;
+}
+
+.thefilmstuff p span:before {
+	content:url('assets//img/clock.png');
+	margin-right: 3px;
+	top: 3px;
+	position: relative;
+}
+
 .iteminfo {
 	position: absolute;
 	left: 0px;
@@ -671,14 +882,12 @@ background: rgba(0,0,0,.6);
 	padding: 10px;
 	color: white;
 	text-align: left;
-
 	}
 
 	.iteminfo p {
 		float:left;
 		width:100%;
-		font-family: "open sans", sans-serif;
-		font-weight:300;
+		font-family: "museo300", sans-serif;
 	}
 
 	.iteminfo p span {
@@ -704,6 +913,7 @@ background: rgba(0,0,0,.6);
 	margin-bottom:50px;
 	padding-top:30px;
 	text-align:center;
+	margin-top: 25px;
 }
 .thecomments img.whatthink {
 margin-left: 47px;
@@ -1981,20 +2191,29 @@ a.hiddenanchor{
 	text-align:left;
 	height:420px;
 	margin:10px;
+	display:none;
 }
 
 .prev {
 	position: relative;
-	background: #000;
 	z-index: 10;
 	float:left;
 	bottom: 130px;
 	left: -30px;
 }
 
+.yourbundles {
+	width: 100%;
+	background: #f8f8f8;
+	text-align: center;
+	color: rgb(29, 29, 29);
+	padding: 15px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 60px;
+}
+
 .next {
 	position: relative;
-	background: green;
 	z-index: 10;
 	float:right;
 	bottom: 130px;
@@ -2504,6 +2723,9 @@ text-align: right;
 	.tipshare {
 		top:0px;
 	}
+	.bg-trans {
+	padding-top:0px;
+	}
 }
 @media screen and (max-width: 900px) {
 	#seedprod_title_link {
@@ -2544,6 +2766,7 @@ text-align: right;
 		margin-right:0px;
 		display:block;
 		text-align:center;
+		
 	}
 
 	.tipster form {
@@ -2614,6 +2837,12 @@ margin-bottom: 85px;
 .socialsmaller {
 	margin-top:5px;
 }
+.thenext, .theprev {
+	display:none;
+}
+
+
+
 }
 @media screen and (max-width: 700px) {
  .footer .grids [class*="grid-"] {
@@ -2771,6 +3000,8 @@ margin-top: 8px;
 	.buybundle .pwyw-countdown {
 		display:none;
 	}
+
+	
 	.about-us-right p img {display:none !important;}
 
 	#loginbody .header-inner {

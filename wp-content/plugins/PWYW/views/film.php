@@ -21,6 +21,13 @@ jQuery(document).ready(function($) {
     wp.media.editor.open(this);
     return false;
   });
+  $('#film_altimage_button_<?php echo $array_id; ?>').click(function() {
+    wp.media.editor.send.attachment = function(props, attachment) {
+      $('#film_altimage_<?php echo $array_id; ?>').val(attachment.url);
+    }
+    wp.media.editor.open(this);
+    return false;
+  });
   $('#filmmaker_image_button_<?php echo $array_id; ?>').click(function() {
     wp.media.editor.send.attachment = function(props, attachment) {
       $('#filmmaker_image_<?php echo $array_id; ?>').val(attachment.url);
@@ -35,6 +42,9 @@ jQuery(document).ready(function($) {
     wp.media.editor.open(this);
     return false;
   });
+
+
+
 
   // Delete button
   $('#delete_film_<?php echo $array_id; ?>').click(function() {
@@ -114,6 +124,10 @@ jQuery(document).ready(function($) {
     <p>
       <input name="films[<?php echo $array_id; ?>][image]" id="film_image_<?php echo $array_id; ?>" type="text" value="<?php echo $film->image; ?>" class="regular-text" style="width:600px;" placeholder="Image" />
       <a class="button-secondary" id="film_image_button_<?php echo $array_id; ?>" title="Media Image Library">Media Image Library</a>
+    </p>
+    <p>
+      <input name="films[<?php echo $array_id; ?>][altimage]" id="film_altimage_<?php echo $array_id; ?>" type="text" value="<?php echo $film->altimage; ?>" class="regular-text" style="width:600px;" placeholder="Alt Image" />
+      <a class="button-secondary" id="film_altimage_button_<?php echo $array_id; ?>" title="Media Image Library">Media Image Library</a>
     </p>
     <p>
      <input name="films[<?php echo $array_id; ?>][title]" id="film_title_<?php echo $array_id; ?>" type="text" value="<?php echo $film->title; ?>" class="regular-text" style="width:738px;" placeholder="Title" />
