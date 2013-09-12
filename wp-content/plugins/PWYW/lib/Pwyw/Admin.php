@@ -61,7 +61,7 @@ class Pwyw_Admin
             wp_enqueue_script(
                 'pwyw-postbox',
                 plugins_url('/assets/javascripts/pwyw-postbox.js', Pwyw::FILE),
-                array('jquery-ui-sortable'),
+                array('jquery-ui-sortable', 'underscore'),
                 $version
             );
         }
