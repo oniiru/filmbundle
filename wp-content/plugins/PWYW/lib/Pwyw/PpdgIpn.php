@@ -49,7 +49,17 @@ class Pwyw_PpdgIpn extends EDD_PPDG_PayPal_Ipn
 
             ?><script>
             jQuery(function() {
-                var form           = top.document.forms["bundle-checkout-form"];
+                var form = top.document.forms["bundle-checkout-form"];
+                // If it wasn't the bundle checkout, let's see which tip form it might be
+                if (!form) {
+                    // First we try the sharing form
+                    form = top.document.forms["tipshare-form"];
+                    var button = jQuery(form).find('[name=giveTip]');
+                    if (button.html() != 'Processing...') {
+                        // It wasn't the first tip form, so let's assume it's the second
+                        form = top.document.forms["tipster-form"];
+                    }
+                }
                 var paypal_digital = jQuery('<input type="hidden" name="paypal_digital">').val('<?php echo $_GET["paypal_digital"]; ?>');
                 var payerid        = jQuery('<input type="hidden" name="PayerID">').val('<?php echo $_GET["PayerID"]; ?>');
                 var token          = jQuery('<input type="hidden" name="token">').val('<?php echo $_GET["token"]; ?>');
