@@ -14,9 +14,25 @@ jQuery(document).ready(function($) {
             var amount = $('#'+formId+' [name=tipAmount]').val();
             var download_id = $('[name=download_id]').val();
 
-            console.log(amount);
-            console.log(download_id);
-            console.log(formId);
+            // Don't submit empty amounts
+            if (!amount) {
+                return;
+            }
+
+            $.post(
+                pwyw_ajax.url,
+                {
+                    action: 'pwyw_tip',
+                },
+                function(data) {
+                    console.log(data);
+                }
+            );
+
+
+            // console.log(amount);
+            // console.log(download_id);
+            // console.log(formId);
         }
 
     });
