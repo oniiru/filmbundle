@@ -1,3 +1,34 @@
 jQuery(document).ready(function($) {
-    console.log('tip script');
+
+    // Handle the submissions
+    // -------------------------------------------------------------------------
+    var allowSubmit = false;
+    $('.tipping-form').submit(function(e) {
+
+        if ( !allowSubmit ) {
+            e.preventDefault();
+
+            // Collect relevant data
+            var form = $(this);
+            var formId = $(this).attr('id');
+            var amount = $('#'+formId+' [name=tipAmount]').val();
+            var download_id = $('[name=download_id]').val();
+
+            console.log(amount);
+            console.log(download_id);
+            console.log(formId);
+        }
+
+    });
+
+
+    // Handle live input validation
+    // -------------------------------------------------------------------------
+    $('[name=tipAmount]').keypress(function(e) {
+        var charCode = (e.which) ? e.which : e.keyCode;
+        if (charCode < 48 || charCode > 57) {
+            return false;
+        }
+    });
+
 });
