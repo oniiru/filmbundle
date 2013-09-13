@@ -75,6 +75,7 @@ $videometa = $full_mb->the_meta();
                                 <input type="text" name="tipAmount" class="flatinput">
                                 <input type="hidden" name="download_id" value="<?php echo $videometa['tipprod']; ?>" />
                                 <input type="hidden" name="tipCheckout" value="1" />
+                                <input type="hidden" name="edd-gateway" value="paypal_digital" />
                                 <button name='giveTip' type='submit' value='checkout' class='tipbutton'>Tip away!</button>
                             </form>
                         </div>
@@ -382,6 +383,7 @@ if (($videometa['tipster'] == 'yes') && (((edd_has_user_purchased( $user_ID, $ab
             <input type="text" name="tipAmount" class="flatinput">
             <input type="hidden" name="download_id" value="<?php echo $videometa['tipprod']; ?>" />
             <input type="hidden" name="tipCheckout" value="1" />
+            <input type="hidden" name="edd-gateway" value="paypal_digital" />
             <button name='giveTip' type='submit' value='checkout' class='tipbutton'>Tip away!</button>
         </form>
     </div>
