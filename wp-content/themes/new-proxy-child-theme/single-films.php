@@ -70,10 +70,12 @@ $videometa = $full_mb->the_meta();
                                 <h3>Amazing huh? Feel like giving the filmmaker a tip?</h3>
                                 <p>100% goes to the makers of this film. Any amount would sure be appreciated. :-)</p>
                             </div>
-                            <form>
+                            <form id='tipshare-form' method='post' action=''>
                                 <p class="flatinputprepend">$</p>
-                                <input class="flatinput" type="text">
-                                <button name='' type='submit' value='checkout' class='tipbutton'>Tip away!</button>
+                                <input type="text" name="tipAmount" class="flatinput">
+                                <input type="hidden" name="download_id" value="<?php echo $videometa['tipprod']; ?>" />
+                                <input type="hidden" name="tipCheckout" value="1" />
+                                <button name='giveTip' type='submit' value='checkout' class='tipbutton'>Tip away!</button>
                             </form>
                         </div>
                         <?php
@@ -375,10 +377,12 @@ if (($videometa['tipster'] == 'yes') && (((edd_has_user_purchased( $user_ID, $ab
             <h3>Like what you see? Tip the Filmmaker!</h3>
             <p>(All tips received go straight to the filmmaker.)</p>
         </div>
-        <form>
+        <form id='tipster-form' method='post' action=''>
             <p class="flatinputprepend">$</p>
-            <input class="flatinput" type="text">
-            <button name='' type='submit' value='checkout' class='tipbutton'>Tip away!</button>
+            <input type="text" name="tipAmount" class="flatinput">
+            <input type="hidden" name="download_id" value="<?php echo $videometa['tipprod']; ?>" />
+            <input type="hidden" name="tipCheckout" value="1" />
+            <button name='giveTip' type='submit' value='checkout' class='tipbutton'>Tip away!</button>
         </form>
     </div>
 <?php
