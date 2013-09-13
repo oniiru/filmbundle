@@ -70,7 +70,7 @@ $videometa = $full_mb->the_meta();
                                 <h3>Amazing huh? Feel like giving the filmmaker a tip?</h3>
                                 <p>100% goes to the makers of this film. Any amount would sure be appreciated. :-)</p>
                             </div>
-                            <form id='tipshare-form' method='post' action=''>
+                            <form id='tipshare-form' class='tipping-form' method='post' action=''>
                                 <p class="flatinputprepend">$</p>
                                 <input type="text" name="tipAmount" class="flatinput">
                                 <input type="hidden" name="download_id" value="<?php echo $videometa['tipprod']; ?>" />
@@ -377,7 +377,7 @@ if (($videometa['tipster'] == 'yes') && (((edd_has_user_purchased( $user_ID, $ab
             <h3>Like what you see? Tip the Filmmaker!</h3>
             <p>(All tips received go straight to the filmmaker.)</p>
         </div>
-        <form id='tipster-form' method='post' action=''>
+        <form id='tipster-form' class='tipping-form' method='post' action=''>
             <p class="flatinputprepend">$</p>
             <input type="text" name="tipAmount" class="flatinput">
             <input type="hidden" name="download_id" value="<?php echo $videometa['tipprod']; ?>" />
