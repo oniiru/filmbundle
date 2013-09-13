@@ -77,7 +77,6 @@ get_header();
  <h2>your bundles</h2>
 </div>
 
-
 <?php
 
 global $wpdb;

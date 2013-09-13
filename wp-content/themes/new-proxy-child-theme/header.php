@@ -141,7 +141,56 @@ jQuery(document).ready(function($) {
             }
 
           ?>
+		   <?php 
+		   $thebundle = $wpdb->get_results("SELECT * FROM wp_pwyw_bundles WHERE activated = '1'", ARRAY_A);
+		
+		 
+		   class shareCount {
+		   private $url,$timeout;
+		   function __construct($url,$timeout=10) {
+		   $this->url=rawurlencode($url);
+		   $this->timeout=$timeout;
+		   }
+		   function get_tweets() { 
+		   $json_string = $this->file_get_contents_curl('http://urls.api.twitter.com/1/urls/count.json?url=' . $this->url);
+		   $json = json_decode($json_string, true);
+		   return isset($json['count'])?intval($json['count']):0;
+		   }
 
+		   function get_fb() {
+		   $json_string = $this->file_get_contents_curl('http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls='.$this->url);
+		   $json = json_decode($json_string, true);
+		   return isset($json[0]['total_count'])?intval($json[0]['total_count']):0;
+		   }
+
+		   private function file_get_contents_curl($url){
+		   $ch=curl_init();
+		   curl_setopt($ch, CURLOPT_URL, $url);
+		   curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+		   curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+		   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		   curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+		   curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
+		   $cont = curl_exec($ch);
+		   if(curl_error($ch))
+		   {
+		   die(curl_error($ch));
+		   }
+		   return $cont;
+		   }
+		   }
+		   $obj=new shareCount("http://www.humblebundle.com");  //Use your website or URL
+		   $twittershares = $obj->get_tweets(); //to get tweets
+		   $facebookshares = $obj->get_fb(); //to get facebook total count (likes+shares+comments)
+		   $twitterstart = $thebundle[0]['twitterstart'];
+		   $facestart = $thebundle[0]['facestart'];
+		   $currenttwitter = ($twittershares - $twitterstart);
+		   $currentface = ($facebookshares - $facestart);	
+		   $facegoal = 	$thebundle[0]['facegoal'];
+		   $twittergoal = $thebundle[0]['twittergoal'];
+		   $goalratiotwit = (($currenttwitter / $twittergoal) * 100);
+		   $goalratioface = (($currentface / $facegoal) * 100);
+		 ?>
           <!-- END #primary-nav -->
         </nav>
 
@@ -150,9 +199,21 @@ jQuery(document).ready(function($) {
 
     <?php stag_header_end(); ?>
 
-
 </header>
-
+<div id="slidingheader">
+	
+	
+</div>
+<script>
+jQuery(window).bind('scroll', function(){
+if(jQuery(this).scrollTop() >= 80) {
+jQuery("#slidingheader").fadeIn(200);
+}
+if(jQuery(this).scrollTop() < 80) {
+jQuery("#slidingheader").fadeOut(200);
+}
+});
+</script>
 <?php stag_header_after(); ?>
 
   <!-- BEGIN #container -->

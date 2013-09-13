@@ -157,7 +157,15 @@ html {overflow-x:inherit;}
 }
 
 
-
+#slidingheader {
+	position:fixed;
+	top:0;
+	height:80px;
+	width:100%;
+	background:blue;
+	display:none;
+	z-index:10000;
+}
 
 
 
@@ -165,7 +173,7 @@ html {overflow-x:inherit;}
 
 
 .littlelogo {
-	position: fixed;
+	position: absolute	;
 	z-index: 1000;
 	cursor: pointer;
 }
@@ -286,10 +294,11 @@ input[type="text"], input[type="email"], input[type="number"], input[type="passw
 
 #header {
 	padding:15px 0;
+	position:static;
 }
 
 #container {
-	padding-top: 80px;
+	padding-top: 0px !important;
 }
 
 .filminfo {

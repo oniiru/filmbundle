@@ -11,6 +11,52 @@ jQuery(document).ready(function($) {
   });
 });
 </script>
+<?php
+class shareCount {
+private $url,$timeout;
+function __construct($url,$timeout=10) {
+$this->url=rawurlencode($url);
+$this->timeout=$timeout;
+}
+function get_tweets() { 
+$json_string = $this->file_get_contents_curl('http://urls.api.twitter.com/1/urls/count.json?url=' . $this->url);
+$json = json_decode($json_string, true);
+return isset($json['count'])?intval($json['count']):0;
+}
+
+function get_fb() {
+$json_string = $this->file_get_contents_curl('http://api.facebook.com/restserver.php?method=links.getStats&format=json&urls='.$this->url);
+$json = json_decode($json_string, true);
+return isset($json[0]['total_count'])?intval($json[0]['total_count']):0;
+}
+
+private function file_get_contents_curl($url){
+$ch=curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+curl_setopt($ch, CURLOPT_FAILONERROR, 1);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
+$cont = curl_exec($ch);
+if(curl_error($ch))
+{
+die(curl_error($ch));
+}
+return $cont;
+}
+}
+$obj=new shareCount("http://www.humblebundle.com");  //Use your website or URL
+$twittershares = $obj->get_tweets(); //to get tweets
+$facebookshares = $obj->get_fb(); //to get facebook total count (likes+shares+comments)
+$twitterstart = $pwyw_data['bundle']->twitterstart;
+$facestart = $pwyw_data['bundle']->facestart;
+$twitterend = $pwyw_data['bundle']->twitterend;
+$faceend = $pwyw_data['bundle']->faceend;
+$currenttwitter = ($twittershares - $twitterstart);
+$currentface = ($facebookshares - $facestart);
+?>
+
 <h2>Bundle Settings</h2>
 <div class="postbox-container" style="width: 980px">
       <div class="metabox-holder">
@@ -20,6 +66,7 @@ jQuery(document).ready(function($) {
               <div class="bluerevbox">
                 <h2>Total Revenue: $<?php echo isset($pwyw_data['payment_info'])?number_format($pwyw_data['payment_info']->total_payments,2):'0.00'?></h2>
                 <h4>Avg. Purchase Price: $<?php echo isset($pwyw_data['payment_info'])?number_format($pwyw_data['payment_info']->avg_price,2):'0.00' ?>  |  # <?php echo isset($pwyw_data['payment_info'])?$pwyw_data['payment_info']->total_sales:'0' ?></h4>
+				<h4>Facebook: <?php if($faceend != '0') {echo $faceend;} else { echo $currentface;};?> / Twitter: <?php if($twitterend != '0') {echo $twitterend;} else { echo $currenttwitter;};?></h4>
               </div>
               <div class="statsbox">
                 <div class="totalsbox">
@@ -94,6 +141,59 @@ jQuery(document).ready(function($) {
                   <div class="bundleendtimeinput">
                     <h4>Bundle End Time</h4>
                     <input name="end_time" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->end_time:'';?>" />
+                  </div>
+				  
+				
+				  
+				  
+                  <div class="bundlestartingshares">
+                    <h4>Bundle Starting Shares</h4>
+					<p style="display:inline-block">Facebook:</p>
+                    <input id="face_start" style="display:inline-block;width:100px" name="facestart" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->facestart:'';?>" />
+					<p style="display: inline-block;margin-left: 20px;">Twitter:</p>
+                    <input id="twitter_start" style="display:inline-block;width:100px" name="twitterstart" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->twitterstart:'';?>" />
+					<a id="bundleshares" style="display:block; width:120px" class="button button-primary">Get Starting Value</a>
+  				  <script>
+  				  jQuery('#bundleshares').click(function() {
+  				      var twitvalue = <?php echo $twittershares; ?>;
+  				      var facevalue = <?php echo $facebookshares; ?>;
+  				   		jQuery('#twitter_start').val(twitvalue);
+  				   		jQuery('#face_start').val(facevalue);
+						
+  				      return false;
+  				  });
+  				  </script>
+                  </div>
+				  
+
+                  <div class="facebooksharegoal">
+                    <h4>Facebook Shares Goal</h4>
+                    <input name="facegoal" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->facegoal:'';?>" />
+                  </div>
+
+                  <div class="twittersharegoal">
+                    <h4>Twittersharegoal</h4>
+                    <input name="twittergoal" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->twittergoal:'';?>" />
+                  </div>
+				  
+				  
+                  <div class="bundleendingshares">
+                    <h4>Bundle Ending Shares</h4>
+					<p style="display:inline-block">Facebook:</p>
+                    <input id="face_end" style="display:inline-block;width:100px" name="faceend" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->faceend:'';?>" />
+					<p style="display: inline-block;margin-left: 20px;">Twitter:</p>
+                    <input id="twitter_end" style="display:inline-block;width:100px" name="twitterend" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->twitterend:'';?>" />
+					<a id="bundleendshares" style="display:block; width:120px" class="button button-primary">Get Ending Value</a>
+  				  <script>
+  				  jQuery('#bundleendshares').click(function() {
+  				      var twitendvalue = <?php echo ($twittershares - $pwyw_data['bundle']->twitterstart); ?>;
+  				      var faceendvalue = <?php echo ($facebookshares - $pwyw_data['bundle']->facestart); ?>;
+  				   		jQuery('#twitter_end').val(twitendvalue);
+  				   		jQuery('#face_end').val(faceendvalue);
+						
+  				      return false;
+  				  });
+  				  </script>
                   </div>
 
 
