@@ -26,6 +26,7 @@ class Pwyw_Tip
     /** Custom constructor */
     private function construct()
     {
+        add_action('init', array(&$this, 'checkout'));
         add_action('wp_enqueue_scripts', array(&$this, 'scripts'));
     }
 
@@ -46,5 +47,37 @@ class Pwyw_Tip
             self::SCRIPT_VERSIONS,
             true
         );
+    }
+
+    /**
+     * Handles checkout and integrated with EDD PayPal Digital Goods Gateway
+     */
+    public function checkout()
+    {
+        // If no tip has been posted for checkout, return
+        if (!$_POST['tipCheckout']) {
+            return;
+        }
+
+        // Let's populate the $_POST array for EDD.
+        $user = wp_get_current_user();
+        $_POST['edd_email'] = $user->user_email;
+        $_POST['edd_first'] = $user->display_name;
+
+
+        /** Start the checkout process */
+        // Empty the cart, just in case
+        edd_empty_cart();
+
+        // Add the relevant product to the cart
+        edd_add_to_cart($_POST['download_id']);
+
+        // Create a filter to adjust the amount for the checkout
+        add_filter('edd_cart_item_price',
+            function($price) { return $_POST['tipAmount']; }
+        );
+
+        // And go to the gateway!
+        edd_process_purchase_form();
     }
 }
