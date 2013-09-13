@@ -23,10 +23,20 @@ class Pwyw_PpdgIpn extends EDD_PPDG_PayPal_Ipn
             ?><script>
                 jQuery(function() {
                     var blocker = top.document.getElementById("PPDGFrame");
+
+                    // Checkout button
                     var button = top.document.getElementsByName('bundle_checkout')[0];
-                    jQuery(blocker).remove();
                     jQuery(button).html('Checkout');
                     jQuery(button).prop('disabled', false);
+
+                    // Tip button
+                    var button = top.document.getElementsByName('giveTip');
+                    jQuery(button[0]).html('Checkout');
+                    jQuery(button[0]).prop('disabled', false);
+                    jQuery(button[1]).html('Checkout');
+                    jQuery(button[1]).prop('disabled', false);
+
+                    jQuery(blocker).remove();
                 });
             </script><?php
 
