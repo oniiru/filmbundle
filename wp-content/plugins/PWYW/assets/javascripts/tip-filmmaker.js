@@ -33,7 +33,6 @@ jQuery(document).ready(function($) {
                 },
                 function(data) {
                     if (data !== '1') {
-                        console.log(data);
                         allowSubmit = false;
                         $('#paypal_digital_holder').remove();
                         $('#'+formId).after(
