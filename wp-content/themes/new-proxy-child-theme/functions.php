@@ -135,7 +135,9 @@ add_filter('wp_title', 'stag_wp_title');
 
 /* Register Menu */
 function register_menu() {
-  register_nav_menu('primary-menu', __('Primary Menu', 'stag'));
+  register_nav_menu('loggedin-menu', __('Logged In', 'stag'));
+  register_nav_menu('loggedout-menu', __('Logged Out', 'stag'));
+  
 }
 add_action('init', 'register_menu');
 
