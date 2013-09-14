@@ -197,6 +197,10 @@ class Pwyw
              `suggested_val_2` float(10,2),
              `suggested_val_3` float(10,2),
              `pwyw_val` float(10,2),
+             `facetitle` varchar(255) NOT NULL ,
+             `facedescription` text ,
+			 'face_image' varchar(255) NOT NULL ,
+			 'twittermessage' text ,
              `order` mediumint(9),
              `belowaverage` mediumint(9),
              `aboveaverage` mediumint(9),
@@ -696,11 +700,15 @@ class Pwyw
                             suggested_val_2 = %f,
                             suggested_val_3 = %f,
                             pwyw_val = %f,
+                            facetitle = %s,
+                            facedescription = %s,
+                            face_image = %s,
+                            twittermessage = %s,
                             belowaverage = %d,
                             aboveaverage = %d,
                             activated = %d
                         WHERE id = %d
-                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['bg_image'], $_REQUEST['end_time'], $_REQUEST['facestart'] ,$_REQUEST['twitterstart'], $_REQUEST['facegoal'], $_REQUEST['twittergoal'], $_REQUEST['faceend'], $_REQUEST['twitterend'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active, $_REQUEST['bundle']
+                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['bg_image'], $_REQUEST['end_time'], $_REQUEST['facestart'] ,$_REQUEST['twitterstart'], $_REQUEST['facegoal'], $_REQUEST['twittergoal'], $_REQUEST['faceend'], $_REQUEST['twitterend'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['facetitle'], $_REQUEST['facedescription'], $_REQUEST['face_image'], $_REQUEST['twittermessage'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active, $_REQUEST['bundle']
                 )
         );
 
@@ -815,9 +823,9 @@ class Pwyw
             $pwyw_bundle_active = 0;
         }
         $wpdb->query(
-                $wpdb->prepare("INSERT INTO {$this->bundles} (title,description,bg_image,end_time,facestart,twitterstart,facegoal,twittergoal,faceend,twitterend,suggested_val_1,suggested_val_2,suggested_val_3,pwyw_val,belowaverage,aboveaverage,activated)
+                $wpdb->prepare("INSERT INTO {$this->bundles} (title,description,bg_image,end_time,facestart,twitterstart,facegoal,twittergoal,faceend,twitterend,suggested_val_1,suggested_val_2,suggested_val_3,pwyw_val,facetitle,facedescription,face_image,twittermessage,belowaverage,aboveaverage,activated)
                           VALUES (%s,%s,%s,%s,%d,%d,%f,%f,%f,%f,%d,%d,%d)
-                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['bg_image'], $_REQUEST['end_time'], $_REQUEST['facestart'], $_REQUEST['twitterstart'], $_REQUEST['facegoal'], $_REQUEST['twittergoal'], $_REQUEST['faceend'], $_REQUEST['twitterend'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active
+                     ", $_REQUEST['title'], $_REQUEST['description'], $_REQUEST['bg_image'], $_REQUEST['end_time'], $_REQUEST['facestart'], $_REQUEST['twitterstart'], $_REQUEST['facegoal'], $_REQUEST['twittergoal'], $_REQUEST['faceend'], $_REQUEST['twitterend'], $_REQUEST['suggested_val_1'], $_REQUEST['suggested_val_2'], $_REQUEST['suggested_val_3'], $_REQUEST['pwyw_val'],$_REQUEST['facetitle'], $_REQUEST['facedescription'], $_REQUEST['face_image'], $_REQUEST['twittermessage'], $_REQUEST['belowaverage'], $_REQUEST['aboveaverage'], $pwyw_bundle_active
                 )
         );
 

@@ -130,17 +130,31 @@ jQuery(document).ready(function($) {
           </div>
         </div>
         <nav id="navigation" role="navigation">
-          <?php
-            if(has_nav_menu('primary-menu')){
-              wp_nav_menu(array(
-                'theme_location' => 'primary-menu',
-                'container' => 'div',
-                'container_id' => 'primary-nav',
-                'container_class' => 'primary-menu',
-                ));
-            }
-
-          ?>
+            <?php
+			 if (is_user_logged_in()) {
+              if(has_nav_menu('loggedin-menu')){
+                wp_nav_menu(array(
+                  'theme_location' => 'loggedin-menu',
+                  'container' => 'div',
+                  'container_id' => 'primary-nav',
+                  'container_class' => 'primary-menu',
+                  ));
+              }
+		  }
+		  else {
+              if(has_nav_menu('loggedout-menu')){
+                wp_nav_menu(array(
+                  'theme_location' => 'loggedout-menu',
+                  'container' => 'div',
+                  'container_id' => 'primary-nav',
+                  'container_class' => 'primary-menu',
+                  ));
+              }
+			
+			
+		  }
+            ?>
+          
 		   <?php 
 		   $thebundle = $wpdb->get_results("SELECT * FROM wp_pwyw_bundles WHERE activated = '1'", ARRAY_A);
 		
@@ -190,6 +204,16 @@ jQuery(document).ready(function($) {
 		   $twittergoal = $thebundle[0]['twittergoal'];
 		   $goalratiotwit = (($currenttwitter / $twittergoal) * 100);
 		   $goalratioface = (($currentface / $facegoal) * 100);
+		   $twittergoal = $thebundle[0]['twittergoal'];
+           $pwyw = Pwyw::getInstance();
+           $pwyw_data = $pwyw->pwyw_get_bundle_info();
+           $payment = $pwyw_data['payment_info'];
+           $totalSales = isset($payment->total_sales) ?
+                         $payment->total_sales : '0';
+           $averagePrice = isset($payment->avg_price) ? 
+                           number_format($payment->avg_price, 0) : '0.00';
+           $totalPayments = isset($payment->total_payments) ?
+                            number_format($payment->total_payments, 0) : '0.00';
 		 ?>
           <!-- END #primary-nav -->
         </nav>
@@ -200,18 +224,133 @@ jQuery(document).ready(function($) {
     <?php stag_header_end(); ?>
 
 </header>
+<?php
+    if (is_user_logged_in()) {
+        // Get relevant info for current user
+        $user = wp_get_current_user();
+        $email = $user->user_email;
+
+        // Retrieve the user from the subscriber DB
+        global $wpdb;
+        $tablename = $wpdb->prefix . SEED_CSP3_TABLENAME;
+        $sql = "SELECT * FROM $tablename WHERE email = %s;";
+        $safe_sql = $wpdb->prepare($sql, $email);
+        $result = $wpdb->get_row($safe_sql);
+
+        if ($result) {
+            // Calc referrer url
+            $ref = $result->id+1000;
+			$urlnoslash = rtrim(home_url(),'/');
+            $referrer_url = $urlnoslash . '?ref='.base_convert($ref, 10, 36);
+        };
+		$sharingiscaringheader = $referrer_url;
+
+	}
+	else {
+		$sharingiscaringheader = home_url();
+
+	}
+    // Setup share urls
+    $facebookheader_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode($thebundle[0]['facetitle'])."&amp;p[summary]=".urlencode($thebundle[0]['facedescription'])."&amp;p[images][0]=".$thebundle[0]['face_image']."&amp;p[url]=".$sharingiscaringheader;
+    $twitterheader_share = "https://twitter.com/share?url=".$sharingiscaringeheader."&amp;text=".urlencode($thebundle[0]['twittermessage'].' - '.$sharingiscaringheader);
+?>
+
 <div id="slidingheader">
-	
-	
+	<div class="skinnytop">
+		<div class="slidingheader-inner">	
+			<a href="<?php home_url(); ?>"><p class="logotext">Film<span>Bundle</span></p></a>
+            <?php
+			 if (is_user_logged_in()) {
+              if(has_nav_menu('loggedin-menu')){
+                wp_nav_menu(array(
+                  'theme_location' => 'loggedin-menu',
+                  'container' => 'div',
+                  'container_id' => 'sliding-nav',
+                  'container_class' => 'sliding-menu',
+                  ));
+              }
+		  }
+		  else {
+              if(has_nav_menu('loggedout-menu')){
+                wp_nav_menu(array(
+                  'theme_location' => 'loggedout-menu',
+                  'container' => 'div',
+                  'container_id' => 'sliding-nav',
+                  'container_class' => 'sliding-menu',
+                  ));
+              }
+			
+			
+		  }
+            ?>
+		
+		</div>
+	</div>
+	<div class="fatbottom">
+		<div class="slidingheader-inner">	
+			<div class="sharingwidget facebookshare">
+	<a class="zocial facebook" href="<?php echo $facebookheader_share; ?>" onclick="return !handleSocialWin('<?php echo $facebookheader_share; ?>', 'Facebook');" target="_blank">Share</a>
+	<div class="socialprogtext">
+		<p><?php echo $currentface;?> Shares <span> Goal: <?php echo $facegoal;?></span></p>
+		<div class="shareprogress">
+		  <div class="bar" style="width: <?php echo $goalratioface; ?>%"></div>
+		</div>
+	</div>
+	</div>
+	<div class="sharingwidget  twittershare">
+		<a class="zocial twitter" href="<?php echo $twitterheader_share; ?>" onclick="return !handleSocialWin('<?php echo $twitterheader_share; ?>', 'Twitter');" target="_blank">Tweet</a>
+		<div class="socialprogtext">
+		<p><?php echo $currenttwitter;?> Shares <span> Goal: <?php echo $twittergoal;?></span></p>
+		<div class="shareprogress">
+  <div class="bar" style="width: <?php echo $goalratiotwit; ?>%;"></div>
+</div>
+</div>
+</div>
+<div class="bundletotals">
+	<a href="<?php home_url(); ?>"><h3>The <?php echo $thebundle[0]['title'];?> Bundle</h3></a>
+	<h2><?php echo $totalSales;?> Sold</h2>
+	<h2>$<?php echo $totalPayments;?> Raised</h2>
+	<h2 class="thecountdown"> <div class="inlineblock"><?php
+            $atts = array(
+                't'           => $thebundle['0']['end_time'],
+                'days'        => 'd',
+                'hours'       => 'h',
+                'minutes'     => 'm',
+                'seconds'     => 's',
+                'omitweeks'   => 'true',
+                'style'       => 'pwyw',
+                'jsplacement' => 'inline'
+            );
+            echo tminuscountdown($atts);
+        ?> </div> remaining</h2>
+</div>
+
+	</div>
+</div>
 </div>
 <script>
+
 jQuery(window).bind('scroll', function(){
+	if(jQuery(window).width() > 600) {
 if(jQuery(this).scrollTop() >= 80) {
-jQuery("#slidingheader").fadeIn(200);
+jQuery("#slidingheader").fadeIn(450);
 }
 if(jQuery(this).scrollTop() < 80) {
-jQuery("#slidingheader").fadeOut(200);
+jQuery("#slidingheader").fadeOut(450);
 }
+} 
+});
+jQuery(window).resize(function(){
+	if(jQuery(window).width() <= 600) {
+		jQuery("#slidingheader").show();
+		
+	}
+	else {
+		if(jQuery(this).scrollTop() < 80) {
+		jQuery("#slidingheader").fadeOut(450);
+		}
+		
+	}
 });
 </script>
 <?php stag_header_after(); ?>

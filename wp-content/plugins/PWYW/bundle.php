@@ -9,6 +9,14 @@ jQuery(document).ready(function($) {
     wp.media.editor.open(this);
     return false;
   });
+  $('#face_image_button').click(function() {
+    console.log('here3');
+    wp.media.editor.send.attachment = function(props, attachment) {
+      $('#face_image').val(attachment.url);
+    }
+    wp.media.editor.open(this);
+    return false;
+  });
 });
 </script>
 <?php
@@ -258,6 +266,31 @@ $currentface = ($facebookshares - $facestart);
                   <?php endif;?>
                    </div>
                 <?php endforeach;?>
+              </div>
+
+
+              <div class="bundletitleinput">
+                <h4>Facebook Title</h4>
+                <input name="facetitle" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->facetitle:'';?>" />
+              </div>
+			  
+              <div class="bundledescriptioninput">
+                <h4>Facebook Description</h4>
+                <textarea name="facedescription" type="textarea"><?php
+                  echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->facedescription:'';
+                ?></textarea>
+              </div>
+              <div class="bundlebgimageinput">
+                <h4>Facebook Image</h4>
+                <input name="face_image" id="face_image" type="text" value="<?php
+                  echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->face_image:'';
+                ?>" />
+                <a class="button-secondary" id="face_image_button" title="Media Image Library">Media Image Library</a>
+              </div>
+			  
+              <div class="bundletitleinput">
+                <h4>Twitter Message</h4>
+                <input name="twittermessage" type="text" value="<?php echo isset($pwyw_data['bundle'])?$pwyw_data['bundle']->twittermessage:'';?>" />
               </div>
 
               <div class="PWYWmemberships">
