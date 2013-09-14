@@ -28,9 +28,11 @@ class Pwyw_Checkout
         add_action('edd_complete_purchase', array(&$this, 'addPayment'));
 
         // Register actions that replaces PayPal Digital Goods' actions
-        add_action('init', array('Pwyw_PpdgIpn', 'check_paypal_return'));
         add_action('wp_ajax_pwyw_ppdg', array(&$this, 'handlePpdg'));
         add_action('wp_ajax_nopriv_pwyw_ppdg', array(&$this, 'handlePpdg'));
+        if (class_exists('EDD_PayPal_Digital_Goods')) {
+            add_action('init', array('Pwyw_PpdgIpn', 'check_paypal_return'));
+        }
     }
 
     /**
