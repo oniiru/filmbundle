@@ -39,15 +39,13 @@ button,
 input[type=submit],
 blockquote,
 #slideshow .slider-content h3,
-#primary-nav li.sfHover > a, #primary-nav li.current-menu-item > a, #primary-nav li.active > a,
 #team .member-pic .member-links a,
 #portfolio-slider .portfolio-content .icon-open
 { background-color:<?php echo stag_get_option('accent_color'); ?> !important; }
 
 .button:hover,
 button:hover,
-input[type=submit]:hover,
-#primary-nav li a:hover
+input[type=submit]:hover
 { background-color:<?php echo stag_get_option('accent_color'); ?> !important; }
 }
 </style>

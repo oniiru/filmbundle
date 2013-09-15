@@ -25,7 +25,7 @@
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/jquery.iosslider.min.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/popup.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/froogaloop.js'></script>
-
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 <?php if (is_front_page()) { ?>
 <style type='text/css'>
@@ -123,12 +123,54 @@ jQuery(document).ready(function($) {
         </div>
 
         <!-- BEGIN #primary-nav -->
+		<div class="littlelogin">
+			<?php if (!is_user_logged_in()) { ?>
+			<a href="<?php bloginfo( 'url' ); ?>/login"><i style="font-size:1.3em; display:none;vertical-align:middle"class="icon-user"></i></a><h3><?php echo do_shortcode( '[login]' ); ?></h3>
+			<?php } else  {?>
+				
+				<i style="font-size:1.3em; vertical-align:middle;display:none" class="icon-cog"></i><h3> Account </h3>
+				<ul>
+					<li class="hiddenli">
+					<a href="<?php bloginfo( 'url' ); ?>/blog">Blog</a>
+					</li>
+					<li>
+					<a href="<?php bloginfo( 'url' ); ?>/profile">Profile</a>
+					</li>
+					<li>
+					<a href="http://filmbundle.zendesk.com">Support</a>
+					</li>
+					<li>
+						<?php echo do_shortcode( '[logout]' ); ?>
+					</li>
+				</ul>
+				
+				<?php } ?>
+		</div>
         <div class="littlesocial">
+			<i style="font-size:1.3em; display:none;vertical-align:middle"class="icon-twitter"></i> <h3> Follow Us </h3>
+			<ul>
+				<li class="faceli">
         <div class="fb-like" style="margin-right:20px;" data-href="http://facebook.com/filmbundle" data-send="false" data-layout="button_count" data-width="10" data-show-faces="false"></div>
-        <div style="position:relative;display:inline-block"><a href="https://twitter.com/FilmBundle" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @FilmBundle</a>
+	</li>
+	<li class="twitli">
+        <div style="position:relative;display:inline-block"><a href="https://twitter.com/FilmBundle" class="twitter-follow-button" data-show-count="true" data-show-screen-name="false">Follow @FilmBundle</a>
           <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           </div>
+	  </li>
+	  <li class='tubeli'>
+		  <script src="https://apis.google.com/js/plusone.js"></script>
+
+		  <div class="g-ytsubscribe" data-channel="filmbundle" data-layout="default"></div>
+	  </li>
+  </ul>
         </div>
+        <?php
+		 if (is_user_logged_in()) { ?>
+		<div class="littlesocial hiddenthing">
+			<a href="<?php echo site_url(); ?>/watch"><i style="font-size:1.3em; display:none;vertical-align:middle"class="icon-film"></i></a> 
+		</div>
+		<?php } ?>
+		
         <nav id="navigation" role="navigation">
             <?php
 			 if (is_user_logged_in()) {
@@ -261,9 +303,9 @@ jQuery(document).ready(function($) {
 			<a href="<?php home_url(); ?>"><p class="logotext">Film<span>Bundle</span></p></a>
             <?php
 			 if (is_user_logged_in()) {
-              if(has_nav_menu('loggedin-menu')){
+              if(has_nav_menu('loggedinslider-menu')){
                 wp_nav_menu(array(
-                  'theme_location' => 'loggedin-menu',
+                  'theme_location' => 'loggedinslider-menu',
                   'container' => 'div',
                   'container_id' => 'sliding-nav',
                   'container_class' => 'sliding-menu',
@@ -271,9 +313,9 @@ jQuery(document).ready(function($) {
               }
 		  }
 		  else {
-              if(has_nav_menu('loggedout-menu')){
+              if(has_nav_menu('loggedoutslider-menu')){
                 wp_nav_menu(array(
-                  'theme_location' => 'loggedout-menu',
+                  'theme_location' => 'loggedoutslider-menu',
                   'container' => 'div',
                   'container_id' => 'sliding-nav',
                   'container_class' => 'sliding-menu',
@@ -332,26 +374,15 @@ jQuery(document).ready(function($) {
 
 jQuery(window).bind('scroll', function(){
 	if(jQuery(window).width() > 600) {
-if(jQuery(this).scrollTop() >= 80) {
+if(jQuery(this).scrollTop() >= 60) {
 jQuery("#slidingheader").fadeIn(450);
 }
-if(jQuery(this).scrollTop() < 80) {
+if(jQuery(this).scrollTop() < 60) {
 jQuery("#slidingheader").fadeOut(450);
 }
 } 
 });
-jQuery(window).resize(function(){
-	if(jQuery(window).width() <= 600) {
-		jQuery("#slidingheader").show();
-		
-	}
-	else {
-		if(jQuery(this).scrollTop() < 80) {
-		jQuery("#slidingheader").fadeOut(450);
-		}
-		
-	}
-});
+
 </script>
 <?php stag_header_after(); ?>
 
