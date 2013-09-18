@@ -663,7 +663,7 @@ margin-right:0px;
 	.playbutton span {
 		margin-left: 25px;
 		position: absolute;
-		bottom: 50px;
+		bottom: 0px;
 		line-height: 1.2em;
 	}
 

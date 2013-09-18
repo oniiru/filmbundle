@@ -127,6 +127,7 @@ display: inline-block;
 	padding: 17px 20px;
 	vertical-align: top;
 	margin-top: 12px;
+	border-radius:2px;
 }
 .pwyw-countdown .remaining {
     font-size: 16px;
@@ -185,6 +186,7 @@ text-shadow: 1px 1px #292929;
 .pwyw-bundle-info,
 .pwyw-charity-info {
     display: none;
+	text-align:left;
 }
 .pwyw-nav-header {
     z-index: 100;
