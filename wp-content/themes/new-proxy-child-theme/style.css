@@ -365,7 +365,11 @@ ul.sub-menu {
 	box-shadow: -1px 0px 0px #000000, 1px 0 0 #3a3a3a;
 	border-right: 1px solid #000;
 }
-
+#primary-nav li.sfHover > a, #primary-nav li.current-menu-item > a, #primary-nav li.active > a {
+	background:transparent !important;
+	
+}
+	
 .littlelogin {
 	height: 100%;
 	padding: 15px 22px;
@@ -382,6 +386,7 @@ ul.sub-menu {
 	font-family: 'museo300', sans-serif;
 	color: rgb(235, 235, 235);
 	font-size: 20px;
+	cursor:pointer;
 }
 
 .littlelogin:hover h3 a {
@@ -394,7 +399,10 @@ ul.sub-menu {
 	margin-top: 15px;
 	margin-left: -22px;
 	background: #2b2b2b;
+	z-index:10000;
+	
 }
+
 
 .littlelogin:hover ul {
 	display:block;
@@ -406,6 +414,7 @@ ul.sub-menu {
 	margin-top: 15px;
 	margin-left: -16px;
 	background:#2b2b2b;
+	z-index:10000;
 }
 .littlelogin ul li{
 	padding: 12px 64px 8px 27px;
@@ -473,7 +482,7 @@ ul li:hover ul.sub-menu {
 display:block;
 position:absolute;
 margin-top:0px;
-z-index: 1000;
+z-index: 1000;	
 }
 
 .littlelogo {

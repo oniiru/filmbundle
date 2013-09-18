@@ -116,10 +116,10 @@
             <p>Choose how much the bundle is worth to you.</p>
             <p>
                 <div class="pwyw-amount btn-group" data-toggle="buttons-radio">
-                    <button type="button" value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn btn-info active">$<?=$bundle['bundle']->suggested_val_1; ?></button>
-                    <button type="button" value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_2; ?></button>
-                    <button type="button" value="<?=$bundle['bundle']->suggested_val_3; ?>" class="btn btn-info">$<?=$bundle['bundle']->suggested_val_3; ?></button>
-                    <button type="button" id="custom_price" value="<?=$bundle['bundle']->pwyw_val; ?>" class=" btn btn-info">Custom</button>
+                    <button type="button" value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn active">$<?=$bundle['bundle']->suggested_val_1; ?></button>
+                    <button type="button" value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn ">$<?=$bundle['bundle']->suggested_val_2; ?></button>
+                    <button type="button" value="<?=$bundle['bundle']->suggested_val_3; ?>" class="btn ">$<?=$bundle['bundle']->suggested_val_3; ?></button>
+                    <button type="button" id="custom_price" value="<?=$bundle['bundle']->pwyw_val; ?>" class=" btn">Custom</button>
                 </div>
 
                 <div class="input-prepend customshow">
@@ -184,7 +184,7 @@
                     ?>
                         <a
                             data-id='#dive-<?php echo $titleLow; ?>'
-                            class="btn btn-info dive-deeper"
+                            class="dive-deeper"
                             type="button"
                             data-toggle="tooltip"
                             data-title="<?php echo $tooltip; ?>"
@@ -253,12 +253,12 @@
         || Checkout Button
         ==================================================================== -->
 
-        <li>
-            <p>
+        <li class="nocount">
+            <!-- <p>
                 Checkout and claim your films!
-            </p>
+            </p> -->
 
-            <div class='pwyw-select-payment pwyw-clearfix'>
+            <div style="display:none" class='pwyw-select-payment pwyw-clearfix'>
                 <div class='pwyw-gateways'>
                 <?php
                 // List available gateways
@@ -277,13 +277,14 @@
                     edd_show_payment_icons();
                 ?>
             </div>
-
-            <button name='bundle_checkout' type='submit' value='checkout' class='btn btn-large btn-info'>Checkout</button>
+			<div class="nomove">
+            <button name='bundle_checkout' type='submit' value='checkout' class='checkoutbutton'>Checkout</button>
             <input type="hidden" name="bundleCheckout" value="1" />
             <input type="hidden" name="download_id" value="0" />
             <input type="hidden" name="bid" value="<?php echo $bundle['bundle']->id; ?>" />
             <input type="hidden" name="average_price" value="0" />
             <input type="hidden" name="total_amount" value="<?php echo $bundle['bundle']->suggested_val_1; ?>" />
+		</div>
         </li>
     </ol>
     </form>

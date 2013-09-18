@@ -1,31 +1,137 @@
 .pwyw-bundle {
+	text-align:center;
+	
 }
 .pwyw-purchase {
     width: 1000px;
-    margin: 20px auto 40px auto;
+    margin: 20px auto 70px auto;
     text-align: center;
 }
-.pwyw-purchase a {
-    margin-right: 40px;
-    margin-top: 40px;
-    width: 260px;
-    height: 50px;
-    font-size: 30px;
-    line-height: 25px;
+.widgetbutton{
+
+border-radius: 5px;
+padding: 10px 40px;
+background: #e74c3c;
+color: white;
+border-bottom: 3px solid #91291E;
+font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+cursor:pointer;
+font-size:23px;
+margin-top: 20px;
+display: inline-block;
 }
+
+.widgetbutton:hover {
+	border-bottom:1px solid #91291E;
+	position:relative;
+	top:2px;
+	color:white;
+	text-decoration:none;
+}
+
+.checkoutbutton{
+
+border-radius: 5px;
+padding: 10px 30px;
+background-color: #1abc9c !important;
+color: white;
+border-bottom: 3px solid #16a085;
+font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+cursor:pointer;
+font-size:23px;
+display: inline-block;
+margin-bottom:5px;
+}
+.nomove {
+	height:50px;
+}
+.checkoutbutton:hover {
+	border-bottom:1px solid #16a085;
+	position:relative;
+	background-color: #1abc9c !important;
+	
+	top:2px;
+	color:white;
+	text-decoration:none;
+	margin-bottom:7px;
+}
+
+.btn-group .btn {
+	background-color:#1c93c5 !important;
+	background-image:none !important;
+	
+	color: white !important;
+	text-shadow: none !important;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	padding: 10px 15px;
+	font-size:17px;
+	font-weight:bold;
+	
+}
+li.nocount:before {
+	content:none !important;
+}
+
+.btn-group > .btn:first-child {
+	margin-left: 0;
+	-webkit-border-bottom-left-radius: 2px;
+	border-bottom-left-radius: 2px;
+	-webkit-border-top-left-radius: 2px;
+	border-top-left-radius: 2px;
+	-moz-border-radius-bottomleft: 2px;
+	-moz-border-radius-topleft: 2px;
+}
+
+	.btn-group > .btn:last-child, .btn-group > .dropdown-toggle {
+	-webkit-border-top-right-radius: 2px;
+	border-top-right-radius: 2px;
+	-webkit-border-bottom-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+	-moz-border-radius-topright: 2px;
+	-moz-border-radius-bottomright: 2px;
+	}
+
+.btn-group .btn.active {
+	background-color:#156A8D !important;
+}
+.dive-deeper{
+
+border-radius: 2px;
+padding: 5px 10px 6px;
+background-color: #1c93c5;
+color: white;
+cursor:pointer;
+display: inline-block;
+}
+
+.dive-deeper:hover {
+	background-color: #1c93c5;
+	color:white;
+	text-decoration:none;
+}
+
 .pwyw-countdown {
-    margin-left: 40px;
-    display: inline-block;
-    width: 300px;
-    height: 85px;
-    background-color: rgba(0,0,0,0.4);
-    color: #fff;
-    text-align: right;
-    padding: 10px 20px;
+	margin-left: 40px;
+	display: inline-block;
+	width: 283px;
+	height: 69px;
+	background-color: rgba(0,0,0,0.4);
+	color: #fff;
+	text-align: right;
+	padding: 17px 20px;
+	vertical-align: top;
+	margin-top: 12px;
 }
 .pwyw-countdown .remaining {
     font-size: 16px;
     font-weight: bold;
+	line-height:.6em;
 }
 
 /** ----------------------------------------------------------------------------
@@ -37,14 +143,19 @@
 }
 .pwyw-bundle h2 {
     text-align: center;
-    font-size: 32px;
+    font-size: 38px;
     color: #fff;
+	margin-top:40px;
+	text-shadow: 1px 1px #292929;
+	line-height:1em;
 }
 .pwyw-bundle .description {
     text-align: center;
     display: block;
     margin: 0 0 16px 0;
     color: #fff;
+	font-size:21px;
+text-shadow: 1px 1px #292929;
 }
 .pwyw-bundle-show {
     cursor: pointer;
@@ -93,7 +204,7 @@
     width: 100px;
     cursor: pointer;
     z-index: 200;
-    background: url('../images/nav-arrow-left.png') no-repeat;
+    background: url('../images/slider-left-arrow.png') no-repeat;
     background-position: 0px 6px;
     width: 30px;
     height: 90px;
@@ -107,7 +218,7 @@
     text-align: right;
     cursor: pointer;
     z-index: 200;
-    background: url('../images/nav-arrow-right.png') no-repeat;
+    background: url('../images/slider-right-arrow.png') no-repeat;
     background-position: 0px 6px;
     width: 30px;
     height: 90px;
@@ -318,40 +429,61 @@
  * -------------------------------------------------------------------------- */
 .pwyw-bundle-footer {
     width: 1000px;
-    margin: 0 auto 24px auto;
+    margin: 30px auto 24px auto;
+	display: inline-block;
+	
 }
 .pwyw-bundle-footer .charities {
     float: left;
 }
 .pwyw-bundle-footer .charities img {
-    width: 150px;
+    width: 185px;
     vertical-align: middle;
-    margin: 0 24px 0 0;
+    margin: 0 15px 0 15px;
     cursor: pointer;
 }
+
+.charities h3 {
+	font-size:33px;
+	text-align:left;
+	margin-left:15px;
+	line-height: 1em;
+	margin-top: 25px;
+}
+
+.charities p {
+	text-align:left;
+	margin-left:15px;
+	font-size:16px;
+	font-family:'museo500', sans-serif;
+}
 .pwyw-bundle-footer .films {
-    float: right;
-    background: url('../images/shelf-small.png') no-repeat;
-    width: 300px;
-    height: 180px;
-    background-size: 300px 108px;
-    background-position: 0 60px;
-    padding-left: 40px;
+
+	float: right;
+	background: url('../images/shelf-small.png') no-repeat;
+	width: 500px;
+	height: 316px;
+	background-size: 100%;
+	background-position: 0 140px;
+	padding-left: 0px;
 }
 .pwyw-bundle-footer .films img {
-    height: 110px;
-    margin: 0 0 0 24px;
+    height: 225px;
+    margin: 0 15px 0 15px;
 }
 .pwyw-bundle-footer .films .pay-more-text {
-    font-size: 9px;
-    text-align: center;
-    color: #fff;
-    margin-top: 4px;
-    margin-left: 5px;
-    width: 110px;
+	font-size: 13px;
+	text-align: center;
+	color: #fff;
+	margin-top: 16px;
+	margin-left: 84px;
+	width: 168px;
+	line-height: 1.35em;
+	font-family: 'museo700';
+	
 }
 .pwyw-bundle-footer .films .pay-more-text .pwyw-average-amount {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 /** ----------------------------------------------------------------------------
@@ -422,13 +554,13 @@
 
 .pwyw-digit {
     float: left;
-    font-size: 32px;
+    font-size: 27px;
     font-weight: bold;
 }
 
 .pwyw-dash .pwyw-dash_title {
     float: right;
-    font-size: 20px;
+    font-size: 17px;
     color: #fff;
     position: relative;
     top: 12px;
