@@ -137,6 +137,8 @@ add_filter('wp_title', 'stag_wp_title');
 function register_menu() {
   register_nav_menu('loggedin-menu', __('Logged In', 'stag'));
   register_nav_menu('loggedout-menu', __('Logged Out', 'stag'));
+  register_nav_menu('loggedoutslider-menu', __('Logged Out Slider', 'stag'));
+  register_nav_menu('loggedinslider-menu', __('Logged In Slider', 'stag'));
   
 }
 add_action('init', 'register_menu');

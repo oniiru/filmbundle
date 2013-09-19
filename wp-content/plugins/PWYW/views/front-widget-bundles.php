@@ -1,11 +1,11 @@
 <div class='pwyw-bundle'>
     <div class='presentation pwyw-clearfix'>
-        <h2><?php echo $bundle->title; ?></h2>
+        <h2>The <?php echo $bundle->title; ?> Bundle</h2>
         <p class='description'>
             <?php echo $bundle->description; ?>
         </p>
         <div class='pwyw-purchase'>
-            <a id='pwyw-purchase-button' class='btn btn-large btn-success'>Purchase</a>
+            <a id='pwyw-purchase-button' class='widgetbutton'>Purchase</a>
             <div class='pwyw-countdown'>
                 <div class='remaining'>Time Remaining</div>
                 <?php
@@ -115,6 +115,8 @@
 
     <div class='pwyw-bundle-footer pwyw-clearfix'>
         <div class='charities'>
+			<h3>The Charities</h3>
+			<p>This bundle supports these awesome charities. </p>
             <?php
             // Build the row of charity logos
             foreach ($bundle->charities as $charity) {

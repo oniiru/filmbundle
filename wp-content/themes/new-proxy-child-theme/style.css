@@ -185,6 +185,7 @@ html {overflow-x:inherit;}
 }
 .header-inner, .inner-section {
 	max-width:1105px;
+	padding:0 35px;
 }
 .socialprogtext p {
 	font-size: 10px;
@@ -343,10 +344,11 @@ padding:0px 0px !important;
 
 
 ul.sub-menu {
-	display:none;
+	display: none;
 	background: #27292b;
-	padding: 12px 32px 10px 32px;
-	margin-left: -25px;
+	padding: 12px 15px 10px 30px;
+	margin-left: -41px;
+	text-align: right;
 	
 }
 .sliding-menu ul li ul.sub-menu li {
@@ -356,12 +358,133 @@ ul.sub-menu {
 
 	
 }
+.littlesocial {
+	border-left: 1px solid #3A3A3A;
+	height: 100%;
+	padding: 15px;
+	box-shadow: -1px 0px 0px #000000, 1px 0 0 #3a3a3a;
+	border-right: 1px solid #000;
+}
+#primary-nav li.sfHover > a, #primary-nav li.current-menu-item > a, #primary-nav li.active > a {
+	background:transparent !important;
+	
+}
+	
+.littlelogin {
+	height: 100%;
+	padding: 15px 22px;
+	box-shadow:1px 0 0 #3a3a3a;
+	border-right: 1px solid #000;
+	float:right;
+}
+
+
+#primary-nav ul {
+	float:left;
+}
+.littlesocial h3, .littlelogin h3 a, .littlelogin h3{
+	font-family: 'museo300', sans-serif;
+	color: rgb(235, 235, 235);
+	font-size: 20px;
+	cursor:pointer;
+}
+
+.littlelogin:hover h3 a {
+	text-decoration:none !important;
+	color:#1c93c5 !important;
+}
+.littlelogin ul {
+	display: none;
+	position: absolute;
+	margin-top: 15px;
+	margin-left: -22px;
+	background: #2b2b2b;
+	z-index:10000;
+	
+}
+
+
+.littlelogin:hover ul {
+	display:block;
+}
+
+.littlesocial ul {
+	display:none;
+	position:absolute;
+	margin-top: 15px;
+	margin-left: -16px;
+	background:#2b2b2b;
+	z-index:10000;
+}
+.littlelogin ul li{
+	padding: 12px 64px 8px 27px;
+	border-bottom: 1px solid #474646;
+	font-family:'museo300', sans-serif;
+}
+#primary-nav  ul li{
+	height: 100%;
+	padding: 15px 22px;
+	box-shadow:1px 0 0 #3a3a3a;
+	border-right: 1px solid #000;
+	
+}
+#primary-nav  ul li{
+	height: 100%;
+	padding: 18px 22px;
+	box-shadow:1px 0 0 #3a3a3a;
+	border-right: 1px solid #000;
+	margin-left:0px;
+}
+
+#primary-nav  ul {
+	box-shadow:-1px 0 0 #000;
+	border-left: 1px solid #3a3a3a;
+	margin-left:20px;
+	
+}
+#primary-nav li a {
+	padding:0px;
+	font-size:20px;
+	font-family:'museo300', sans-serif;
+	color:rgb(235, 235, 235);
+	
+}
+#primary-nav li a:hover {
+	background-color:transparent !important	;
+	color:#1c93c5;
+	
+}
+.littlelogin ul li a:hover {
+	color:#1c93c5 !important;
+}
+.littlesocial ul li{
+	padding: 12px 10px 8px;
+	border-bottom: 1px solid #474646;
+}
+.littlesocial:hover ul {
+	display:block;
+}
+li.twitli:hover {
+	background:#46c0fb;
+	padding-left:20px;
+	padding-right:0px;
+}
+li.faceli:hover {
+	background:#4863ae;
+	padding-left:20px;
+}
+li.tubeli:hover {
+	background:#830303;
+	padding-left:20px;
+}
+
 ul li:hover ul.sub-menu {
 display:block;
 position:absolute;
 margin-top:0px;
-
+z-index: 1000;	
 }
+
 .littlelogo {
 	position: absolute	;
 	z-index: 1000;
@@ -369,9 +492,10 @@ margin-top:0px;
 }
 .homelogo {
 	border-radius: 90px !important;
-	border: 2px solid white;
+	border: 1px solid white;
 	padding: 2px;
-	width: 50px;
+	width: 40px;
+	margin-top:8px;
 	}
 	.thepitch .pwyw-seconds_dash{
 		display:none;
@@ -483,7 +607,7 @@ padding: 0px;vertical-align: top;
 input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea { background: #f8f8f8; width: 100%; padding: 15px 20px 15px 10px; font-size: 14px; border: 1px solid rgb(180, 180, 180); -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
 
 #header {
-	padding:15px 0;
+	padding: 0;
 	position:static;
 }
 
@@ -539,7 +663,7 @@ margin-right:0px;
 	.playbutton span {
 		margin-left: 25px;
 		position: absolute;
-		bottom: 50px;
+		bottom: 0px;
 		line-height: 1.2em;
 	}
 
@@ -1383,8 +1507,7 @@ margin-left: 10px;
 }
 .littlesocial {
 	float:right;
-	margin-top: 13px;
-	margin-left: 20px;
+	margin-top: 0px;
 }
 
 /**
@@ -1392,33 +1515,14 @@ margin-left: 10px;
  */
 @media screen and (max-width: 992px) {
 	.littlesocial {
-		float: none;
-		text-align: right;
-		margin-top: 16px;
-		margin-right: 60px;
+		
 	}
 	#mobile-nav {
 		top:15px !important;
 	}
-
+#primary-nav > ul {
+display:inherit !important;	
 }
-@media screen and (max-width: 420px) {
-	.littlesocial {
-		position: absolute;
-		top: 0;
-		right: 30px;
-		text-align: right;
-		margin: 0;
-		padding: 0;
-	}
-	.fb_edge_widget_with_comment {
-		margin-right:3px !important;
-	}
-
-	#mobile-nav {
-		top: 25px !important;
-		right: 31px;
-	}
 }
 
 
@@ -1606,9 +1710,11 @@ margin-top:0px;
 
 #logo {
 	height:50px;
-	margin-left:55px;
+	margin-left:42px;margin-top:6px;
 }
-
+#logo img {
+	height:45px;}
+	
 .registerheader {
 	text-align:center;
 	padding: 15px 0px 0px;
@@ -2365,7 +2471,16 @@ a.hiddenanchor{
 	width: 100%;
 	height: 195px;
 }
+.hiddenthing {
+	display:none;
+	border-right:none !important;
+	box-shadow:-1px 0px 0px #000000 !important;
+}
 
+.hiddenli {
+	display:none;
+	width:100%;
+}
 .iosSliderfilm {
 	width: 100%;
 	height: 420px;
@@ -3053,9 +3168,32 @@ margin-bottom: 85px;
 .thenext, .theprev {
 	display:none;
 }
+.icon-twitter, .icon-cog, .icon-film, .icon-user {
+	display:inline-block !important;
+}
+.littlelogin h3, .littlesocial h3 {
+	display:none;}
 
-
-
+	.littlesocial, .littlelogin {
+		padding:18px;
+	}
+	.hiddenthing, .hiddenli {
+		display:inline-block;
+	}
+	
+	#primary-nav {
+		display:none;
+	}
+	.littlesocial ul {
+		margin-left:-140px !important;
+	}
+	.littlelogin ul {
+		margin-top: 18px;
+		margin-left: -76px;
+	}
+	.littlelogin ul li {
+	padding: 12px 18px 8px 40px;
+}
 }
 @media screen and (max-width: 700px) {
  .footer .grids [class*="grid-"] {
@@ -3283,12 +3421,9 @@ margin-top: 8px;
 	.socialprogtext {
 		text-align:left;
 	}
-	#header {
-		display:none;
-	}
+	
 	#slidingheader {
-		display:inherit;
-		position:absolute;
+		display:none;
 	}
 	.slidingheader-inner {
 		padding:0 10px;
@@ -3300,7 +3435,7 @@ margin-left: -34px;
 text-align: right;
 }
 
-
+}
 
 
 /**
@@ -3490,9 +3625,7 @@ margin:0px !important; }
 .bigstatsbox {
 	width:90% !important;
 }
-iframe.twitter-follow-button {
-	display:none;
-}
+
 .fb_edge_widget_with_comment {margin-right:0px !important;
 }
 .littlesocial {

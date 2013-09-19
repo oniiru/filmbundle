@@ -11,64 +11,6 @@ jQuery(document).ready(function($){
         }
     })();
 
-    /*------------------------------------------------------------------------------*/
-    /* Mobile Navigation Setup
-    /*------------------------------------------------------------------------------*/
-    var mobileNav = $('#primary-nav').clone().attr('id', 'mobile-primary-nav');
-
-    $('#primary-nav ul').supersubs({
-        minWidth: 10,
-        maxWidth: 27,
-        extraWidth: 1
-    }).superfish({
-        delay: 100,
-        animation: {opacity:'show', height:'show'},
-        speed: 'fast',
-        autoArrows: false,
-        dropShadows: false
-    });
-
-    function stag_mobilemenu(){
-        "use strict";
-        var windowWidth = $(window).width();
-        if( windowWidth <= 992 ) {
-            if( !$('#mobile-nav').length ) {
-                $('<a id="mobile-nav" href="#mobile-primary-nav" />').prependTo('#navigation');
-                mobileNav.insertAfter('#mobile-nav').wrap('<div id="mobile-primary-nav-wrap" />');
-                mobile_responder();
-            }
-        }else{
-            mobileNav.css('display', 'none');
-        }
-    }
-    stag_mobilemenu();
-
-    function mobile_responder(){
-        $('#mobile-nav').click(function(e) {
-            if( $('body').hasClass('ie8') ) {
-                var mobileMenu = $('#mobile-primary-nav');
-                if( mobileMenu.css('display') === 'block' ) {
-                    mobileMenu.css({
-                        'display' : 'none'
-                    });
-                } else {
-                    mobileMenu.css({
-                        'display' : 'block',
-                        'height' : 'auto',
-                        'z-index' : 999,
-                        'position' : 'absolute'
-                    });
-                }
-            } else {
-                $('#mobile-primary-nav').stop().slideToggle(500);
-            }
-            e.preventDefault();
-        });
-    }
-
-    $(window).resize(function() {
-        stag_mobilemenu();
-    });
 
     /*------------------------------------------------------------------------------*/
     /* Better fallback for input[placeholder]
