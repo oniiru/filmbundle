@@ -315,6 +315,13 @@ jQuery(document).ready(function($) {
             return false;
         }
 
+        return validateCreateAccount();
+
+    });
+
+
+    function validateCreateAccount()
+    {
         // See if we have create account fields.
         if ($('[name="email"]').length > 0) {
             // We have, so make sure they are not empty
@@ -335,7 +342,8 @@ jQuery(document).ready(function($) {
             }
         }
         return true;
-    });
+    }
+
 
 
     // PayPal Digital Good Handling
@@ -345,6 +353,10 @@ jQuery(document).ready(function($) {
         if ($('input[name=edd-gateway]:checked').val() == 'paypal_digital') {
 
             if ( !allowSubmit ) {
+                if (!validateCreateAccount()) {
+                    return false;
+                }
+
                 e.preventDefault();
 
                 var form = jQuery(this);
