@@ -406,8 +406,9 @@ jQuery(document).ready(function($) {
         }
 
         // Prepare variables
-        avg_price = parseFloat(avg_price);
-        min_amount = parseFloat(min_amount);
+        avg_price = parseFloat(avg_price).toFixed(2);
+        min_amount = parseFloat(min_amount).toFixed(2);
+        amount = parseFloat(amount);
 
         var top_count = 10;
         if(typeof(bundle.top)!='undefined'){
@@ -419,17 +420,19 @@ jQuery(document).ready(function($) {
             if(amount>avg_price){
                $('.lowpaymentwarning:visible').hide();
             }
+
             $('.nozero:visible').hide();
             $('.alertboxes .no-amount').hide();
         }
 
-        if((amount < avg_price)&& (amount > 0.00)){
+        if ((amount <= avg_price) && (amount > 0)) {
             difference = number_format(avg_price - amount + 0.01,2);
             $('#difference').html(difference);
             $('.lowpaymentwarning:hidden').fadeIn('slow');
             if((top_count==10&&amount<=min_amount)){
                 $('.leaderboardinput:visible').hide();
             }
+
             $('.nozero:visible').hide()
             $('.alertboxes .no-amount').hide();
         }
@@ -437,8 +440,8 @@ jQuery(document).ready(function($) {
         if(amount < 0.01) {
             $('.leaderboardinput:visible').hide();
             $('.lowpaymentwarning:visible').hide();
-            $('.nozero:hidden').fadeIn('slow');
             $('.alertboxes .no-amount').hide();
+            $('.nozero:hidden').fadeIn('slow');
         }
     }
 
