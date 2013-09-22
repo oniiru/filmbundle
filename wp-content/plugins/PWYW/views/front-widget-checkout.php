@@ -150,6 +150,10 @@
                 <div class="nozero alert alert-error" style="display:none">
                     We're all about paying what you want, but we've got to draw the line somewhere. Please pay at least $0.01. :)
                 </div>
+
+                <div class="no-amount alert alert-error" style="display:none">
+                    Please choose what you want to pay for the bundle first :)
+                </div>
             </div>
         </li>
 

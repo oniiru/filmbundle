@@ -23,8 +23,6 @@ jQuery(document).ready(function($) {
     pubnub.subscribe({
         channel : pubnub_channel,
         message : function(m){
-            // console.log(m);
-
             /** Update Global Variables */
             avg_price = parseFloat(m.averagePrice);
             min_amount = parseFloat(m.minAmount);
@@ -397,8 +395,14 @@ jQuery(document).ready(function($) {
     // -------------------------------------------------------------------------
     function handleAlerts(amount)
     {
-        if(amount == null){
-            amount = parseFloat($('.custompricefield').val());
+        // Check if no amount all has been selected
+        if (amount == 0 && $('.pwyw-amount button.active').val() == undefined) {
+            $('.leaderboardinput:visible').hide();
+            $('.lowpaymentwarning:visible').hide();
+            $('.nozero:visible').hide();
+
+            $('.no-amount:hidden').fadeIn('slow');
+            return;
         }
 
         // Prepare variables
@@ -416,6 +420,7 @@ jQuery(document).ready(function($) {
                $('.lowpaymentwarning:visible').hide();
             }
             $('.nozero:visible').hide();
+            $('.alertboxes .no-amount').hide();
         }
 
         if((amount < avg_price)&& (amount > 0.00)){
@@ -426,12 +431,14 @@ jQuery(document).ready(function($) {
                 $('.leaderboardinput:visible').hide();
             }
             $('.nozero:visible').hide()
+            $('.alertboxes .no-amount').hide();
         }
 
         if(amount < 0.01) {
             $('.leaderboardinput:visible').hide();
             $('.lowpaymentwarning:visible').hide();
             $('.nozero:hidden').fadeIn('slow');
+            $('.alertboxes .no-amount').hide();
         }
     }
 
