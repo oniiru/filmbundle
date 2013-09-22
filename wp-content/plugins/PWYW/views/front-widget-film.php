@@ -79,8 +79,7 @@
         <?php
         foreach ($film->features as $feature) { ?>
             <div class='pwyw-special-feature'>
-                <div class='special-feature pwyw-clearfix'>
-                    <img src='<?php echo $feature->image; ?>' />
+                <div style="background-image:url('<?php echo $feature->image; ?>')" class='special-feature pwyw-clearfix'>
                     <div class='title'><?php echo $feature->title; ?></div>
                     <div class='subtitle'><?php echo $feature->subtitle; ?></div>
                     <div class='runtime'>Runtime: <?php echo $feature->runtime; ?></div>
