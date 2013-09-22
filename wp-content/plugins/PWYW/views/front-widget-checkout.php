@@ -116,9 +116,9 @@
             <p>Choose how much the bundle is worth to you.</p>
             <p>
                 <div class="pwyw-amount btn-group" data-toggle="buttons-radio">
-                    <button type="button" value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn active">$<?=$bundle['bundle']->suggested_val_1; ?></button>
-                    <button type="button" value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn ">$<?=$bundle['bundle']->suggested_val_2; ?></button>
-                    <button type="button" value="<?=$bundle['bundle']->suggested_val_3; ?>" class="btn ">$<?=$bundle['bundle']->suggested_val_3; ?></button>
+                    <button type="button" value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn">$<?=$bundle['bundle']->suggested_val_1; ?></button>
+                    <button type="button" value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn">$<?=$bundle['bundle']->suggested_val_2; ?></button>
+                    <button type="button" value="<?=$bundle['bundle']->suggested_val_3; ?>" class="btn">$<?=$bundle['bundle']->suggested_val_3; ?></button>
                     <button type="button" id="custom_price" value="<?=$bundle['bundle']->pwyw_val; ?>" class=" btn">Custom</button>
                 </div>
 
@@ -283,7 +283,7 @@
             <input type="hidden" name="download_id" value="0" />
             <input type="hidden" name="bid" value="<?php echo $bundle['bundle']->id; ?>" />
             <input type="hidden" name="average_price" value="0" />
-            <input type="hidden" name="total_amount" value="<?php echo $bundle['bundle']->suggested_val_1; ?>" />
+            <input type="hidden" name="total_amount" value="0" />
 		</div>
         </li>
     </ol>

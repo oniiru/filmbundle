@@ -244,8 +244,7 @@ jQuery(document).ready(function($) {
     }
 
     // Set initial amount
-    var total_amount = $('.pwyw-amount button').first().val();
-    total_amount = Math.floor(total_amount);
+    var total_amount = 0;
 
     setSliderHandlers('linked3', 'percent', 'amount');
     setSliderHandlers('sub_charities', 'charities_percent', 'charities_amount');
@@ -267,9 +266,6 @@ jQuery(document).ready(function($) {
 
     // Set initial average price
     $('[name="average_price"]').val(parseFloat(avg_price).toFixed(2));
-
-    // Initial amount, might be eligable to have an alert displayed.
-    handleAlerts(total_amount);
 
 
     // Keyboard handling
@@ -307,6 +303,7 @@ jQuery(document).ready(function($) {
 
         // Check so we don't have 0 amount
         if (parseFloat(amount) == 0) {
+            handleAlerts(amount);
             $('html, body').animate({
                 scrollTop: $('.pwyw-checkout').offset().top - 80
             }, 'slow', easing, function() {
@@ -354,6 +351,12 @@ jQuery(document).ready(function($) {
 
             if ( !allowSubmit ) {
                 if (!validateCreateAccount()) {
+                    return false;
+                }
+
+                // Check so we didn't have a 0 amount
+                var amount = $('[name="total_amount"]').val();
+                if (parseFloat(amount) == 0) {
                     return false;
                 }
 
