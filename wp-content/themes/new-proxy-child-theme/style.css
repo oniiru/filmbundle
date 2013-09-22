@@ -376,6 +376,7 @@ ul.sub-menu {
 	box-shadow:1px 0 0 #3a3a3a;
 	border-right: 1px solid #000;
 	float:right;
+	min-width:103px !important;
 }
 
 
