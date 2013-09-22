@@ -16,29 +16,28 @@
 
             <div class='right'>
                 <div class='logline'><?php echo $film->logline; ?></div>
-                <br/>
-                Genre(s): <span class='genre'><?php echo $film->genre; ?></span> 
-                | Runtime: <span class='runtime'><?php echo $film->runtime; ?></span>
                 <hr/>
-                Director: <span class='director'><?php echo $film->director; ?></span><br/>
-                Writer(s): <span class='writers'><?php echo $film->writers; ?></span><br/>
-                Stars: <span class='stars'><?php echo $film->stars; ?></span><br/>
-                <a href='<?php echo $film->website; ?>' class='website'>Website</a>
+				<div class="bottomfilmdeets">
+					<p style="font-family:'museo300', sans-serif">Genre(s): <span class='genre'><?php echo $film->genre; ?></span> 
+                | Runtime: <span class='runtime'><?php echo $film->runtime; ?></span></p>
+            <p>    Director: <span class='director'><?php echo $film->director; ?></span></p>
+           <p style="font-family:'museo300', sans-serif">     Writer(s): <span class='writers'><?php echo $film->writers; ?></span></p>
+             <p>   Stars: <span class='stars'><?php echo $film->stars; ?></span></p>
+            <p>    <a href='<?php echo $film->website; ?>' target="_blank" class='website'>Website</a></p>
+			</div>
             </div>
         </div>
 
-        <div class='pwyw-note filmmaker pwyw-clearfix'>
-            <img src='<?php echo $film->filmmaker_image; ?>' />
+        <div style="background-image:url('<?php echo $film->filmmaker_image; ?>');" class='pwyw-note filmmaker pwyw-clearfix'>
             <span>A note from the filmmaker</span>
             <p class='filmmaker_note'><?php echo $film->filmmaker_note; ?></p>
-            <p class='filmmaker_name'><?php echo $film->filmmaker_name; ?></p>
+            <p class='filmmaker_name'>- <?php echo $film->filmmaker_name; ?></p>
         </div>
 
-        <div class='pwyw-note curator pwyw-clearfix'>
-            <img src='<?php echo $film->curator_image; ?>' />
+        <div style="background-image:url('<?php echo $film->curator_image; ?>');" class='pwyw-note curator pwyw-clearfix'>
             <span>A note from the curator</span>
             <p class='curator_note'><?php echo $film->curator_note; ?></p>
-            <p class='curator_name'><?php echo $film->curator_name; ?></p>
+            <p class='curator_name'>- <?php echo $film->curator_name; ?></p>
         </div>
     </div>
 
@@ -51,7 +50,8 @@
             <div class='pwyw-review'>
                 <div class='review'>
                     <?php echo $review->review; ?>
-                    <a href='<?php echo $review->link; ?>'>Read the full review</a>
+                    <a target="_blank"href='<?php echo $review->link; ?>'>Read the full review...</a>
+					<div class="triangle"></div>
                 </div>
 
                 <div class='pwyw-review-author pwyw-clearfix'>
@@ -60,15 +60,11 @@
                         <div class='author'><?php echo $review->author; ?></div>
                         <div class='publication'><?php echo $review->publication; ?></div>
                     </div>
-                </div>
-
-
+                </div>	
             </div>
         <?php
             $ctr++;
-            if ($ctr % 2 == 0) {
-                echo '<div class="pwyw-clearfix"></div>';
-            }
+           
         }
         ?>
     </div>

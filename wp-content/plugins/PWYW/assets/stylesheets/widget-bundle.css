@@ -179,7 +179,7 @@ text-shadow: 1px 1px #292929;
     margin: -20px auto -75px auto;
 }
 
-
+	
 /** ----------------------------------------------------------------------------
  *  INFO HEADER
  * -------------------------------------------------------------------------- */
@@ -227,7 +227,42 @@ text-shadow: 1px 1px #292929;
     background-color: #fff;
     display: block;
 }
+.logline {
+	font-family:'museo500', sans-serif;
+	margin-top:10px;
+}
+.genrerun {
+	font-family:'museo300', sans-serif;
+}
 
+.pwyw-note span{
+	padding-top: 8px;
+	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	font-size: 11px;
+}
+.pwyw-note p {
+	font-family:'museo300', sans-serif;
+}
+.bottomfilmdeets {
+	font-family:'museo500', sans-serif;
+}
+
+.bottomfilmdeets p {
+	margin-bottom:7px;
+}
+.filmmaker {
+	border-left: 8px solid #0077a2;
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-size: contain;
+	
+}
+.curator {
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: right top;	
+	
+}
 .pwyw-tabs {
     margin: 0 100px;
     text-align: center;
@@ -238,7 +273,7 @@ text-shadow: 1px 1px #292929;
     width: 150px;
     display: inline-block;
     border: 1px solid #abacae;
-    border-radius: 5px;
+    border-radius: 2px;
     color: #abacae;
     cursor: pointer;
 }
@@ -303,7 +338,7 @@ text-shadow: 1px 1px #292929;
 .pwyw-dark-section .embed {
     float: left;
     width: 50%;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
     max-width: 50%
 }
 .pwyw-dark-section .right {
@@ -319,7 +354,6 @@ text-shadow: 1px 1px #292929;
 .pwyw-note {
     background-color: #3a3a3a;
     margin-bottom: 8px;
-    height: 75px;
 }
 .pwyw-note span {
     display: block;
@@ -331,11 +365,15 @@ text-shadow: 1px 1px #292929;
 .pwyw-dark-section .filmmaker {
     border-left: 8px solid #0077a2;
     padding-right: 20px;
+	padding-left:80px;
 }
 .pwyw-dark-section .curator {
     border-right: 8px solid #3cb879;
     padding-left: 20px;
+	padding-right:80px
 }
+
+
 .pwyw-dark-section .filmmaker img {
     float: left;
     margin-right: 20px;
@@ -363,14 +401,36 @@ text-shadow: 1px 1px #292929;
     display: none;
 }
 .pwyw-review {
-    float: left;
     width: 50%;
-    padding: 20px;
+    padding: 0 20px 40px;
+}
+
+.pwyw-review:nth-of-type(2n), .pwyw-review:nth-of-type(2n+1){
+    float: left;
+}
+
+.pwyw-review:nth-of-type(2n+2), .pwyw-review:nth-of-type(2n+3){
+    float: right	;
+}
+.pwyw-review .review a:hover {
+	color:#1c93c5;
+	text-decoration:none !important;
 }
 .pwyw-review .review {
     background-color: #3a3a3a;
     padding: 20px;
-    margin-bottom: 24px;
+    margin-bottom: 5px;
+	position:relative;
+}
+.triangle {
+	width: 0px;
+	height: 0px;
+	border-left: 0px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #3a3a3a;
+	position:absolute;
+	bottom: -20px;
+	right: 120px;
 }
 .pwyw-review .review a {
     display: block;

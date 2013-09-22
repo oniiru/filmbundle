@@ -186,7 +186,10 @@ position: relative;
 	font-size: 15px;
 	
 }
-
+input.custompricefield {
+	padding: 20px 10px 20px 10px !important;
+	min-width: 120px !important;
+}
 .pwyw-checkout-slider .add-on {
 	height:32px;
 	font-size: 15px;

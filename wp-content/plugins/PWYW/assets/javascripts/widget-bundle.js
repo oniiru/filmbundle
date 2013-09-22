@@ -38,7 +38,7 @@ jQuery(document).ready(function($) {
     // -------------------------------------------------------------------------
     $('#pwyw-purchase-button').click(function() {
         $('html, body').animate({
-            scrollTop: $('#pwyw-checkout-widget').offset().top - 80
+            scrollTop: $('#pwyw-checkout-widget hr').offset().top - 80
         }, 'slow', easing);
     });
 

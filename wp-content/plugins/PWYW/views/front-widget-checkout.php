@@ -20,27 +20,6 @@
 </script>
 <div id='pwyw-checkout-widget' class='pwyw-stats'>
     <div class='pwyw-stats-wrap'>
-
-        <!-- ===================================================================
-        || Display of generic statistics
-        ==================================================================== -->
-        <div class='pwyw-stats-section'>
-            <div class='pwyw-stats-title-section'>
-                <h3>The Stats</h3>
-            </div>
-        </div><div class='pwyw-stats-section'>
-            <span id='pwyw-total-sales' class='value'><?php echo $totalSales; ?></span>
-            Number of Purchases
-        </div><div class='pwyw-stats-section center'>
-            <span id='pwyw-average-price' class='value'><?php echo $averagePrice; ?></span>
-            Average Purchase
-        </div><div class='pwyw-stats-section right'>
-            <span id='pwyw-total-payments' class='value'><?php echo $totalPayments; ?></span>
-            Total Payments
-        </div>
-
-        <hr />
-
         <!-- ===================================================================
         || List of Top Contributors
         ==================================================================== -->
@@ -83,7 +62,28 @@
                 ?>
             </ol>
         </div>
+  <hr />
+        <!-- ===================================================================
+        || Display of generic statistics
+        ==================================================================== -->
+        <div class='pwyw-stats-section'>
+            <div class='pwyw-stats-title-section'>
+                <h3>The Stats</h3>
+            </div>
+        </div><div class='pwyw-stats-section'>
+            <span id='pwyw-total-sales' class='value'><?php echo $totalSales; ?></span>
+            Number of Purchases
+        </div><div class='pwyw-stats-section center'>
+            <span id='pwyw-average-price' class='value'><?php echo $averagePrice; ?></span>
+            Average Purchase
+        </div><div class='pwyw-stats-section right'>
+            <span id='pwyw-total-payments' class='value'><?php echo $totalPayments; ?></span>
+            Total Payments
+        </div>
 
+      
+
+   
     </div>
 </div>
 
