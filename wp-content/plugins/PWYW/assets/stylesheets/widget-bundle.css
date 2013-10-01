@@ -100,14 +100,6 @@ li.nocount:before {
 	-moz-border-radius-topleft: 5px;
 }
 
-.btn-group > .btn:first-child:hover {
-	border-left: none;
-}
-
-.btn-group > .btn:first-child:active {
-	border-left: none;
-}
-
 	.btn-group > .btn:last-child, .btn-group > .dropdown-toggle {
 	-webkit-border-top-right-radius: 5px;
 	border-top-right-radius: 5px;
