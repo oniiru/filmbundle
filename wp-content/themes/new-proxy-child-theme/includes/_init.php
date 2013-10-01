@@ -25,6 +25,8 @@ require_once('widgets/widget-service-box.php');
 require_once('widgets/widget-team.php');
 require_once('widgets/widget-twitter.php');
 require_once('widgets/widget-work.php');
+require_once('widgets/widget-slidetop.php');
+require_once('widgets/widget-facebook.php');
 
 /*--------------------------------------------------*/
 /* Include Custom Post Types

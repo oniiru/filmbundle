@@ -144,6 +144,7 @@
                 <span class='pwyw-average-amount'><?php echo $averagePrice; ?></span>
                 to get<br/>these bonus films too!
             </div>
+			<p class='specialtext'> You'll also get <span>special features</span> from each and every film.</p>
         </div>
     </div>
 </div>

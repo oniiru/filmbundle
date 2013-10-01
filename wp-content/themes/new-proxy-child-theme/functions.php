@@ -94,11 +94,20 @@ if(!function_exists('stag_sidebar_init')){
       register_sidebar(array(
         'name' => __('Bundle Widgets', 'stag'),
         'id' => 'sidebar-bundle',
-        'before_widget' => '',
+        'before_widget' => '', 
         'after_widget' => '',
         'before_title' => '<h2 class="main-title">',
         'after_title' => '</h2>',
         'description' => __('Bundle Widgets', 'stag')
+      ));
+      register_sidebar(array(
+        'name' => __('Slide Widgets', 'stag'),
+        'id' => 'slide-bundle',
+        'before_widget' => '',
+        'after_widget' => '',
+        'before_title' => '<h2 class="main-title">',
+        'after_title' => '</h2>',
+        'description' => __('Slide Widgets', 'stag')
       ));
 
     register_sidebar(array(
@@ -139,6 +148,8 @@ function register_menu() {
   register_nav_menu('loggedout-menu', __('Logged Out', 'stag'));
   register_nav_menu('loggedoutslider-menu', __('Logged Out Slider', 'stag'));
   register_nav_menu('loggedinslider-menu', __('Logged In Slider', 'stag'));
+  register_nav_menu('slide-menu', __('Slide Menu', 'stag'));
+  
   
 }
 add_action('init', 'register_menu');

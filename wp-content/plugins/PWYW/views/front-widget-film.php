@@ -3,11 +3,13 @@
     <!-- OVERVIEW -->
     <div class='pwyw-tab-overview'>
         <?php if ($film->rating === 'above') { ?>
-        <div class='pwyw-beat-average'>
+			<div class="centerthis">
+        <div style ="margin:10px" class='pwyw-beat-average'>
             Beat the current average of 
             <span class='pwyw-average-amount'><?php echo $averagePrice; ?></span>
             to get this amazing film with your purchase!
         </div>
+	</div>
         <?php } ?>
         <div class='pwyw-clearfix'>
             <div class='embed'>

@@ -404,6 +404,86 @@ ul.sub-menu {
 	
 }
 
+#slidenav-outer .homelogo {
+border-radius: 90px !important;
+border: 3px solid white;
+padding: 3px;
+width: 61px;
+margin-top: 8px;
+margin-left:50px;
+}
+
+#slidenav-outer {
+	position:fixed;
+	top:75px;
+	
+}
+#slide-nav {
+	margin-top:100px;
+}
+
+#slide-nav li {
+	font-family: 'museo500';
+	font-size: 40px;
+}
+
+#slide-nav li a {
+	color:white;
+	padding:10px 10px 10px 55px;
+	width:250px;
+	display:block;
+	
+}
+
+#slide-nav li a:hover {
+	color:#0077a2;
+}
+.section-block {
+	background-size:cover;
+}
+#slide-nav li a:active {
+	background:#0077a2;
+	color:white;
+}
+#slidenav-outer #logo {
+	height: 50px;
+	margin-left: 115px;
+	margin-top: 7px;
+}
+#slidenav-outer #logo img {
+	height: 65px;
+	
+}
+
+.page-template-slidetemplate-php .inner-section {
+	background:white;
+	width:750px !important;
+	margin-left:320px;
+	padding: 80px 35px !important;
+	
+}
+.firstinner {
+	border-radius: 10px 90px 0 0;
+	border-bottom: 1px solid #E9E7E7;
+}
+.page-template-slidetemplate-php .midsect {
+padding:0px;	
+}
+
+.firstmidsect {
+	padding-top:80px !important;
+}
+.page-template-slidetemplate-php #container {
+	
+	padding-bottom:0px;
+	margin-bottom:0px;
+
+}
+
+.page-template-slidetemplate-php .section-block .entry-content {
+	margin-top: 0px;
+}
+
 .littlelogin:hover ul {
 	display:block;
 }
@@ -1190,7 +1270,7 @@ padding-top:50px;
 }
 
 .thefilmstuff p span:before {
-	content:url('assets//img/clock.png');
+	content:url('assets/img/clock.png');
 	margin-right: 3px;
 	top: 3px;
 	position: relative;
@@ -1219,13 +1299,22 @@ padding-top:50px;
 	}
 
 	.iteminfo p span:before {
-		content:url('assets//img/clock.png');
+		content:url('assets/img/clock.png');
 		margin-right: 3px;
 		top: 3px;
 		position: relative;
 
 	}
-
+	#facebookwidget h3 {
+		display:none;
+	}
+	#facebookwidget {
+		text-align:center;
+	}
+	#facebookwidget h2{
+		font-size: 25px;
+		margin-bottom: 20px;
+	}
 	#backToTop {
 	background-color:transparent;
 	}

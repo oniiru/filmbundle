@@ -300,7 +300,7 @@ jQuery(document).ready(function($) {
 <div id="slidingheader">
 	<div class="skinnytop">
 		<div class="slidingheader-inner">	
-			<a href="<?php home_url(); ?>"><p class="logotext">Film<span>Bundle</span></p></a>
+			<a href="<?php echo site_url(); ?>"><p class="logotext">Film<span>Bundle</span></p></a>
             <?php
 			 if (is_user_logged_in()) {
               if(has_nav_menu('loggedinslider-menu')){
