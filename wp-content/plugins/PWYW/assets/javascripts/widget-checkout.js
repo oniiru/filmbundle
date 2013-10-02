@@ -416,12 +416,17 @@ jQuery(document).ready(function($) {
         // Prepare variables
         avg_price = parseFloat(avg_price).toFixed(2);
         min_amount = parseFloat(min_amount).toFixed(2);
-        amount = parseFloat(amount);
+        amount = parseFloat(amount).toFixed(2);
+
+        console.log(avg_price);
+        console.log(min_amount);
+        console.log(amount);
 
         var top_count = 10;
         if(typeof(bundle.top)!='undefined'){
             top_count = bundle.top.length;
         }
+        console.log(top_count);
 
         if ((top_count==10&&amount>min_amount)||(top_count<10&&amount>=0.01)) {
             $('.leaderboardinput:hidden').fadeIn('slow');
@@ -445,6 +450,15 @@ jQuery(document).ready(function($) {
             $('.alertboxes .no-amount').hide();
         }
 
+        /** More than average, but not enough to reach the top 10, then no alerts to be shown */
+        if (amount > avg_price && amount < min_amount) {
+            $('.leaderboardinput:visible').hide();
+            $('.lowpaymentwarning:visible').hide();
+            $('.alertboxes .no-amount').hide();
+            $('.nozero:hidden').hide();
+        }
+
+        /** Handle 0 Amounts */
         if(amount < 0.01) {
             $('.leaderboardinput:visible').hide();
             $('.lowpaymentwarning:visible').hide();
