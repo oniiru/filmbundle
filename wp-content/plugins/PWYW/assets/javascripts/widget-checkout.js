@@ -331,11 +331,11 @@ jQuery(document).ready(function($) {
             var email = $('[name="email"]').val();
             var password = $('[name="password"]').val();
 
-            if (email=='' || password=='') {
+            if (email=='' || password=='' || !isEmail(email)) {
                 $('html, body').animate({
                     scrollTop: $('#pwyw-create-account').offset().top - 80
                 }, 'slow', easing, function() {
-                    if (email=='') {
+                    if (email=='' || !isEmail(email)) {
                         $('[name="email"]').focus();
                     } else {
                         $('[name="password"]').focus();
