@@ -43,7 +43,9 @@
                     Isn&#39;t it your turn to be on the list?
                 </p>
             </div>
-        
+           </div>
+           <div class='pwyw-contributor-section contright'>
+		   
             <ol class='contributor-left'>
                 <?php
                 for ($i = 0; $i < 5; $i++) {
@@ -51,9 +53,7 @@
                 }
                 ?>
             </ol>
-        </div>
-        <div class='pwyw-contributor-section contright'>
-            <ol start='6' class='contributor-right'>
+                 <ol start='6' class='contributor-right'>
                 <?php
                 for ($i = 5; $i < 10; $i++) {
                     echo $contributors[$i];
@@ -80,6 +80,11 @@
 
    
     </div>
+	<div class="stats-footer">
+	<div class="statsfootertriangle"></div>
+	<p>Beat the average of <span><?php echo $averagePrice; ?></span> to unlock the special features and bonus films!</p>
+	</div>
+	
 </div>
 
 
