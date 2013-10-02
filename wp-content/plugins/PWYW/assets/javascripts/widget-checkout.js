@@ -418,15 +418,10 @@ jQuery(document).ready(function($) {
         min_amount = parseFloat(min_amount).toFixed(2);
         amount = parseFloat(amount).toFixed(2);
 
-        console.log(avg_price);
-        console.log(min_amount);
-        console.log(amount);
-
         var top_count = 10;
         if(typeof(bundle.top)!='undefined'){
             top_count = bundle.top.length;
         }
-        console.log(top_count);
 
         if ((top_count==10&&amount>min_amount)||(top_count<10&&amount>=0.01)) {
             $('.leaderboardinput:hidden').fadeIn('slow');
