@@ -85,12 +85,12 @@ jQuery(document).ready(function($) {
         $('[name="total_amount"]').val(total_amount);
 		$('#slidersandcheckout').slideDown(1000);
 	    $('#slidersandcheckout').css('display','inline-block');
-		
+
         $('html, body').animate({
             scrollTop: $('#amountbuttons').offset().top - 90
         }, 'slow', easing);
-		
-	
+
+
 	});
 
     // Update the value in the custom price button, and sliders
@@ -102,7 +102,7 @@ jQuery(document).ready(function($) {
         handleAlerts(total_amount);
         setEddProduct(total_amount);
         $('[name="total_amount"]').val(total_amount);
-      
+
     });
 
     // EDD Product
@@ -463,6 +463,21 @@ jQuery(document).ready(function($) {
     }
 
 
+    // -------------------------------------------------------------------------
+    // HELPERS
+    // -------------------------------------------------------------------------
+
+    /*
+     * Checks if an email address is valid.
+     *
+     * @param string email
+     * @return boolean
+     */
+    function isEmail(email)
+    {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
 
     // Format a number with grouped thousands
     //
