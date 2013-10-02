@@ -20,27 +20,6 @@
 </script>
 <div id='pwyw-checkout-widget' class='pwyw-stats'>
     <div class='pwyw-stats-wrap'>
-
-        <!-- ===================================================================
-        || Display of generic statistics
-        ==================================================================== -->
-        <div class='pwyw-stats-section'>
-            <div class='pwyw-stats-title-section'>
-                <h3>The Stats</h3>
-            </div>
-        </div><div class='pwyw-stats-section'>
-            <span id='pwyw-total-sales' class='value'><?php echo $totalSales; ?></span>
-            Number of Purchases
-        </div><div class='pwyw-stats-section center'>
-            <span id='pwyw-average-price' class='value'><?php echo $averagePrice; ?></span>
-            Average Purchase
-        </div><div class='pwyw-stats-section right'>
-            <span id='pwyw-total-payments' class='value'><?php echo $totalPayments; ?></span>
-            Total Payments
-        </div>
-
-        <hr />
-
         <!-- ===================================================================
         || List of Top Contributors
         ==================================================================== -->
@@ -55,17 +34,16 @@
             </li>";
         }
         ?>
-        <div class='pwyw-contributor-section'>
+        <div class='pwyw-contributor-section contleft'>
             <div class='pwyw-stats-title-section'>
                 <h3>Top Contributors</h3>
-                <p>
+                <p>	
                     These heroes have really gone to<br/>
                     bat for indie filmmakers everywhere.<br/>
-                    Isn't it your turn to be on the list?
+                    Isn&#39;t it your turn to be on the list?
                 </p>
             </div>
-        </div>
-        <div class='pwyw-contributor-section'>
+        
             <ol class='contributor-left'>
                 <?php
                 for ($i = 0; $i < 5; $i++) {
@@ -74,7 +52,7 @@
                 ?>
             </ol>
         </div>
-        <div class='pwyw-contributor-section'>
+        <div class='pwyw-contributor-section contright'>
             <ol start='6' class='contributor-right'>
                 <?php
                 for ($i = 5; $i < 10; $i++) {
@@ -83,7 +61,24 @@
                 ?>
             </ol>
         </div>
+  <hr />
+        <!-- ===================================================================
+        || Display of generic statistics
+        ==================================================================== -->
+       <div class='pwyw-stats-section'>
+            <span id='pwyw-total-sales' class='value'><?php echo $totalSales; ?></span>
+            Purchases
+        </div><div class='pwyw-stats-section center'>
+            <span id='pwyw-average-price' class='value'><?php echo $averagePrice; ?></span>
+            Average
+        </div><div class='pwyw-stats-section right'>
+            <span id='pwyw-total-payments' class='value'><?php echo $totalPayments; ?></span>
+            Total
+        </div>
 
+      
+
+   
     </div>
 </div>
 
@@ -92,8 +87,7 @@
 || Checkout section
 ============================================================================ -->
 <div class='pwyw-checkout'>
-    <h2>Purchase the Bundle</h2>
-    <p>Complete the purchase below and these amazing films are all yours!</p>
+    <h2>Checkout</h2>
 
 
     <!-- =======================================================================
@@ -106,15 +100,15 @@
         </div>
     <?php } ?>
 
-
     <form id='bundle-checkout-form' method='post' action=''>
     <ol>
+	<div id="amountbuttons">
+	
         <!-- ===================================================================
         || Amount buttons
         ==================================================================== -->
         <li>
-            <p>Choose how much the bundle is worth to you.</p>
-            <p>
+            <p class="thesteps">Step 1. Choose how much the bundle is worth to you.</p>
                 <div class="pwyw-amount btn-group" data-toggle="buttons-radio">
                     <button type="button" value="<?=$bundle['bundle']->suggested_val_1; ?>" class="btn">$<?=$bundle['bundle']->suggested_val_1; ?></button>
                     <button type="button" value="<?=$bundle['bundle']->suggested_val_2; ?>" class="btn">$<?=$bundle['bundle']->suggested_val_2; ?></button>
@@ -129,26 +123,25 @@
                            type="text"
                     />
                 </div>
-            </p>
-
+</div>
             <div class="alertboxes">
                 <div class="lowpaymentwarning alert alert-error" style="display:none">
-                    Pay only <b id="difference"></b> more to unlock the bonus films. Come on, help some starving filmmakers out. ;)
+                    Pay only $<b id="difference"></b> more to unlock the bonus films. Come on, help some starving filmmakers out. ;)
                 </div>
 
                 <div class="leaderboardinput alert alert-success" style="display:none">
-                    <b>You Rock!</b> This amount makes you one of the top contributors. Enter your
+                    <b>You Rock!</b> This amount makes you a top contributor. Enter your
                     <div class="input-prepend">
                         <span class="add-on">@</span>
                         <input name="twitterhandle" placeholder="twitterhandle" type="text" style="width: 200px;">
                     </div>
-                    or any<br/>
-                    <input name="username" placeholder="username" type="text" style="width: 200px;">
+                    <br/>or any
+                    <input name="username" placeholder="username" type="text" style="width: 200px; margin: 0px 10px;">
                     to be added on our top contributor board.
                 </div>
 
                 <div class="nozero alert alert-error" style="display:none">
-                    We're all about paying what you want, but we've got to draw the line somewhere. Please pay at least $0.01. :)
+                    We&#39;re all about paying what you want, but we&#39;ve got to draw the line somewhere. <br>Please pay at least $0.01. :)
                 </div>
 
                 <div class="no-amount alert alert-error" style="display:none">
@@ -156,13 +149,13 @@
                 </div>
             </div>
         </li>
-
+<div id="slidersandcheckout">
 
         <!-- ===================================================================
         || Sliders
         ==================================================================== -->
         <li>
-            <p>Where would you like your contribution to go?</p>
+            <p class="thesteps">Step 2. Where would you like your contribution to go?</p>
 
             <?php foreach($bundle['categories'] as $key => $cat_obj) {
                 $title = $cat_obj['info']['title'];
@@ -171,7 +164,10 @@
                 }
                 $titleLow = strtolower($title);
             ?>
-                <div class='pwyw-checkout-slider clearfix'>
+                <div class='pwyw-checkout-slider clearfix  <?php if ($key ==3) {
+					echo 'thirdslider';
+				};
+                    ?>'>
                     <div class='pwyw-slider-title'><?php echo $title; ?></div>
 
                     <div id="slider_<?php echo strtolower($cat_obj['info']['title']) ?>" value="<?php echo $cat_obj['info']['val'] ?>" class="linked3 selector inactive"></div>
@@ -193,7 +189,7 @@
                             data-toggle="tooltip"
                             data-title="<?php echo $tooltip; ?>"
                         >Dive Deeper!</a>
-                    <?php } ?>
+                    <?php }?>
                 </div>
 
                 <?php /** Handle the sub categories */ ?>
@@ -236,13 +232,12 @@
             <?php } ?>
         </li>
 
-
         <!-- ===================================================================
         || Create account
         ==================================================================== -->
         <?php if (!is_user_logged_in()) { ?>
         <li id='pwyw-create-account'>
-            <p>Create your account</p>
+            <p class="thesteps">Step 3. Create your account</p>
             <p>
                 <input name='email' type='text' placeholder='Email'
                     style='width: 300px; margin: 0 20px 0 0;' />
@@ -290,6 +285,7 @@
             <input type="hidden" name="total_amount" value="0" />
 		</div>
         </li>
+		</div>
     </ol>
     </form>
 </div>

@@ -14,16 +14,17 @@
     white-space: nowrap;
 }
 .pwyw-stats-section {
-    display: inline-block;
-    width: 25%;
-    font-weight: bold;
+	display: inline-block;
+	font-weight: bold;
+	margin: 10px;
+	background: blue;
+	padding: 30px;
+	width: 300px;
+	text-align: center;
 }
 .pwyw-stats .center {
     text-align: center;
     color: #dea242;
-}
-.pwyw-stats .right {
-    text-align: right;
 }
 .pwyw-stats .value {
     font-weight: normal;
@@ -84,12 +85,50 @@
     width: 1000px;
     position: relative;
     white-space: nowrap;
+	text-align:center;
+	width: 100%;
+	position: relative;
+	background: #4f555e;
+	background: -moz-radial-gradient(center, ellipse cover, #4f555e 0%, #282d35 100%);
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #4f555e), color-stop(100%, #282d35));
+	background: -webkit-radial-gradient(center, ellipse cover, #4f555e 0%, #282d35 100%);
+	background: -o-radial-gradient(center, ellipse cover, #4f555e 0%, #282d35 100%);
+	background: -ms-radial-gradient(center, ellipse cover, #4f555e 0%, #282d35 100%);
+	background: radial-gradient(ellipse at center, #4f555e 0%, #282d35 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4f555e', endColorstr='#282d35',GradientType=1 );
+	padding: 75px 10px;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	overflow: auto;
+	border-top: 5px solid rgb(85, 85, 85);
+	border-bottom: 5px solid rgb(85, 85, 85);
 }
 .pwyw-checkout h2 {
-    font-size: 32px;
+	font-size: 44px;
+	line-height: 1em;
+	color:white;
+	margin-bottom:24px;
 }
 .pwyw-checkout p {
     margin-bottom: 24px;
+	color:white;
+}
+p.thesteps {
+	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	font-size: 17px;
+	margin-bottom: 10px;
+	color: #474a4f;
+}
+#amountbuttons {
+	padding: 20px;
+display:inline-block;
+	margin: auto;
+	background: #fff;
+	box-shadow: 2px 2px 5px rgb(36, 36, 36);
+	border-radius: 2px;
+	margin-bottom:20px;
+	min-width:750px;
 }
 .pwyw-checkout ol {
     counter-reset: li;
@@ -145,7 +184,7 @@
 	font-size: 17px;
 	font-weight: bold;
 	color:#6B6B6B;
-	border-radius: 2px;
+	border-radius: 0px 2px 2px 0px;
 	
 }
 .pwyw-checkout .add-on {
@@ -186,7 +225,10 @@ position: relative;
 	font-size: 15px;
 	
 }
-
+input.custompricefield {
+	padding: 20px 10px 20px 10px !important;
+	min-width: 120px !important;
+}
 .pwyw-checkout-slider .add-on {
 	height:32px;
 	font-size: 15px;
@@ -199,15 +241,18 @@ position: relative;
 }
 .alert {
 padding: 15px 35px 15px 15px;
-margin-bottom: 20px;
-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+text-shadow: none;
 background-color: #fcf8e3;
 border: none;
--webkit-border-radius: 0px;
--moz-border-radius: 0px;
-border-radius: 0px;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.61);
-font-family:'museo300', sans-serif;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+box-shadow: 2px 2px 5px rgb(36, 36, 36);
+font-family:'museo500', sans-serif;
 font-size:16px;
+max-width: 750px;
+margin: auto;
+margin-bottom: 20px;
 }
 
 .alert-error {
@@ -215,25 +260,62 @@ font-size:16px;
 	color:white;
 }
 .alert-success {
-	background-color:#1abc9c;
+	background-color:#16a085;
 	color:white;
 }
 /**
  * Sliders */
 .pwyw-checkout-slider {
-    margin-bottom: 42px;
+    margin-bottom: 25px;
 }
 .pwyw-checkout-sub-slider {
-    margin-left: 100px;
+    margin-left: 74px;
+}
+#slidersandcheckout {
+	padding: 20px 40px;
+	margin: auto;
+	background: #fff;
+	box-shadow: 2px 2px 5px rgb(36, 36, 36);
+	border-radius: 2px;
+	margin-bottom:30px;
+	display:none;
+	
+	width:750px;
+}
+
+#slidersandcheckout .thesteps {
+	margin-bottom:30px;
+	margin-top:5px;
+}
+#slidersandcheckout li:first-of-type {
+	margin-bottom:50px;
+}
+
+#pwyw-create-account .thesteps {
+	margin-bottom:10px;
+}
+
+#pwyw-create-account {
+	margin-bottom:50px;
 }
 .pwyw-slider-title {
-    display: inline-block;
-    width: 150px;
+	display: inline-block;
+	width: 115px;
+	text-align: left;
+	font-family: "museo700", Helvetica, sans-serif;
+	font-size: 15px;
 }
+
+
 .pwyw-checkout-sub-slider .pwyw-slider-title {
     display: inline-block;
     width: 172px;
 }
+
+.thirdslider {
+	margin-right:107px;
+}
+
 .ui-slider {
     display: inline-block;
     position: relative;

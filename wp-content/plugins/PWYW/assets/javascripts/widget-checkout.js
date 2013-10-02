@@ -83,7 +83,15 @@ jQuery(document).ready(function($) {
         handleAlerts(total_amount);
         setEddProduct(total_amount);
         $('[name="total_amount"]').val(total_amount);
-    });
+		$('#slidersandcheckout').slideDown(1000);
+	    $('#slidersandcheckout').css('display','inline-block');
+		
+        $('html, body').animate({
+            scrollTop: $('#amountbuttons').offset().top - 90
+        }, 'slow', easing);
+		
+	
+	});
 
     // Update the value in the custom price button, and sliders
     $('.pwyw-checkout .custompricefield').change(function() {
@@ -94,8 +102,8 @@ jQuery(document).ready(function($) {
         handleAlerts(total_amount);
         setEddProduct(total_amount);
         $('[name="total_amount"]').val(total_amount);
+      
     });
-
 
     // EDD Product
     // -------------------------------------------------------------------------

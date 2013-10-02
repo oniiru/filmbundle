@@ -38,7 +38,7 @@ jQuery(document).ready(function($) {
     // -------------------------------------------------------------------------
     $('#pwyw-purchase-button').click(function() {
         $('html, body').animate({
-            scrollTop: $('#pwyw-checkout-widget').offset().top - 80
+            scrollTop: $('#pwyw-checkout-widget hr').offset().top - 80
         }, 'slow', easing);
     });
 
@@ -76,6 +76,9 @@ jQuery(document).ready(function($) {
                 closeSection('film');
             } else {
                 slideTo(id, '.pwyw-films', '.pwyw-film');
+	            $('html, body').animate({
+	                scrollTop: $('.pwyw-bundle-info').offset().top - 80
+	            }, 'slow', easing);
             }
         }
     });
@@ -113,7 +116,7 @@ jQuery(document).ready(function($) {
             closeSection('film');
         }
 
-        // if current_film is undefined, we shall open the info section
+        // if current_charity is undefined, we shall open the info section
         // else we shall change film, or close it.
         if (current_charity == undefined) {
             $('.pwyw-charity-info').slideDown('slow', easing);
@@ -137,6 +140,9 @@ jQuery(document).ready(function($) {
                 closeSection('charity');
             } else {
                 slideTo(id, '.pwyw-charities', '.pwyw-charity');
+	            $('html, body').animate({
+	                scrollTop: $('.pwyw-charity-info').offset().top - 80
+	            }, 'slow', easing);
             }
         }
     });
