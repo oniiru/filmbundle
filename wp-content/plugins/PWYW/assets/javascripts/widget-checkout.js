@@ -142,6 +142,7 @@ jQuery(document).ready(function($) {
             { animate: false },
             { min: 0 },
             { max: 100 },
+            { step: 0.001 },
             {change: function(event, ui) {
                 var id = $(this).attr('id').match(/slider_(.+)/)[1];
 
