@@ -4,14 +4,17 @@
 .pwyw-stats {
 		color: #fff;
 		text-align:center;
+		background:#f8f8f8;
 }
 .pwyw-stats-wrap {
-    margin: 0 auto;
-    padding: 12px 0 15px 0;
+    margin: 0px auto;
+    padding: 50px 0 15px 0;
     overflow: hidden;
     width: 1000px;
     position: relative;
     white-space: nowrap;
+	border-top: 1px solid #ddd;
+	
 }
 .pwyw-stats-section {
 	display: inline-block;
@@ -22,10 +25,23 @@
 	width: 310px;
 	text-align: center;
 	margin-top:20px;
+	box-shadow: 2px 2px 5px rgb(36, 36, 36);
+	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	position:relative;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+	
+	
+}
+
+p.inthecorner {
+	position: absolute;
+	top: 4px;
+	right: 10px;
+	font-weight: normal;
+	font-size: 13px;
 }
 .pwyw-stats .center {
     text-align: center;
-    color: #dea242;
 }
 .pwyw-stats .value {
     font-weight: normal;
@@ -61,19 +77,6 @@
 	border:0;
 }
 
-.contleft {
-	display:inline-block;
-	margin-left:6px;
-	width: 310px;
-	margin-right:0px;
-}
-
-.contright {
-	margin-left: 15px;
-	margin-right:5px;
-	font-family: "museo300", Helvetica, sans-serif;
-	font-size: 19px;
-}
 
 .stats-footer {
 	background: #343738;
@@ -81,7 +84,17 @@
 	position: relative;
 	max-width: 972px;
 	margin: auto;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
+	box-shadow: 2px 2px 5px rgb(36, 36, 36);
+}
+
+.stats-header {
+	background: #343738;
+	padding: 10px;
+	position: relative;
+	max-width: 972px;
+	margin: auto;
+	margin-bottom: 20px;
 	box-shadow: 2px 2px 5px rgb(36, 36, 36);
 }
 .stats-footer p {
@@ -92,7 +105,7 @@
 .stats-footer p span {
 	color: #dea242;
 	font-size: 15px;
-	margin: 0 3px;
+	margin: 0 3px;	
 }
 
 .statsfootertriangle {
@@ -107,13 +120,27 @@
 	margin-right: -6px;
 	
 }
+
+.pwyw-statsleft {
+	background:#2980b9
+}
+
+.pwyw-statsmiddle {
+	background: #20B194;
+}
+
+.pwyw-statsright {
+	background: #e74c3c;
+}
 /** Top contributors */
 .pwyw-contributor-section {
     display: inline-block;
 	background: blue;
 	padding:15px 18px;
 	vertical-align: top;
-	height: 144px;
+	height: 144px;	
+	box-shadow: 2px 2px 5px rgb(36, 36, 36);
+
 }
 .pwyw-contributor-section ol {
     list-style-type: decimal;
@@ -141,7 +168,28 @@ width: 252px;
 .contributor-amount {
     text-align: right;
 }
+.contleft {
+	display:inline-block;
+	margin-left:6px;
+	width: 310px;
+	margin-right:0px;
+	background: #343738;
+}
 
+.contright {
+	margin-left: 15px;
+	margin-right:5px;
+	font-family: "museo300", Helvetica, sans-serif;
+	font-size: 19px;
+	background: #2980b9;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+.contright a {
+	color:#ADE1F6
+}
+.contright a:hover {
+	color:inherit;
+}
 
 /** ----------------------------------------------------------------------------
  *  CHECKOUT SECTION

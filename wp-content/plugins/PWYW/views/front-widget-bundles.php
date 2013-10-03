@@ -147,4 +147,24 @@
 			<p class='specialtext'> You'll also get <span>special features</span> from each and every film.</p>
         </div>
     </div>
+	
+	<div class="gettothepoint">
+		<div class="thepoint pointleft">
+			<h4>Discover Amazing Indies</h4>
+			<p>Each bundle contains amazing hand-picked films for you to stream. Our curators bring you only the best.</p>
+		</div>
+		<div class="thepoint pointmiddle">
+			<h4>Pay What You Want</h4>
+			<p>Bundles have no set prices. You choose what you want to pay, and how to split it between the filmmakers, charities and us! </p>
+			
+		</div>
+		<div class="thepoint pointright">
+			<h4>Support Charity</h4>
+			<p>We partner with the best arts-driven nonprofits with each bundle, making it easy to give back while watching killer films. </p>
+		</div>
+		
+	</div>	
+	</div>
+	
+	
 </div>

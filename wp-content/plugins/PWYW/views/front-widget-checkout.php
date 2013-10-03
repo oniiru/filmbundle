@@ -20,6 +20,7 @@
 </script>
 <div id='pwyw-checkout-widget' class='pwyw-stats'>
     <div class='pwyw-stats-wrap'>
+	
         <!-- ===================================================================
         || List of Top Contributors
         ==================================================================== -->
@@ -65,15 +66,15 @@
         <!-- ===================================================================
         || Display of generic statistics
         ==================================================================== -->
-       <div class='pwyw-stats-section'>
+       <div class='pwyw-stats-section pwyw-statsleft'>
             <span id='pwyw-total-sales' class='value'><?php echo $totalSales; ?></span>
-            Purchases
-        </div><div class='pwyw-stats-section center'>
+         <p class='inthecorner'>   Purchases </p>
+        </div><div class='pwyw-stats-section center pwyw-statsmiddle'>
             <span id='pwyw-average-price' class='value'><?php echo $averagePrice; ?></span>
-            Average
-        </div><div class='pwyw-stats-section right'>
+           <p class='inthecorner'> Average</p>
+        </div><div class='pwyw-stats-section right pwyw-statsright'>
             <span id='pwyw-total-payments' class='value'><?php echo $totalPayments; ?></span>
-            Total
+           <p class='inthecorner'> Total Raised</p>
         </div>
 
       

@@ -208,10 +208,21 @@ text-shadow: 1px 1px #292929;
 /** ----------------------------------------------------------------------------
  *  INFO HEADER
  * -------------------------------------------------------------------------- */
+
+.pwyw-tab-overview a:hover{
+	color:#036A9E !important;
+	text-decoration:none !important;
+}
 .pwyw-bundle-info,
 .pwyw-charity-info {
     display: none;
 	text-align:left;
+}
+
+.pwyw-charity h4 {
+	margin-bottom:5px;
+	color:white;
+	margin-top:5px;
 }
 .pwyw-nav-header {
     z-index: 100;
@@ -226,6 +237,10 @@ text-shadow: 1px 1px #292929;
     margin: 24px 0 14px 0;
 }
 
+.pwyw-charity .more:hover	 {
+	color: #036A9E !important;
+	text-decoration: none !important;
+}
 .pwyw-previous {
     position: absolute;
     width: 100px;
@@ -355,7 +370,7 @@ text-shadow: 1px 1px #292929;
 	text-align: center;
 	margin-bottom: 10px;
 	font-family: 'museo500', sans-serif;
-	background: #16a085;
+	background: #2980b9;
 	padding: 10px 30px;
 	display: inline-block;
 	box-shadow: 1px 1px 4px rgb(26, 26, 26);
@@ -541,7 +556,7 @@ text-shadow: 1px 1px #292929;
 /** Charities */
 .pwyw-charity .more {
     display: block;
-    margin-top: 24px;
+    margin-top: 10px;
 }
 
 /** ----------------------------------------------------------------------------
@@ -576,6 +591,12 @@ text-shadow: 1px 1px #292929;
 	margin-left:15px;
 	font-size:16px;
 	font-family:'museo500', sans-serif;
+}
+.pwyw-charity-info .pwyw-dark-section {
+	padding: 10px 0 0;
+}
+.pywy-charities .right {
+	padding-left:40px;
 }
 .pwyw-bundle-footer .films {
 
