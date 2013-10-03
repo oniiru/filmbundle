@@ -437,7 +437,7 @@ box-shadow: none !important; border-top:none !important; }
 	font-weight:300 !important;
 }
 #content  .post-content {font-size: 19px; line-height: 29px;  margin: 0;padding: 0;} 
-#content  .post-content p {font-size: 16px; line-height: 1.2em;  margin: 0; padding: 0;font-family:'open sans', sans-serif;color:#000;}
+#content  .post-content p {font-size: 16px; line-height: 1.4em;  margin: 0; padding: 0;font-family:'open sans', sans-serif;color:#000; font-weight:300;}
 #content  .post-content span{position: relative;
 bottom: 5px;line-height:1em;color:#949494;font-size: 14px; margin: 0; padding: 0;font-family:'open sans', sans-serif; font-weight:500;}
 #content  .post-content span a {color:#949494;}

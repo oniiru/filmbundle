@@ -2,78 +2,194 @@
  *  STATS SECTION
  * -------------------------------------------------------------------------- */
 .pwyw-stats {
-    background-color: #292929;
-    color: #fff;
+		color: #fff;
+		text-align:center;
+		background:#f8f8f8;
 }
 .pwyw-stats-wrap {
-    margin: 0 auto;
-    padding: 12px 0 12px 0;
+    margin: 0px auto;
+    padding: 50px 0 15px 0;
     overflow: hidden;
     width: 1000px;
     position: relative;
     white-space: nowrap;
+	border-top: 1px solid #ddd;
+	
 }
 .pwyw-stats-section {
 	display: inline-block;
 	font-weight: bold;
 	margin: 10px;
 	background: blue;
-	padding: 30px;
-	width: 300px;
+	padding: 20px;
+	width: 310px;
 	text-align: center;
+	margin-top:20px;
+	box-shadow: 2px 2px 5px rgb(36, 36, 36);
+	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	position:relative;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+	
+	
+}
+
+p.inthecorner {
+	position: absolute;
+	top: 4px;
+	right: 10px;
+	font-weight: normal;
+	font-size: 13px;
 }
 .pwyw-stats .center {
     text-align: center;
-    color: #dea242;
 }
 .pwyw-stats .value {
     font-weight: normal;
     font-size: 30px;
 }
 .pwyw-stats-title-section {
-    background-image: url('../images/stats-title-top-left.png'), url('../images/stats-title-bottom-right.png');
-    background-position: left top, right bottom;
-    background-repeat: no-repeat;
-    display: inline-block;
-    padding: 0 8px;
+	background-image: url('../images/stats-title-top-left.png'), url('../images/stats-title-bottom-right.png');
+	background-position: left top, right bottom;
+	background-repeat: no-repeat;
+	display: inline-block;
+	padding: 3px 8px 0 12px;
+	vertical-align: top;
+	text-align: left;
+	
 }
 .pwyw-stats-title-section p {
     font-weight: normal;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+	line-height:1.2em;
 }
 .pwyw-stats h3 {
     color: #fff;
-    font-size: 30px;
-    font-family: 'Droid Sans', sans-serif;
+    font-size: 18px;
     text-transform: none;
     margin: 0;
     padding: 0;
+	margin-top:4px;
 }
 .pwyw-stats hr {
-    border-top: 1px solid #121212;
-    border-bottom: 1px solid #343434;
+    border-top: none;
+    border-bottom: none;
+	margin:0;
+	border:0;
+}
+
+
+.stats-footer {
+	background: #343738;
+	padding: 10px;
+	position: relative;
+	max-width: 972px;
+	margin: auto;
+	margin-bottom: 20px;
+	box-shadow: 2px 2px 5px rgb(36, 36, 36);
+}
+
+.stats-header {
+	background: #343738;
+	padding: 10px;
+	position: relative;
+	max-width: 972px;
+	margin: auto;
+	margin-bottom: 20px;
+	box-shadow: 2px 2px 5px rgb(36, 36, 36);
+}
+.stats-footer p {
+	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+.stats-footer p span {
+	color: #dea242;
+	font-size: 15px;
+	margin: 0 3px;	
+}
+
+.statsfootertriangle {
+	width: 0px;
+	height: 0px;
+	border-left: 12px solid transparent;
+	border-right: 12px solid transparent;
+	border-bottom: 12px solid #343738;
+	position: absolute;
+	top: -12px;
+	right: 50%;
+	margin-right: -6px;
+	
+}
+
+.pwyw-statsleft {
+	background:#2980b9
+}
+
+.pwyw-statsmiddle {
+	background: #20B194;
+}
+
+.pwyw-statsright {
+	background: #e74c3c;
 }
 /** Top contributors */
 .pwyw-contributor-section {
     display: inline-block;
-    width: 33%;
+	background: blue;
+	padding:15px 18px;
+	vertical-align: top;
+	height: 144px;	
+	box-shadow: 2px 2px 5px rgb(36, 36, 36);
+
 }
 .pwyw-contributor-section ol {
     list-style-type: decimal;
 }
 .pwyw-contributor-section ol.contributor-left {
-    margin-right: 40px;
+	margin-right: 5px;
+	margin-left: 30px;
+	font-family: "museo500", Helvetica, sans-serif;
+	font-size: 17px;
+	display: inline-block;
+	line-height: 1.4em;
 }
 .pwyw-contributor-section ol.contributor-right {
-    margin-left: 40px;
+    margin-left: 55px;
+	margin-right: 5px;
+	font-family: "museo500", Helvetica, sans-serif;
+	font-size: 17px;
+	display: inline-block;
+	line-height: 1.4em;
 }
 .pwyw-contributor-section li {
-    width: 100%;
+width: 252px;
+	text-align: left;
 }
 .contributor-amount {
     text-align: right;
 }
+.contleft {
+	display:inline-block;
+	margin-left:6px;
+	width: 310px;
+	margin-right:0px;
+	background: #343738;
+}
 
+.contright {
+	margin-left: 15px;
+	margin-right:5px;
+	font-family: "museo300", Helvetica, sans-serif;
+	font-size: 19px;
+	background: #2980b9;
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+}
+.contright a {
+	color:#ADE1F6
+}
+.contright a:hover {
+	color:inherit;
+}
 
 /** ----------------------------------------------------------------------------
  *  CHECKOUT SECTION

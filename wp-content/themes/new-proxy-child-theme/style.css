@@ -85,6 +85,17 @@ html {overflow-x:inherit;}
 	width: 100%;
 	height: auto;
 }
+.gettothepoint {
+	margin: 10px 0 40px;
+}
+
+.thepoint {
+	display:inline-block;
+	max-width:300px;
+	margin:10px;
+	text-align:left;
+	vertical-align:top;
+}
 
 /* controls */
 .prevContainer {
@@ -977,7 +988,7 @@ a.button:hover {
 	top:0;
 	z-index:10	;
 	margin:auto;
-	background-color: #29B873;
+	background-color: #16a085;
 	padding: 10px;
 	text-align: center;
 	color:#fff;
@@ -1076,7 +1087,7 @@ a.button:hover {
 	.tipster {
 		margin:auto;
 		max-width:950px;
-		background-color: #29B873;
+		background-color: #16a085;
 		padding: 30px;
 		text-align: center;
 		color:#fff;
@@ -1313,7 +1324,7 @@ padding-top:50px;
 	}
 	#facebookwidget h2{
 		font-size: 25px;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 	}
 	#backToTop {
 	background-color:transparent;
@@ -1896,6 +1907,26 @@ p.shared-sub-title {
 	line-height: 1.6em;
 	font-size: 18px;
 
+}
+section#aboutbundle .inner-section{
+	max-width: 1040px;
+}
+section#aboutbundle h4 {
+	margin-bottom:10px;
+	margin-top:-5px;
+	font-size:16px;
+}
+section#aboutbundle p {
+	font-size:15px;
+}
+section#aboutbundle {
+	background: #f8f8f8;
+	border-top: 3px solid #ddd;
+	padding: 50px 0;
+	
+}
+section#aboutbundle .entry-content {
+	margin-top:0px;
 }
 
 .second-sub {

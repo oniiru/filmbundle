@@ -20,6 +20,7 @@
 </script>
 <div id='pwyw-checkout-widget' class='pwyw-stats'>
     <div class='pwyw-stats-wrap'>
+	
         <!-- ===================================================================
         || List of Top Contributors
         ==================================================================== -->
@@ -43,7 +44,9 @@
                     Isn&#39;t it your turn to be on the list?
                 </p>
             </div>
-        
+           </div>
+           <div class='pwyw-contributor-section contright'>
+		   
             <ol class='contributor-left'>
                 <?php
                 for ($i = 0; $i < 5; $i++) {
@@ -51,9 +54,7 @@
                 }
                 ?>
             </ol>
-        </div>
-        <div class='pwyw-contributor-section contright'>
-            <ol start='6' class='contributor-right'>
+                 <ol start='6' class='contributor-right'>
                 <?php
                 for ($i = 5; $i < 10; $i++) {
                     echo $contributors[$i];
@@ -65,21 +66,26 @@
         <!-- ===================================================================
         || Display of generic statistics
         ==================================================================== -->
-       <div class='pwyw-stats-section'>
+       <div class='pwyw-stats-section pwyw-statsleft'>
             <span id='pwyw-total-sales' class='value'><?php echo $totalSales; ?></span>
-            Purchases
-        </div><div class='pwyw-stats-section center'>
+         <p class='inthecorner'>   Purchases </p>
+        </div><div class='pwyw-stats-section center pwyw-statsmiddle'>
             <span id='pwyw-average-price' class='value'><?php echo $averagePrice; ?></span>
-            Average
-        </div><div class='pwyw-stats-section right'>
+           <p class='inthecorner'> Average</p>
+        </div><div class='pwyw-stats-section right pwyw-statsright'>
             <span id='pwyw-total-payments' class='value'><?php echo $totalPayments; ?></span>
-            Total
+           <p class='inthecorner'> Total Raised</p>
         </div>
 
       
 
    
     </div>
+	<div class="stats-footer">
+	<div class="statsfootertriangle"></div>
+	<p>Beat the average of <span><?php echo $averagePrice; ?></span> to unlock the special features and bonus films!</p>
+	</div>
+	
 </div>
 
 
