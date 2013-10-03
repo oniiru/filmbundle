@@ -448,7 +448,7 @@ jQuery(document).ready(function($) {
         }
 
         /** More than average, but not enough to reach the top 10, then no alerts to be shown */
-        if (amount > avg_price && amount < min_amount) {
+        if (amount > avg_price && amount <= min_amount) {
             $('.leaderboardinput:visible').hide();
             $('.lowpaymentwarning:visible').hide();
             $('.alertboxes .no-amount').hide();
