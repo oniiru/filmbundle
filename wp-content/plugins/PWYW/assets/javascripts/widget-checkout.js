@@ -415,9 +415,9 @@ jQuery(document).ready(function($) {
         }
 
         // Prepare variables
-        avg_price = parseFloat(avg_price).toFixed(2);
-        min_amount = parseFloat(min_amount).toFixed(2);
-        amount = parseFloat(amount).toFixed(2);
+        avg_price = parseFloat(avg_price);
+        min_amount = parseFloat(min_amount);
+        amount = parseFloat(amount);
 
         var top_count = 10;
         if(typeof(bundle.top)!='undefined'){
@@ -425,6 +425,7 @@ jQuery(document).ready(function($) {
         }
 
         if ((top_count==10&&amount>min_amount)||(top_count<10&&amount>=0.01)) {
+
             $('.leaderboardinput:hidden').fadeIn('slow');
             if(amount>avg_price){
                $('.lowpaymentwarning:visible').hide();
