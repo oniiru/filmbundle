@@ -42,10 +42,11 @@ jQuery(document).ready(function($) {
     $("#shared").backstretch("/wp-content/themes/new-proxy-child-theme/assets/img/tinyblurred.jpg");
     $("#suggest").backstretch("/wp-content/themes/new-proxy-child-theme/assets/img/ladylooking.jpg");
   }
+ 
   // Cache selectors
   var lastId,
       topMenu = $("#slide-nav"),
-      topMenuHeight = topMenu.outerHeight()+15,
+      topMenuHeight = topMenu.outerHeight()+0,
       // All list items
       menuItems = topMenu.find("a"),
       // Anchors corresponding to menu items
@@ -67,6 +68,18 @@ jQuery(document).ready(function($) {
 
   // Bind to scroll
   $(window).scroll(function(){
+      if($(window).scrollTop() + $(window).height() == $(document).height()) {
+          $('#slide-nav ul li').removeClass('active');
+          $('#slide-nav ul li:last').addClass('active');
+      }
+	
+ 	 else {
+		 if ($('#slide-nav ul li:last').hasClass('active')) {
+		 	$('#slide-nav ul li:last').removeClass('active');
+			$('#slide-nav ul li:nth-last-child(2)').addClass('active');
+		 }
+		 else{
+
      // Get container scroll position
      var fromTop = $(this).scrollTop()+topMenuHeight;
    
@@ -85,9 +98,10 @@ jQuery(document).ready(function($) {
          menuItems
            .parent().removeClass("active")
            .end().filter("[href=#"+id+"]").parent().addClass("active");
-     }                   
+     } }     }  
+   
   });
-    
+  
 });
 </script>
 
@@ -143,9 +157,13 @@ jQuery(document).ready(function($) {
 	jQuery(window).bind('scroll', function(){
 	if(jQuery(this).scrollTop() >= 575) {
 	jQuery("#slidenav-outer").fadeIn(450);
+	jQuery("#contactfooter").fadeIn(450);
+	
 	}
 	if(jQuery(this).scrollTop() < 575) {
 	jQuery("#slidenav-outer").fadeOut(450);
+	jQuery("#contactfooter").fadeOut(450);
+	
 	}
 	});
 
@@ -154,4 +172,7 @@ jQuery(document).ready(function($) {
 	
   <!-- BEGIN #container -->
   <div id="container">
+	  <div id="contactfooter">
+		  Need more information? Drop us a line! <span> <a href="mailto:andrew@filmbundle.com">Email</a> &nbsp;| &nbsp;Phone: 408.656.3604
+	  </div>
   <?php stag_content_start(); ?>

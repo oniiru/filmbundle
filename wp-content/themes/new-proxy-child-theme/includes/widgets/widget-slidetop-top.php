@@ -75,7 +75,7 @@ class stag_section_slidetoptop extends WP_Widget{
 		</div>
 		<p class="undercarousel">
 		
-			We create limited-time bundles of amazing hand-selected independent films. You tell us how much you want to pay, and even how much goes straight to the filmmakers or charities.
+			Limited-time bundles of amazing hand-selected independent films. Pay only what they are worth to you, and support charity while you're at it.
 		</p>
 		<p class="carousel-btn"> Learn More <span> &#9660;</span></p>
 	</div>

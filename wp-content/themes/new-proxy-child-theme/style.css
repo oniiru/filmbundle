@@ -1022,11 +1022,54 @@ section.slidetoptop {
 	background-position: center -200px;
 	background-attachment: fixed;
 }
-.inner-carousel {
-	margin-top: 50px;
-	text-align:center;
+
+#how h5 {
+	margin-top:50px;
 }
 
+#how h2 {
+	margin-bottom:30px;
+}
+#how hr {
+	padding: 10px;
+	width: 100%;
+	margin: 0px 0;
+	border: 0;
+	border-top: none;
+	border-bottom: none;
+}
+.inner-carousel {
+	text-align: center;
+	width: 1000px;
+	margin: auto;
+	margin-top: 50px;
+}
+#contactfooter {
+	position: fixed;
+	bottom: 0px;
+	background: rgba(231, 76, 60, 0.89);
+	z-index: 1;
+	width: 98%;
+	margin-left: 1%;
+	padding: 4px 20px;
+	box-shadow: 1px -1px 5px rgba(44, 44, 44, 0.38);
+	color: white;
+	font-family: 'museo500';
+	display:none;
+}
+
+#contactfooter span a {
+color:#1c93c5;
+}
+#contactfooter span a:hover {
+color:#1c93c5;
+text-decoration:none !important;
+}
+
+
+#contactfooter span {
+	float:right;
+}
 .flat-computer .carousel-inner {
 	top: 17px;
 	left: 17px;
@@ -3307,6 +3350,9 @@ text-align: right;
 	.bundletotals {
 		margin-top:11px;
 	}
+	.filmtitl {
+		margin-left:10px;
+	}
 }
 @media screen and (max-width: 900px) {
 	#seedprod_title_link {
@@ -3426,6 +3472,10 @@ margin-bottom: 85px;
 }
 .icon-twitter, .icon-cog, .icon-film, .icon-user {
 	display:inline-block !important;
+}
+
+.littlelogin {
+	min-width:0px !important;
 }
 .littlelogin h3, .littlesocial h3 {
 	display:none;}
