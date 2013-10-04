@@ -26,6 +26,7 @@ require_once('widgets/widget-team.php');
 require_once('widgets/widget-twitter.php');
 require_once('widgets/widget-work.php');
 require_once('widgets/widget-slidetop.php');
+require_once('widgets/widget-slidetop-top.php');
 require_once('widgets/widget-facebook.php');
 
 /*--------------------------------------------------*/

@@ -101,20 +101,24 @@ html, body {
       <!-- BEGIN .header-inner -->
       <div class="header-inner clearfix">
 
-        <!-- BEGIN #logo -->
-        <div id="logo">
-          <?php
+          <!-- BEGIN #logo -->
+  		<a href="<?php echo site_url(); ?>">
+      <img class="homelogo littlelogo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/whitehmmm.png">
+  </a>
+          <div id="logo">
+            <?php
 
-          if( stag_get_option('general_text_logo') == 'on' ){ ?>
-            <a href="<?php echo site_url(); ?>" title="<?php bloginfo( 'name' ); ?>"><?php bloginfo( 'name' ); ?></a>
-          <?php } elseif( stag_get_option('general_custom_logo') ) { ?>
-            <a href="<?php echo site_url(); ?>" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo stag_get_option('general_custom_logo'); ?>" alt="<?php bloginfo( 'name' ); ?>"></a>
-          <?php } else{ ?>
-            <a href="<?php echo site_url(); ?>" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.png" alt="<?php bloginfo( 'name' ); ?>"></a>
-          <?php }
+            if( stag_get_option('general_text_logo') == 'on' ){ ?>
+              <a href="<?php echo site_url(); ?>" title="<?php bloginfo( 'name' ); ?>"><?php bloginfo( 'name' ); ?></a>
+            <?php } elseif( stag_get_option('general_custom_logo') ) { ?>
+              <a href="<?php echo site_url(); ?>" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo stag_get_option('general_custom_logo'); ?>" alt="<?php bloginfo( 'name' ); ?>"></a>
+            <?php } else{ ?>
+              <a href="<?php echo site_url(); ?>" title="<?php bloginfo( 'name' ); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.png" alt="<?php bloginfo( 'name' ); ?>"></a>
+            <?php }
 
-          ?>
-          <!-- END #logo -->
+            ?>
+            <!-- END #logo -->
+    
         </div>
 <h1 class="logintitle">Choose your own price for bundles of amazing indies.</h1>       
 

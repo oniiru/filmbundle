@@ -1,11 +1,11 @@
 <?php
-add_action('widgets_init', create_function('', 'return register_widget("stag_section_slidetop");'));
+add_action('widgets_init', create_function('', 'return register_widget("stag_section_slidetoptop");'));
 
-class stag_section_slidetop extends WP_Widget{
-  function stag_section_slidetop(){
+class stag_section_slidetoptop extends WP_Widget{
+  function stag_section_slidetoptop(){
     $widget_ops = array('classname' => 'section-block', 'description' => __('Show info about your site from specific page.', 'stag'));
-    $control_ops = array('width' => 300, 'height' => 350, 'id_base' => 'stag_section_slidetop');
-    $this->WP_Widget('stag_section_slidetop', __('Slides: SlideTop Section', 'stag'), $widget_ops, $control_ops);
+    $control_ops = array('width' => 300, 'height' => 350, 'id_base' => 'stag_section_slidetoptop');
+    $this->WP_Widget('stag_section_slidetoptop', __('Slides: Slidetoptop Section', 'stag'), $widget_ops, $control_ops);
   }
 
   function widget($args, $instance){
@@ -26,25 +26,83 @@ class stag_section_slidetop extends WP_Widget{
     ?>
 
     <!-- BEGIN #about.section-block -->
-    <section id="<?php echo stag_to_slug($id); ?>"  class="section-block content-section midsect" style="background-image:url('<?php echo $image; ?>');background-attachment: fixed; background-position: center -100px;" data-link="<?php echo $link; ?>">
-
-      <div class="inner-section">
-
-        <?php
-
-        echo '<div class="entry-content">'.apply_filters('the_content', $the_page->post_content).'</div>';
-
-
-
-        ?>
+    <section id="<?php echo stag_to_slug($id); ?>"  class="section-block content-section midsect slidetoptop" style="background-image:url('<?php echo $image; ?>')" data-link="<?php echo $link; ?>">
+		<div class="overlay">
 		<script>
-		jQuery( document ).ready(function() {		
-		jQuery(".inner-section:first").addClass('firstinner');
-	});
+		jQuery( document ).ready(function() {
+			jQuery('.carousel').carousel({
+			  interval: 4000,
+			  pause: "false"
+			})
+		  
+			
+			
+				
+				})
 		</script>
-      </div>
+		<div class="inner-carousel">
+			
+			<div class='flat-computer'>
+				<div id="myCarousel" class="carousel slide">
+				
+  			  <!-- Carousel items -->
+  			  <div class="carousel-inner">
+  			    <div class="active item"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/discover.png">
+					 </div>
+  			    <div class="item"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/pwyw.png"></div>
+  			    <div class="item"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/helpcharity.png"></div>
+  			  </div>
+			  
+			</div>
+		</div>
+		
+		<div class="carousel-text">
+			<div id="myCarousel2" class="carousel slide">
+			
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+		    <div class="active item">
+				<h1>Discover Killer films</h1>
+				 </div>
+		    <div class="item">
+				<h1>Pay What you Want</h1>
+			</div>
+		    <div class="item">
+				<h1>Support Charity</h1>			
+			</div>
+		  </div>
+		  
+		</div>
+		<p class="undercarousel">
+		
+			We create limited-time bundles of amazing hand-selected independent films. You tell us how much you want to pay, and even how much goes straight to the filmmakers or charities.
+		</p>
+		<p class="carousel-btn"> Learn More <span> &#9660;</span></p>
+	</div>
+		</div>
+		
+		<!-- <div class="scrolldown">
+		
+			<h4>See what we're about </h4>
+		</div>
+	</div>
+	 -->
+	<script>
+	jQuery(document).ready(function (){
+	            jQuery("p.carousel-btn").click(function (){
+	                //$(this).animate(function(){
+	                    jQuery('html, body').animate({
+	                        scrollTop: jQuery("section:nth-of-type(2)").offset().top
+	                    }, 1000);
+	                //});
+	            });
+				
+	        });
+			
 
-      <!-- END #about.section-block -->
+	 
+	</script>
+	
     </section>
 
     <?php
@@ -70,7 +128,7 @@ class stag_section_slidetop extends WP_Widget{
     $defaults = array(
       /* Deafult options goes here */
       'page' => 0,
-      'id' => 'slidetop',
+      'id' => 'slidetoptop',
       'color' => '',
       'bg' => '',
       'link' => '',
