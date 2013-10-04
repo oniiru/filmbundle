@@ -244,8 +244,14 @@ jQuery(document).ready(function($) {
 		   $currentface = ($facebookshares - $facestart);	
 		   $facegoal = 	$thebundle[0]['facegoal'];
 		   $twittergoal = $thebundle[0]['twittergoal'];
+		   if($twittergoal != 0) {
 		   $goalratiotwit = (($currenttwitter / $twittergoal) * 100);
+	   }
+	   else {$goalratiotwit = 1;}
+	   if($goalratioface != 0) {
 		   $goalratioface = (($currentface / $facegoal) * 100);
+	   }
+	   else {$goalratioface = 1;}
 		   $twittergoal = $thebundle[0]['twittergoal'];
            $pwyw = Pwyw::getInstance();
            $pwyw_data = $pwyw->pwyw_get_bundle_info();
