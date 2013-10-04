@@ -295,6 +295,8 @@ jQuery(document).ready(function($) {
     // Setup share urls
     $facebookheader_share = "http://www.facebook.com/sharer.php?s=100&amp;p[title]=".urlencode($thebundle[0]['facetitle'])."&amp;p[summary]=".urlencode($thebundle[0]['facedescription'])."&amp;p[images][0]=".$thebundle[0]['face_image']."&amp;p[url]=".$sharingiscaringheader;
     $twitterheader_share = "https://twitter.com/share?url=".$sharingiscaringeheader."&amp;text=".urlencode($thebundle[0]['twittermessage'].' - '.$sharingiscaringheader);
+	
+	if(stag_get_option('disable_social_header') == 'on'){
 ?>
 
 <div id="slidingheader">
@@ -370,6 +372,7 @@ jQuery(document).ready(function($) {
 	</div>
 </div>
 </div>
+<?php }; ?>
 <script>
 
 jQuery(window).bind('scroll', function(){

@@ -71,6 +71,14 @@ function stag_general_settings(){
     'id' => 'general_disable_seo_settings',
     'val' => 'off'
     );
+	
+    $general_settings[] = array(
+    'title' => 'Disable Social Bar',
+    'desc' => 'Disable the sticky header?',
+    'type' => 'checkbox',
+    'id' => 'disable_social_header',
+    'val' => 'off'
+    );
 
     stag_add_framework_page( 'General Settings', $general_settings, 5 );
 }
