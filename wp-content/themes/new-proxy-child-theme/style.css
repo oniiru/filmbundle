@@ -3927,6 +3927,10 @@ margin:0px !important; }
 	    background-color: white
 
 }
+
+.header-inner #logo {
+	display:none;
+}
 .bigstatsbox {
 	width:90% !important;
 }
@@ -3935,6 +3939,15 @@ margin:0px !important; }
 }
 .littlesocial {
 	right:27px !important;
+}
+.homelogo
+
+{
+	border-radius: none;
+	border: none;
+	padding: 2px;
+	width: 27px;
+	margin-top: 16px;
 }
 
 p.second-sub {
