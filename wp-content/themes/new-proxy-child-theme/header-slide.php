@@ -120,6 +120,12 @@ jQuery(document).ready(function($) {
     }
 
 }
+
+body {
+	min-width:1250px;
+	overflow-x:auto;
+}
+
 </style>
 </head>
 

@@ -1019,12 +1019,11 @@ a.button:hover {
 }
 section.slidetoptop {
 	height: 750px;
-	background-position: center -200px;
 	background-attachment: fixed;
 }
 
 #how h5 {
-	margin-top:50px;
+	margin-top:35px;
 }
 
 #how h2 {
