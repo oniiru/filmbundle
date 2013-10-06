@@ -174,6 +174,8 @@ jQuery(document).ready(function($) {
 	if(jQuery(this).scrollTop() >= elementOffset) {
 		if(viewportWidth > 1100) {
 	jQuery("#slidenav-outer").fadeIn(450);
+	jQuery("#slidenav-outer2").fadeOut(450);
+	
 }
 else {
 	jQuery("#slidenav-outer2").fadeIn(450);
