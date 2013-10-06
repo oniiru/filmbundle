@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
  
   // Cache selectors
   var lastId,
-      topMenu = $("#slide-nav"),
+      topMenu = $("#slide-nav, #slide-nav2"),
       topMenuHeight = topMenu.outerHeight()+0,
       // All list items
       menuItems = topMenu.find("a"),
@@ -121,11 +121,6 @@ jQuery(document).ready(function($) {
 
 }
 
-body {
-	min-width:1250px;
-	overflow-x:auto;
-}
-
 </style>
 </head>
 
@@ -158,20 +153,44 @@ body {
             ));
         } ?>
 	</div>
+	
+	<div id="slidenav-outer2">
+		<img class="homelogo littlelogo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/hmmm.png">
+		
+		<?php     if(has_nav_menu('slide-menu')){
+		          wp_nav_menu(array(
+		            'theme_location' => 'slide-menu',
+		            'container' => 'div',
+		            'container_id' => 'slide-nav2',
+		            'container_class' => 'slide-menu',
+		            ));
+		        } ?>
+	</div>
 	<script>
 
 	jQuery(window).bind('scroll', function(){
-	if(jQuery(this).scrollTop() >= 575) {
+		var viewportWidth  = jQuery(window).width();
+		elementOffset = jQuery('section:nth-of-type(2)').offset().top;
+	if(jQuery(this).scrollTop() >= elementOffset) {
+		if(viewportWidth > 1100) {
 	jQuery("#slidenav-outer").fadeIn(450);
+}
+else {
+	jQuery("#slidenav-outer2").fadeIn(450);
+}
 	jQuery("#contactfooter").fadeIn(450);
 	
 	}
-	if(jQuery(this).scrollTop() < 575) {
+	if(jQuery(this).scrollTop() < elementOffset) {
 	jQuery("#slidenav-outer").fadeOut(450);
+	jQuery("#slidenav-outer2").fadeOut(450);
+	
 	jQuery("#contactfooter").fadeOut(450);
 	
 	}
 	});
+	
+	
 
 	</script>
 	
@@ -179,6 +198,6 @@ body {
   <!-- BEGIN #container -->
   <div id="container">
 	  <div id="contactfooter">
-		  Need more information? Drop us a line! <span> <a href="mailto:andrew@filmbundle.com">Email</a> &nbsp;| &nbsp;Phone: 408.656.3604
+		<p>  Need more information? Drop us a line!</p> <span> <a href="mailto:andrew@filmbundle.com">Email</a> &nbsp;| &nbsp;Phone: 408.656.3604
 	  </div>
   <?php stag_content_start(); ?>

@@ -414,7 +414,61 @@ ul.sub-menu {
 	z-index:10000;
 	
 }
+#slidenav-outer2 {
+	position:fixed;
+	top:10px;
+	left:10px;
+	z-index:1000;
+	display:none;
+	
+}
+#slidenav-outer2:hover ul {
+	display:inline-block;
+}
+#slidenav-outer2 .homelogo {
+	border-radius:0px !important;
+	border:0px;
+	margin-top:0px;
+	padding:0px;
+	position:relative !important;
+	display:inline-block;
+	cursor:inherit;
+	width:40px !important;
+	
+}
 
+#slidenav-outer2 #slide-nav2 {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	bottom: 16px;
+}
+#slidenav-outer2 ul {
+	display:inline-block;
+	display:none;
+}
+
+#slidenav-outer2 ul li {
+	display: inline-block;
+	padding: 9px 11px 10px;
+	background: #525151;
+	margin: 0;
+	opacity:.7;
+}
+#slidenav-outer2 ul li:hover {
+	opacity:1;
+}
+#slidenav-outer2 ul li.active a {
+	color:#0093b8;
+}
+#slidenav-outer2 ul li.active {
+	opacity:1;
+}
+#slidenav-outer2 ul li a {
+color:white;
+font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	
+}
 #slidenav-outer .homelogo {
 border-radius: 90px !important;
 border: 3px solid white;
@@ -475,13 +529,16 @@ margin-left:50px;
 
 .page-template-slidetemplate-php .inner-section {
 	background: white;
-	width: 860px;
+	max-width: 860px;
 	margin-left: 305px;
 	padding: 30px 35px !important;
 	overflow:hidden;
 	border-bottom:1px solid #E9E7E7
 }
 
+.boxesimg {
+	width: 76%; margin-left: 12%; margin-bottom: 10px; margin-top:10px
+}
 .page-template-slidetemplate-php .inner-section p{
 	font-family: 'museo300', sans-serif;
 	font-size: 17px;
@@ -1023,14 +1080,13 @@ section.slidetoptop {
 }
 
 #how h5 {
-	margin-top:35px;
+	margin-top:85px;
 }
 
 #how h2 {
 	margin-bottom:30px;
 }
 #how hr {
-	padding: 10px;
 	width: 100%;
 	margin: 0px 0;
 	border: 0;
@@ -1039,7 +1095,6 @@ section.slidetoptop {
 }
 .inner-carousel {
 	text-align: center;
-	width: 1000px;
 	margin: auto;
 	margin-top: 50px;
 }
@@ -1055,6 +1110,10 @@ section.slidetoptop {
 	color: white;
 	font-family: 'museo500';
 	display:none;
+}
+
+#contactfooter p {
+	display:inline-block;
 }
 
 #contactfooter span a {
@@ -1160,9 +1219,12 @@ font-size: 15px;
 .carousel {
 	margin-bottom:5px;
 }
+
+.carousel-inner {
+	width:512px;
+}
 .carousel-text {
 	display: inline-block;
-	width: 525px;
 	vertical-align: top;
 	text-align: left;
 }
@@ -1882,6 +1944,8 @@ h3#myModalLabel, h3#myModal2Label, h3#myModal3Label {
 	padding:15px 10px !important
 
 }
+.stag-column-last {
+	float:right;}
 .gform_wrapper textarea {
 	padding:5px 10px !important;
 	margin-bottom:10px !important;
@@ -3278,7 +3342,40 @@ text-align: right;
 	#blog .entry-content {
 		margin-top:20px;
 	}
-	.shareprogress {width:150px; }
+	.shareprogress {width:150px; 
+	}
+	.carousel-text {
+		display:block;
+		text-align:center;
+	}
+	.carousel-inner {
+		margin:auto;
+	}
+	.undercarousel {
+		margin:auto;
+	}
+	section.slidetoptop {
+	height: 750px;
+}
+.flat-computer {
+	margin-right:0px;
+}
+.carousel-inner.carouselcomp {
+	margin:0px;
+}
+.carousel-inner h1 {
+	margin-top:0px !important;
+}
+.overlay {
+	padding-top:50px;
+}
+.page-template-slidetemplate-php .inner-section {
+	margin-left:auto;
+}
+
+.page-template-slidetemplate-php section:nth-of-type(2) {
+padding-top: 75px;
+}
 }
 
 @media screen and (min-width : 1030px) and (max-width: 1050px) {
@@ -3450,6 +3547,22 @@ text-align: right;
 padding: 0 !important;
 width: 47.917%;
 }
+.boxesimg {
+	margin: 10px 0px;
+	width:100%;
+	
+}
+#how h5 {
+	margin-top:20px !important;
+	text-align:center;
+	margin-bottom:5px !important;
+}
+#how hr {
+	padding:10px;
+}
+#how h2 {
+	text-align:center;
+}
 .footer .copyright {
 display: inline-block;
 text-align: right;
@@ -3546,7 +3659,33 @@ padding-right:0px;
 	.about-us-right {
 		width:80% !important;
 	}
-	
+	.flat-computer {
+	background-image: url('assets/img/monitor.png');
+	height: 300px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 300px;
+	margin: auto;
+	}
+	.flat-computer .carousel-inner {
+	top: 12px;
+	left: 12px;
+	width: 276px;
+	}
+	.carousel-inner h1 {
+	font-size: 23px;
+}
+.carousel-inner {
+width: 300px;
+}
+p.undercarousel {
+width: 300px;
+font-size: 16px;
+}
+section.slidetoptop {
+height: 625px;
+}
 	.thepitch p {
 		line-height: 1em;
 		margin-top: 10px;
@@ -3737,6 +3876,16 @@ background: #27292b;
 padding: 12px 16px 10px 32px;
 margin-left: -34px;
 text-align: right;
+}
+#contactfooter p {display:none;}
+#contactfooter span {
+	float:none;
+}
+#contactfooter {
+	text-align:center;
+}
+.page-template-slidetemplate-php .inner-section {
+	padding: 30px 10px !important;
 }
 
 }

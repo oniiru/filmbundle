@@ -46,7 +46,7 @@ class stag_section_slidetoptop extends WP_Widget{
 				<div id="myCarousel" class="carousel slide">
 				
   			  <!-- Carousel items -->
-  			  <div class="carousel-inner">
+  			  <div class="carousel-inner carouselcomp">
   			    <div class="active item"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/discover.png">
 					 </div>
   			    <div class="item"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/pwyw.png"></div>
