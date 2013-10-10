@@ -31,7 +31,7 @@ class stag_section_slidetoptop extends WP_Widget{
 		<script>
 		jQuery( document ).ready(function() {
 			jQuery('.carousel').carousel({
-			  interval: 4000,
+			  interval: 3000,
 			  pause: "false"
 			})
 		  
