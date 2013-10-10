@@ -891,7 +891,7 @@ ul.nav-tabs {
 }
 .filminformation h3 {
 	font-size:22px;
-	margin-top:50px;
+	margin-top:12px;
 	padding:10px;
 	line-height:1.1em;
 }
@@ -908,6 +908,7 @@ p.rungen {
 	font-size:13px;
 	line-height:1.2em;
 	margin:0px;
+	margin-bottom:7px;
 }
 .lockeditem {
 	width:100%;
