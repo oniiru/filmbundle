@@ -87,7 +87,7 @@ html, body {
 </head>
 
 <!-- BEGIN body -->
-<body cite="Hudson Gardner, http://www.flickr.com/photos/hlg/6782185502/sizes/l/in/photostream/" id="loginbody" <?php body_class(); ?>>
+<body id="loginbody" <?php body_class(); ?>>
   <?php stag_body_start(); ?>
 
 

@@ -26,7 +26,7 @@ class stag_section_slidetop extends WP_Widget{
     ?>
 
     <!-- BEGIN #about.section-block -->
-    <section id="<?php echo stag_to_slug($id); ?>"  class="section-block content-section midsect" style="background-image:url('<?php echo $image; ?>');background-attachment: fixed; background-position: center -100px;" data-link="<?php echo $link; ?>">
+    <section id="<?php echo stag_to_slug($id); ?>"  class="section-block content-section midsect" style="background-image:url('<?php echo $image; ?>');background-attachment: fixed; background-position: center" data-link="<?php echo $link; ?>">
 
       <div class="inner-section">
 

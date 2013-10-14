@@ -1,0 +1,213 @@
+.landingnav {
+	width: 100%;
+	height: 60px;
+	padding: 7px 0 10px;
+	position: fixed;
+	z-index: 1000;
+	background: #fff;
+	border-bottom: 2px solid #CCC;
+	top: 0;
+	font-family: Lato,Helvetica,Arial,sans-serif;
+	font-size: 16px;
+}
+
+.landingcontainer {
+	max-width:960px;
+	margin:auto;
+}
+
+.landinglogo {
+	border-radius: 90px !important;
+	border: 3px solid #515251;
+	padding: 2px;
+	width: 45px;
+}
+
+.landinglogo-outer {
+	display:inline-block;
+}
+
+.landinglogo-outer p {
+	display:inline-block;
+	font-family:'museo500';
+	display: inline-block;
+	font-family: 'museo500';
+	vertical-align: top;
+	font-size: 31px;
+	margin-top: 2px;
+	margin-left: 5px;
+	color:#515251;
+}
+
+.landinglogo-outer p span {
+	font-family:'museo300';
+}
+
+.landingbuttons {
+	display:inline-block;
+	float:right;
+	margin-top:4px;
+}
+.landingbutton {
+	border-radius: 5px;
+	padding: 8px 15px;
+	background: #e74c3c;
+	color: white;
+	border-bottom: 2px solid #91291E;
+	font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+	cursor: pointer;
+	font-size: 14px;
+	display: inline-block;
+}
+
+.landingbutton:hover {
+border-bottom: 1px solid #91291E;
+position: relative;
+top: 1px;
+color: white;
+text-decoration: none;
+}
+
+.joinbtn {
+	background-color: #1abc9c !important;
+	border-bottom: 2px solid #16a085;
+}
+
+.joinbtn:hover {
+	border-bottom: 1px solid #16a085;
+	
+}
+
+/*body*/
+
+.landingcontent-top {
+	height: 400px;
+	color: #EEE;
+	background: #333;
+	margin-top:60px;}
+	
+	.landingcontent-top h1 {
+		color: #eee;
+		font-family: 'open sans', sans-serif;
+		font-size: 37px;
+		padding-top: 83px;
+		font-weight:100;
+	
+	}
+	.landingcontent-top p {
+		font-family: 'open sans', sans-serif;
+		font-weight: 300;
+		font-size: 20px;
+		margin-top: 20px;
+		line-height: 1.2em;
+	}
+	
+	.landingcontent-topleft {
+	display:inline-block;	
+	max-width:450px;
+	}
+	.landingcontent-topright {
+		display:inline-block;
+		float:right;
+	}
+	
+	.landingcontent-bottom {
+		margin-top:30px;
+		margin-bottom:30px;
+		border-bottom:1px solid #ddd;
+		text-align:center;
+	}
+	.landingcontent-bottom .thepoint {
+		max-width:297px;
+	}
+	
+	.landingcontent-bottom .thepoint h4{
+margin-bottom:12px;	}
+	.landingcontent-bottom .gettothepoint {
+		margin-bottom:10px;
+	}
+	
+	.learnbtn {
+		position: relative;
+		top: 23px;
+		padding: 8px 40px;
+		font-size: 20px;
+	}
+	
+	.learnbtn:hover {
+		top:24px;
+	}
+	.landingfooter {
+		text-align: center;
+		border-top: 1px solid #ddd;
+		padding-top: 10px;
+		padding-bottom: 15px;
+		
+	}
+	
+	footer {
+		margin-top:100px;
+	}
+	
+	.landingfooter li {
+		display:inline-block;
+		margin:0 20px;
+		font-family: 'open sans';
+		font-weight: 600;}
+		
+		.landingfooter li a {
+			color:#7C7C7C;
+		}
+		
+		.thelanding {
+			min-height: 100%;
+			height: auto !important;
+			height: 100%;
+			margin: 0 auto 50px;
+		}
+		
+		.footer, .push {
+		height: 50px;
+		background:white;
+		}
+		#mc_signup_form {
+		padding: 6px 10px;
+		margin-top:20px;
+	}
+	#mc_signup_form .mc_input {
+	height: 40px;
+	width: 280px;}
+	
+	#mc_signup_submit {
+		border-radius: 5px;
+		padding: 13px 18px;
+		background-color: #e74c3c !important;
+		color: white;
+		border-bottom: 2px solid #91291E;
+		font-family: "Novecentowide-Bold", Helvetica, sans-serif;
+		cursor: pointer;
+		font-size: 14px;
+		display: inline-block;
+		margin-left: 10px !important;
+		}
+		
+		#mc_signup_submit:hover {
+			top:1px;
+			position:relative;
+			border-bottom: 1px solid #91291E;
+		
+		}
+		
+		input[placeholder] {
+		   font-size:11px !important;
+		}
+		
+		.mfp-inline-holder .mfp-content, .mfp-ajax-holder .mfp-content {
+		width: initial;
+		display:inline-block;
+		
+	}
+	
+	button.mfp-close {
+		top:15px;
+	}
