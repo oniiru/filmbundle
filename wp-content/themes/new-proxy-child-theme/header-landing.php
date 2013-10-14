@@ -64,7 +64,13 @@ jQuery(document).ready(function($) {
 		</div>
 		<div class="landingbuttons">
 			<a href="http://filmbundle.com/blog" class="landingbutton joinbtn"> Blog </a>
+			<?php if ( is_user_logged_in() ) {?>
+				
+<?php echo do_shortcode( '[loginout edit_tag="class=\'landingbutton loginbtnland\'"]' ); ?>				
+			
+				<?php } else {?> 
 			<a href="http://filmbundle.com/login" class="landingbutton loginbtnland"> Login </a>
+			<?php } ?>
 			
 		</div>
 	</div>
