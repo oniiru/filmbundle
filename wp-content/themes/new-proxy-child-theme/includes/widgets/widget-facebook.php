@@ -20,7 +20,8 @@ class stag_section_fb extends WP_Widget{
 
       <div class="inner-section">
 		  <h2>What do you think of the bundle?</h2>
-		  <?php echo do_shortcode('[fbcomments count="off" width="900px" url="http://filmbundle.com"]'); ?>
+		  <?php disqus_embed('filmbundle'); ?>
+
 		  
       </div>
 
