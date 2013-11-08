@@ -26,7 +26,7 @@
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/popup.js'></script>
 <script type='text/javascript' src='<?php echo get_stylesheet_directory_uri(); ?>/assets/js/froogaloop.js'></script>
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-<a href="https://plus.google.com/106976496344175389196" rel="publisher">Google+</a>
+<a href="https://plus.google.com/106976496344175389196" style="display:none" rel="publisher">Google+</a>
 
 <?php if (is_front_page()) { ?>
 <style type='text/css'>
