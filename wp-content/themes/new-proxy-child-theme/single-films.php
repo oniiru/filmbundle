@@ -397,7 +397,8 @@ if (($videometa['tipster'] == 'yes') && (((edd_has_user_purchased( $user_ID, $ab
 <div class="thecomments">
 	 <img class="whatthink" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/lovebundle.png">
 
- <?php echo do_shortcode('[fbcomments count="off" width="900px"]'); ?>
+	 <?php disqus_embed('filmbundle'); ?>
+
  </div>
 </div>
 
