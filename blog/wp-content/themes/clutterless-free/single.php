@@ -88,7 +88,7 @@
 	                  <a class="zocial reddit" href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> Submit on Reddit </a>
 	              </div>
 		          <div class="fbcoms">
-				<?php echo do_shortcode('[fbcomments]'); ?>
+<?php comments_template(); ?>
 			</div>
 	          <div class="mainsharing2 white_box box_info">
 	              <div class="socialstuff2">
